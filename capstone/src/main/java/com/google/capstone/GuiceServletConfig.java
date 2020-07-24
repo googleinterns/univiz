@@ -9,6 +9,13 @@ import com.google.inject.servlet.ServletModule;
 public class GuiceServletConfig extends GuiceServletContextListener {
   @Override
   protected Injector getInjector() {
-    return Guice.createInjector(new CapstoneBootstrapModule(), new ServletModule());
+    return Guice.createInjector(
+        new CapstoneBootstrapModule(),
+        new ServletModule() {
+          @Override
+          protected void configureServlets() {
+            serve("/hello").with(HelloGuiceWorldController.class);
+          }
+        });
   }
 }
