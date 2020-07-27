@@ -1,4 +1,4 @@
-package com.google.capstone;
+package com.google.univiz;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -9,6 +9,6 @@ import com.google.inject.servlet.ServletModule;
 public class GuiceServletConfig extends GuiceServletContextListener {
   @Override
   protected Injector getInjector() {
-    return Guice.createInjector(new CapstoneBootstrapModule(), new ServletModule());
+    return Guice.createInjector(new UnivizBootstrapModule(), new ServletModule());
   }
 }
