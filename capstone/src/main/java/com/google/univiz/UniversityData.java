@@ -83,7 +83,7 @@ public final class UniversityData {
       return this;
     }
 
-    public UniversityBUilder setNumOfWomen(float numOfWomen) {
+    public UniversityBuilder setNumOfWomen(float numOfWomen) {
       this.numOfUndergradWomen = numOfWomen;
       return this;
     }
