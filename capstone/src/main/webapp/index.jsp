@@ -1,4 +1,8 @@
+<!DOCTYPE html> 
 <html>
+  <head>
+  <meta charset="utf-8">
+  </head>
   <body>
     <h2>Welcome to UniViz!</h2>
       <form action="/" method="POST" autocomplete="off">
