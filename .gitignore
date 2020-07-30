@@ -9,6 +9,9 @@ appengine-generated/
 # Compiled class file
 *.class
 
+#API Key File
+CollegeScoreCardAPIKey.java
+
 # Log file
 *.log
 
