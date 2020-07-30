@@ -89,7 +89,22 @@ public final class UniversityData {
     }
 
     public UniversityData build() {
-      return new UniversityData(this);
+      UniversityData uni = new UniversityData();
+      uni.uniName = this.uniName;
+      uni.uniCity = this.uniCity;
+      uni.latitude = this.latitude;
+      uni.longitude = this.longitude;
+      uni.isMainCampus = this.isMainCampus;
+      uni.urbanizationDegree = this.urbanizationDegree;
+      uni.admissionRate = this.admissionRate;
+      uni.avgSAT = this.avgSAT;
+      uni.numOfUndergrads = this.setNumberOfUndergrads;
+      uni.avgCostOfAttendance = this.avgCostOfAttendance;
+      uni.numOfStudentsInDebt = this.numOfStudentsInDebt;
+      uni.carnegieSizeDegree = this.carnegieSizeDegree;
+      uni.numOfUndergradMen = this.numOfUndergradMen;
+      uni.numOfUndergradWomen = this.numOfUndergradWomen;
+      return uni;
     }
   }
 }
