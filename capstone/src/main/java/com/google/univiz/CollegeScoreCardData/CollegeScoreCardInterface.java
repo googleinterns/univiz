@@ -1,3 +1,5 @@
+import java.util.List;
+
 interface CollegeScoreCardInterface {
   /*General Use Functions*/
   public boolean validateCollegeName(String collegeName);
