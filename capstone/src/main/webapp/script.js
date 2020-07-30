@@ -1,6 +1,6 @@
 /**
  * Load Map API
-  * @return {void}
-  */
+ * @return {void}
+ */
 function loadMap() {
 }
