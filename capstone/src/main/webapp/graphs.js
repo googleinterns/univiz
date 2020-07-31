@@ -9,10 +9,10 @@ google.charts.setOnLoadCallback(graphGrossNetTuition);
 function graphGrossNetTuition() {
   const data = new google.visualization.DataTable();
   fetch('/financial-data').
-      then(response => response.json()).
-      then(tuitionInfo => {
-	// iterate over tuitionInfo JSON
-	// append to data
+      then((response) => response.json()).
+      then((tuitionInfo) => {
+        // iterate over tuitionInfo JSON
+        // append to data
       });
 
   const options = {
