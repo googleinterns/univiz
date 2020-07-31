@@ -1,105 +1,67 @@
 package com.google.univiz;
 
-public final class UniversityData {
-  private final String name;
-  private final String city;
-  private final float latitude;
-  private final float longitude;
-  private final int isMainCampus;
-  private final int urbanizationDegree;
-  private final float admissionRate;
-  private final float avgSAT;
-  private final int numOfUndergrads;
-  private final int avgCostOfAttendance;
-  private final int numOfStudentsInDebt;
-  private final int carnegieSizeDegree;
-  private final float numOfUndergradMen;
-  private final float numOfUndergradWomen;
+import com.google.auto.value.AutoValue;
 
-  public UniversityData(
+@AutoValue
+public abstract class UniversityData {
+
+  public static UniversityData create(
       String name,
       String city,
       float lat,
       float lon,
       int flagMainCampus,
-      int urbanDegree,
-      float admisRate,
+      int urbanizationDegree,
+      float admissionRate,
       float avgSAT,
-      int undergradNum,
+      int numOfUndergrads,
       int avgCost,
       int studentsInDebt,
       int carnegieSizeDegree,
       float numOfMen,
       float numOfWomen) {
-    this.name = name;
-    this.city = city;
-    this.latitude = lat;
-    this.longitude = lon;
-    this.isMainCampus = flagMainCampus;
-    this.urbanizationDegree = urbanDegree;
-    this.admissionRate = admisRate;
-    this.avgSAT = avgSAT;
-    this.numOfUndergrads = undergradNum;
-    this.avgCostOfAttendance = avgCost;
-    this.numOfStudentsInDebt = studentsInDebt;
-    this.carnegieSizeDegree = carnegieSizeDegree;
-    this.numOfUndergradMen = numOfMen;
-    this.numOfUndergradWomen = numOfWomen;
+    return new UniversityData(
+        name,
+        city,
+        latitude,
+        longitude,
+        flagMainCampus,
+        urbanizationDegree,
+        admissionRate,
+        avgSAT,
+        numOfUndergrads,
+        avgCost,
+        studentsInDebt,
+        carnegieSizeDegree,
+        numOfMen,
+        numOfWomen);
   }
 
-  public String getName() {
-    return name;
-  }
+  public abstract String name();
 
-  public String getCity() {
-    return city;
-  }
+  public abstract String city();
 
-  public float getLat() {
-    return latitude;
-  }
+  public abstract float latitude();
 
-  public float getLong() {
-    return longitude;
-  }
+  public abstract float longitude();
 
-  public int getMainCampusFlag() {
-    return isMainCampus;
-  }
+  public abstract int flagMainCampus();
 
-  public int getUrbanizationDegree() {
-    return urbanizationDegree;
-  }
+  public abstract int urbanizationDegree();
 
-  public float getAdmissionRate() {
-    return admissionRate;
-  }
+  public abstract float admissionRate();
 
-  public float getAvgSAT() {
-    return avgSAT;
-  }
+  public abstract float avgSAT();
 
-  public int getNumOfUndergrads() {
-    return numOfUndergrads;
-  }
+  public abstract int numOfUndergrads();
 
-  public int getAvgCost() {
-    return avgCostOfAttendance;
-  }
+  public abstract int avgCost();
 
-  public int getNumOfStudentsInDebt() {
-    return numOfStudentsInDebt;
-  }
+  public abstract int studentsInDebt();
 
-  public int getCarnegieSizeDegree() {
-    return carnegieSizeDegree;
-  }
+  public abstract int carnegieSizeDegree();
 
-  public float getNumOfMen() {
-    return numOfUndergradMen;
-  }
+  public abstract float numOfMen();
 
-  public float getNumOfWomen() {
-    return numOfUndergradWomen;
-  }
+  public abstract float numOfWomen();
 }
