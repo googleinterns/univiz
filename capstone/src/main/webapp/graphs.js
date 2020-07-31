@@ -9,21 +9,22 @@ google.charts.setOnLoadCallback(graphGrossNetTuition);
 function graphGrossNetTuition() {
   const data = new google.visualization.DataTable();
   fetch('/financial-data').
-    then(response => response.json()).
-    then(tuitionInfo => {
-      // iterate over tuitionInfo JSON
-      // append to data
-    });
+      then(response => response.json()).
+      then(tuitionInfo => {
+	// iterate over tuitionInfo JSON
+	// append to data
+      });
 
   const options = {
     title: 'Gross and Net Price of Colleges',
     hAxis: {
-      title: 'Your Colleges'
+      title: 'Your Colleges',
     },
     vAxis: {
-      title: 'Tuition Price (USD)'
-    }
+      title: 'Tuition Price (USD)',
+    },
   };
-  const chart = new google.visualization.ColumnChart(document.getElementById('data'));
+  const chart =
+    new google.visualization.ColumnChart(document.getElementById('data'));
   chart.draw(data, options);
 }
