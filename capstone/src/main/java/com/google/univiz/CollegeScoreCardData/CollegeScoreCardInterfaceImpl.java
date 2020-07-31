@@ -14,8 +14,8 @@ public class CollegeScoreCardInterfaceImpl {
   private static final String apiBeginningURL = "https://api.data.gov/ed/collegescorecard/v1/schools.json?";
 
   private JSONObject queryCollegeScoreCardAPI(String collegeName,
-		  			      String queryPhrase,
-		  			      String queryFields) {
+		  			                          String queryPhrase,
+		  			                          String queryFields) {
     String apiURL = apiBeginningURL + 
 	    	        queryPhrase + 
 		            queryFields +
