@@ -10,7 +10,13 @@ function graphGrossNetTuition() {
   const data = new google.visualization.DataTable();
 
   const options = {
-    title: 'Gross and Net Price of Colleges'
+    title: 'Gross and Net Price of Colleges',
+    hAxis: {
+      title: 'Your Colleges'
+    },
+    vAxis: {
+      title: 'Tuition Price (USD)'
+    }
   };
   const chart = new google.visualization.ColumnChart(document.getElementById('data'));
   chart.draw(data, options);
