@@ -3,17 +3,17 @@ package com.google.univiz.collegescorecarddata;
 import java.util.List;
 
 public interface CollegeScoreCard {
-  /*General Use Functions*/
+  /** General Use Functions */
   boolean validateCollegeName(String collegeName);
 
   List<UniversityData> getCollegesData(List<String> collegeNames);
 
-  /*Search Feature Functions*/
+  /** Search Feature Functions */
   List<UniversityData> getCollegeSuggestions(String currName);
 
-  /*Maps Feature Functions*/
+  /** Maps Feature Functions */
   List<UniversityData> getMapData(List<UniversityData> collegeDatum);
 
-  /*DataVis Feature Functions*/
+  /** DataVis Feature Functions */
   List<UniversityData> getDataVisData(List<UniversityData> collegeDatum);
 }
