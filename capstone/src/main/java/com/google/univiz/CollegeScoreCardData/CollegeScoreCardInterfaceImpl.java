@@ -17,9 +17,9 @@ public class CollegeScoreCardInterfaceImpl {
 		  			      String queryPhrase,
 		  			      String queryFields) {
     String apiURL = apiBeginningURL + 
-	    	    queryPhrase + 
-		    queryFields +
-		    apiKeyForCollegeScoreCard;
+	    	        queryPhrase + 
+		            queryFields +
+		            apiKeyForCollegeScoreCard;
     InputStream readURLData = new URL(apiURL).openStream();
     try {
       BufferedReader rd = new BufferedReader(new InputStreamReader(readURLData, Charset.forName("UTF-8")));
@@ -44,21 +44,25 @@ public class CollegeScoreCardInterfaceImpl {
   }
 
   public List<UniversityData> getCollegesData(List<String> collegeNames) {
+    /*Complete Function*/
     List<UniversityData> collegeData = new List<>();
     return collegeData;
   }
 
   public List<UniversityData> getCollegeSuggestions(String currName) {
+    /*Complete Function*/
     List<UniversityData> collegeData = new List<>();
     return collegeData;
   }
 
   public List<UniversityData> getMapData(List<UniversityData> collegeDatum) {
+    /*Complete Function*/
     List<UniversityData> collegeData = new List<>();
     return collegeData;
   }
 
   public List<UniversityData> getDataVisData(List<UniversityData> collegeDatum) {
+    /*Complete Function*/
     List<UniversityData> collegeData = new List<>();
     return collegeData;
   }
