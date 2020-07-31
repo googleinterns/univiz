@@ -45,3 +45,8 @@ buildNumber.properties
 
 # End of https://www.toptal.com/developers/gitignore/api/java,maven,appengine
 node_modules/
+
+### End of generated config ###
+
+# Ignore config for API keys
+capstone/src/main/resources/univiz_config.json
