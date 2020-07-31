@@ -1,96 +1,105 @@
 package com.google.univiz;
 
 public final class UniversityData {
-  private String uniName;
-  private String uniCity;
-  private float latitude;
-  private float longitude;
-  private int isMainCampus;
-  private int urbanizationDegree;
-  private float admissionRate;
-  private float avgSAT;
-  private int numOfUndergrads;
-  private int avgCostOfAttendance;
-  private int numOfStudentsInDebt;
-  private int carnegieSizeDegree;
-  private float numOfUndergradMen;
-  private float numOfUndergradWomen;
+  private final String name;
+  private final String city;
+  private final float latitude;
+  private final float longitude;
+  private final int isMainCampus;
+  private final int urbanizationDegree;
+  private final float admissionRate;
+  private final float avgSAT;
+  private final int numOfUndergrads;
+  private final int avgCostOfAttendance;
+  private final int numOfStudentsInDebt;
+  private final int carnegieSizeDegree;
+  private final float numOfUndergradMen;
+  private final float numOfUndergradWomen;
 
-  public final class UniversityBuilder {
-    UniversityData uniData = new UniversityData();
+  public UniversityData(
+      String name,
+      String city,
+      float lat,
+      float lon,
+      int flagMainCampus,
+      int urbanDegree,
+      float admisRate,
+      float avgSAT,
+      int undergradNum,
+      int avgCost,
+      int studentsInDebt,
+      int carnegieSizeDegree,
+      float numOfMen,
+      float numOfWomen) {
+    this.name = name;
+    this.city = city;
+    this.latitude = lat;
+    this.longitude = lon;
+    this.isMainCampus = flagMainCampus;
+    this.urbanizationDegree = urbanDegree;
+    this.admissionRate = admisRate;
+    this.avgSAT = avgSAT;
+    this.numOfUndergrads = undergradNum;
+    this.avgCostOfAttendance = avgCost;
+    this.numOfStudentsInDebt = studentsInDebt;
+    this.carnegieSizeDegree = carnegieSizeDegree;
+    this.numOfUndergradMen = numOfMen;
+    this.numOfUndergradWomen = numOfWomen;
+  }
 
-    public UniversityBuilder setName(String name) {
-      this.uniName = name;
-      return this;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public UniversityBuilder setCity(String city) {
-      this.uniCity = city;
-      return this;
-    }
+  public String getCity() {
+    return city;
+  }
 
-    public UniversityBuilder setLat(float lat) {
-      this.latitude = lat;
-      return this;
-    }
+  public float getLat() {
+    return latitude;
+  }
 
-    public UniversityBuilder setLong(float log) {
-      this.longitude = log;
-      return this;
-    }
+  public float getLong() {
+    return longitude;
+  }
 
-    public UniversityBuilder setMainCampus(int flag) {
-      this.isMainCampus = flag;
-      return this;
-    }
+  public int getMainCampusFlag() {
+    return isMainCampus;
+  }
 
-    public UniversityBuilder setUrbanDegree(int degree) {
-      this.urbanizationDegree = degree;
-      return this;
-    }
+  public int getUrbanizationDegree() {
+    return urbanizationDegree;
+  }
 
-    public UniversityBuilder setAdmissionRate(float rate) {
-      this.admissionRate = rate;
-      return this;
-    }
+  public float getAdmissionRate() {
+    return admissionRate;
+  }
 
-    public UniversityBuilder setAvgSAT(int score) {
-      this.avgSAT = score;
-      return this;
-    }
+  public float getAvgSAT() {
+    return avgSAT;
+  }
 
-    public UniversityBuilder setNumberOfUndergrads(int size) {
-      this.numOfUndergrads = size;
-      return this;
-    }
+  public int getNumOfUndergrads() {
+    return numOfUndergrads;
+  }
 
-    public UniversityBuilder setAvgCost(int cost) {
-      this.avgCostOfAttendance = cost;
-      return this;
-    }
+  public int getAvgCost() {
+    return avgCostOfAttendance;
+  }
 
-    public UniversityBuilder setStudentsInDebt(int numberOfStudents) {
-      this.numOfStudentsInDebt = numberOfStudents;
-      return this;
-    }
+  public int getNumOfStudentsInDebt() {
+    return numOfStudentsInDebt;
+  }
 
-    public UniversityBuilder setCarnegieDegree(int degree) {
-      this.carnegieSizeDegree = degree;
-      return this;
-    }
+  public int getCarnegieSizeDegree() {
+    return carnegieSizeDegree;
+  }
 
-    public UniversityBuilder setNumOfMen(float numOfMen) {
-      this.numOfUndergradMen = numOfMen;
-      return this;
-    }
+  public float getNumOfMen() {
+    return numOfUndergradMen;
+  }
 
-    public UniversityBuilder setNumOfWomen(float numOfWomen) {
-      this.numOfUndergradWomen = numOfWomen;
-      return this;
-    }
-
-    public UniversityData build() {
-      return uniData;
-    }
+  public float getNumOfWomen() {
+    return numOfUndergradWomen;
   }
 }
