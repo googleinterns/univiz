@@ -10,8 +10,8 @@ interface CollegeScoreCardInterface {
   public List<UniversityData> getCollegeSuggestions(String currName);
 
   /*Maps Feature Functions*/
-  public List<UniversityData> updateMapData(List<UniversityData> collegeDatum);
+  public List<UniversityData> getMapData(List<UniversityData> collegeDatum);
 
   /*DataVis Feature Functions*/
-  public List<UniversityData> updateDataVisData(List<UniversityData> collegeDatum);
+  public List<UniversityData> getDataVisData(List<UniversityData> collegeDatum);
 }
