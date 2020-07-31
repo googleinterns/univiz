@@ -2,7 +2,7 @@ package com.google.univiz.collegescorecarddata;
 
 import java.util.List;
 
-interface CollegeScoreCard {
+public interface CollegeScoreCard {
   /*General Use Functions*/
   boolean validateCollegeName(String collegeName);
 
