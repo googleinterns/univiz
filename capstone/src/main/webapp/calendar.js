@@ -19,7 +19,7 @@ function drawCharts() {
 
 /**
  * Generate frequency calendar chart of deadlines.
- * @param freqData the DataTable corresponding to
+ * @param{freqData} the DataTable corresponding to
  * the frequency of deadlines
  */
 function drawFrequencyChart(freqData) {
@@ -33,7 +33,7 @@ function drawFrequencyChart(freqData) {
 
 /**
  * Generate suggested timeline of actions related to deadlines.
- * @param timelineData the DataTable corresponding to the
+ * @param{timelineData} the DataTable corresponding to the
  * suggested actions to take before the deadline
  */
 function drawTimelineChart(timelineData) {
