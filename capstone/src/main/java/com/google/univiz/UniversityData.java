@@ -8,8 +8,8 @@ public abstract class UniversityData {
   public static UniversityData create(
       String name,
       String city,
-      float lat,
-      float lon,
+      float latitude,
+      float longitude,
       int flagMainCampus,
       int urbanizationDegree,
       float admissionRate,
