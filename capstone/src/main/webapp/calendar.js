@@ -19,8 +19,8 @@ function drawCharts() {
 
 /**
  * Generate frequency calendar chart of deadlines.
- * @param{freqData} the DataTable corresponding to
- * the frequency of deadlines
+ * @param {google.visualization.DataTable} freqData
+ * the DataTable corresponding to the frequency of deadlines
  */
 function drawFrequencyChart(freqData) {
   const options = {
@@ -33,8 +33,9 @@ function drawFrequencyChart(freqData) {
 
 /**
  * Generate suggested timeline of actions related to deadlines.
- * @param{timelineData} the DataTable corresponding to the
- * suggested actions to take before the deadline
+ * @param {google.visualization.DataTable} timelineData
+ * the DataTable corresponding to the
+ * suggested actions to take before the deadlines
  */
 function drawTimelineChart(timelineData) {
   const options = {
