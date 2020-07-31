@@ -4,9 +4,7 @@ import java.util.List;
 
 public interface SearchData {
   /**
-   *
    * Method: getCollegeSuggestions
-   *
    * Description:
    * This function take a potential college name
    * fragment (provided by the user) and uses the

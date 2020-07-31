@@ -3,24 +3,19 @@ package com.google.univiz.api;
 import java.util.List;
 
 /**
- *
  * GeneralCollegeData.java
- * 
  * Description:
  * This interface contains functions 
  * which will directly communicate 
  * with the API we use to obtain 
  * college data
- *
  * Current API Used: CollegeScoreCard API
  * Link: https://collegescorecard.ed.gov/data/ 
- *
  */
 
 public interface GeneralCollegeData {
   /** 
    *  Method: validateCollegeName
-   *  
    *  Description:
    *  Checks the provided collegeName to see 
    *  if the API in use has data on the college 
@@ -31,7 +26,6 @@ public interface GeneralCollegeData {
 
   /**
    * Method: getCollegesData
-   *
    * Description:
    * Takes a list of collegeNames and returns a 
    * list of UniversityData objects which contains
