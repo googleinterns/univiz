@@ -1,22 +1,23 @@
 package com.google.univiz;
 
 public final class UniversityData {
+  private String uniName;
+  private String uniCity;
+  private float latitude;
+  private float longitude;
+  private int isMainCampus;
+  private int urbanizationDegree;
+  private float admissionRate;
+  private float avgSAT;
+  private int numOfUndergrads;
+  private int avgCostOfAttendance;
+  private int numOfStudentsInDebt;
+  private int carnegieSizeDegree;
+  private float numOfUndergradMen;
+  private float numOfUndergradWomen;
 
   public final class UniversityBuilder {
-    private String uniName;
-    private String uniCity;
-    private float latitude;
-    private float longitude;
-    private int isMainCampus;
-    private int urbanizationDegree;
-    private float admissionRate;
-    private float avgSAT;
-    private int numOfUndergrads;
-    private int avgCostOfAttendance;
-    private int numOfStudentsInDebt;
-    private int carnegieSizeDegree;
-    private float numOfUndergradMen;
-    private float numOfUndergradWomen;
+    UniversityData uniData = new UniversityData();
 
     public UniversityBuilder setName(String name) {
       this.uniName = name;
@@ -89,22 +90,7 @@ public final class UniversityData {
     }
 
     public UniversityData build() {
-      UniversityData uni = new UniversityData();
-      uni.uniName = this.uniName;
-      uni.uniCity = this.uniCity;
-      uni.latitude = this.latitude;
-      uni.longitude = this.longitude;
-      uni.isMainCampus = this.isMainCampus;
-      uni.urbanizationDegree = this.urbanizationDegree;
-      uni.admissionRate = this.admissionRate;
-      uni.avgSAT = this.avgSAT;
-      uni.numOfUndergrads = this.setNumberOfUndergrads;
-      uni.avgCostOfAttendance = this.avgCostOfAttendance;
-      uni.numOfStudentsInDebt = this.numOfStudentsInDebt;
-      uni.carnegieSizeDegree = this.carnegieSizeDegree;
-      uni.numOfUndergradMen = this.numOfUndergradMen;
-      uni.numOfUndergradWomen = this.numOfUndergradWomen;
-      return uni;
+      return uniData;
     }
   }
 }
