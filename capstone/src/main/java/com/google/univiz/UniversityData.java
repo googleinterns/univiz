@@ -20,7 +20,7 @@ public abstract class UniversityData {
       int carnegieSizeDegree,
       float numOfMen,
       float numOfWomen) {
-    return new UniversityData(
+    return new AutoValue_UniversityData(
         name,
         city,
         latitude,
