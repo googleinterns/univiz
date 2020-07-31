@@ -13,10 +13,8 @@ public interface SearchData {
    * API in use to determine whether this string 
    * fragment is present in any college names within 
    * the API database 
-   * If so, then a list of UniversityData objects
-   * will be returned-all returned objects will 
-   * represent each college name containing 
+   * If so, then a list of college name containing 
    * the provided string fragment
    */
-  List<UniversityData> getCollegeSuggestions(String currName);
+  List<String> getCollegeSuggestions(String currentCollegeNameFragment);
 }
