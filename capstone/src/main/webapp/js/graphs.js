@@ -7,14 +7,7 @@ google.charts.setOnLoadCallback(graphGrossNetTuition);
  * consisting of college tuition data.
  */
 function graphGrossNetTuition() {
-  const data = new google.visualization.DataTable();
-  fetch('/financial-data').
-      then((response) => response.json()).
-      then((tuitionInfo) => {
-        // iterate over tuitionInfo JSON
-        // append to data
-      });
-
+  const data = deserializeTuitionData();
   const options = {
     title: 'Gross and Net Price of Colleges',
     hAxis: {
@@ -27,4 +20,22 @@ function graphGrossNetTuition() {
   const chart =
     new google.visualization.ColumnChart(document.getElementById('data'));
   chart.draw(data, options);
+}
+
+/**
+ * Helper function to append elements in JSON
+ * file to DataTable.
+ *
+ * @return {google.visualization.DataTable} data
+ * the DataTable corresponding to the tuition data
+ */
+function deserializeTuitionData() {
+  const data = new google.visualization.DataTable();
+  fetch('/tuition-data').
+      then((response) => response.json()).
+      then((tuitionInfo) => {
+        // iterate over tuitionInfo JSON
+        // append to data
+      });
+  return data;
 }
