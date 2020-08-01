@@ -3,7 +3,6 @@ package com.google.univiz;
 import com.google.auto.value.AutoValue;
 
 /** UniversityData is a class representing a single university. */
-
 @AutoValue
 public abstract class UniversityData {
 
