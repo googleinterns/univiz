@@ -10,7 +10,8 @@ function drawCharts() {
   fetch('/suggested-cal').
       then((response) => response.json()).
       then((myObject) => {
-        // TODO(ihsan314): update freqData datatable and update timelineData datatable
+        // TODO(ihsan314): update freqData datatable
+        // and update timelineData datatable
       });
   drawFrequencyChart(freqData);
   drawTimelineChart(timelineData);
