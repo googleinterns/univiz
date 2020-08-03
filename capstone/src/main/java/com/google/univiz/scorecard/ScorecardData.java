@@ -106,5 +106,4 @@ public abstract class ScorecardData {
   @SerializedName("student.demographics.women")
   public abstract float numOfWomen();
 
-  // TODO(biancamacias): add method that converts JSON data from API call to List<ScorecardData>
 }
