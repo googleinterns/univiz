@@ -3,6 +3,7 @@
   <head>
     <title>UniViz Main Page</title>
     <meta charset="utf-8">
+    <script src="/autocomplete.js"></script>
   </head>
   <body>
     <h2>Welcome to UniViz!</h2>
@@ -11,5 +12,6 @@
       <input type="text" id="search" name="search"><br>
       <input type="submit" value="See your colleges!">
     </form>
+    <script>autocomplete(document.getElementById("search"), ['Hello', 'Hi', 'Howdy', 'Yello!']);</script>
   </body>
 </html>
