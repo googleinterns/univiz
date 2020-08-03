@@ -2,7 +2,10 @@ package com.google.univiz;
 
 import com.google.auto.value.AutoValue;
 
-/** ScorecardData is a class representing a single university, parsing the JSON data directly from the CollegeScorecard API. */
+/**
+ * ScorecardData is a class representing a single university, parsing the JSON data directly from
+ * the CollegeScorecard API.
+ */
 @AutoValue
 public abstract class ScorecardData {
 
