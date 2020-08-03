@@ -97,12 +97,14 @@ public abstract class ScorecardData {
   @SerializedName("cost.attendance.academic_year")
   public abstract int avgCost();
 
-  @SerializedName("cumulative_debt_number")
+  @SerializedName("aid.cumulative_debt_number")
   public abstract int studentsInDebt();
 
-  @SerializedName("demographics.men")
+  @SerializedName("student.demographics.men")
   public abstract float numOfMen();
 
-  @SerializedName("demographics.women")
+  @SerializedName("student.demographics.women")
   public abstract float numOfWomen();
 }
+
+// TODO(biancamacias): add method that converts JSON data from API call to List<ScorecardData>
