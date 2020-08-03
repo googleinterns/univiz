@@ -15,5 +15,5 @@ public interface MapData {
    * @return Returns a list of CollegeMapsData objects which contain all information necessary for
    * a geographic visualization 
    */
-  List<CollegeMapsData> getMapData(List<CollegeID> colleges);
+  List<CollegeMapsData> getMapData(List<CollegeId> colleges);
 }
