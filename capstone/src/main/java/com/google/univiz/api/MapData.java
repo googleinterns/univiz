@@ -9,5 +9,5 @@ public interface MapData {
    * Takes a list of college names and returns a CollegeMapsData object to the caller. This object
    * contains all data relevant to the Maps feature.
    */
-  CollegeMapsData getMapData(List<String> collegeNames);
+  List<CollegeMapsData> getMapData(List<String> collegeNames);
 }
