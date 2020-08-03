@@ -1,4 +1,4 @@
-package com.google.univiz;
+package com.google.univiz.scorecard;
 
 import com.google.auto.value.AutoValue;
 
