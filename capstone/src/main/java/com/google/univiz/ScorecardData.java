@@ -31,7 +31,7 @@ public abstract class ScorecardData {
    * @param numOfWomen A float that represents the number of women enrolled at the undergradute
    *     level.
    */
-  public static UniversityData create(
+  public static ScorecardData create(
       String name,
       String city,
       float latitude,
@@ -46,7 +46,7 @@ public abstract class ScorecardData {
       int carnegieSizeDegree,
       float numOfMen,
       float numOfWomen) {
-    return new AutoValue_UniversityData(
+    return new AutoValue_ScorecardData(
         name,
         city,
         latitude,
