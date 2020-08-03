@@ -1,4 +1,4 @@
 package com.google.univiz.api;
 
 /** */
-public interface SearchData {}
+public interface VisResource {}
