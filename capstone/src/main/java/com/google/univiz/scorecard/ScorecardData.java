@@ -105,5 +105,4 @@ public abstract class ScorecardData {
 
   @SerializedName("student.demographics.women")
   public abstract float numOfWomen();
-
 }
