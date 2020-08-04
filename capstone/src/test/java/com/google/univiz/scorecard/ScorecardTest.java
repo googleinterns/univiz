@@ -31,8 +31,6 @@ public final class ScorecardTest {
 
   @Test
   public void testNameDeserializes() {
-    String name = scorecardData.name();
-
-    assertThat(name.isEqualTo("New York University"));
+    assertThat(scorecardData.name().isEqualTo("New York University"));
   }
 }
