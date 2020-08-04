@@ -2,11 +2,13 @@ package com.google.univiz.scorecard;
 
 import com.google.auto.value.AutoValue;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.TypeAdapter;
 
 /**
  * ScorecardData is a class representing a single university/college/institution from the parsed
  * JSON data directly from the CollegeScorecard API.
  */
+@GenerateTypeAdapter
 @AutoValue
 abstract class ScorecardData {
 
