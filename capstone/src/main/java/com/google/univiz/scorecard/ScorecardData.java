@@ -6,18 +6,15 @@ import com.ryanharter.auto.value.gson.GenerateTypeAdapter;
 
 /**
  * ScorecardData is a class representing a single university/college/institution from the parsed
- * JSON data directly from the CollegeScorecard API.
+ * JSON data directly from the CollegeScorecard API. The parameters come directly from the
+ * CollegeScorecard API Data Dictionary
+ * (https://collegescorecard.ed.gov/assets/CollegeScorecardDataDictionary.xlsx), which outlines the
+ * type and description of all available data elements. The parameters used here are a select few
+ * data elements the API provides.
  */
 @GenerateTypeAdapter
 @AutoValue
 abstract class ScorecardData {
-
-  /**
-   * Creates a new ScorecardData. The parameters come directly from the CollegeScorecard API Data
-   * Dictionary (https://collegescorecard.ed.gov/assets/CollegeScorecardDataDictionary.xlsx), which
-   * outlines the type and description of all available data elements. The parameters used here are
-   * a select few data elements the API provides.
-   */
 
   /** @return The human-readable name for the school/college/university. */
   @SerializedName("school.name")
