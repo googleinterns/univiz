@@ -1,7 +1,7 @@
 package com.google.univiz.scorecard;
 
 import com.google.auto.value.AutoValue;
-import com.google.auto.value.gson.GenerateTypeAdapter;
+import com.google.auto.value.GenerateTypeAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.TypeAdapter;
 
