@@ -11,14 +11,19 @@ public interface CollegeData {
   public List<ScorecardData> getSuggestions(String suggestion) {}
 
   /**
-   * getCollegesById takes ids and field names of colleges selected and return a list of
-   * ScorecardData to be used by the servlets.
+   * Returns a list of ScorecardData to be used by the servlets.
+   *
+   * @param ids A list of college IDs that were selected by the user.
+   * @param fieldNames A list of fieldNames of data requested that will be used to call the CollegeScorecard API? 
+   * @return A list of ScorecardData types to be used in the back-end.
    */
   public List<ScorecardData> getCollegesById(List<String> ids, List<String> fieldNames) {}
 
   /**
-   * scorecardApiCall takes ids and field names of colleges selected to call the CollegeScorecardAPI
-   * and return the data as JSON.
+   * Returns CollegeScorecard API call as JSON.
+   * @param ids A list of college IDs that were selected by the user.
+   * @param fieldNames A list of fieldNames of data that will be used in the URL that calls the API.
+   * @return A string that holds the JSON response.
    */
   public String scorecardApiCall(List<String> ids, List<String> fieldNames) {}
 }
