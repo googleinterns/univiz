@@ -14,10 +14,8 @@ window.initMap = function() {
     const timelineData = new google.visualization.DataTable();
     fetch('/suggested-cal').
         then((response) => response.json()).
-        then((myObject) => {
-        // TODO(ihsan314): update freqData datatable
-        // and update timelineData datatable
-        });
+        then((deadlineInfo) =>
+          populateDataTables(freqData, timelineData, deadlineInfo));
     drawFrequencyChart(freqData);
     drawTimelineChart(timelineData);
   }
@@ -49,6 +47,31 @@ window.initMap = function() {
     const chart = new google.visualization.Timeline(
         document.getElementById('timeline-chart'));
     chart.draw(timelineData, options);
+  }
+
+  /**
+   * Helper function to transfer elements from
+   * JSON object with deadline information
+   * to two DataTables.
+   *
+   * @param {google.visualization.DataTable} freqData
+   * the DataTable with the data the frequency chart will
+   * use. Will consist of sample deadlines for each of
+   * the user's selected colleges.
+   *
+   * @param {google.visualization.DataTable} timelineData
+   * the DataTable with the data for the timeline chart.
+   * Will consist of suggested courses of action for the
+   * user based on sample deadlines.
+   *
+   * @param {JSON} deadlineInfo
+   * the JSON object with the deadline and timeline information
+   * that will be added to the previously mentioned DataTables.
+   *
+   */
+  function populateDataTables(freqData, timelineData, deadlineInfo) {
+    // TODO(ihsan314): update freqData datatable
+    // and update timelineData datatable
   }
 };
 
