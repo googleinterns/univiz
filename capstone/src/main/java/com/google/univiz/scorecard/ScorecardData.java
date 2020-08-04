@@ -67,44 +67,44 @@ private abstract class ScorecardData {
   }
 
   @SerializedName("school.name")
-  private abstract String name();
+  abstract String name();
 
   @SerializedName("school.city")
-  private abstract String city();
+  abstract String city();
 
   @SerializedName("school.main_campus")
-  private abstract int flagMainCampus();
+  abstract int flagMainCampus();
 
   @SerializedName("school.degree_urbanization")
-  private abstract int urbanizationDegree();
+  abstract int urbanizationDegree();
 
   @SerializedName("location.lat")
-  private abstract float latitude();
+  abstract float latitude();
 
   @SerializedName("location.lon")
-  private abstract float longitude();
+  abstract float longitude();
 
   @SerializedName("school.carnegie_size_setting")
-  private abstract int carnegieSizeDegree();
+  abstract int carnegieSizeDegree();
 
   @SerializedName("admissions.admission_rate.overall")
-  private abstract float admissionRate();
+  abstract float admissionRate();
 
   @SerializedName("admissions.sat_scores.average.overall")
-  private abstract float avgSat();
+  abstract float avgSat();
 
   @SerializedName("enrollment.all")
-  private abstract int numOfUndergrads();
+  abstract int numOfUndergrads();
 
   @SerializedName("cost.attendance.academic_year")
-  private abstract int avgCost();
+  abstract int avgCost();
 
   @SerializedName("aid.cumulative_debt_number")
-  private abstract int studentsInDebt();
+  abstract int studentsInDebt();
 
   @SerializedName("student.demographics.men")
-  private abstract float numOfMen();
+  abstract float numOfMen();
 
   @SerializedName("student.demographics.women")
-  private abstract float numOfWomen();
+  abstract float numOfWomen();
 }
