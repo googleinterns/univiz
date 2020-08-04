@@ -1,5 +1,7 @@
 package com.google.univiz.scorecard;
 
+import java.util.List;
+
 /**
  * CollegeData is an interface that contains methods and functions which communicate with the
  * CollegeScorecardAPI to obtain college data from the URL in JSON format and parse them to become
