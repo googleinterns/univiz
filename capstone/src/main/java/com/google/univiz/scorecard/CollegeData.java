@@ -10,8 +10,8 @@ public interface CollegeData {
   public List<ScorecardData> getSuggestions(String suggestion) {}
 
   /**
-   * getCollegesById takes ids and field names of colleges selected to parse the JSON data and
-   * return a list of ScorecardData to be used by the servlets.
+   * getCollegesById takes ids and field names of colleges selected and return a list of
+   * ScorecardData to be used by the servlets.
    */
   public List<ScorecardData> getCollegesById(List<String> ids, List<String> fieldNames) {}
 
