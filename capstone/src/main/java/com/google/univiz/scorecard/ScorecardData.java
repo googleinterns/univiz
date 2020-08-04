@@ -36,37 +36,6 @@ abstract class ScorecardData {
    * @param numOfWomen A float that represents the number of women enrolled at the undergradute
    *     level.
    */
-  private static ScorecardData create(
-      String name,
-      String city,
-      int flagMainCampus,
-      int urbanizationDegree,
-      float latitude,
-      float longitude,
-      int carnegieSizeDegree,
-      float admissionRate,
-      float avgSat,
-      int numOfUndergrads,
-      int avgCost,
-      int studentsInDebt,
-      float numOfMen,
-      float numOfWomen) {
-    return new AutoValue_ScorecardData(
-        name,
-        city,
-        flagMainCampus,
-        urbanizationDegree,
-        latitude,
-        longitude,
-        carnegieSizeDegree,
-        admissionRate,
-        avgSat,
-        numOfUndergrads,
-        avgCost,
-        studentsInDebt,
-        numOfMen,
-        numOfWomen);
-  }
 
   @SerializedName("school.name")
   abstract String name();
