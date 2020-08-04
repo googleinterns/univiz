@@ -74,14 +74,14 @@ function autocomplete(inp, arr) {
     }
   }
   function closeAllLists(elmnt) {
-    let x = document.getElementsByClassName('autocomplete-items');
-    for (let i = 0; i < x.length; i++) {
-      if (elmnt != x[i] && elmnt != inp) {
-        x[i].parentNode.removeChild(x[i]);
+    const autocomplete_items = document.getElementsByClassName('autocomplete-items');
+    for (let i = 0; i < autocomplete_items.length; i++) {
+      if (elmnt != autocomplete_items[i] && elmnt != inp) {
+        autocomplete_items[i].parentNode.removeChild(autocomplete_items[i]);
       }
     }
   }
-  document.addEventListener('click', function (e) {
+  document.addEventListener('click', function(e){
     closeAllLists(e.target);
   });
 }
