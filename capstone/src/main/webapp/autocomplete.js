@@ -1,5 +1,5 @@
 /**
- * Autocomplete 
+ * Autocomplete
  * @param {inp}
  * @arg {arr}
  * @return {void}
