@@ -11,7 +11,9 @@ import com.google.gson.annotations.SerializedName;
 private abstract class ScorecardData {
 
   /**
-   * Creates a new ScorecardData
+   * Creates a new ScorecardData. The parameters come directly from the CollegeScorecard API Data
+   * Dictionary, which outlines the type and description of all available data elements. The
+   * parameters used here are a select few data elements the API provides.
    *
    * @param name The human-readable name for the school/college/university.
    * @param city The human-readable name for the city the university is located in.
