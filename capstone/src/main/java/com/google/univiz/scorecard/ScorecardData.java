@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
  * JSON data directly from the CollegeScorecard API.
  */
 @AutoValue
-private abstract class ScorecardData {
+abstract class ScorecardData {
 
   /**
    * Creates a new ScorecardData. The parameters come directly from the CollegeScorecard API Data
