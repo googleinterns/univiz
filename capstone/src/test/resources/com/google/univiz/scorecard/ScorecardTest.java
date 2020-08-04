@@ -32,6 +32,6 @@ public final class ScorecardTest {
   public void testNameDeserializes() {
     String name = scorecardData.name();
 
-    assertThat(name.isEqualTo(193900));
+    assertThat(name.isEqualTo("New York University"));
   }
 }
