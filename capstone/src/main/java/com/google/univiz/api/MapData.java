@@ -1,6 +1,6 @@
 package com.google.univiz.api;
 
-/*
+/**
  * The MapData interface is responsible for all data management/processing specific for the maps
  * feature of the UniViz webapp.
  */
