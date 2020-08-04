@@ -5,7 +5,7 @@ package com.google.univiz.api;
  * feature of the UniViz webapp.
  */
 public interface MapData {
-  /*
+  /**
    * Takes a list of college names and returns a CollegeMapsData object to the caller. This object
    * contains all data relevant to the Maps feature.
    *
