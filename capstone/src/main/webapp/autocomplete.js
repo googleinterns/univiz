@@ -9,10 +9,10 @@
 function autocomplete(inp, arr) {
   let currentFocus;
   inp.addEventListener('input', function(e) {
-    var a = this.value;
-    var b = this.value;
-    var i = this.value;
-    var val = this.value;
+    let a = this.value;
+    let b = this.value;
+    let i = this.value;
+    let val = this.value;
     closeAllLists();
     if (!val) { 
         return false;
