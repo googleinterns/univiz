@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
  * JSON data directly from the CollegeScorecard API.
  */
 @AutoValue
-public abstract class ScorecardData {
+private abstract class ScorecardData {
 
   /**
    * Creates a new ScorecardData
@@ -32,7 +32,7 @@ public abstract class ScorecardData {
    * @param numOfWomen A float that represents the number of women enrolled at the undergradute
    *     level.
    */
-  public static ScorecardData create(
+  private static ScorecardData create(
       String name,
       String city,
       int flagMainCampus,
@@ -65,44 +65,44 @@ public abstract class ScorecardData {
   }
 
   @SerializedName("school.name")
-  public abstract String name();
+  private abstract String name();
 
   @SerializedName("school.city")
-  public abstract String city();
+  private abstract String city();
 
   @SerializedName("school.main_campus")
-  public abstract int flagMainCampus();
+  private abstract int flagMainCampus();
 
   @SerializedName("school.degree_urbanization")
-  public abstract int urbanizationDegree();
+  private abstract int urbanizationDegree();
 
   @SerializedName("location.lat")
-  public abstract float latitude();
+  private abstract float latitude();
 
   @SerializedName("location.lon")
-  public abstract float longitude();
+  private abstract float longitude();
 
   @SerializedName("school.carnegie_size_setting")
-  public abstract int carnegieSizeDegree();
+  private abstract int carnegieSizeDegree();
 
   @SerializedName("admissions.admission_rate.overall")
-  public abstract float admissionRate();
+  private abstract float admissionRate();
 
   @SerializedName("admissions.sat_scores.average.overall")
-  public abstract float avgSat();
+  private abstract float avgSat();
 
   @SerializedName("enrollment.all")
-  public abstract int numOfUndergrads();
+  private abstract int numOfUndergrads();
 
   @SerializedName("cost.attendance.academic_year")
-  public abstract int avgCost();
+  private abstract int avgCost();
 
   @SerializedName("aid.cumulative_debt_number")
-  public abstract int studentsInDebt();
+  private abstract int studentsInDebt();
 
   @SerializedName("student.demographics.men")
-  public abstract float numOfMen();
+  private abstract float numOfMen();
 
   @SerializedName("student.demographics.women")
-  public abstract float numOfWomen();
+  private abstract float numOfWomen();
 }
