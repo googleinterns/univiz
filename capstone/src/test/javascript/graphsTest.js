@@ -11,7 +11,7 @@ describe('Data Table Construction', function() {
       const actualData = new google.visualization.DataTable();
       populateDataTable(actualData, mockTuitionInfo);
       expect(actualData).toBe(expectedData);
-    }
+    };
     document.head.appendChild(script);
   });
 });
