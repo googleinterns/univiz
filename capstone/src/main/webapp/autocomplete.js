@@ -69,7 +69,7 @@ function autocomplete(inp, arr) {
     x[currentFocus].classList.add('autocomplete-active');
   }
   function removeActive(x) {
-    for (var i = 0; i < x.length; i++) {
+    for (let i = 0; i < x.length; i++) {
       x[i].classList.remove('autocomplete-active');
     }
   }
