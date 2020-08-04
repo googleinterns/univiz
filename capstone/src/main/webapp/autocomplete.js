@@ -3,14 +3,16 @@
  * @param {inp}
  * @arg {arr}
  * @return {void}
- * 
  * Attributing this code to: w3 schools
  * Link: https://www.w3schools.com/howto/howto_js_autocomplete.asp
 */
 function autocomplete(inp, arr) {
   let currentFocus;
   inp.addEventListener('input', function(e) {
-    var a, b, i, val = this.value;
+    var a = this.value;
+    var b = this.value;
+    var i = this.value;
+    var val = this.value;
     closeAllLists();
     if (!val) { 
         return false;
