@@ -1,10 +1,12 @@
- /**
+/**
  * Autocomplete 
+ * @param {inp}
+ * @arg {arr}
  * @return {void}
  * 
  * Attributing this code to: w3 schools
  * Link: https://www.w3schools.com/howto/howto_js_autocomplete.asp
- */
+*/
 function autocomplete(inp, arr) {
   var currentFocus;
   inp.addEventListener("input", function(e) {
