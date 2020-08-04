@@ -2,7 +2,8 @@ package com.google.univiz.scorecard;
 
 /**
  * CollegeData is an interface that contains methods and functions which communicate with the
- * CollegeScorecardAPI to obtain college data from the URL in JSON format.
+ * CollegeScorecardAPI to obtain college data from the URL in JSON format and parse them to become
+ * ScorecardData java objects.
  */
 public interface CollegeData {
 
