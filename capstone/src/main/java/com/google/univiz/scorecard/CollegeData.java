@@ -8,7 +8,7 @@ package com.google.univiz.scorecard;
 public interface CollegeData {
 
   /** TODO(biancamacias): decide what getSuggestions does */
-  public List<ScorecardData> getSuggestions(String suggestion) {}
+  public List<ScorecardData> getSuggestions(String suggestion);
 
   /**
    * Returns a list of ScorecardData to be used by the servlets.
@@ -18,7 +18,7 @@ public interface CollegeData {
    *     CollegeScorecard API?
    * @return A list of ScorecardData types to be used in the back-end.
    */
-  public List<ScorecardData> getCollegesById(List<String> ids, List<String> fieldNames) {}
+  public List<ScorecardData> getCollegesById(List<String> ids, List<String> fieldNames);
 
   /**
    * Returns CollegeScorecard API call as JSON.
@@ -27,5 +27,5 @@ public interface CollegeData {
    * @param fieldNames A list of fieldNames of data that will be used in the URL that calls the API.
    * @return A string that holds the JSON response.
    */
-  public String scorecardApiCall(List<String> ids, List<String> fieldNames) {}
+  public String scorecardApiCall(List<String> ids, List<String> fieldNames);
 }
