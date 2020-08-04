@@ -74,8 +74,8 @@ function autocomplete(inp, arr) {
     }
   }
   function closeAllLists(elmnt) {
-    var x = document.getElementsByClassName('autocomplete-items');
-    for (var i = 0; i < x.length; i++) {
+    let x = document.getElementsByClassName('autocomplete-items');
+    for (let i = 0; i < x.length; i++) {
       if (elmnt != x[i] && elmnt != inp) {
         x[i].parentNode.removeChild(x[i]);
       }
