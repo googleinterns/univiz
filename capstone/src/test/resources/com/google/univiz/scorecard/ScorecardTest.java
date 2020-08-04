@@ -1,9 +1,13 @@
 package com.google.univiz.scorecard;
 
+import static com.google.common.truth.Truth.assertThat;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.ryanharter.auto.value.gson.GenerateTypeAdapter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -11,13 +15,23 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public final class ScorecardTest {
 
-  @Test
-  public void parseJsonTest() {
-    // TODO(biancamacias): insert sample JSON
-    String json = "{}";
-    ScorecardData college = new Gson().fromJson(json, ScorecardData.class);
+  private ScorecardData scorecardData;
 
-    asserThat(college.name().isEqualTo("New York University"));
-    asserThat(college.city().isEqualTo("New York City"));
+  @Before
+  public void setUp() throws IOException {
+    Gson gson = new GsonBuilder().registerTypeAdapterFactory(GenerateTypeAdapter.FACTORY).create();
+    try (InputStreamReader scorecardReader =
+        new InputStreamReader(Resources.getResource("scorecard.json").openStream())) {
+      return gson.fromJson(scorecardReader, ScorecardData.class);
+    } catch (IOException exception) {
+      throw new AssertionError("Could not load Scorecard API Data", exception);
+    }
+  }
+
+  @Test
+  public void testNameDeserializes() {
+    String name = scorecardData.name();
+
+    assertThat(name.isEqualTo(193900));
   }
 }

@@ -10,7 +10,8 @@
       "location.lon":-73.997264,
       "school.main_campus":1,
       "school.name":"New York University",
-      "id":193900,"school.city":"New York",
+      "id":193900,
+      "school.city":"New York",
       "school.carnegie_size_setting":17,
       "school.degree_urbanization":null
     }
