@@ -1,6 +1,6 @@
 /**
  * Displays the map onto the dashboard with hardcoded values.
- * @returns {void}
+ * @return {void}
  */
 function createMap() {
   const map = new google.maps.Map(
