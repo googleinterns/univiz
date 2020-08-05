@@ -25,5 +25,4 @@ public interface CollegeData {
    * @param fieldNames A list of fieldNames of data that will be used in the URL that calls the API.
    * @return A string that holds the JSON response.
    */
-  String scorecardApiCall(List<String> ids, List<String> fieldNames);
 }
