@@ -1,3 +1,8 @@
+/**
+ * createMap() just displays the map onto the dashboard.
+ * All parameters for positioning are hardcoded.
+ */
+
 function createMap() {
   const map = new google.maps.Map(
     document.getElementById('map'),
