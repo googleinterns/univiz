@@ -3,7 +3,7 @@ package com.google.univiz.scorecard;
 import java.util.List;
 import java.util.Set;
 
-public interface CollegeData {
+public interface ScorecardAPI {
 
   List<SuggestionData> getSuggestions(String query);
 
