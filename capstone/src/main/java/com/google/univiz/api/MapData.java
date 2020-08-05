@@ -6,11 +6,10 @@ package com.google.univiz.api;
  */
 public interface MapData {
   /*
-   * Takes a list of college names and returns a CollegeMapsData object to the caller. This object
-   * contains all data relevant to the Maps feature.
+   * Takes a list of college names and returns a list of CollegeMapsData objects to the caller. This 
+   * object contains all data relevant to the Maps feature.
    *
-   * @param Takes a list of CollegeIDs, which is a class with two components: a college name and a 
-   * unique college id
+   * @param Takes a list of CollegeIDs which represents a list of unique colleges
    *
    * @return Returns a list of CollegeMapsData objects which contain all information necessary for
    * a geographic visualization 
