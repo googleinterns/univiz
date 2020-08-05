@@ -3,14 +3,15 @@
   <head>
     <meta charset="UTF-8">
     <title>Dashboard</title>
-    <!-- TODO(biancamacias): revist url to add api key -->
-    <!-- TODO(biancamacias): reference style.css and script.js -->
+    <link rel="stylesheet" href="/style.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDASlFIoCLcOLp3fp4DesSqcJpZed0QDFw"></script>
+    <script src="/js/maps.js/"></script>
   </head>
-  <body>
+  <body onload="createMap()">
     <div id="header">
       <h1>UniViz</h1>
     </div>
-    <div id="map">
+    <div id="map" >
     </div>
     <div id="colleges">
     </div>
