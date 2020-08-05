@@ -29,8 +29,8 @@ abstract class ScorecardData {
   abstract int flagMainCampus();
 
   /**
-   * Returns an integer from range [1-8] that tells the degree of urbanization for institution's campus, from
-   *     large city to rural.
+   * Returns an integer from range [1-8] that tells the degree of urbanization for institution's
+   * campus, from large city to rural.
    */
   @SerializedName("school.degree_urbanization")
   abstract int urbanizationDegree();
@@ -44,8 +44,8 @@ abstract class ScorecardData {
   abstract float longitude();
 
   /**
-   * Returns an integer from range [-2-18] that tells degree of Carnegie size, from not applicable to
-   *     exclusively graduate/professional.
+   * Returns an integer from range [-2-18] that tells degree of Carnegie size, from not applicable
+   * to exclusively graduate/professional.
    */
   @SerializedName("school.carnegie_size_setting")
   abstract int carnegieSizeDegree();
@@ -54,11 +54,17 @@ abstract class ScorecardData {
   @SerializedName("latest.admissions.admission_rate.overall")
   abstract float admissionRate();
 
-  /** Returns a float representing the average overall SAT score for students accepted to the institution. */
+  /**
+   * Returns a float representing the average overall SAT score for students accepted to the
+   * institution.
+   */
   @SerializedName("latest.admissions.sat_scores.average.overall")
   abstract float avgSat();
 
-  /** Returns an integer representing the number of enrolled undergraduate certificate/degree-seeking students at the institution. */
+  /**
+   * Returns an integer representing the number of enrolled undergraduate certificate/degree-seeking
+   * students at the institution.
+   */
   @SerializedName("latest.student.size")
   abstract int numOfUndergrads();
 
@@ -71,6 +77,6 @@ abstract class ScorecardData {
   abstract float numOfMen();
 
   /** Returns a float that represents the ratio of women enrolled at the undergraduate level. */
-  @SerializedName("2018.student.demographics.women")
+  @SerializedName("latest.student.demographics.women")
   abstract float numOfWomen();
 }
