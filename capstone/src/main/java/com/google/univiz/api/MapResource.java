@@ -1,5 +1,7 @@
 package com.google.univiz.api;
 
+import java.util.List;
+
 /**
  * The MapResource interface is responsible for all data management/processing specific for the maps
  * feature of the UniViz webapp.
