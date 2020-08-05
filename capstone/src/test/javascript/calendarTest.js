@@ -1,5 +1,5 @@
-describe('', function() {
-  it('', function() {
+describe('DataTable Construction', function() {
+  it('Will add correct columns/rows to DataTable from JSON', function() {
     const mockCalenderInfo = {};
     const expectedFreqData;
     const expectedTimelineData;
