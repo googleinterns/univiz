@@ -16,12 +16,20 @@ import com.ryanharter.auto.value.gson.GenerateTypeAdapter;
 @AutoValue
 abstract class ScorecardData {
 
-  /** Returns the human-readable name for the school/college/university. */
+  /**
+   * Returns an integer representing the unique ID for the institution via the CollegeScorecard API.
+   */
+  @SerializedName("id")
+  abstract int id();
+
+  /** Returns the human-readable name for the institution. */
   @SerializedName("school.name")
+  @Nullable
   abstract String name();
 
   /** Returns human-readable name for the city the institution is located in. */
   @SerializedName("school.city")
+  @Nullable
   abstract String city();
 
   /** Returns an integer that flags whether the institution is the main campus or not, 1 or 0. */
