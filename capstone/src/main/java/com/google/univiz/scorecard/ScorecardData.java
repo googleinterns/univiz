@@ -51,23 +51,23 @@ abstract class ScorecardData {
   abstract int carnegieSizeDegree();
 
   /** Returns a float representing the overall rate of admission for the institution. */
-  @SerializedName("2018.admissions.admission_rate.overall")
+  @SerializedName("latest.admissions.admission_rate.overall")
   abstract float admissionRate();
 
   /** Returns a float representing the average overall SAT score for students accepted to the institution. */
-  @SerializedName("2018.admissions.sat_scores.average.overall")
+  @SerializedName("latest.admissions.sat_scores.average.overall")
   abstract float avgSat();
 
   /** Returns an integer representing the number of enrolled undergraduate certificate/degree-seeking students at the institution. */
-  @SerializedName("2018.student.size")
+  @SerializedName("latest.student.size")
   abstract int numOfUndergrads();
 
   /** Returns the average cost of attendance for students per academic year at the institution. */
-  @SerializedName("2018.cost.attendance.academic_year")
+  @SerializedName("latest.cost.attendance.academic_year")
   abstract int avgCost();
 
   /** Returns a float that represents the ratio of men enrolled at the undergraduate level. */
-  @SerializedName("2018.student.demographics.men")
+  @SerializedName("latest.student.demographics.men")
   abstract float numOfMen();
 
   /** Returns a float that represents the ratio of women enrolled at the undergraduate level. */
