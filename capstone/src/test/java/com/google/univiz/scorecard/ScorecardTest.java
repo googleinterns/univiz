@@ -16,21 +16,14 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public final class ScorecardTest {
 
-  private ScorecardData scorecardData;
-
-  @Before
-  public void setUp() throws IOException {
-    Gson gson = new GsonBuilder().registerTypeAdapterFactory(GenerateTypeAdapter.FACTORY).create();
-    try (InputStreamReader scorecardReader =
-        new InputStreamReader(Resources.getResource("scorecard.json").openStream())) {
-      return gson.fromJson(scorecardReader, ScorecardData.class);
-    } catch (IOException exception) {
-      throw new AssertionError("Could not load Scorecard API Data", exception);
-    }
-  }
+  private final ScorecardData scorecardData;
 
   @Test
   public void testNameDeserializes() {
+    Gson gson = new GsonBuilder().registerTypeAdapterFactory(GenerateTypeAdapter.FACTORY).create();
+    InputStreamReader scorecardReader =
+        new InputStreamReader(Resources.getResource("/resources/com/google/univiz/scorecard/scorecard.json").openStream()) {
+      return gson.fromJson(scorecardReader, ScorecardData.class);
     assertThat(scorecardData.name().isEqualTo("New York University"));
   }
 }
