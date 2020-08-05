@@ -1,16 +1,12 @@
 package com.google.univiz.scorecard;
 
 import java.util.List;
+import java.util.Set;
 
-/**
- * CollegeData is an interface that contains methods and functions which communicate with the
- * CollegeScorecardAPI to obtain college data from the URL in JSON format and parse them to become
- * ScorecardData java objects.
- */
 public interface CollegeData {
 
   /** TODO(biancamacias): decide what getSuggestions does */
-  public List<ScorecardData> getSuggestions(String suggestion);
+  List<ScorecardData> getSuggestions(String query);
 
   /**
    * Returns a list of ScorecardData to be used by the servlets.
@@ -20,7 +16,7 @@ public interface CollegeData {
    *     CollegeScorecard API?
    * @return A list of ScorecardData types to be used in the back-end.
    */
-  public List<ScorecardData> getCollegesById(List<String> ids, List<String> fieldNames);
+  List<ScorecardData> getCollegesById(Set<String> ids, Set<String> fieldNames);
 
   /**
    * Returns CollegeScorecard API call as JSON.
@@ -29,5 +25,5 @@ public interface CollegeData {
    * @param fieldNames A list of fieldNames of data that will be used in the URL that calls the API.
    * @return A string that holds the JSON response.
    */
-  public String scorecardApiCall(List<String> ids, List<String> fieldNames);
+  String scorecardApiCall(List<String> ids, List<String> fieldNames);
 }
