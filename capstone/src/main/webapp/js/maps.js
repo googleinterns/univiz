@@ -1,10 +1,9 @@
 /**
- * createMap() just displays the map onto the dashboard.
- * All parameters for positioning are hardcoded.
+ * Displays the map onto the dashboard with hardcoded values.
+ * @returns {void}
  */
-
 function createMap() {
   const map = new google.maps.Map(
-    document.getElementById('map'),
-    {center: {lat: 34.052, lng: -118.245}, zoom: 10});
+      document.getElementById('map'),
+      {center: {lat: 34.052, lng: -118.245}, zoom: 10});
 }
