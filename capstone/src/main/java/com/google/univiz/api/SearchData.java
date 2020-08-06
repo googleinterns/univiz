@@ -8,7 +8,7 @@ abstract class SearchData {
   private String collegeName;
   private int collegeId;
 
-  abstract SearchData(String collegeName, int collegeId) {
+  public SearchData(String collegeName, int collegeId) {
     this.collegeName = collegeName;
     this.collegeId = collegeId;
   }
