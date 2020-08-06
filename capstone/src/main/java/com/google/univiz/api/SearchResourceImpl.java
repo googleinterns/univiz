@@ -9,7 +9,8 @@ public class SearchResourceImpl implements SearchResource {
   public List<SearchData> getSearchSuggestions(List<SuggestionData> collegeNames) {
     List<SearchData> searchDataList = new ArrayList<>();
     for (SuggestionData college : collegeNames) {
-      SearchData searchDataObj = new SearchData(college.getCollegeName(), college.getCollegeId());
+      SearchData searchDataObj =
+          SearchData.create(college.getCollegeName(), college.getCollegeId());
       searchDataList.add(searchDataObj);
     }
     return searchDataList;
