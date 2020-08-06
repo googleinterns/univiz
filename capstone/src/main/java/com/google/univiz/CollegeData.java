@@ -5,11 +5,11 @@ import com.google.auto.value.AutoValue;
 /**
  * CollegeData is a class representing a single university/college/institution. These parameters use
  * data parsed from the CollegeScorecard API. This data has been converted from the
- * ScorecardSuggestionData class in order to create usable, readable accessor methods for the Univiz
+ * ScorecardData class in order to create usable, readable accessor methods for the Univiz
  * web application.
  */
 @AutoValue
-abstract class UnivizSuggestionData {
+abstract class CollegeData {
 
   abstract int id();
 
@@ -34,7 +34,7 @@ abstract class UnivizSuggestionData {
 
   /**
    * Returns a string that represents the institution's carnegie size degree, or the highest degree
-   * certificate available at that institution, from not applicable to exclusive
+   * certificate available at that institution, from not applicable to exclusively
    * graduate/professional.
    */
   abstract String carnegieSizeDegree();
