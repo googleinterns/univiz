@@ -3,13 +3,15 @@ package com.google.univiz.scorecard;
 import com.google.common.base.Converter;
 import java.util.List;
 
-public class ScorecardConverter {
+class ScorecardConverter extends Converter<ScorecardData, CollegeData>{
 
-    public CollegeData convert() {
-        CollegeData college = new CollegeData();
-        Converter<ScorecardData, CollegeData> converter = new Converter();
-
+    @Override
+    protected CollegeData doForward(ScorecardData scorecardCollege) {
+        
     }
+
+    @Overrride
+    protected ScorecardData doBackward(CollegeData college) {throw UnsupportedOperationException();}
 
     
 }
