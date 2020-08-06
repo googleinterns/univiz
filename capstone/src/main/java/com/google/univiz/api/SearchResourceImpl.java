@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /** Implementation of SearchResource Interface */
-public class SearchResourceImpl extends SearchResource {
+public class SearchResourceImpl implements SearchResource {
 
   public List<SearchData> getSearchSuggestions(List<SuggestionData> collegeNames) {
     List<SearchData> searchDataList = new ArrayList<SearchData>();
