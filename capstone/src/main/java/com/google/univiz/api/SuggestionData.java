@@ -2,8 +2,8 @@ package com.google.univiz.api;
 
 /** THIS IS A DUMMY CLASS TO ALLOW COMPILATION: REMOVE BEFORE MERGING */
 public class SuggestionData {
-  String collegeName;
-  int collegeId;
+  private String collegeName;
+  private int collegeId;
 
   public SuggestionData(String collegeName, int collegeId) {
     this.collegeName = collegeName;
