@@ -1,5 +1,7 @@
 package com.google.univiz.api;
 
+import com.google.auto.value.AutoValue;
+
 /** SearchData represents the college data specific to the Search feature */
 @AutoValue
 abstract class SearchData {
