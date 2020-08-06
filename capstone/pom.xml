@@ -102,6 +102,9 @@
           </execution>
         </executions>
         <configuration>
+          <preloadSources>
+            <source>https://www.gstatic.com/charts/loader.js</source>
+          </preloadSources>
           <webDriverClassName>org.openqa.selenium.htmlunit.HtmlUnitDriver</webDriverClassName>
           <jsSrcDir>${project.basedir}/src/main/webapp/js</jsSrcDir>
         </configuration>
