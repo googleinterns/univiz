@@ -1,7 +1,8 @@
 package com.google.univiz.api;
 
 /**
- * The CollegeId class will contain a college name and a unique college ID that can be used to
- * identify the college
+ * This data structure contains all the college fields that are needed to uniquely identify a college. If two
+ *  colleges have the same id, they they are the same college. Furthermore this structure may contain
+ *  other alternative fields that could be used to uniquely identify a college.
  */
 public class CollegeId {}
