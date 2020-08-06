@@ -1,25 +1,16 @@
 {
-  "metadata": {
-    "total":40,
-    "page":0,
-    "per_page":1
-  },
-  "results": [
-    {
-      "location.lon":-73.997264,
-      "school.main_campus":1,
-      "school.name":"New York University",
-      "latest.cost.attendance.academic_year":69830,
-      "school.city":"New York",
-      "latest.admissions.admission_rate.overall":0.1999,
-      "location.lat":40.729452,
-      "latest.student.demographics.men":0.4253,
-      "latest.admissions.sat_scores.average.overall":1419.0,
-      "latest.student.demographics.women":0.5747,
-      "latest.student.size":26339,
-      "id":193900,
-      "school.carnegie_size_setting":17,
-      "school.degree_urbanization":null
-    }
-  ]
+  "location.lon":-73.997264,
+  "school.main_campus":1,
+  "school.name":"New York University",
+  "latest.cost.attendance.academic_year":69830,
+  "school.city":"New York",
+  "latest.admissions.admission_rate.overall":0.1999,
+  "location.lat":40.729452,
+  "latest.student.demographics.men":0.4253,
+  "latest.admissions.sat_scores.average.overall":1419.0,
+  "latest.student.demographics.women":0.5747,
+  "latest.student.size":26339,
+  "id":193900,
+  "school.carnegie_size_setting":17,
+  "school.degree_urbanization":null
 }
