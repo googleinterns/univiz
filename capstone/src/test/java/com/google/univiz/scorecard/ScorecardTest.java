@@ -32,8 +32,17 @@ public final class ScorecardTest {
     ScorecardData scorecardData = gson.fromJson(scorecardReader, ScorecardData.class);
 
     assertThat(scorecardData.name()).isEqualTo("New York University");
-    assertThat(scorecardData.avgSat()).isEqualTo(1419.0);
     assertThat(scorecardData.city()).isEqualTo("New York");
     assertThat(scorecardData.flagMainCampus()).isEqualTo(1);
+    assertThat(scorecardData.urbanizationDegree()).isEqualTo(0);
+    assertThat(scorecardData.latitude()).isEqualTo(40.729452);
+    assertThat(scorecardData.longitude()).isEqualTo(-73.997264);
+    assertThat(scorecardData.carnegieSizeDegree()).isEqualTo(17);
+    assertThat(scorecardData.admissionRate()).isEqualTo(0.1999);
+    assertThat(scorecardData.avgSat()).isEqualTo(1419.0);
+    assertThat(scorecardData.numOfUndergrads()).isEqualTo(26339);
+    assertThat(scorecardData.avgCost()).isEqualTo(69830);
+    assertThat(scorecardData.ratioOfMen()).isEqualTo(0.4253);
+    assertThat(scorecardData.ratioOfWomen()).isEqualTo(0.5747);
   }
 }

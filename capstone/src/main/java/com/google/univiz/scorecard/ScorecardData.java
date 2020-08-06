@@ -46,11 +46,11 @@ abstract class ScorecardData {
 
   /** Returns a float representing the institution's latitude location measured in degrees. */
   @SerializedName("location.lat")
-  abstract float latitude();
+  abstract double latitude();
 
   /** Returns a float representing the institution's longitude location measured in degrees. */
   @SerializedName("location.lon")
-  abstract float longitude();
+  abstract double longitude();
 
   /**
    * Returns an integer from range [-2-18] that tells degree of Carnegie size, from not applicable
@@ -61,14 +61,14 @@ abstract class ScorecardData {
 
   /** Returns a float representing the overall rate of admission for the institution. */
   @SerializedName("latest.admissions.admission_rate.overall")
-  abstract float admissionRate();
+  abstract double admissionRate();
 
   /**
    * Returns a float representing the average overall SAT score for students accepted to the
    * institution.
    */
   @SerializedName("latest.admissions.sat_scores.average.overall")
-  abstract float avgSat();
+  abstract double avgSat();
 
   /**
    * Returns an integer representing the number of enrolled undergraduate certificate/degree-seeking
@@ -83,9 +83,9 @@ abstract class ScorecardData {
 
   /** Returns a float that represents the ratio of men enrolled at the undergraduate level. */
   @SerializedName("latest.student.demographics.men")
-  abstract float numOfMen();
+  abstract double ratioOfMen();
 
   /** Returns a float that represents the ratio of women enrolled at the undergraduate level. */
   @SerializedName("latest.student.demographics.women")
-  abstract float numOfWomen();
+  abstract double ratioOfWomen();
 }
