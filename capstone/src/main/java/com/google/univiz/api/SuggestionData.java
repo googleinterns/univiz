@@ -9,11 +9,11 @@ public class SuggestionData {
     this.collegeName = collegeName;
     this.collegeId = collegeId;
   }
-  
+
   public String getCollegeName() {
     return collegeName;
   }
-  
+
   public int getCollegeId() {
     return collegeId;
   }
