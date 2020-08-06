@@ -11,7 +11,7 @@ public abstract class SearchData {
   public static SearchData create(String collegeName, int collegeId) {
     this.collegeName = collegeName;
     this.collegeId = collegeId;
-    return AutoValue_SearchData(collegeName, collegeId);
+    return new AutoValue_SearchData(collegeName, collegeId);
   }
 
   public abstract String getCollegeName();
