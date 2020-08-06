@@ -90,8 +90,7 @@ abstract class ScorecardData {
   abstract double ratioOfWomen();
 
   static Builder builder() {
-    return new AutoValue_ScorecardData.Builder()
-    .setUrbanizationDegree(0);
+    return new AutoValue_ScorecardData.Builder().setUrbanizationDegree(0);
   }
 
   @AutoValue.Builder
