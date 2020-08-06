@@ -15,12 +15,16 @@ import org.junit.runners.JUnit4;
 public final class ScorecardTest {
 
   @Test
-  public void testNameDeserializes() {
+  public void testJsonDeserializes() {
     Gson gson = new GsonBuilder().registerTypeAdapterFactory(GenerateTypeAdapter.FACTORY).create();
     InputStreamReader scorecardReader =
         new InputStreamReader(
             Resources.getResource(ScorecardTest.class, "scorecard.json").openStream());
     ScorecardData scorecardData = gson.fromJson(scorecardReader, ScorecardData.class);
+
     assertThat(scorecardData.name()).isEqualTo("New York University");
+    assertThat(scorecardData.avgSat()).isEqualTo(1419.0);
+    asserThat(scorecardData.city()).isEqualTo("New York");
+    assertThat(scorecardData.flagMainCampus()).isEqualTo(1);
   }
 }
