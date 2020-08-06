@@ -1,5 +1,7 @@
 package com.google.univiz.api;
 
+import java.util.List;
+
 /**
  * The VisResource interface is responsible for all data management/processing specific for the vis
  * feature of the UniViz webapp.
