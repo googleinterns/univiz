@@ -44,11 +44,11 @@ abstract class ScorecardData {
   @SerializedName("school.degree_urbanization")
   abstract int urbanizationDegree();
 
-  /** Returns a float representing the institution's latitude location measured in degrees. */
+  /** Returns a double representing the institution's latitude location measured in degrees. */
   @SerializedName("location.lat")
   abstract double latitude();
 
-  /** Returns a float representing the institution's longitude location measured in degrees. */
+  /** Returns a double representing the institution's longitude location measured in degrees. */
   @SerializedName("location.lon")
   abstract double longitude();
 
@@ -59,12 +59,12 @@ abstract class ScorecardData {
   @SerializedName("school.carnegie_size_setting")
   abstract int carnegieSizeDegree();
 
-  /** Returns a float representing the overall rate of admission for the institution. */
+  /** Returns a double representing the overall rate of admission for the institution. */
   @SerializedName("latest.admissions.admission_rate.overall")
   abstract double admissionRate();
 
   /**
-   * Returns a float representing the average overall SAT score for students accepted to the
+   * Returns a double representing the average overall SAT score for students accepted to the
    * institution.
    */
   @SerializedName("latest.admissions.sat_scores.average.overall")
@@ -81,11 +81,11 @@ abstract class ScorecardData {
   @SerializedName("latest.cost.attendance.academic_year")
   abstract int avgCost();
 
-  /** Returns a float that represents the ratio of men enrolled at the undergraduate level. */
+  /** Returns a double that represents the ratio of men enrolled at the undergraduate level. */
   @SerializedName("latest.student.demographics.men")
   abstract double ratioOfMen();
 
-  /** Returns a float that represents the ratio of women enrolled at the undergraduate level. */
+  /** Returns a double that represents the ratio of women enrolled at the undergraduate level. */
   @SerializedName("latest.student.demographics.women")
   abstract double ratioOfWomen();
 }
