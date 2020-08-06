@@ -9,8 +9,6 @@ public abstract class SearchData {
   private int collegeId;
 
   public static SearchData create(String collegeName, int collegeId) {
-    this.collegeName = collegeName;
-    this.collegeId = collegeId;
     return new AutoValue_SearchData(collegeName, collegeId);
   }
 
