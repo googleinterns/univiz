@@ -2,8 +2,8 @@ package com.google.univiz.api.representation;
 
 /** SearchData represents the college data specific to the Search feature */
 public class SearchData {
-  String collegeName;
-  int collegeId;
+  private String collegeName;
+  private int collegeId;
 
   public SearchData(String collegeName, int collegeId) {
     this.collegeName = collegeName;
