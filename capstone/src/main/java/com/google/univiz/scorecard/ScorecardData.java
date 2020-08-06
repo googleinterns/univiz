@@ -38,7 +38,7 @@ abstract class ScorecardData {
   abstract int flagMainCampus();
 
   /**
-   * Returns an integer from range [1-8] that tells the degree of urbanization for institution's
+   * Returns an integer from range [1, 8] that tells the degree of urbanization for institution's
    * campus, from large city to rural.
    */
   @SerializedName("school.degree_urbanization")
@@ -53,7 +53,7 @@ abstract class ScorecardData {
   abstract double longitude();
 
   /**
-   * Returns an integer from range [-2-18] that tells degree of Carnegie size, from not applicable
+   * Returns an integer from range [-2, 18] that tells degree of Carnegie size, from not applicable
    * to exclusively graduate/professional.
    */
   @SerializedName("school.carnegie_size_setting")
