@@ -1,4 +1,3 @@
 package com.google.univiz.api.dataviz;
 
-public class TuitionStats {
-}
+public class TuitionStats {}
