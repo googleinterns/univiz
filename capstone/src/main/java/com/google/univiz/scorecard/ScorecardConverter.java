@@ -1,7 +1,6 @@
 package com.google.univiz.scorecard;
 
 import com.google.common.base.Converter;
-<<<<<<< HEAD
 
 /**
  * ScorecardConverter class returns a representation of ScorecardData as an instance of type
