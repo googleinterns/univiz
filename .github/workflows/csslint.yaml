@@ -16,5 +16,6 @@ jobs:
           git diff --diff-filter=ACM --name-only origin/master HEAD -- . ':!node_modules' | grep -E "(.*)\.(css|htm|html)$" | xargs --no-run-if-empty npx stylelint --fix
           git config user.name "CSS Presubmit"
           git add .
-          git commit -m "Format CSS files"
-          git push origin `git rev-parse --abbrev-ref HEAD`
+          if [ git commit -m "Format CSS files" ]; then
+            git push origin `git rev-parse --abbrev-ref HEAD`
+          fi

@@ -16,5 +16,5 @@ jobs:
           git diff --diff-filter=ACM --name-only origin/master HEAD -- . ':!node_modules' | grep -E "(.*)\.(md)$" | xargs --no-run-if-empty npx markdownlint --fix
           git config user.name "Markdown Presubmit"
           git add .
-          git commit -m "Format markdown files"
-          git push origin `git rev-parse --abbrev-ref HEAD`
+          if [ git commit -m "Format markdown files" ]; then
+            git push origin `git rev-parse --abbrev-ref HEAD`
