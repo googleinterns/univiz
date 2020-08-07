@@ -16,7 +16,8 @@ class ScorecardConverter extends Converter<ScorecardData, CollegeData> {
     if (scorecardCarnegieSize < 1 || scorecardCarnegieSize == null) {
       CarnegieSizeDegree collegeDataCarnegieSize = CarnegieSizeDegree.getDegree(0);
     } else {
-      CarnegieSizeDegree collegeDataCarnegieSize = CarnegieSizeDegree.getDegree(scorecardCarnegieSize);
+      CarnegieSizeDegree collegeDataCarnegieSize =
+          CarnegieSizeDegree.getDegree(scorecardCarnegieSize);
     }
 
     CollegeData college =
