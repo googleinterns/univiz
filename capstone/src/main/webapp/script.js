@@ -1,10 +1,9 @@
+/**
+ */
 function poorFormatting() {
-	// deep indent
-	//
-	//
-	//
 	var cool = 9;
 	let coolest = 88;
-	// looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooongest line here
+	console.log(cool);
+	console.log(coolest);
 }
-
+poorFormatting();
