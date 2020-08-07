@@ -19,12 +19,6 @@ abstract class CollegeData {
    */
   abstract boolean isMainCampus();
 
-  /**
-   * Returns an enum UrbanizationDegree that describes the institution's degree of urbanzation, or
-   * how populated the surrounding areas are around the institution, from large city to rural.
-   */
-  abstract UrbanizationDegree urbanizationDegree();
-
   abstract float latitude();
 
   abstract float longitude();
@@ -47,7 +41,7 @@ abstract class CollegeData {
   abstract float ratioOfWomen();
 
   static Builder builder() {
-    return new AutoValue_CollegeData.Builder().setUrbanizationDegree(0);
+    return new AutoValue_CollegeData.Builder().setCarnegieSizeDegree(NOT_AVAILABLE);
   }
 
   @AutoValue.Builder
@@ -60,8 +54,6 @@ abstract class CollegeData {
     abstract Builder setCity(String value);
 
     abstract Builder setIsMainCampus(int value);
-
-    abstract Builder setUrbanizationDegree(UrbanizationDegree value);
 
     abstract Builder setLatitude(double value);
 
