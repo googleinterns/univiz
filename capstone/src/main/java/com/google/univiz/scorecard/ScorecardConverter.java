@@ -29,8 +29,8 @@ class ScorecardConverter extends Converter<ScorecardData, CollegeData> {
             .setRatioOfWomen(scorecardCollege.ratioOfWomen())
             .build();
   }
-
-  @Override
+  
+  @Overrride
   protected ScorecardData doBackward(CollegeData college) {
     throw UnsupportedOperationException();
   }
