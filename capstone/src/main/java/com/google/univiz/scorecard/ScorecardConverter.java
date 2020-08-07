@@ -10,7 +10,7 @@ class ScorecardConverter extends Converter<ScorecardData, CollegeData> {
 
   @Override
   protected CollegeData doForward(ScorecardData scorecardCollege) {
-    CollegeData.Builer collegeBuilder = CollegeData.builder();
+    CollegeData.Builder collegeBuilder = CollegeData.builder();
 
     CollegeData college =
         collegeBuilder
