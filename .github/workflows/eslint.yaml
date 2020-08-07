@@ -17,4 +17,4 @@ jobs:
           git config user.name "JS Presubmit"
           git add .
           git commit -m "Format JS files"
-          git push
+          git push origin `git rev-parse --abbrev-ref HEAD`

@@ -25,6 +25,6 @@ jobs:
           git config user.name "Java Presubmit"
           git add .
           git commit -m "Format java files"
-          git push
+          git push origin `git rev-parse --abbrev-ref HEAD`
           exit $EXIT
         shell: bash

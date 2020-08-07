@@ -17,4 +17,4 @@ jobs:
           git config user.name "Markdown Presubmit"
           git add .
           git commit -m "Format markdown files"
-          git push
+          git push origin `git rev-parse --abbrev-ref HEAD`
