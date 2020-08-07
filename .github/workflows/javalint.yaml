@@ -26,5 +26,4 @@ jobs:
           git add .
           git commit -m "Format java files"
           git push origin `git rev-parse --abbrev-ref HEAD`
-          exit $EXIT
         shell: bash
