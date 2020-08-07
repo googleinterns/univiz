@@ -5,23 +5,20 @@ package com.google.univiz;
  * urbanization degree. The index of each of these values is the urbanization degree provided by
  * ScorecardData.
  */
-public class UrbanizationDegree {
+public enum UrbanizationDegree {
+  NOT_AVAILABLE("Degree Unavailable"),
+  LARGE_CITY("Large city"),
+  MIDSIZE_CITY("Midsize city"),
+  URBAN_LARGE_CITY("Urban large city"),
+  URBAN_MIDSIZE_CITY("Urban midsize city"),
+  LARGE_TOWN("Large town"),
+  SMALL_TOWN("Small town"),
+  RURAL("Rural"),
+  RURAL_MSA("Rural");
 
-  public enum UrbanizationDegree {
-    NOT_AVAILABLE("Degree Unavailable"),
-    LARGE_CITY("Large city"),
-    MIDSIZE_CITY("Midsize city"),
-    URBAN_LARGE_CITY("Urban large city"),
-    URBAN_MIDSIZE_CITY("Urban midsize city"),
-    LARGE_TOWN("Large town"),
-    SMALL_TOWN("Small town"),
-    RURAL("Rural"),
-    RURAL_MSA("Rural");
+  private final String degree;
 
-    private final String degree;
-
-    UrbanizationDegree(String degree) {
-      this.degree = degree;
-    }
+  UrbanizationDegree(String degree) {
+    this.degree = degree;
   }
 }
