@@ -28,6 +28,8 @@ abstract class CollegeData {
    */
   abstract CarnegieSizeDegree carnegieSizeDegree();
 
+  abstract double admissionRate();
+
   abstract double avgSat();
 
   abstract int numOfUndergrads();
@@ -44,7 +46,7 @@ abstract class CollegeData {
    */
   static Builder builder() {
     return new AutoValue_CollegeData.Builder()
-        .setCarnegieSizeDegree(NOT_AVAILABLE)
+        .setCarnegieSizeDegree(CarnegieSizeDegree.NOT_AVAILABLE)
         .setAvgSat(1059.0)
         .setAdmissionRate(0.65);
   }
@@ -58,7 +60,7 @@ abstract class CollegeData {
 
     abstract Builder setCity(String value);
 
-    abstract Builder setIsMainCampus(int value);
+    abstract Builder setIsMainCampus(boolean value);
 
     abstract Builder setLatitude(double value);
 
