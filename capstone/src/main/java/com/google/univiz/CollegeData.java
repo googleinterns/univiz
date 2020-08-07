@@ -2,9 +2,7 @@ package com.google.univiz;
 
 import com.google.auto.value.AutoValue;
 
-/**
- * CollegeData is a class representing a single university/college/institution.
- */
+/** CollegeData is a class representing a single university/college/institution. */
 @AutoValue
 abstract class CollegeData {
 
