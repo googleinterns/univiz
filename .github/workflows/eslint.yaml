@@ -16,6 +16,6 @@ jobs:
           git diff --diff-filter=ACM --name-only origin/master HEAD -- . ':!node_modules' | grep -E "(.*)\.(jsx|js)$" | xargs --no-run-if-empty npx eslint --fix
           git config user.name "JS Presubmit"
           git add .
-          if [ git commit -m "Format JS files" ]; then
+          if ! git commit -m "Format JS files" ; then
             git push origin `git branch --show-current`
           fi
