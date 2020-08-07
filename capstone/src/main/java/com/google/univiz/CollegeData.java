@@ -19,9 +19,9 @@ abstract class CollegeData {
    */
   abstract boolean isMainCampus();
 
-  abstract float latitude();
+  abstract double latitude();
 
-  abstract float longitude();
+  abstract double longitude();
 
   /**
    * Returns an enum CarnegieSizeDegree that represents the institution's carnegie size degree, or
@@ -30,15 +30,15 @@ abstract class CollegeData {
    */
   abstract CarnegieSizeDegree carnegieSizeDegree();
 
-  abstract float avgSat();
+  abstract double avgSat();
 
   abstract int numOfUndergrads();
 
   abstract int avgCost();
 
-  abstract float ratioOfMen();
+  abstract double ratioOfMen();
 
-  abstract float ratioOfWomen();
+  abstract double ratioOfWomen();
 
   static Builder builder() {
     return new AutoValue_CollegeData.Builder().setCarnegieSizeDegree(NOT_AVAILABLE);
