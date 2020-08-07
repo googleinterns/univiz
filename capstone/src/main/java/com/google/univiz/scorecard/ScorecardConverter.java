@@ -17,10 +17,20 @@ class ScorecardConverter extends Converter<ScorecardData, CollegeData> {
             .setId(scorecardCollege.id())
             .setName(scorecardCollege.name())
             .setCity(scorecardCollege.city())
+            .setIsMainCampus(scorecardCollege.flagMainCampus())
+            .setLatitude(scorecardCollege.latitude())
+            .setLongitude(scorecardCollege.longitude())
+            .setcarnegieSizeDegree(scorecardCollege.carnegieSizeDegree())
+            .setAdmissionRate(scorecardCollege.admissionRate())
+            .setAvgSat(scorecardCollege.avgSat())
+            .setNumOfUndergrads(scorecardCollege.numOfUndergrads())
+            .setAvgCost(scorecardCollege.avgCost())
+            .setRatioOfMen(scorecardCollege.ratioOfMen())
+            .setRatioOfWomen(scorecardCollege.ratioOfWomen())
             .build();
   }
 
-  @Overrride
+  @Override
   protected ScorecardData doBackward(CollegeData college) {
     throw UnsupportedOperationException();
   }
