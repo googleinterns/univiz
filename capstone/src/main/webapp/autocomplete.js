@@ -9,22 +9,19 @@
 function autocomplete(inp, arr) {
   let currentFocus;
   inp.addEventListener('input', function(e) {
-    let a = this.value;
-    let b = this.value;
-    let i = this.value;
-    let val = this.value;
     closeAllLists();
+    let val = this.value;
     if (!val) { 
-        return false;
+      return false;
     }
     currentFocus = -1;
-    a = document.createElement('DIV');
+    let a = document.createElement('DIV');
     a.setAttribute('id', this.id + 'autocomplete-list');
     a.setAttribute('class', 'autocomplete-items');
     this.parentNode.appendChild(a);
-    for (i = 0; i < arr.length; i++) {
+    for (let i = 0; i < arr.length; i++) {
       if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-        b = document.createElement('DIV');
+        let b = document.createElement('DIV');
         b.innerHTML = '<strong>' + arr[i].substr(0, val.length) + '</strong>';
         b.innerHTML += arr[i].substr(val.length);
         b.innerHTML += '<input type='+'hidden'+'value='+arr[i]+'>';
