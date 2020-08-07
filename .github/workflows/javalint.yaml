@@ -19,10 +19,11 @@ jobs:
         run: |
           for file in $(git diff --diff-filter=ACM --name-only origin/master HEAD -- . ':!node_modules' | grep -E "(.*)\.(java)$"); do
             echo -e "Running google-java-format on:\n $file\n"
-            if ! java -jar ./google-java-format-1.8-all-deps.jar $file | diff $file -; then
-              EXIT=1
-            fi
+            java -jar ./google-java-format-1.8-all-deps.jar $file > $file
             echo ""
           done
+          git add .
+          git commit -m "Format java files"
+          git push
           exit $EXIT
         shell: bash

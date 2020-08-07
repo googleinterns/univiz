@@ -12,4 +12,8 @@ jobs:
         run: npm install && npm install markdownlint-cli
       - name: Lint
         # Run Markdownlint on diffed MD files. Do not run if there are no diffs.
-        run: git diff --diff-filter=ACM --name-only origin/master HEAD -- . ':!node_modules' | grep -E "(.*)\.(md)$" | xargs --no-run-if-empty npx markdownlint
+        run:
+          git diff --diff-filter=ACM --name-only origin/master HEAD -- . ':!node_modules' | grep -E "(.*)\.(md)$" | xargs --no-run-if-empty npx markdownlint --fix
+          git add .
+          git commit -m "Format java files"
+          git push
