@@ -3,9 +3,7 @@ package com.google.univiz;
 import com.google.auto.value.AutoValue;
 
 /**
- * CollegeData is a class representing a single university/college/institution. These parameters use
- * data parsed from the CollegeScorecard API. This data has been converted from the ScorecardData
- * class in order to create usable, readable accessor methods for the Univiz web application.
+ * CollegeData is a class representing a single university/college/institution.
  */
 @AutoValue
 abstract class CollegeData {
