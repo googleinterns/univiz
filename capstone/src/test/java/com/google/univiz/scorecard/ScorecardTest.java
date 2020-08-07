@@ -2,6 +2,7 @@ package com.google.univiz.scorecard;
 
 import static com.google.common.truth.Truth.assertThat;
 
+import com.google.common.base.Converter;
 import com.google.common.io.Resources;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -44,5 +45,11 @@ public final class ScorecardTest {
     assertThat(scorecardData.avgCost()).isEqualTo(69830);
     assertThat(scorecardData.ratioOfMen()).isEqualTo(0.4253);
     assertThat(scorecardData.ratioOfWomen()).isEqualTo(0.5747);
+  }
+
+  @Test
+  public void converterTest() {
+    // TODO(biancamacias): finish test
+    Converter<ScorecardData, CollegeData> converter = new ScorecardConverter();
   }
 }
