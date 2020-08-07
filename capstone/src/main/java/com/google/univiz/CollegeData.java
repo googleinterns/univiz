@@ -38,8 +38,15 @@ abstract class CollegeData {
 
   abstract double ratioOfWomen();
 
+  /**
+   * The CollegeData builder has some set default values. The avgSat and admissionRate values are
+   * estimated averages as of 2020.
+   */
   static Builder builder() {
-    return new AutoValue_CollegeData.Builder().setCarnegieSizeDegree(NOT_AVAILABLE);
+    return new AutoValue_CollegeData.Builder()
+        .setCarnegieSizeDegree(NOT_AVAILABLE)
+        .setAvgSat(1059.0)
+        .setAdmissionRate(0.65);
   }
 
   @AutoValue.Builder
