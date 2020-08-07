@@ -6,7 +6,7 @@ import com.google.auto.value.AutoValue;
 @AutoValue
 abstract class CollegeData {
 
-  abstract int id();
+  abstract CollegeId id();
 
   abstract String name();
 
@@ -52,7 +52,7 @@ abstract class CollegeData {
   @AutoValue.Builder
   abstract static class Builder {
 
-    abstract Builder setId(int value);
+    abstract Builder setId(CollegeId value);
 
     abstract Builder setName(String value);
 

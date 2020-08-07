@@ -2,8 +2,7 @@ package com.google.univiz;
 
 /**
  * CarnegieSizeDegree is a class that holds the enum for the range of values for a school's carnegie
- * size degree. The index of each of these values is the carnegie size degree provided by
- * ScorecardData.
+ * size degree.
  */
 public enum CarnegieSizeDegree {
   NOT_AVAILABLE("Degree unavailable"),
