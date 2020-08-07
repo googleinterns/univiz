@@ -11,5 +11,5 @@ public interface SuggestionDataAPI {
    * Takes a list of college names and returns a list of SuggestionData objects, where each object
    * is unique to each college name providede in the first list
    */
-  List<SuggestionsData> getCollegeSuggestions(List<String> collegeNames);
+  List<SuggestionData> getCollegeSuggestions(List<String> collegeNames);
 }
