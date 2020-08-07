@@ -12,7 +12,7 @@ jobs:
         run: npm install && npm install markdownlint-cli
       - name: Lint
         # Run Markdownlint on diffed MD files. Do not run if there are no diffs.
-        run:
+        run: |
           git diff --diff-filter=ACM --name-only origin/master HEAD -- . ':!node_modules' | grep -E "(.*)\.(md)$" | xargs --no-run-if-empty npx markdownlint --fix
           git config user.name "Markdown Presubmit"
           git add .
