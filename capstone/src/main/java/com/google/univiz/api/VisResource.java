@@ -1,5 +1,6 @@
 package com.google.univiz.api;
 
+import com.google.univiz.CollegeData;
 import com.google.univiz.api.dataviz.Deadline;
 import com.google.univiz.api.dataviz.Timeline;
 import com.google.univiz.api.dataviz.TuitionStats;
@@ -11,9 +12,9 @@ import java.util.List;
  */
 public interface VisResource {
 
-  List<TuitionStats> getTuitionStats(List<String> colleges);
+  List<TuitionStats> getTuitionStats(List<CollegeData> colleges);
 
-  List<Timeline> getRecommendedTimeline(List<String> colleges);
+  List<Timeline> getRecommendedTimeline(List<CollegeData> colleges);
 
-  List<Deadline> getDeadlines(List<String> colleges);
+  List<Deadline> getDeadlines(List<CollegeData> colleges);
 }
