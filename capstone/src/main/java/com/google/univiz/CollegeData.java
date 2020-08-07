@@ -22,21 +22,21 @@ abstract class CollegeData {
   abstract boolean isMainCampus();
 
   /**
-   * Returns a string that describes the institution's degree of urbanzation, or how populated the
-   * surrounding areas are around the institution, from large city to rural.
+   * Returns an enum UrbanizationDegree that describes the institution's degree of urbanzation, or
+   * how populated the surrounding areas are around the institution, from large city to rural.
    */
-  abstract String urbanizationDegree();
+  abstract UrbanizationDegree urbanizationDegree();
 
   abstract float latitude();
 
   abstract float longitude();
 
   /**
-   * Returns a string that represents the institution's carnegie size degree, or the highest degree
-   * certificate available at that institution, from not applicable to exclusively
-   * graduate/professional.
+   * Returns an enum CarnegieSizeDegree that represents the institution's carnegie size degree, or
+   * the highest degree certificate available at that institution, from not applicable to
+   * exclusively graduate/professional.
    */
-  abstract String carnegieSizeDegree();
+  abstract CarnegieSizeDegree carnegieSizeDegree();
 
   abstract float avgSat();
 
@@ -44,7 +44,45 @@ abstract class CollegeData {
 
   abstract int avgCost();
 
-  abstract float menRatio();
+  abstract float ratioOfMen();
 
-  abstract float womenRatio();
+  abstract float ratioOfWomen();
+
+  static Builder builder() {
+    return new AutoValue_CollegeData.Builder().setUrbanizationDegree(0);
+  }
+
+  @AutoValue.Builder
+  abstract static class Builder {
+
+    abstract Builder setId(int value);
+
+    abstract Builder setName(String value);
+
+    abstract Builder setCity(String value);
+
+    abstract Builder setIsMainCampus(int value);
+
+    abstract Builder setUrbanizationDegree(UrbanizationDegree value);
+
+    abstract Builder setLatitude(double value);
+
+    abstract Builder setLongitude(double value);
+
+    abstract Builder setCarnegieSizeDegree(CarnegieSizeDegree value);
+
+    abstract Builder setAdmissionRate(double value);
+
+    abstract Builder setAvgSat(double value);
+
+    abstract Builder setNumOfUndergrads(int value);
+
+    abstract Builder setAvgCost(int value);
+
+    abstract Builder setRatioOfMen(double value);
+
+    abstract Builder setRatioOfWomen(double value);
+
+    abstract CollegeData build();
+  }
 }
