@@ -17,5 +17,11 @@ public class UrbanizationDegree {
     SMALL_TOWN("Small town"),
     RURAL("Rural"),
     RURAL_MSA("Rural");
+
+    private final String degree;
+
+    UrbanizationDegree(String degree) {
+      this.degree = degree;
+    }
   }
 }

@@ -26,6 +26,12 @@ public class CarnegieSizeDegree {
     SIZE15("Four-year college, large and mostly nonresidential"),
     SIZE16("Four-year college, large and mostly residential"),
     SIZE17("Four-year college, large and residential"),
-    SIZE18("Exclusively graduate and professial institution")
+    SIZE18("Exclusively graduate and professial institution");
+
+    private final String degree;
+
+    CarnegieSizeDegree(String degree) {
+      this.degree = degree;
+    }
   }
 }
