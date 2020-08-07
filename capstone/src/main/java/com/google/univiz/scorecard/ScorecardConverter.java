@@ -28,7 +28,7 @@ class ScorecardConverter extends Converter<ScorecardData, CollegeData> {
             .setIsMainCampus(scorecardCollege.flagMainCampus())
             .setLatitude(scorecardCollege.latitude())
             .setLongitude(scorecardCollege.longitude())
-            .setCarnegieSizeDegree(carnegieSize)
+            .setCarnegieSizeDegree(collegeDataCarnegieSize)
             .setAdmissionRate(scorecardCollege.admissionRate())
             .setAvgSat(scorecardCollege.avgSat())
             .setNumOfUndergrads(scorecardCollege.numOfUndergrads())
