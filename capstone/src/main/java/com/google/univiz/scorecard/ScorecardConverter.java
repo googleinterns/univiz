@@ -2,10 +2,6 @@ package com.google.univiz.scorecard;
 
 import com.google.common.base.Converter;
 
-/**
- * ScorecardConverter class returns a representation of ScorecardData as an instance of type
- * CollegeData.
- */
 class ScorecardConverter extends Converter<ScorecardData, CollegeData> {
 
   @Override
@@ -38,7 +34,7 @@ class ScorecardConverter extends Converter<ScorecardData, CollegeData> {
             .build();
   }
   
-  @Overrride
+  @Override
   protected ScorecardData doBackward(CollegeData college) {
     throw UnsupportedOperationException();
   }
