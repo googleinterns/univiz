@@ -12,6 +12,13 @@ class ScorecardConverter extends Converter<ScorecardData, CollegeData> {
   protected CollegeData doForward(ScorecardData scorecardCollege) {
     CollegeData.Builder collegeBuilder = CollegeData.builder();
 
+    Integer scorecardCarnegieSize = scorecardCollege.carnegieSizeDegree();
+    if (scorecardCarnegieSize < 1 || scorecardCarnegieSize == null) {
+      CarnegieSizeDegree collegeDataCarnegieSize = CarnegieSizeDegree.getDegree(0);
+    } else {
+      CarnegieSizeDegree collegeDataCarnegieSize = CarnegieSizeDegree.getDegree(scorecardCarnegieSize);
+    }
+
     CollegeData college =
         collegeBuilder
             .setId(scorecardCollege.id())
@@ -20,7 +27,7 @@ class ScorecardConverter extends Converter<ScorecardData, CollegeData> {
             .setIsMainCampus(scorecardCollege.flagMainCampus())
             .setLatitude(scorecardCollege.latitude())
             .setLongitude(scorecardCollege.longitude())
-            .setcarnegieSizeDegree(scorecardCollege.carnegieSizeDegree())
+            .setCarnegieSizeDegree(carnegieSize)
             .setAdmissionRate(scorecardCollege.admissionRate())
             .setAvgSat(scorecardCollege.avgSat())
             .setNumOfUndergrads(scorecardCollege.numOfUndergrads())
