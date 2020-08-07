@@ -17,5 +17,5 @@ jobs:
           git config user.name "CSS Presubmit"
           git add .
           if [ git commit -m "Format CSS files" ]; then
-            git push origin `git rev-parse --abbrev-ref HEAD`
+            git push origin `git branch --show-current`
           fi
