@@ -27,8 +27,13 @@ public enum CarnegieSizeDegree {
   SIZE18("Exclusively graduate and professial institution");
 
   private final String degree;
+  private static CarnegieSizeDegree[] degreesList = CarnegieSizeDegree.values();
 
   CarnegieSizeDegree(String degree) {
     this.degree = degree;
+  }
+
+  public static CarnegieSizeDegree getDegree(int index) {
+    return degreesList[index];
   }
 }
