@@ -11,5 +11,5 @@ public interface SearchResource {
    * Take a list of suggestion data and returns a list of Suggestions objects to the caller. This
    * object contains all data relevant to the Search feature.
    */
-  List<SearchData> getSearchSuggestions(List<String> collegeNames);
+  List<SearchData> getSearchSuggestions(String collegeNames);
 }
