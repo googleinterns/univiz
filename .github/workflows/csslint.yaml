@@ -12,10 +12,4 @@ jobs:
         run: npm install
       - name: Lint
         # Run StyleLint on diffed CSS files. Do not run if there are no diffs.
-        run: |
-          git diff --diff-filter=ACM --name-only origin/master HEAD -- . ':!node_modules' | grep -E "(.*)\.(css|htm|html)$" | xargs --no-run-if-empty npx stylelint --fix
-          git config user.name "CSS Presubmit"
-          git add .
-          if [ git commit -m "Format CSS files" ]; then
-            git push origin `git branch --show-current`
-          fi
+        run: git diff --diff-filter=ACM --name-only origin/master HEAD -- . ':!node_modules' | grep -E "(.*)\.(css|htm|html)$" | xargs --no-run-if-empty npx stylelint

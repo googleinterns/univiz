@@ -19,12 +19,10 @@ jobs:
         run: |
           for file in $(git diff --diff-filter=ACM --name-only origin/master HEAD -- . ':!node_modules' | grep -E "(.*)\.(java)$"); do
             echo -e "Running google-java-format on:\n $file\n"
-            java -jar ./google-java-format-1.8-all-deps.jar --replace $file
+            if ! java -jar ./google-java-format-1.8-all-deps.jar $file | diff $file -; then
+              EXIT=1
+            fi
             echo ""
           done
-          git config user.name "Java Presubmit"
-          git add .
-          if [ git commit -m "Format java files" ]; then
-            git push origin `git branch --show-current`
-          fi
+          exit $EXIT
         shell: bash
