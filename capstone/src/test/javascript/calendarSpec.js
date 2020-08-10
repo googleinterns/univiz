@@ -5,7 +5,7 @@ describe('DataTable Construction', () => {
     let expectedTimelineData = {};
     let actualFreqData = {};
     let actualTimelineData = {};
-    window.initMap = () => {
+    window.initCalendarCharts = () => {
       // TODO(ihsan314): adjust table and mock calendar info
       // when format of JSON is confirmed
       expectedFreqData = new google.visualization.DataTable();
