@@ -45,4 +45,14 @@ public final class ScorecardTest {
     assertThat(scorecardData.ratioOfMen()).isEqualTo(0.4253);
     assertThat(scorecardData.ratioOfWomen()).isEqualTo(0.5747);
   }
+
+  @Test
+  public void converterTest() throws Exception {
+    // TODO(biancamacias): finish test
+    Gson gson = new GsonBuilder().registerTypeAdapterFactory(GenerateTypeAdapter.FACTORY).create();
+    InputStreamReader scorecardReader =
+        new InputStreamReader(
+            Resources.getResource(ScorecardTest.class, "scorecard.json").openStream());
+    ScorecardData scorecardData = gson.fromJson(scorecardReader, ScorecardData.class);
+  }
 }
