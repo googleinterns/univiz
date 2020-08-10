@@ -1,3 +1,3 @@
-describe('Autocomplete Suggests correct array', () -> {
-
+describe('Autocomplete Suggests correct array', ()=>{
+  var str = 'Autocomplete';
 });
