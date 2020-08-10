@@ -6,45 +6,45 @@ import com.google.auto.value.AutoValue;
 @AutoValue
 public abstract class CollegeData {
 
-  abstract CollegeId id();
+  public abstract CollegeId id();
 
-  abstract String name();
+  public abstract String name();
 
-  abstract String city();
+  public abstract String city();
 
   /**
    * Returns a boolean that tells whether the institution is the main campus or not, true or false.
    */
-  abstract boolean isMainCampus();
+  public abstract boolean isMainCampus();
 
-  abstract double latitude();
+  public abstract double latitude();
 
-  abstract double longitude();
+  public abstract double longitude();
 
   /**
    * Returns an enum CarnegieSizeDegree that represents the institution's carnegie size degree, or
    * the highest degree certificate available at that institution, from not applicable to
    * exclusively graduate/professional.
    */
-  abstract CarnegieSizeDegree carnegieSizeDegree();
+  public abstract CarnegieSizeDegree carnegieSizeDegree();
 
-  abstract double admissionRate();
+  public abstract double admissionRate();
 
-  abstract double avgSat();
+  public abstract double avgSat();
 
-  abstract int numOfUndergrads();
+  public abstract int numOfUndergrads();
 
-  abstract int avgCost();
+  public abstract int avgCost();
 
-  abstract double ratioOfMen();
+  public abstract double ratioOfMen();
 
-  abstract double ratioOfWomen();
+  public abstract double ratioOfWomen();
 
   /**
    * The CollegeData builder has some set default values. The avgSat and admissionRate values are
    * estimated averages as of 2020.
    */
-  static Builder builder() {
+  public static Builder builder() {
     return new AutoValue_CollegeData.Builder()
         .setCarnegieSizeDegree(CarnegieSizeDegree.NOT_AVAILABLE)
         .setAvgSat(1059.0)
@@ -54,32 +54,32 @@ public abstract class CollegeData {
   @AutoValue.Builder
   public abstract static class Builder {
 
-    abstract Builder setId(CollegeId value);
+    public abstract Builder setId(CollegeId value);
 
-    abstract Builder setName(String value);
+    public abstract Builder setName(String value);
 
-    abstract Builder setCity(String value);
+    public abstract Builder setCity(String value);
 
-    abstract Builder setIsMainCampus(boolean value);
+    public abstract Builder setIsMainCampus(boolean value);
 
-    abstract Builder setLatitude(double value);
+    public abstract Builder setLatitude(double value);
 
-    abstract Builder setLongitude(double value);
+    public abstract Builder setLongitude(double value);
 
-    abstract Builder setCarnegieSizeDegree(CarnegieSizeDegree value);
+    public abstract Builder setCarnegieSizeDegree(CarnegieSizeDegree value);
 
-    abstract Builder setAdmissionRate(double value);
+    public abstract Builder setAdmissionRate(double value);
 
-    abstract Builder setAvgSat(double value);
+    public abstract Builder setAvgSat(double value);
 
-    abstract Builder setNumOfUndergrads(int value);
+    public abstract Builder setNumOfUndergrads(int value);
 
-    abstract Builder setAvgCost(int value);
+    public abstract Builder setAvgCost(int value);
 
-    abstract Builder setRatioOfMen(double value);
+    public abstract Builder setRatioOfMen(double value);
 
-    abstract Builder setRatioOfWomen(double value);
+    public abstract Builder setRatioOfWomen(double value);
 
-    abstract CollegeData build();
+    public abstract CollegeData build();
   }
 }
