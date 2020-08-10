@@ -43,7 +43,7 @@ function autocomplete(arr) {
 
   /* Event occurance when arrow keys are pressed */
   inp.addEventListener('keydown', function(e) {
-    let listElmt = document.getElementById(this.id + 'autocomplete-list');
+    const listElmt = document.getElementById(this.id + 'autocomplete-list');
     if (listElmt) {
       listElmt = listElmt.getElementsByTagName('div');
     }
