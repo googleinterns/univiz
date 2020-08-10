@@ -8,8 +8,12 @@ import java.util.List;
  */
 public interface SearchResource {
   /**
-   * Take a list of suggestion data and returns a list of Suggestions objects to the caller. This
-   * object contains all data relevant to the Search feature.
+   * Given a potentially incomplete search query, returns a list of colleges that would match the query.
+   *
+   * @param query The search query as the user typed in. It should be a non-empty and a non-null string.
+   * @return An ordered list of possible matching colleges. The list is ordered such that the best match is at the
+   *   beginning of the list. The list may be empty which indicates there are no possible matches. The list is also
+   *   not an exhaustive set of matches. It only includes few top results.
    */
   List<SearchData> getSearchSuggestions(String collegeNames);
 }
