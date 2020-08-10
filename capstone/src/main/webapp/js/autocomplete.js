@@ -1,5 +1,5 @@
-const arr = ['Hello', 'Hi', 'Howdy', 'Yello'];
-document.body.onload = function(arr) {
+document.body.onload = function() {
+  const arr = ['Hello', 'Hi', 'Howdy', 'Yello']; 
   autocomplete(arr);
 };
 
@@ -10,7 +10,7 @@ document.body.onload = function(arr) {
  * Link: https://www.w3schools.com/howto/howto_js_autocomplete.asp
 */
 function autocomplete(arr) {
-  let currentFocus = 0;
+  const currentFocus = -1;
   const inp = document.getElementById('search');
   /* Event occurrance when input is provided to autocomplete field */
   inp.addEventListener('input', function(e) {
