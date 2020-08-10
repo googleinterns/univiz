@@ -21,9 +21,9 @@ function autocomplete(inp, arr) {
     for (let i = 0; i < arr.length; i++) {
       if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
         const listElmt = document.createElement('DIV');
-        listElmt.innerHTML = '<strong>' + 
-		             arr[i].substr(0, val.length) + 
-		             '</strong>';
+        listElmt.innerHTML = '<strong>' +
+                             arr[i].substr(0, val.length) 
+                             '</strong>';
         listElmt.innerHTML += arr[i].substr(val.length);
         listElmt.innerHTML += '<input type='+'hidden'+'value='+arr[i]+'>';
         listElmt.addEventListener('click', function(e) {
