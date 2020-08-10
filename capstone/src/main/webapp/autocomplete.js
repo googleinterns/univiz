@@ -58,6 +58,8 @@ function autocomplete(inp, arr) {
   });
 
   /**
+   * @param {autocompleteListElmt}
+   * @return {bool}
    * Adds the 'active' tag to an autocomplete elmt 
    */
   function addActiveTag(autocompleteListElmt) {
@@ -74,6 +76,8 @@ function autocomplete(inp, arr) {
   }
 
   /**
+   * @param {autocompleteListElmt}
+   * @return {void}
    * Removes the 'active' tag from an autocomplete elmt 
    */
   function removeActiveTag(autocompleteListElmt) {
@@ -83,6 +87,8 @@ function autocomplete(inp, arr) {
   }
 
   /**
+   * @param {elmnt}
+   * @return {void}
    * Closes dropdown autocomplete list(s) 
    */
   function closeAllLists(elmnt) {
@@ -94,9 +100,7 @@ function autocomplete(inp, arr) {
     }
   }
 
-  /** 
-   * Event occurance when mouse is clicked 
-   */
+  /* Event occurance when mouse is clicked */
   document.addEventListener('click', function(e) {
     closeAllLists(e.target);
   });
