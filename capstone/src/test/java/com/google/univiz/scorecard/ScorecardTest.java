@@ -2,8 +2,6 @@ package com.google.univiz.scorecard;
 
 import static com.google.common.truth.Truth.assertThat;
 
-import com.google.univiz.CollegeData;
-import com.google.common.base.Converter;
 import com.google.common.io.Resources;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -56,6 +54,5 @@ public final class ScorecardTest {
         new InputStreamReader(
             Resources.getResource(ScorecardTest.class, "scorecard.json").openStream());
     ScorecardData scorecardData = gson.fromJson(scorecardReader, ScorecardData.class);
-    
   }
 }
