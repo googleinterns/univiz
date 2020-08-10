@@ -2,7 +2,10 @@ package com.google.univiz.scorecard;
 
 import com.google.common.base.Converter;
 import com.google.univiz.CollegeData;
+<<<<<<< HEAD
 import java.lang.UnsupportedOperationException;
+=======
+>>>>>>> db9dd24bdf6193ceac0ae64fa116382b0d0717cd
 
 final class ScorecardConverter extends Converter<ScorecardData, CollegeData> {
 
@@ -26,7 +29,11 @@ final class ScorecardConverter extends Converter<ScorecardData, CollegeData> {
             .build();
     return college;
   }
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> db9dd24bdf6193ceac0ae64fa116382b0d0717cd
   @Override
   protected ScorecardData doBackward(CollegeData college) {
     throw new UnsupportedOperationException();
