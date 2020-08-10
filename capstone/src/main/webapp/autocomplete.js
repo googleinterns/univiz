@@ -10,20 +10,16 @@ function autocomplete(inp, arr) {
   inp.addEventListener('input', function(e) {
     closeAllLists();
     const val = this.value;
-    if (!val) { 
+    if (!val) {
       return false;
     }
     currentFocus = -1;
-
     const autocompleteList = document.createElement('DIV');
     autocompleteList.setAttribute('id', this.id + 'autocomplete-list');
     autcompleteList.setAttribute('class', 'autocomplete-items');
     this.parentNode.appendChild(autocompleteList);
-    
-
     for (let i = 0; i < arr.length; i++) {
       if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-        
 	const listElement = document.createElement('DIV');
         listElement.innerHTML = '<strong>' + arr[i].substr(0, val.length) + '</strong>';
         listElement.innerHTML += arr[i].substr(val.length);
@@ -32,7 +28,6 @@ function autocomplete(inp, arr) {
           inp.value = this.getElementsByTagName('input')[0].value;
           closeAllLists();
         });
-        
 	autocompleteList.appendChild(listElement);
       }
     }
@@ -44,13 +39,13 @@ function autocomplete(inp, arr) {
     if (autocompleteListElmt) {
       autocompleteListElmt = autocompleteListElmt.getElementsByTagName('div');
     }
-    if (e.keyCode == 40) { /* Up key */
+    if (e.keyCode == 40) {/* Up key */
       currentFocus++;
       addActiveTag(autocompleteListElmt);
-    } else if (e.keyCode == 38) { /* Down key */
+    } else if (e.keyCode == 38) {/* Down key */
       currentFocus--;
       addActiveTag(autocompleteListElmt);
-    } else if (e.keyCode == 13) { /* Enter key */
+    } else if (e.keyCode == 13) {/* Enter key */
       e.preventDefault();
       if (currentFocus > -1) {
         if (autocompleteListElmt) {
