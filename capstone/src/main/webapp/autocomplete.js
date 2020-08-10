@@ -1,5 +1,5 @@
 /**
- * @param {arr}
+ * @param {string[]} arr
  * @return {void}
  * Attributing this code to: w3 schools
  * Link: https://www.w3schools.com/howto/howto_js_autocomplete.asp
@@ -7,6 +7,7 @@
 document.body.onload = function autocomplete(arr) {
   const inp = document.getElementById('search');
   let currentFocus;
+  
   /* Event occurrance when input is provided to autocomplete field */
   inp.addEventListener('input', function(e) {
     closeAllLists();
@@ -59,7 +60,7 @@ document.body.onload = function autocomplete(arr) {
   });
 
   /**
-   * @param {autocompleteListElmt}
+   * @param {Object} autocompleteListElmt
    * @return {bool}
    * Adds the 'active' tag to an autocomplete elmt
    */
@@ -77,7 +78,7 @@ document.body.onload = function autocomplete(arr) {
   }
 
   /**
-   * @param {autocompleteListElmt}
+   * @param {Object} autocompleteListElmt
    * @return {void}
    * Removes the 'active' tag from an autocomplete elmt
    */
@@ -88,7 +89,7 @@ document.body.onload = function autocomplete(arr) {
   }
 
   /**
-   * @param {elmnt}
+   * @param {Object} elmnt
    * @return {void}
    * Closes dropdown autocomplete list(s)
    */
