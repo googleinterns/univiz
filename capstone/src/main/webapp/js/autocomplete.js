@@ -19,7 +19,7 @@ function autocomplete(arr) {
       return false;
     }
     currentFocus = -1;
-    const autocompleteList = document.createElement('DIV');
+    const autocompleteList = document.createElement('div');
     autocompleteList.setAttribute('id', this.id + 'autocomplete-list');
     autcompleteList.setAttribute('class', 'autocomplete-items');
     this.parentNode.appendChild(autocompleteList);
