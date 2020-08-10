@@ -33,6 +33,6 @@ public enum CarnegieSizeDegree {
   }
 
   public static CarnegieSizeDegree getDegree(int index) {
-    return degreesList[index];
+    return degreesList[index].degree;
   }
 }

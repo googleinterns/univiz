@@ -2,6 +2,7 @@ package com.google.univiz.scorecard;
 
 import static com.google.common.truth.Truth.assertThat;
 
+import com.google.univiz.CollegeData;
 import com.google.common.base.Converter;
 import com.google.common.io.Resources;
 import com.google.gson.Gson;
