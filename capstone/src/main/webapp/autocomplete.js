@@ -78,10 +78,10 @@ function autocomplete(inp, arr) {
 
   /* Closes dropdown autocomplete list(s) */
   function closeAllLists(elmnt) {
-    const autocompleteItems = document.getElementsByClassName('autocomplete-items');
-    for (let i = 0; i < autocompleteItems.length; i++) {
-      if (elmnt != autocompleteItems[i] && elmnt != inp) {
-        autocompleteItems[i].parentNode.removeChild(autocompleteItems[i]);
+    const autoItems = document.getElementsByClassName('autocomplete-items');
+    for (let i = 0; i < autoItems.length; i++) {
+      if (elmnt != autoItems[i] && elmnt != inp) {
+        autoItems[i].parentNode.removeChild(autoItems[i]);
       }
     }
   }
