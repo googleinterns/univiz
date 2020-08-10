@@ -14,7 +14,7 @@ describe('DataTable Construction', () => {
       actualTimelineData = new google.visualization.DataTable();
       populateDataTables(actualFreqData, actualTimelineData, mockCalenderInfo);
     };
-    expect(actualFreqData).toBe(expectedFreqData);
-    expect(actualTimelineData).toBe(expectedTimelineData);
+    expect(actualFreqData).toEqual(expectedFreqData);
+    expect(actualTimelineData).toEqual(expectedTimelineData);
   });
 });
