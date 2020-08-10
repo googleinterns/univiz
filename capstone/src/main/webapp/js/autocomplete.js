@@ -87,8 +87,8 @@ function autocomplete(arr) {
    * Removes the 'active' tag from an autocomplete elmt
    */
   function removeActiveTag(autocompleteListElmt) {
-    for (let i = 0; i < autocompleteListElmt.length; i++) {
-      autocompleteListElmt[i].classList.remove('autocomplete-active');
+    for (listElmt in autocompleteListElmt) {
+      listElmt.classList.remove('autocomplete-active');
     }
   }
 
@@ -99,9 +99,9 @@ function autocomplete(arr) {
    */
   function closeAllLists(elmnt) {
     const autoItems = document.getElementsByClassName('autocomplete-items');
-    for (let i = 0; i < autoItems.length; i++) {
-      if (elmnt != autoItems[i] && elmnt != inp) {
-        autoItems[i].parentNode.removeChild(autoItems[i]);
+    for (item in autoItems) {
+      if (elmnt != item && elmnt != inp) {
+        item.parentNode.removeChild(item);
       }
     }
   }
