@@ -32,7 +32,7 @@ public enum CarnegieSizeDegree {
     this.degree = degree;
   }
 
-  public static CarnegieSizeDegree getDegree(int index) {
+  public static String getDegree(int index) {
     return degreesList[index].degree;
   }
 }
