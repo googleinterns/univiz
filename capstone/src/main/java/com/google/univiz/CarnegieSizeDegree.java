@@ -6,24 +6,24 @@ package com.google.univiz;
  */
 public enum CarnegieSizeDegree {
   NOT_AVAILABLE("Degree unavailable"),
-  SIZE1("Two-year college, very small"),
-  SIZE2("Two-year college, small"),
-  SIZE3("Two-year college, medium"),
-  SIZE4("Two-year college, large"),
-  SIZE5("Two-year college, very large"),
-  SIZE6("Four-year college, very small and mostly nonresidential"),
-  SIZE7("Four-year college, very small and mostly residential"),
-  SIZE8("Four-year college, very small and residential"),
-  SIZE9("Four-year college, small and mostly nonresidential"),
-  SIZE10("Four-year college, small and mostly residential"),
-  SIZE11("Four-year college, small and residential"),
-  SIZE12("Four-year college, medium and mostly nonresidential"),
-  SIZE13("Four-year college, medium and mostly residential"),
-  SIZE14("Four-year college, medium and residential"),
-  SIZE15("Four-year college, large and mostly nonresidential"),
-  SIZE16("Four-year college, large and mostly residential"),
-  SIZE17("Four-year college, large and residential"),
-  SIZE18("Exclusively graduate and professial institution");
+  VSMALL_TWO_YEAR_COLLEGE("Two-year college, very small"),
+  SMALL_TWO_YEAR_COLLEGE("Two-year college, small"),
+  MEDIUM_TWO_YEAR_COLLEGE("Two-year college, medium"),
+  LARGE_TWO_YEAR_COLLEGE("Two-year college, large"),
+  VLARGE_TWO_YEAR_COLLEGE("Two-year college, very large"),
+  VSMALL_NONRESI_FOUR_YEAR_COLLEGE("Four-year college, very small and mostly nonresidential"),
+  VSMALL_MOSTLY_RESI_FOUR_YEAR_COLLEGE("Four-year college, very small and mostly residential"),
+  VSMALL_RESI_FOUR_YEAR_COLLEGE("Four-year college, very small and residential"),
+  SMALL_NONRESI_FOUR_YEAR_COLLEGE("Four-year college, small and mostly nonresidential"),
+  SMALL_MOSTLY_RESI_FOUR_YEAR_COLLEGE("Four-year college, small and mostly residential"),
+  SMALL_RESI_FOUR_YEAR_COLLEGE("Four-year college, small and residential"),
+  MEDIUM_NONRESI_FOUR_YEAR_COLLEGE("Four-year college, medium and mostly nonresidential"),
+  MEDIUM_MOSTLY_RESI_FOUR_YEAR_COLLEGE("Four-year college, medium and mostly residential"),
+  MEDIUM_RESI_FOUR_YEAR_COLLEGE("Four-year college, medium and residential"),
+  LARGE_NONRESI_FOUR_YEAR_COLLEGE("Four-year college, large and mostly nonresidential"),
+  LARGE_MOSTLY_RESI_FOUR_YEAR_COLLEGE("Four-year college, large and mostly residential"),
+  LARGE_RESI_FOUR_YEAR_COLLEGE("Four-year college, large and residential"),
+  GRADUTE_PROFESSIONAL_COLLEGE("Exclusively graduate and professial institution");
 
   private final String degree;
 
