@@ -57,7 +57,9 @@ function autocomplete(inp, arr) {
     }
   });
 
-  /* Adds the 'active' tag to an autocomplete elmt */
+  /**
+   * Adds the 'active' tag to an autocomplete elmt 
+   */
   function addActiveTag(autocompleteListElmt) {
     if (!autocompleteListElmt) {
       return false;
@@ -71,14 +73,18 @@ function autocomplete(inp, arr) {
     autocompleteListElmt[currentFocus].classList.add('autocomplete-active');
   }
 
-  /* Removes the 'active' tag from an autocomplete elmt */
+  /**
+   * Removes the 'active' tag from an autocomplete elmt 
+   */
   function removeActiveTag(autocompleteListElmt) {
     for (let i = 0; i < autocompleteListElmt.length; i++) {
       autocompleteListElmt[i].classList.remove('autocomplete-active');
     }
   }
 
-  /* Closes dropdown autocomplete list(s) */
+  /**
+   * Closes dropdown autocomplete list(s) 
+   */
   function closeAllLists(elmnt) {
     const autoItems = document.getElementsByClassName('autocomplete-items');
     for (let i = 0; i < autoItems.length; i++) {
@@ -88,7 +94,9 @@ function autocomplete(inp, arr) {
     }
   }
 
-  /* Event occurance when mouse is clicked */
+  /** 
+   * Event occurance when mouse is clicked 
+   */
   document.addEventListener('click', function(e) {
     closeAllLists(e.target);
   });
