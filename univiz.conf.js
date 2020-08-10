@@ -17,6 +17,7 @@ module.exports = function(config) {
     files: [
       'capstone/src/test/javascript/**/*[Ss]pec.js',
       'capstone/src/main/webapp/js/*.js'
+      'https://www.gstatic.com/charts/loaders.js'
     ],
 
 
