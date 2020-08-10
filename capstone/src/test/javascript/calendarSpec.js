@@ -1,11 +1,11 @@
-describe('DataTable Construction', () -> {
-  it('Will add correct columns/rows to DataTable from JSON', () -> {
+describe('DataTable Construction', () => {
+  it('Will add correct columns/rows to DataTable from JSON', () => {
     const mockCalenderInfo = {};
-    const expectedFreqData;
-    const expectedTimelineData;
-    const actualFreqData;
-    const actualTimelineData;
-    window.initMap = () -> {
+    let expectedFreqData = {};
+    let expectedTimelineData = {};
+    let actualFreqData = {};
+    let actualTimelineData = {};
+    window.initMap = () => {
       // TODO(ihsan314): adjust table and mock calendar info
       // when format of JSON is confirmed
       expectedFreqData = new google.visualization.DataTable();
