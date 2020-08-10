@@ -1,0 +1,14 @@
+name: Javascript Tests
+
+on: [pull_request]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Install npm packages
+        run: npm install
+      - name: Lint
+        run: npx karma start univiz.conf.js --single-run
