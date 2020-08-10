@@ -1,1 +1,1 @@
-describe('Autocomplete Suggests correct array', function(){});
+describe('Autocomplete Suggests correct array', function(){ });
