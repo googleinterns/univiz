@@ -8,6 +8,7 @@
 */
 function autocomplete(inp, arr) {
   let currentFocus;
+  /*Event occurrance when input is provided to autocomplete field*/
   inp.addEventListener('input', function(e) {
     closeAllLists();
     const val = this.value;
@@ -39,18 +40,19 @@ function autocomplete(inp, arr) {
     }
   });
 
+  /*Event occurance when arrow keys are pressed*/
   inp.addEventListener('keydown', function(e) {
     let autocompleteListElmt = document.getElementById(this.id + 'autocomplete-list');
     if (autocompleteListElmt) {
       autocompleteListElmt = autocompleteListElmt.getElementsByTagName('div');
     }
-    if (e.keyCode == 40) {
+    if (e.keyCode == 40) { /*Up key*/
       currentFocus++;
-      addActive(autocompleteListElmt);
-    } else if (e.keyCode == 38) { 
+      addActiveTag(autocompleteListElmt);
+    } else if (e.keyCode == 38) { /*Down key*/
       currentFocus--;
-      addActive(autocompleteListElmt);
-    } else if (e.keyCode == 13) {
+      addActiveTag(autocompleteListElmt);
+    } else if (e.keyCode == 13) { /*Enter key*/
       e.preventDefault();
       if (currentFocus > -1) {
         if (autocompleteListElmt) {
@@ -60,35 +62,38 @@ function autocomplete(inp, arr) {
     }
   });
 
-  function addActive(x) {
-    if (!x) {
+  /*Adds the 'active' tag to an autocomplete elmt*/
+  function addActiveTag(autocompleteListElmt) {
+    if (!autocompleteListElmt) {
       return false;
     }
-    removeActive(x);
-    if (currentFocus >= x.length) {
+    removeActiveTag(autocompleteListElmt);
+    if (currentFocus >= autocompleteListElmt.length) {
       currentFocus = 0;
+    } else if (currentFocus < 0) {
+      currentFocus = (autocompleteListElmt.length - 1);
     }
-    if (currentFocus < 0) {
-      currentFocus = (x.length - 1);
-    }
-    x[currentFocus].classList.add('autocomplete-active');
+    autocompleteListElmt[currentFocus].classList.add('autocomplete-active');
   }
 
-  function removeActive(x) {
-    for (let i = 0; i < x.length; i++) {
-      x[i].classList.remove('autocomplete-active');
+  /*Removes the 'active' tag from an autocomplete elmt*/
+  function removeActiveTag(autocompleteListElmt) {
+    for (let i = 0; i < autocompleteListElmt.length; i++) {
+      autocompleteListElmt[i].classList.remove('autocomplete-active');
     }
   }
 
+  /*Closes dropdown autocomplete list(s)*/
   function closeAllLists(elmnt) {
-    const autocomplete_items = document.getElementsByClassName('autocomplete-items');
-    for (let i = 0; i < autocomplete_items.length; i++) {
-      if (elmnt != autocomplete_items[i] && elmnt != inp) {
-        autocomplete_items[i].parentNode.removeChild(autocomplete_items[i]);
+    const autocompleteItems = document.getElementsByClassName('autocomplete-items');
+    for (let i = 0; i < autocompleteItems.length; i++) {
+      if (elmnt != autocompleteItems[i] && elmnt != inp) {
+        autocompleteItems[i].parentNode.removeChild(autocompleteItems[i]);
       }
     }
   }
 
+  /*Event occurance when mouse is clicked*/
   document.addEventListener('click', function(e){
     closeAllLists(e.target);
   });
