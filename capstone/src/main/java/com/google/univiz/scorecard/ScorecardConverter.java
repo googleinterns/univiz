@@ -2,7 +2,6 @@ package com.google.univiz.scorecard;
 
 import com.google.common.base.Converter;
 import com.google.univiz.CollegeData;
-import java.lang.UnsupportedOperationException;
 
 final class ScorecardConverter extends Converter<ScorecardData, CollegeData> {
 
