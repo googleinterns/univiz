@@ -24,14 +24,14 @@ function autocomplete(arr) {
     autocompleteList.setAttribute('id', this.id + 'autocomplete-list');
     autcompleteList.setAttribute('class', 'autocomplete-items');
     this.parentNode.appendChild(autocompleteList);
-    for (let i = 0; i < arr.length; i++) {
-      if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+    for (arrElt in arr) {
+      if (arrElt.substr(0, val.length).toUpperCase() == val.toUpperCase()) {
         const listElmt = document.createElement('DIV');
         listElmt.innerHTML = '<strong>' +
-                             arr[i].substr(0, val.length) +
+                             arrElt.substr(0, val.length) +
                              '</strong>';
-        listElmt.innerHTML += arr[i].substr(val.length);
-        listElmt.innerHTML += '<input type='+'hidden'+'value='+arr[i]+'>';
+        listElmt.innerHTML += arrElt.substr(val.length);
+        listElmt.innerHTML += '<input type='+'hidden'+'value='+arrElt+'>';
         listElmt.addEventListener('click', function(e) {
           inp.value = this.getElementsByTagName('input')[0].value;
           closeAllLists();
