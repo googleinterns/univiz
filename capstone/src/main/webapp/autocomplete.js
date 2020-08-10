@@ -4,7 +4,8 @@
  * Attributing this code to: w3 schools
  * Link: https://www.w3schools.com/howto/howto_js_autocomplete.asp
 */
-function autocomplete(inp, arr) {
+document.body.onload = function autocomplete(arr) {
+  let inp = document.getElementById("search");
   let currentFocus;
   /* Event occurrance when input is provided to autocomplete field */
   inp.addEventListener('input', function(e) {
