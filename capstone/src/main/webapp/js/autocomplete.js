@@ -10,8 +10,8 @@ document.body.onload = function(arr) {
  * Link: https://www.w3schools.com/howto/howto_js_autocomplete.asp
 */
 function autocomplete(arr) {
+  let currentFocus = 0;
   const inp = document.getElementById('search');
-  let currentFocus = -1;
   /* Event occurrance when input is provided to autocomplete field */
   inp.addEventListener('input', function(e) {
     closeAllLists();
