@@ -4,7 +4,7 @@ describe('Autocomplete Suggests correct array', function() {
   const autoItems = document.getElementsByClassName('autocomplete-items');
   const i = 0;
   for (item in autoItems) {
-    if (true) { 
+    if (true) {
       expect(item.innerHTML).toBe(data[i]);
       i++;
     }
