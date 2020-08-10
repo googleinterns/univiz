@@ -1,11 +1,11 @@
 /**
- * @param {inp, arr}
+ * @param {arr}
  * @return {void}
  * Attributing this code to: w3 schools
  * Link: https://www.w3schools.com/howto/howto_js_autocomplete.asp
 */
 document.body.onload = function autocomplete(arr) {
-  let inp = document.getElementById("search");
+  const inp = document.getElementById('search');
   let currentFocus;
   /* Event occurrance when input is provided to autocomplete field */
   inp.addEventListener('input', function(e) {
@@ -61,7 +61,7 @@ document.body.onload = function autocomplete(arr) {
   /**
    * @param {autocompleteListElmt}
    * @return {bool}
-   * Adds the 'active' tag to an autocomplete elmt 
+   * Adds the 'active' tag to an autocomplete elmt
    */
   function addActiveTag(autocompleteListElmt) {
     if (!autocompleteListElmt) {
@@ -79,7 +79,7 @@ document.body.onload = function autocomplete(arr) {
   /**
    * @param {autocompleteListElmt}
    * @return {void}
-   * Removes the 'active' tag from an autocomplete elmt 
+   * Removes the 'active' tag from an autocomplete elmt
    */
   function removeActiveTag(autocompleteListElmt) {
     for (let i = 0; i < autocompleteListElmt.length; i++) {
@@ -90,7 +90,7 @@ document.body.onload = function autocomplete(arr) {
   /**
    * @param {elmnt}
    * @return {void}
-   * Closes dropdown autocomplete list(s) 
+   * Closes dropdown autocomplete list(s)
    */
   function closeAllLists(elmnt) {
     const autoItems = document.getElementsByClassName('autocomplete-items');
@@ -105,4 +105,4 @@ document.body.onload = function autocomplete(arr) {
   document.addEventListener('click', function(e) {
     closeAllLists(e.target);
   });
-}
+};
