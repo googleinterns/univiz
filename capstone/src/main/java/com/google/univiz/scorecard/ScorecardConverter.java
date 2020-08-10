@@ -3,10 +3,6 @@ package com.google.univiz.scorecard;
 import com.google.common.base.Converter;
 import com.google.univiz.CollegeData;
 
-/**
- * ScorecardConverter class returns a representation of ScorecardData as an instance of type
- * CollegeData.
- */
 final class ScorecardConverter extends Converter<ScorecardData, CollegeData> {
 
   @Override
