@@ -33,8 +33,8 @@ window.initTuitionData = () => {
 function deserializeTuitionData() {
   const data = new google.visualization.DataTable();
   fetch('/tuition-data')
-    .then((response) => response.json())
-    .then((tuitionInfo) => populateDataTable(data, tuitionInfo));
+      .then((response) => response.json())
+      .then((tuitionInfo) => populateDataTable(data, tuitionInfo));
   return data;
 }
 
