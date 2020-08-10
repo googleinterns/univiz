@@ -1,5 +1,6 @@
-document.body.onload = function() {
-  autocomplete(['Hello', 'Hi', 'Howdy', 'Yello']);
+const arr = ['Hello', 'Hi', 'Howdy', 'Yello'];
+document.body.onload = function(arr) {
+  autocomplete(arr);
 };
 
 /**
