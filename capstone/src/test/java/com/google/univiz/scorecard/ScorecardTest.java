@@ -51,6 +51,11 @@ public final class ScorecardTest {
   @Test
   public void converterTest() {
     // TODO(biancamacias): finish test
-    Converter<ScorecardData, CollegeData> converter = new ScorecardConverter();
+    Gson gson = new GsonBuilder().registerTypeAdapterFactory(GenerateTypeAdapter.FACTORY).create();
+    InputStreamReader scorecardReader =
+        new InputStreamReader(
+            Resources.getResource(ScorecardTest.class, "scorecard.json").openStream());
+    ScorecardData scorecardData = gson.fromJson(scorecardReader, ScorecardData.class);
+    
   }
 }
