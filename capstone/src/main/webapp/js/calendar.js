@@ -2,7 +2,7 @@ const script = document.createElement('script');
 script.src = 'https://www.gstatic.com/charts/loader.js';
 script.defer = true;
 
-window.initMap = function() {
+window.initMap = () -> {
   google.charts.load('current', {'packages': ['calendar', 'timeline']});
   google.charts.setOnLoadCallback(drawCharts);
 
