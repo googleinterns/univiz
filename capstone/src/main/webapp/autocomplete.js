@@ -8,7 +8,7 @@
 */
 function autocomplete(inp, arr) {
   let currentFocus;
-  /*Event occurrance when input is provided to autocomplete field*/
+  /* Event occurrance when input is provided to autocomplete field */
   inp.addEventListener('input', function(e) {
     closeAllLists();
     const val = this.value;
@@ -40,19 +40,19 @@ function autocomplete(inp, arr) {
     }
   });
 
-  /*Event occurance when arrow keys are pressed*/
+  /* Event occurance when arrow keys are pressed */
   inp.addEventListener('keydown', function(e) {
     let autocompleteListElmt = document.getElementById(this.id + 'autocomplete-list');
     if (autocompleteListElmt) {
       autocompleteListElmt = autocompleteListElmt.getElementsByTagName('div');
     }
-    if (e.keyCode == 40) { /*Up key*/
+    if (e.keyCode == 40) { /* Up key */
       currentFocus++;
       addActiveTag(autocompleteListElmt);
-    } else if (e.keyCode == 38) { /*Down key*/
+    } else if (e.keyCode == 38) { /* Down key */
       currentFocus--;
       addActiveTag(autocompleteListElmt);
-    } else if (e.keyCode == 13) { /*Enter key*/
+    } else if (e.keyCode == 13) { /* Enter key */
       e.preventDefault();
       if (currentFocus > -1) {
         if (autocompleteListElmt) {
@@ -62,7 +62,7 @@ function autocomplete(inp, arr) {
     }
   });
 
-  /*Adds the 'active' tag to an autocomplete elmt*/
+  /* Adds the 'active' tag to an autocomplete elmt */
   function addActiveTag(autocompleteListElmt) {
     if (!autocompleteListElmt) {
       return false;
@@ -76,14 +76,14 @@ function autocomplete(inp, arr) {
     autocompleteListElmt[currentFocus].classList.add('autocomplete-active');
   }
 
-  /*Removes the 'active' tag from an autocomplete elmt*/
+  /* Removes the 'active' tag from an autocomplete elmt */
   function removeActiveTag(autocompleteListElmt) {
     for (let i = 0; i < autocompleteListElmt.length; i++) {
       autocompleteListElmt[i].classList.remove('autocomplete-active');
     }
   }
 
-  /*Closes dropdown autocomplete list(s)*/
+  /* Closes dropdown autocomplete list(s) */
   function closeAllLists(elmnt) {
     const autocompleteItems = document.getElementsByClassName('autocomplete-items');
     for (let i = 0; i < autocompleteItems.length; i++) {
@@ -93,7 +93,7 @@ function autocomplete(inp, arr) {
     }
   }
 
-  /*Event occurance when mouse is clicked*/
+  /* Event occurance when mouse is clicked */
   document.addEventListener('click', function(e){
     closeAllLists(e.target);
   });
