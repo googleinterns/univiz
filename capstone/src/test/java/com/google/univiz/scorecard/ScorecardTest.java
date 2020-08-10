@@ -49,7 +49,7 @@ public final class ScorecardTest {
   }
 
   @Test
-  public void converterTest() {
+  public void converterTest() throws Exception {
     // TODO(biancamacias): finish test
     Gson gson = new GsonBuilder().registerTypeAdapterFactory(GenerateTypeAdapter.FACTORY).create();
     InputStreamReader scorecardReader =
