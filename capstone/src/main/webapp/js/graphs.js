@@ -2,7 +2,7 @@ const script = document.createElement('script');
 script.src = 'https://www.gstatic.com/charts/loader.js';
 script.defer = true;
 
-window.initTuitionData = function() {
+window.initTuitionData = () -> {
   google.charts.load('current', {packages: ['corechart', 'bar']});
   google.charts.setOnLoadCallback(graphGrossNetTuition);
 
