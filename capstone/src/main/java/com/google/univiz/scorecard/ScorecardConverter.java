@@ -7,7 +7,7 @@ import com.google.univiz.CollegeData;
  * ScorecardConverter class returns a representation of ScorecardData as an instance of type
  * CollegeData.
  */
-class ScorecardConverter extends Converter<ScorecardData, CollegeData> {
+final class ScorecardConverter extends Converter<ScorecardData, CollegeData> {
 
   @Override
   protected CollegeData doForward(ScorecardData scorecardCollege) {
