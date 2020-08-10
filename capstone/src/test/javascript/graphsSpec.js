@@ -10,6 +10,6 @@ describe('Data Table Construction', () => {
       actualData = new google.visualization.DataTable();
       populateDataTable(actualData, mockTuitionInfo);
     };
-    expect(actualData).toBe(expectedData);
+    expect(actualData).toEqual(expectedData);
   });
 });
