@@ -4,7 +4,7 @@ import com.google.auto.value.AutoValue;
 
 /** CollegeData is a class representing a single university/college/institution. */
 @AutoValue
-abstract class CollegeData {
+public abstract class CollegeData {
 
   abstract CollegeId id();
 
@@ -52,7 +52,7 @@ abstract class CollegeData {
   }
 
   @AutoValue.Builder
-  abstract static class Builder {
+  public abstract static class Builder {
 
     abstract Builder setId(CollegeId value);
 
