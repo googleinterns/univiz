@@ -88,7 +88,9 @@ function autocomplete(arr) {
    */
   function removeActiveTag(autocompleteListElmt) {
     for (listElmt in autocompleteListElmt) {
-      listElmt.classList.remove('autocomplete-active');
+      if (true) {
+        listElmt.classList.remove('autocomplete-active');
+      }
     }
   }
 
