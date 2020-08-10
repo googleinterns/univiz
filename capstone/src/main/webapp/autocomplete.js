@@ -20,36 +20,38 @@ function autocomplete(inp, arr) {
     this.parentNode.appendChild(autocompleteList);
     for (let i = 0; i < arr.length; i++) {
       if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-	const listElement = document.createElement('DIV');
-        listElement.innerHTML = '<strong>' + arr[i].substr(0, val.length) + '</strong>';
-        listElement.innerHTML += arr[i].substr(val.length);
-        listElement.innerHTML += '<input type='+'hidden'+'value='+arr[i]+'>';
-        listElement.addEventListener('click', function(e) {
+        const listElmt = document.createElement('DIV');
+        listElmt.innerHTML = '<strong>' + 
+		             arr[i].substr(0, val.length) + 
+		             '</strong>';
+        listElmt.innerHTML += arr[i].substr(val.length);
+        listElmt.innerHTML += '<input type='+'hidden'+'value='+arr[i]+'>';
+        listElmt.addEventListener('click', function(e) {
           inp.value = this.getElementsByTagName('input')[0].value;
           closeAllLists();
         });
-	autocompleteList.appendChild(listElement);
+        autocompleteList.appendChild(listElement);
       }
     }
   });
 
   /* Event occurance when arrow keys are pressed */
   inp.addEventListener('keydown', function(e) {
-    let autocompleteListElmt = document.getElementById(this.id + 'autocomplete-list');
-    if (autocompleteListElmt) {
-      autocompleteListElmt = autocompleteListElmt.getElementsByTagName('div');
+    let listElmt = document.getElementById(this.id + 'autocomplete-list');
+    if (listElmt) {
+      listElmt = listElmt.getElementsByTagName('div');
     }
     if (e.keyCode == 40) {/* Up key */
       currentFocus++;
-      addActiveTag(autocompleteListElmt);
+      addActiveTag(listElmt);
     } else if (e.keyCode == 38) {/* Down key */
       currentFocus--;
-      addActiveTag(autocompleteListElmt);
+      addActiveTag(listElmt);
     } else if (e.keyCode == 13) {/* Enter key */
       e.preventDefault();
       if (currentFocus > -1) {
-        if (autocompleteListElmt) {
-          autocompleteListElmt[currentFocus].click();
+        if (listElmt) {
+          listElmt[currentFocus].click();
         }
       }
     }
@@ -87,7 +89,7 @@ function autocomplete(inp, arr) {
   }
 
   /* Event occurance when mouse is clicked */
-  document.addEventListener('click', function(e){
+  document.addEventListener('click', function(e) {
     closeAllLists(e.target);
   });
 }
