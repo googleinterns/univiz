@@ -1,4 +1,4 @@
-document.body.onload = function() {
+window.onload = function() {
   autocomplete(['Hello', 'Hi', 'Howdy', 'Yello']);
 };
 
