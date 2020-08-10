@@ -10,7 +10,7 @@ document.body.onload = function() {
 */
 function autocomplete(arr) {
   const inp = document.getElementById('search');
-  let currentFocus = -1;
+  var currentFocus = -1;
   /* Event occurrance when input is provided to autocomplete field */
   inp.addEventListener('input', function(e) {
     closeAllLists();
