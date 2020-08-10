@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public final class EnumTest {
+public final class CarnegieSizeDegreeTest {
 
   @Test
   public void testIndexing() {
