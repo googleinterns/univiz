@@ -12,9 +12,29 @@ import java.util.List;
  */
 public interface VisResource {
 
+  /**
+   * For every college the user selected, obtain the raw statistics and compute
+   * summary statistics on tuition-related data.
+   *
+   * @param colleges the raw data for each of the user's selected colleges
+   * @return the list of statistics per college.
+   */
   List<TuitionStats> getTuitionStats(List<CollegeData> colleges);
 
+  /**
+   * For every college the user selected, obtain the recommended set of actions
+   * for the user to take and the recommended time range for each action.
+   * 
+   * @param colleges the raw data for each of the user's selected colleges
+   * @return the actions/time range pairs for each college.
+   */
   List<Timeline> getRecommendedTimeline(List<CollegeData> colleges);
 
+  /**
+   * For every college the user selected, obtain the application deadlines.
+   *
+   * @param colleges the raw data for each of the user's selected colleges
+   * @return the application deadlines (application release/due date) per college.
+   */
   List<Deadline> getDeadlines(List<CollegeData> colleges);
 }
