@@ -17,7 +17,6 @@ module.exports = function(config) {
     files: [
       'capstone/src/test/javascript/**/*[Ss]pec.js',
       'capstone/src/main/webapp/js/*.js',
-      'https://www.gstatic.com/charts/loader.js',
     ],
 
 
@@ -58,7 +57,7 @@ module.exports = function(config) {
 
     // start these browsers available browser launchers:
     // https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome'],
+    browsers: ['ChromeHeadless'],
 
 
     // Continuous Integration mode
