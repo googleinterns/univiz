@@ -2,12 +2,9 @@ package com.google.univiz.scorecard;
 
 import static com.google.common.truth.Truth.assertThat;
 
-import com.google.common.base.Converter;
 import com.google.common.io.Resources;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.univiz.CarnegieSizeDegree;
-import com.google.univiz.CollegeData;
 import com.ryanharter.auto.value.gson.GenerateTypeAdapter;
 import java.io.InputStreamReader;
 import org.junit.Test;
@@ -46,31 +43,5 @@ public final class ScorecardTest {
     assertThat(scorecardData.avgCost()).isEqualTo(69830);
     assertThat(scorecardData.ratioOfMen()).isEqualTo(0.4253);
     assertThat(scorecardData.ratioOfWomen()).isEqualTo(0.5747);
-  }
-
-  @Test
-  public void converterTest() throws Exception {
-    Gson gson = new GsonBuilder().registerTypeAdapterFactory(GenerateTypeAdapter.FACTORY).create();
-    InputStreamReader scorecardReader =
-        new InputStreamReader(
-            Resources.getResource(ScorecardTest.class, "scorecard.json").openStream());
-    ScorecardData scorecardData = gson.fromJson(scorecardReader, ScorecardData.class);
-
-    Converter<ScorecardData, CollegeData> converter = new ScorecardConverter();
-    CollegeData college = converter.convert(scorecardData);
-
-    assertThat(college.id().id()).isEqualTo(193900);
-    assertThat(college.name()).isEqualTo("New York University");
-    assertThat(college.city()).isEqualTo("New York");
-    assertThat(college.isMainCampus()).isEqualTo(true);
-    assertThat(college.latitude()).isEqualTo(40.729452);
-    assertThat(college.longitude()).isEqualTo(-73.997264);
-    assertThat(college.carnegieSizeDegree()).isEqualTo(CarnegieSizeDegree.getDegree(17));
-    assertThat(college.admissionRate()).isEqualTo(0.1999);
-    assertThat(college.avgSat()).isEqualTo(1419.0);
-    assertThat(college.numOfUndergrads()).isEqualTo(26339);
-    assertThat(college.avgCost()).isEqualTo(69830);
-    assertThat(college.ratioOfMen()).isEqualTo(0.4253);
-    assertThat(college.ratioOfWomen()).isEqualTo(0.5747);
   }
 }
