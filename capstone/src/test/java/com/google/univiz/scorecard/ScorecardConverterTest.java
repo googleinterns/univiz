@@ -20,7 +20,7 @@ public final class ScorecardConverterTest {
             .setId(193900)
             .setName("New York University")
             .setCity("New York")
-            .setIsMainCampus(1)
+            .setFlagMainCampus(1)
             .setLatitude(40.729452)
             .setLongitude(-73.997264)
             .setCarnegieSizeDegree(17)

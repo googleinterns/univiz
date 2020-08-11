@@ -37,13 +37,6 @@ abstract class ScorecardData {
   @SerializedName("school.main_campus")
   abstract int flagMainCampus();
 
-  /**
-   * Returns an integer from range [1, 8] that tells the degree of urbanization for institution's
-   * campus, from large city to rural.
-   */
-  @SerializedName("school.degree_urbanization")
-  abstract int urbanizationDegree();
-
   /** Returns a double representing the institution's latitude location measured in degrees. */
   @SerializedName("location.lat")
   abstract double latitude();
