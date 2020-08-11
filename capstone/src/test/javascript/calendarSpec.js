@@ -5,7 +5,7 @@ google.visualization.DataTable = class {
    * Empty constructor for mock DataTable.
    */
   constructor() {}
-}
+};
 
 describe('DataTable Construction', () => {
   it('Will add correct columns/rows to DataTable from JSON', () => {
@@ -16,7 +16,7 @@ describe('DataTable Construction', () => {
     const expectedTimelineData = new google.visualization.DataTable();
     const actualFreqData = new google.visualization.DataTable();
     const actualTimelineData = new google.visualization.DataTable();
-    const populateDataTables(actualFreqData, actualTimelineData, mockCalenderInfo);
+    populateDataTables(actualFreqData, actualTimelineData, mockCalenderInfo);
     expect(actualFreqData).toEqual(expectedFreqData);
     expect(actualTimelineData).toEqual(expectedTimelineData);
   });
