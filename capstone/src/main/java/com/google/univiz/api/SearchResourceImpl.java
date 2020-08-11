@@ -3,7 +3,6 @@ package com.google.univiz.api;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Implementation of SearchResource Interface */
 class SearchResourceImpl implements SearchResource {
 
   @Override
