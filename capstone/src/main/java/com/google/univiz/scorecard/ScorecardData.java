@@ -90,7 +90,7 @@ abstract class ScorecardData {
   abstract double ratioOfWomen();
 
   static Builder builder() {
-      return new AutoValue_ScorecardData.Builder();
+    return new AutoValue_ScorecardData.Builder();
   }
 
   @AutoValue.Builder

@@ -12,7 +12,8 @@ final class ScorecardConverter extends Converter<ScorecardData, CollegeData> {
     CollegeData.Builder collegeBuilder = CollegeData.builder();
 
     CollegeId collegeId = CollegeId.create(scorecardCollege.id());
-    CarnegieSizeDegree collegeDataCarnegieSize  = CarnegieSizeDegree.getDegree(scorecardCollege.carnegieSizeDegree());
+    CarnegieSizeDegree collegeDataCarnegieSize =
+        CarnegieSizeDegree.getDegree(scorecardCollege.carnegieSizeDegree());
     boolean isMainCampus = scorecardCollege.flagMainCampus() == 1;
 
     CollegeData college =

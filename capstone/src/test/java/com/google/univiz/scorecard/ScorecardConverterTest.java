@@ -5,7 +5,6 @@ import static com.google.common.truth.Truth.assertThat;
 import com.google.common.base.Converter;
 import com.google.univiz.CarnegieSizeDegree;
 import com.google.univiz.CollegeData;
-import com.google.univiz.CollegeId;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -13,7 +12,7 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public final class ScorecardConverterTest {
 
-@Test
+  @Test
   public void converterTest() throws Exception {
     ScorecardData.Builder scorecardBuilder = ScorecardData.builder();
     ScorecardData scorecardData =
