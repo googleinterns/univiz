@@ -8,8 +8,7 @@ import java.util.List;
  */
 public interface SuggestionDataApi {
   /**
-   * Takes a college name and returns a list of SuggestionData objects, where each object is unique
-   * to each college name provided in the first list
+   * Takes a college name and returns a list of SuggestionData objects
    */
   List<SuggestionData> getCollegeSuggestions(String collegeName);
 }
