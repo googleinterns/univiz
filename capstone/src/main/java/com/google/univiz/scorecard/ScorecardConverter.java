@@ -15,17 +15,17 @@ final class ScorecardConverter extends Converter<ScorecardData, CollegeData> {
 
     int scorecardCarnegizeSize = scorecardCollege.carnegieSizeDegree();
     if (scorecardCarnegizeSize < 1) {
-      CarnegieSizeDegree collegeDataCarnegieSize = CarnegieSizeDegree.getDegree(0);
+      // NOT_AVAILABLE
     } else {
       CarnegieSizeDegree collegeDataCarnegieSize =
-          CarnegieSizeDegree.getDegree(scorecardCarnegizeSize);
+          // variable at that index
     }
 
     int mainCampusInt = scorecardCollege.flagMainCampus();
     if (mainCampusInt == 0) {
-      boolean mainCampusBool = true;
+      // true
     } else {
-      boolean mainCampusBool = false;
+      // false
     }
 
     // TODO(biancamacias): add set methods for id, flagMainCampus, and carnegieSizeDegree
