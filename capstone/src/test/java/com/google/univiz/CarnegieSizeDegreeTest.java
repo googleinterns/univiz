@@ -11,10 +11,10 @@ public final class CarnegieSizeDegreeTest {
 
   @Test
   public void testIndexing() {
-    assertThat(CarnegieSizeDegree.getDegreeDescription(0)).isEqualTo("Degree unavailable");
-    assertThat(CarnegieSizeDegree.getDegreeDescription(8))
-        .isEqualTo("Four-year college, very small and residential");
-    assertThat(CarnegieSizeDegree.getDegreeDescription(15))
-        .isEqualTo("Four-year college, large and mostly nonresidential");
+    assertThat(CarnegieSizeDegree.NOT_AVAILABLE).isEqualTo(CarnegieSizeDegree.getDegree(0));
+    assertThat(CarnegieSizeDegree.VSMALL_NONRESI_FOUR_YEAR_COLLEGE)
+        .isEqualTo(CarnegieSizeDegree.getDegree(6));
+    assertThat(CarnegieSizeDegree.SMALL_TWO_YEAR_COLLEGE)
+        .isEqualTo(CarnegieSizeDegree.getDegree(2));
   }
 }
