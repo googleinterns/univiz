@@ -1,4 +1,14 @@
 /**
+ * @param{void} 
+ * @return{void}
+ * Communicates with search servlet to get data
+ */
+function getSearchOptions() {
+  fetch('/search').then(response => response.json()).then((searchOptions) => {
+    autocomplete(searchOptions);
+  });
+}
+/**
  * @param {string[]} arr
  * @return {void}
  * Attributing this code to: w3 schools
@@ -107,4 +117,4 @@ function autocomplete(arr) {
   document.addEventListener('click', function(e) {
     closeAllLists(e.target);
   });
-};
+}
