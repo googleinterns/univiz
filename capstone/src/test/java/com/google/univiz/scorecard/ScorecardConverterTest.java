@@ -1,10 +1,12 @@
 package com.google.univiz.scorecard;
 
 import static com.google.common.truth.Truth.assertThat;
+import static org.junit.Assert.assertThrows;
 
 import com.google.common.base.Converter;
 import com.google.univiz.CarnegieSizeDegree;
 import com.google.univiz.CollegeData;
+import com.google.univiz.CollegeId;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -61,5 +63,31 @@ public final class ScorecardConverterTest {
     assertThat(college.avgCost()).isEqualTo(AVG_COST);
     assertThat(college.ratioOfMen()).isEqualTo(RATIO_OF_MEN);
     assertThat(college.ratioOfWomen()).isEqualTo(RATIO_OF_WOMEN);
+  }
+
+  @Test
+  public void convertBackToScorecardData() {
+    CollegeId collegeId = CollegeId.create(COLLEGE_ID);
+    CollegeData collegeData =
+        CollegeData.builder()
+            .setId(collegeId)
+            .setName(NAME)
+            .setCity(CITY)
+            .setIsMainCampus(true)
+            .setLatitude(LATITUDE)
+            .setLongitude(LONGITUDE)
+            .setCarnegieSizeDegree(CarnegieSizeDegree.getDegree(17))
+            .setAdmissionRate(ADMISSION_RATE)
+            .setAvgSat(AVG_SAT)
+            .setNumOfUndergrads(NUM_OF_UNDERGRADS)
+            .setAvgCost(AVG_COST)
+            .setRatioOfMen(RATIO_OF_MEN)
+            .setRatioOfWomen(RATIO_OF_WOMEN)
+            .build();
+
+    ScorecardConverter converter = new ScorecardConverter();
+
+    assertThrows(
+        UnsupportedOperationException.class, () -> converter.reverse().convert(collegeData));
   }
 }
