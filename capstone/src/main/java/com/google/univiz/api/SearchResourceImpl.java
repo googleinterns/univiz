@@ -5,9 +5,9 @@ import java.util.List;
 
 class SearchResourceImpl implements SearchResource {
 
-  public List<SearchData> getSearchSuggestions(List<String> collegeNames) {
+  public List<SearchData> getSearchSuggestions(String partialCollegeName) {
     List<SearchData> searchDataList = new ArrayList<>();
-    List<SuggestionData> collegeSuggestions = getSuggestions(collegeNames);
+    List<SuggestionData> collegeSuggestions = getSuggestions(partialCollegeName);
     for (SuggestionData college : collegeSuggestions) {
       SearchData searchDataObj =
           SearchData.create(college.getCollegeName(), college.getCollegeId());
