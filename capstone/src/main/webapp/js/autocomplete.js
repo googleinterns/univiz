@@ -1,7 +1,3 @@
-window.onload = function() {
-  autocomplete(['Hello', 'Hi', 'Howdy', 'Yello']);
-};
-
 /**
  * @param {string[]} arr
  * @return {void}
