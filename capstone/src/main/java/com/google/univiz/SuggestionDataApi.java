@@ -3,7 +3,7 @@ package com.google.univiz;
 import java.util.List;
 
 /**
- * Communicates directly with the REST API to get a list of college suggestions related to a client
+ * Communicates directly with the data source to get a list of college suggestions related to a client
  * query
  */
 public interface SuggestionDataApi {
