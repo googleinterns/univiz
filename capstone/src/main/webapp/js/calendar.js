@@ -1,21 +1,19 @@
-window.initCalendarCharts = () => {
-  google.charts.load('current', {'packages': ['calendar', 'timeline']});
-  google.charts.setOnLoadCallback(drawCharts);
+google.charts.load('current', {'packages': ['calendar', 'timeline']});
+google.charts.setOnLoadCallback(drawCharts);
 
-  /**
-   * Callback function to generate charts.
-   */
-  function drawCharts() {
-    const freqData = new google.visualization.DataTable();
-    const timelineData = new google.visualization.DataTable();
-    fetch('/suggested-cal').
-        then((response) => response.json()).
-        then((deadlineInfo) =>
-          populateDataTables(freqData, timelineData, deadlineInfo)).
-        then(drawFrequencyChart(freqData)).
-        then(drawTimelineChart(timelineData));
-  }
-};
+/**
+ * Callback function to generate charts.
+ */
+function drawCharts() {
+  const freqData = new google.visualization.DataTable();
+  const timelineData = new google.visualization.DataTable();
+  fetch('/suggested-cal').
+      then((response) => response.json()).
+      then((deadlineInfo) =>
+	populateDataTables(freqData, timelineData, deadlineInfo)).
+      then(drawFrequencyChart(freqData)).
+      then(drawTimelineChart(timelineData));
+}
 
 /**
  * Generate frequency calendar chart of deadlines.
