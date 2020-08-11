@@ -1,5 +1,5 @@
 describe('Autocomplete Suggests correct array', function() {
-  $(document).ready(function() {
+  //$(document).ready(function() {
     const data = ['Allo!', 'Hello', 'Hi', 'Howdy', 'Yello'];
     autocomplete(data);
     const autoItems = document.getElementsByClassName('autocomplete-items');
@@ -10,5 +10,5 @@ describe('Autocomplete Suggests correct array', function() {
         i++;
       }
     }
-  });
+  //});
 });
