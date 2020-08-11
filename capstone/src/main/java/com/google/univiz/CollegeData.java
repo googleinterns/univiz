@@ -41,7 +41,7 @@ public abstract class CollegeData {
   public abstract double ratioOfWomen();
 
   /**
-   * The CollegeData builder has some set default values. The avgSat and admissionRate values are
+   * The CollegeData builder has various set default values. The avgSat and admissionRate values are
    * estimated averages as of 2020.
    */
   public static Builder builder() {
