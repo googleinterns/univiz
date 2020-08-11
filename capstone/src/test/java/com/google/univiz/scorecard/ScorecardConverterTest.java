@@ -28,9 +28,8 @@ public final class ScorecardConverterTest {
 
   @Test
   public void converterTest() throws Exception {
-    ScorecardData.Builder scorecardBuilder = ScorecardData.builder();
     ScorecardData scorecardData =
-        scorecardBuilder
+        ScorecardData.builder()
             .setId(COLLEGE_ID)
             .setName(NAME)
             .setCity(CITY)
@@ -49,18 +48,18 @@ public final class ScorecardConverterTest {
     Converter<ScorecardData, CollegeData> converter = new ScorecardConverter();
     CollegeData college = converter.convert(scorecardData);
 
-    assertThat(college.id().id()).isEqualTo(193900);
-    assertThat(college.name()).isEqualTo("New York University");
-    assertThat(college.city()).isEqualTo("New York");
+    assertThat(college.id().id()).isEqualTo(COLLEGE_ID);
+    assertThat(college.name()).isEqualTo(NAME);
+    assertThat(college.city()).isEqualTo(CITY);
     assertThat(college.isMainCampus()).isEqualTo(true);
-    assertThat(college.latitude()).isEqualTo(40.729452);
-    assertThat(college.longitude()).isEqualTo(-73.997264);
+    assertThat(college.latitude()).isEqualTo(LATITUDE);
+    assertThat(college.longitude()).isEqualTo(LONGITUDE);
     assertThat(college.carnegieSizeDegree()).isEqualTo(CarnegieSizeDegree.getDegree(17));
-    assertThat(college.admissionRate()).isEqualTo(0.1999);
-    assertThat(college.avgSat()).isEqualTo(1419.0);
-    assertThat(college.numOfUndergrads()).isEqualTo(26339);
-    assertThat(college.avgCost()).isEqualTo(69830);
-    assertThat(college.ratioOfMen()).isEqualTo(0.4253);
-    assertThat(college.ratioOfWomen()).isEqualTo(0.5747);
+    assertThat(college.admissionRate()).isEqualTo(ADMISSION_RATE);
+    assertThat(college.avgSat()).isEqualTo(AVG_SAT);
+    assertThat(college.numOfUndergrads()).isEqualTo(NUM_OF_UNDERGRADS);
+    assertThat(college.avgCost()).isEqualTo(AVG_COST);
+    assertThat(college.ratioOfMen()).isEqualTo(RATIO_OF_MEN);
+    assertThat(college.ratioOfWomen()).isEqualTo(RATIO_OF_WOMEN);
   }
 }
