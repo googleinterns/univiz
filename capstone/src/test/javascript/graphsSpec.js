@@ -1,6 +1,9 @@
 const google = {};
 google.visualization = {};
 google.visualization.DataTable = class {
+  /**
+   * Dummy constructor for mock DataTable class.
+   */
   constructor() {}
 };
 
