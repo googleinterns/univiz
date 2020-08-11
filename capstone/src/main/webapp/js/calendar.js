@@ -10,7 +10,7 @@ function drawCharts() {
   fetch('/suggested-cal').
       then((response) => response.json()).
       then((deadlineInfo) =>
-	populateDataTables(freqData, timelineData, deadlineInfo)).
+        populateDataTables(freqData, timelineData, deadlineInfo)).
       then(drawFrequencyChart(freqData)).
       then(drawTimelineChart(timelineData));
 }
