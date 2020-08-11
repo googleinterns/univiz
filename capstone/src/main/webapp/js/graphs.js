@@ -1,27 +1,25 @@
-window.initTuitionData = () => {
-  google.charts.load('current', {packages: ['corechart', 'bar']});
-  google.charts.setOnLoadCallback(graphGrossNetTuition);
+google.charts.load('current', {packages: ['corechart', 'bar']});
+google.charts.setOnLoadCallback(graphGrossNetTuition);
 
-  /**
-   * The callback function that will generate the double bar graph. Uses
-   * Google Charts API and JSON object consisting of college tuition data.
-   */
-  function graphGrossNetTuition() {
-    const data = deserializeTuitionData();
-    const options = {
-      title: 'Gross and Net Price of Colleges',
-      hAxis: {
-        title: 'Your Colleges',
-      },
-      vAxis: {
-        title: 'Tuition Price (USD)',
-      },
-    };
-    const chart =
-      new google.visualization.ColumnChart(document.getElementById('data'));
-    chart.draw(data, options);
-  }
-};
+/**
+ * The callback function that will generate the double bar graph. Uses
+ * Google Charts API and JSON object consisting of college tuition data.
+ */
+function graphGrossNetTuition() {
+  const data = deserializeTuitionData();
+  const options = {
+    title: 'Gross and Net Price of Colleges',
+    hAxis: {
+      title: 'Your Colleges',
+    },
+    vAxis: {
+      title: 'Tuition Price (USD)',
+    },
+  };
+  const chart =
+    new google.visualization.ColumnChart(document.getElementById('data'));
+  chart.draw(data, options);
+}
 
 /**
  * Helper function to fetch elements from JSON servlet.
