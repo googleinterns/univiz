@@ -1,3 +1,9 @@
+const google = {};
+google.visualization = {};
+google.visualization.DataTable = class {
+  constructor() {}
+};
+
 describe('Data Table Construction', () => {
   it('Will add correct columns/rows to DataTable from JSON', () => {
     let expectedData = {};
@@ -8,6 +14,8 @@ describe('Data Table Construction', () => {
       // JSON object is well-defined
       expectedData = new google.visualization.DataTable();
       actualData = new google.visualization.DataTable();
+      console.log(expectedData);
+      console.log(actualData);
       populateDataTable(actualData, mockTuitionInfo);
     };
     expect(actualData).toEqual(expectedData);
