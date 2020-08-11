@@ -14,6 +14,6 @@ public abstract class CollegeId {
   public abstract int id();
 
   public static CollegeId create(int id) {
-    return new AutoValue(id);
+    return new AutoValue_CollegeId(id);
   }
 }

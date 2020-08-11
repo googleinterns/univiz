@@ -12,29 +12,15 @@ final class ScorecardConverter extends Converter<ScorecardData, CollegeData> {
     CollegeData.Builder collegeBuilder = CollegeData.builder();
 
     CollegeId collegeId = CollegeId.create(scorecardCollege.id());
+    CarnegieSizeDegree collegeDataCarnegieSize  = CarnegieSizeDegree.getDegree(scorecardCollege.carnegieSizeDegree());
+    boolean isMainCampus = scorecardCollege.flagMainCampus() == 1;
 
-    int scorecardCarnegizeSize = scorecardCollege.carnegieSizeDegree();
-    if (scorecardCarnegizeSize < 1) {
-      // NOT_AVAILABLE
-    } else {
-      CarnegieSizeDegree collegeDataCarnegieSize =
-          // variable at that index
-    }
-
-    int mainCampusInt = scorecardCollege.flagMainCampus();
-    if (mainCampusInt == 0) {
-      // true
-    } else {
-      // false
-    }
-
-    // TODO(biancamacias): add set methods for id, flagMainCampus, and carnegieSizeDegree
     CollegeData college =
         collegeBuilder
             .setId(collegeId)
             .setName(scorecardCollege.name())
             .setCity(scorecardCollege.city())
-            .setIsMainCampus(mainCampusBool)
+            .setIsMainCampus(isMainCampus)
             .setLatitude(scorecardCollege.latitude())
             .setLongitude(scorecardCollege.longitude())
             .setCarnegieSizeDegree(collegeDataCarnegieSize)
