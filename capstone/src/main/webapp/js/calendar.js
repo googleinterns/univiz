@@ -11,8 +11,8 @@ window.initCalendarCharts = () => {
     fetch('/suggested-cal').
         then((response) => response.json()).
         then((deadlineInfo) =>
-          populateDataTables(freqData, timelineData, deadlineInfo)).;
-        then(drawFrequencyChart(freqData)).;
+          populateDataTables(freqData, timelineData, deadlineInfo)).
+        then(drawFrequencyChart(freqData)).
         then(drawTimelineChart(timelineData));
   }
 };
