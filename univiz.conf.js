@@ -16,7 +16,7 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'capstone/src/test/javascript/**/*[Ss]pec.js',
-      'capstone/src/main/webapp/js/*.js'
+      'capstone/src/main/webapp/js/*.js',
     ],
 
 
@@ -25,7 +25,7 @@ module.exports = function(config) {
     ],
 
 
-    // preprocess matching files before serving them to the browser available 
+    // preprocess matching files before serving them to the browser available
     // preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
     },
@@ -45,7 +45,7 @@ module.exports = function(config) {
     colors: true,
 
     // level of logging
-    // possible values: config.LOG_DISABLE || config.LOG_ERROR || 
+    // possible values: config.LOG_DISABLE || config.LOG_ERROR ||
     //                  config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
     logLevel: config.LOG_INFO,
 
@@ -55,7 +55,7 @@ module.exports = function(config) {
     autoWatch: true,
 
 
-    // start these browsers available browser launchers: 
+    // start these browsers available browser launchers:
     // https://npmjs.org/browse/keyword/karma-launcher
     browsers: ['ChromeHeadless'],
 
@@ -66,6 +66,6 @@ module.exports = function(config) {
 
     // Concurrency level
     // how many browser should be started simultaneous
-    concurrency: Infinity
-  })
-}
+    concurrency: Infinity,
+  });
+};
