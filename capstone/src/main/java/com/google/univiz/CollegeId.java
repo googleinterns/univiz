@@ -4,8 +4,7 @@ import com.google.auto.value.AutoValue;
 import com.ryanharter.auto.value.gson.GenerateTypeAdapter;
 
 /**
- * CollegeId is a dummy class just to override compilation errors. This may have to be modified in
- * the future.
+ * CollegeId is a class that represents the unique ID for a single college/university/institution.
  */
 @AutoValue
 @GenerateTypeAdapter
