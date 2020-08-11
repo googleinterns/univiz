@@ -1,14 +1,7 @@
 describe('Autocomplete Suggests correct array', function() {
-  //$(document).ready(function() {
-    const data = ['Allo!', 'Hello', 'Hi', 'Howdy', 'Yello'];
-    autocomplete(data);
-    const autoItems = document.getElementsByClassName('autocomplete-items');
-    const i = 0;
-    for (item in autoItems) {
-      if (true) {
-        expect(item.innerHTML).toBe(data[i]);
-        i++;
-      }
-    }
-  //});
+  it('Autocomplete selects the right suggestion items', () => {
+   const fullData = ['Ahoy', 'Hello', 'Wattup'];
+   const relevantData = ['Hello'];
+   autocomplete(fullData);
+  })
 });
