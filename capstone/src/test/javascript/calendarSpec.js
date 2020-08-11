@@ -1,3 +1,12 @@
+const google = {};
+google.visualization = {};
+google.visualization.DataTable = class {
+  /**
+   * Empty constructor for mock DataTable.
+   */
+  constructor() {}
+}
+
 describe('DataTable Construction', () => {
   it('Will add correct columns/rows to DataTable from JSON', () => {
     const mockCalenderInfo = {};
