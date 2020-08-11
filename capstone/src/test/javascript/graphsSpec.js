@@ -9,18 +9,14 @@ google.visualization.DataTable = class {
 
 describe('Data Table Construction', () => {
   it('Will add correct columns/rows to DataTable from JSON', () => {
-    let expectedData = {};
-    let actualData = {};
+    // TODO(ihsan314): Initialize this when format of
+    // JSON object is well-defined
     const mockTuitionInfo = {};
-    window.initTuitionData = () => {
-      // TODO(ihsan314): Initialize this when format of
-      // JSON object is well-defined
-      expectedData = new google.visualization.DataTable();
-      actualData = new google.visualization.DataTable();
-      console.log(expectedData);
-      console.log(actualData);
-      populateDataTable(actualData, mockTuitionInfo);
-    };
+    const expectedData = new google.visualization.DataTable();
+    const actualData = new google.visualization.DataTable();
+    console.log(expectedData);
+    console.log(actualData);
+    populateDataTable(actualData, mockTuitionInfo);
     expect(actualData).toEqual(expectedData);
   });
 });
