@@ -8,8 +8,8 @@ import java.util.List;
  */
 public interface SearchResource {
   /**
-   * Take a list of suggestion data and returns a list of Suggestions objects to the caller. This
-   * object contains all data relevant to the Search feature.
+   * Take a partial college name suggestion and returns a list of Suggestions objects to the caller.
+   * This object contains all data relevant to the Search feature.
    */
-  List<SearchData> getSearchSuggestions(String collegeNames);
+  List<SearchData> getSearchSuggestions(String partialCollegeName);
 }
