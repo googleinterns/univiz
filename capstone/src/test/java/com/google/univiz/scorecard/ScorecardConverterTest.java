@@ -27,7 +27,7 @@ public final class ScorecardConverterTest {
   private static final double RATIO_OF_WOMEN = 0.5747;
 
   @Test
-  public void converterTest() throws Exception {
+  public void convertToCollegeData() throws Exception {
     ScorecardData scorecardData =
         ScorecardData.builder()
             .setId(COLLEGE_ID)
