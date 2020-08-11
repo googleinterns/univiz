@@ -8,7 +8,7 @@ class SearchResourceImpl implements SearchResource {
   @Override
   public List<SearchData> getSearchSuggestions(String partialCollegeName) {
     List<SearchData> searchDataList = new ArrayList<>();
-    List<SuggestionData> collegeSuggestions = getSuggestions(partialCollegeName); //TODO
+    List<SuggestionData> collegeSuggestions = getSuggestions(partialCollegeName); // TODO
     for (SuggestionData college : collegeSuggestions) {
       SearchData searchDataObj =
           SearchData.create(college.getCollegeName(), college.getCollegeId());
