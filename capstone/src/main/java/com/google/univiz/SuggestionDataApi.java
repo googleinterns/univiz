@@ -7,6 +7,6 @@ import java.util.List;
  * client query
  */
 public interface SuggestionDataApi {
-  /** Takes a college name and returns a list of SuggestionData objects */
+  /** Takes a fragment of a college name or a complete college name and returns a list of SuggestionData objects */
   List<SuggestionData> getCollegeSuggestions(String collegeName);
 }
