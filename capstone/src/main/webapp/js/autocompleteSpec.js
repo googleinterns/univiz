@@ -1,4 +1,5 @@
 describe('Autocomplete Suggests correct array', () => {
+  let search; 
 
   beforeEach(() => {
    let id = 'search';
