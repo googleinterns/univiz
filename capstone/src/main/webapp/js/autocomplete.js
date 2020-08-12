@@ -61,7 +61,6 @@ function getListOfSuggestions() {
 function getRelevantDataSuggestions(arr, val) {
   let trimArr = [];
   for (var arrElt of arr) {
-    trimArr.push(arrElt);
     if (arrElt.substr(0, val.length).toUpperCase() == val.toUpperCase()) {
       trimArr.push(arrElt);
     }
