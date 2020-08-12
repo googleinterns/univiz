@@ -98,7 +98,7 @@ inp.addEventListener('input', function(e) {
   if (!val) {
     return false;
   }
-  let arr = getListOfSuggestions();
+  const arr = getListOfSuggestions();
   currentFocus = -1;
   const autocompleteList = document.createElement('div');
   autocompleteList.setAttribute('id', this.id + 'autocomplete-list');
