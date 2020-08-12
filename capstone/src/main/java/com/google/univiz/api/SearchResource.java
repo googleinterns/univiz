@@ -16,7 +16,7 @@ public interface SearchResource {
    * @return A list of possible matching colleges. The list is ordered such that the best match is
    *     at the beginning of the list. The list may be empty which indicates there are no possible
    *     matches. The list is also not an exhaustive set of matches. It only includes few top
-   *     results. If the string is invalid (empty, null, etc.), an empty list will be returned
+   *     results. If the input is invalid (empty, null, etc.), an empty list will be returned
    */
   List<SearchData> getSearchSuggestions(String collegeNames);
 }
