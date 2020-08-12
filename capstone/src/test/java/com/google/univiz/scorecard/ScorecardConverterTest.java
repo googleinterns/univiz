@@ -28,6 +28,8 @@ public final class ScorecardConverterTest {
   private static final double RATIO_OF_MEN = 0.4253;
   private static final double RATIO_OF_WOMEN = 0.5747;
 
+  private final ScorecardConverter converter = new ScorecardConverter();
+
   @Test
   public void convertToCollegeData() throws Exception {
     ScorecardData scorecardData =
@@ -47,16 +49,15 @@ public final class ScorecardConverterTest {
             .setRatioOfWomen(RATIO_OF_WOMEN)
             .build();
 
-    Converter<ScorecardData, CollegeData> converter = new ScorecardConverter();
     CollegeData college = converter.convert(scorecardData);
 
     assertThat(college.id().id()).isEqualTo(COLLEGE_ID);
     assertThat(college.name()).isEqualTo(NAME);
     assertThat(college.city()).isEqualTo(CITY);
-    assertThat(college.isMainCampus()).isEqualTo(true);
+    assertThat(college.isMainCampus()).isEqualTo(FLAG_MAIN_CAMPUS == 1);
     assertThat(college.latitude()).isEqualTo(LATITUDE);
     assertThat(college.longitude()).isEqualTo(LONGITUDE);
-    assertThat(college.carnegieSizeDegree()).isEqualTo(CarnegieSizeDegree.getDegree(17));
+    assertThat(college.carnegieSizeDegree()).isEqualTo(CarnegieSizeDegree.getDegree(CARNEGIE_SIZE_DEGREE));
     assertThat(college.admissionRate()).isEqualTo(ADMISSION_RATE);
     assertThat(college.avgSat()).isEqualTo(AVG_SAT);
     assertThat(college.numOfUndergrads()).isEqualTo(NUM_OF_UNDERGRADS);
@@ -83,8 +84,6 @@ public final class ScorecardConverterTest {
             .setRatioOfMen(RATIO_OF_MEN)
             .setRatioOfWomen(RATIO_OF_WOMEN)
             .build();
-
-    ScorecardConverter converter = new ScorecardConverter();
 
     assertThrows(
         UnsupportedOperationException.class, () -> converter.reverse().convert(collegeData));
