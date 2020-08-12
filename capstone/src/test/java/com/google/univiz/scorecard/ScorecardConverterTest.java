@@ -3,7 +3,6 @@ package com.google.univiz.scorecard;
 import static com.google.common.truth.Truth.assertThat;
 import static org.junit.Assert.assertThrows;
 
-import com.google.common.base.Converter;
 import com.google.univiz.CarnegieSizeDegree;
 import com.google.univiz.CollegeData;
 import com.google.univiz.CollegeId;
@@ -57,7 +56,8 @@ public final class ScorecardConverterTest {
     assertThat(college.isMainCampus()).isEqualTo(FLAG_MAIN_CAMPUS == 1);
     assertThat(college.latitude()).isEqualTo(LATITUDE);
     assertThat(college.longitude()).isEqualTo(LONGITUDE);
-    assertThat(college.carnegieSizeDegree()).isEqualTo(CarnegieSizeDegree.getDegree(CARNEGIE_SIZE_DEGREE));
+    assertThat(college.carnegieSizeDegree())
+        .isEqualTo(CarnegieSizeDegree.getDegree(CARNEGIE_SIZE_DEGREE));
     assertThat(college.admissionRate()).isEqualTo(ADMISSION_RATE);
     assertThat(college.avgSat()).isEqualTo(AVG_SAT);
     assertThat(college.numOfUndergrads()).isEqualTo(NUM_OF_UNDERGRADS);
