@@ -31,7 +31,7 @@ function removeActiveTag(autocompleteListElmt) {
 }
 
 /**
- * @param {Object} elmnt, inp
+ * @param {Object, Object} elmnt, inp
  * @return {void}
  * Closes dropdown autocomplete list(s)
  */
@@ -94,7 +94,7 @@ function displaySuggestions(trimArr, autocompleteList) {
 //$(document).ready(function() {
   const inp = document.getElementById('search');
   /* Event occurrance when input is provided to autocomplete field */
- /* inp.addEventListener('input', function(e) {
+inp.addEventListener('input', function(e) {
     closeAllLists();
     const val = this.value;
     if (!val) {
@@ -108,7 +108,7 @@ function displaySuggestions(trimArr, autocompleteList) {
     this.parentNode.appendChild(autocompleteList);
     const trimArr = getRelevantDataSuggestions(arr, val);
     displaySuggestions(trimArr, autocompleteList);  
-  });*/
+  });
 
   /* Event occurance when arrow keys are pressed */
  /* inp.addEventListener('keydown', function(e) {
