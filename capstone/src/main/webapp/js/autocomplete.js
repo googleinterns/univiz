@@ -13,9 +13,8 @@
  * Attributing this code to: w3 schools
  * Link: https://www.w3schools.com/howto/howto_js_autocomplete.asp
 */
-function autocomplete(arr) {
+function autocomplete(inp, arr) {
   const currentFocus = -1;
-  const inp = document.getElementById('search');
   /* Event occurrance when input is provided to autocomplete field */
   inp.addEventListener('input', function(e) {
     closeAllLists();
