@@ -32,7 +32,8 @@ function removeActiveTag(autocompleteListElmt) {
 }
 
 /**
- * @param {Object, Object} elmnt, inp
+ * @param {Object} elmnt
+ * @param {Object} inp
  * @return {void}
  * Closes dropdown autocomplete list(s)
  */
@@ -55,7 +56,8 @@ function getListOfSuggestions() {
 }
 
 /**
- * @param {Object, string} arr, val
+ * @param {Object} arr
+ * @param {string} val
  * @return {Object} trimArr
  * Identifies and returns relevant suggestions in the arr
  */
@@ -70,7 +72,8 @@ function getRelevantDataSuggestions(arr, val) {
 }
 
 /**
- * @param {Object, Object} trimArr, autocompleteList
+ * @param {Object} trimArr
+ * @param {Object} autocompleteList
  * @return {void}
  * Takes relevant suggestions and displays them in DOM
  */
