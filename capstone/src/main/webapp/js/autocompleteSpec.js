@@ -3,7 +3,7 @@ describe('Autocomplete Suggests correct array', () => {
 
   beforeEach(() => {
    let id = 'search';
-   search = '<input id='+id+'/>';
+   search = "<input id='search' type='text'>";
    document.body.innerHTML += search;
   });
 
