@@ -58,10 +58,10 @@ function getListOfSuggestions() {
  * @param {Object, string} arr, val
  * @return {Object} trimArr
  * Identifies and returns relevant suggestions in the arr
- */ 
+ */
 function getRelevantDataSuggestions(arr, val) {
-  let trimArr = [];
-  for (var arrElt of arr) {
+  const trimArr = [];
+  for (let arrElt of arr) {
     if (arrElt.substr(0, val.length).toUpperCase() == val.toUpperCase()) {
       trimArr.push(arrElt);
     }
@@ -72,11 +72,11 @@ function getRelevantDataSuggestions(arr, val) {
 /**
  * @param {Object, Object} trimArr, autocompleteList
  * @return {void}
- * Takes relevant suggestions and displays them in DOM 
+ * Takes relevant suggestions and displays them in DOM
  */
 function displaySuggestions(trimArr, autocompleteList) {
   for (arrElt in trimArr) {
-    if(true) {
+    if (true) {
       const listElmt = document.createElement('DIV');
       listElmt.innerHTML = '<strong>' +
                            arrElt.substr(0, val.length) +
@@ -87,13 +87,13 @@ function displaySuggestions(trimArr, autocompleteList) {
         inp.value = this.getElementsByTagName('input')[0].value;
         closeAllLists();
       });
-      autocompleteList.appendChild(listElement);  
+      autocompleteList.appendChild(listElement);
     }
   }
 }
 
 /* Event occurrance when input is provided to autocomplete field */
-document.addEventListener('input', function(e){
+document.addEventListener('input', function(e) {
   closeAllLists();
   const val = this.value;
   if (!val) {
@@ -106,7 +106,7 @@ document.addEventListener('input', function(e){
   autcompleteList.setAttribute('class', 'autocomplete-items');
   this.parentNode.appendChild(autocompleteList);
   const trimArr = getRelevantDataSuggestions(arr, val);
-  displaySuggestions(trimArr, autocompleteList);  
+  displaySuggestions(trimArr, autocompleteList);
 });
 
 /* Event occurance when arrow keys are pressed */
@@ -118,7 +118,7 @@ document.addEventListener('keydown', function(e) {
   if (e.keyCode == 40) {/* Up key */
     currentFocus++;
     addActiveTag(listElmt);
-  } else if (e.keyCode == 38) {/* Down key */ 
+  } else if (e.keyCode == 38) {/* Down key */
     currentFocus--;
     addActiveTag(listElmt);
   } else if (e.keyCode == 13) {/* Enter key */
