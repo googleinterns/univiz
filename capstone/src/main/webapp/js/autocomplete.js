@@ -90,48 +90,48 @@ function displaySuggestions(trimArr, autocompleteList) {
 }
 
 $(document).ready(function() {
-const inp = document.getElementById('search');
-/* Event occurrance when input is provided to autocomplete field */
-inp.addEventListener('input', function(e) {
-  closeAllLists();
-  const val = this.value;
-  if (!val) {
-    return false;
-  }
-  const arr = getListOfSuggestions();
-  currentFocus = -1;
-  const autocompleteList = document.createElement('div');
-  autocompleteList.setAttribute('id', this.id + 'autocomplete-list');
-  autcompleteList.setAttribute('class', 'autocomplete-items');
-  this.parentNode.appendChild(autocompleteList);
-  let trimArr = getRelevantDataSuggestions(arr, val);
-  displaySuggestions(trimArr, autocompleteList);  
-});
+  const inp = document.getElementById('search');
+  /* Event occurrance when input is provided to autocomplete field */
+  inp.addEventListener('input', function(e) {
+    closeAllLists();
+    const val = this.value;
+    if (!val) {
+      return false;
+    }
+    const arr = getListOfSuggestions();
+    currentFocus = -1;
+    const autocompleteList = document.createElement('div');
+    autocompleteList.setAttribute('id', this.id + 'autocomplete-list');
+    autcompleteList.setAttribute('class', 'autocomplete-items');
+    this.parentNode.appendChild(autocompleteList);
+    const trimArr = getRelevantDataSuggestions(arr, val);
+    displaySuggestions(trimArr, autocompleteList);  
+  });
 
-/* Event occurance when arrow keys are pressed */
-inp.addEventListener('keydown', function(e) {
-  const listElmt = document.getElementById(this.id + 'autocomplete-list');
-  if (listElmt) {
-    listElmt = listElmt.getElementsByTagName('div');
-  }
-  if (e.keyCode == 40) {/* Up key */
-    currentFocus++;
-    addActiveTag(listElmt);
-  } else if (e.keyCode == 38) {/* Down key */
-    currentFocus--;
-    addActiveTag(listElmt);
-  } else if (e.keyCode == 13) {/* Enter key */
-    e.preventDefault();
-    if (currentFocus > -1) {
-      if (listElmt) {
-        listElmt[currentFocus].click();
+  /* Event occurance when arrow keys are pressed */
+  inp.addEventListener('keydown', function(e) {
+    const listElmt = document.getElementById(this.id + 'autocomplete-list');
+    if (listElmt) {
+      listElmt = listElmt.getElementsByTagName('div');
+    }
+    if (e.keyCode == 40) {/* Up key */
+      currentFocus++;
+      addActiveTag(listElmt);
+    } else if (e.keyCode == 38) {/* Down key */
+      currentFocus--;
+      addActiveTag(listElmt);
+    } else if (e.keyCode == 13) {/* Enter key */
+      e.preventDefault();
+      if (currentFocus > -1) {
+        if (listElmt) {
+          listElmt[currentFocus].click();
+        }
       }
     }
-  }
-});
+  });
 
-/* Event occurance when mouse is clicked */
-document.addEventListener('click', function(e) {
-  closeAllLists(e.target, inp);
-});
+  /* Event occurance when mouse is clicked */
+  document.addEventListener('click', function(e) {
+    closeAllLists(e.target, inp);
+  });
 });
