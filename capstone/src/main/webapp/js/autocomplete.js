@@ -111,26 +111,26 @@ function displaySuggestions(trimArr, autocompleteList) {
   });
 //});
   /* Event occurance when arrow keys are pressed */
- /* inp.addEventListener('keydown', function(e) {
+document.addEventListener('keydown', function(e) {
     const listElmt = document.getElementById(this.id + 'autocomplete-list');
     if (listElmt) {
       listElmt = listElmt.getElementsByTagName('div');
     }
-    if (e.keyCode == 40) {/* Up key 
+    if (e.keyCode == 40) {/* Up key */
       currentFocus++;
       addActiveTag(listElmt);
-    } else if (e.keyCode == 38) {/* Down key 
+    } else if (e.keyCode == 38) {/* Down key */ 
       currentFocus--;
       addActiveTag(listElmt);
-    } else if (e.keyCode == 13) {/* Enter key 
+    } else if (e.keyCode == 13) {/* Enter key */
       e.preventDefault();
       if (currentFocus > -1) {
         if (listElmt) {
           listElmt[currentFocus].click();
-        }
       }
-    }
-  });*/
+      }
+  }
+});
 
   /* Event occurance when mouse is clicked */
   document.addEventListener('click', function(e) {
