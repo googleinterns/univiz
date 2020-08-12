@@ -34,7 +34,6 @@ public final class ScorecardTest {
     assertThat(scorecardData.name()).isEqualTo("New York University");
     assertThat(scorecardData.city()).isEqualTo("New York");
     assertThat(scorecardData.flagMainCampus()).isEqualTo(1);
-    assertThat(scorecardData.urbanizationDegree()).isEqualTo(0);
     assertThat(scorecardData.latitude()).isEqualTo(40.729452);
     assertThat(scorecardData.longitude()).isEqualTo(-73.997264);
     assertThat(scorecardData.carnegieSizeDegree()).isEqualTo(17);

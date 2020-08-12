@@ -1,10 +1,18 @@
 package com.google.univiz;
 
 import com.google.auto.value.AutoValue;
+import com.ryanharter.auto.value.gson.GenerateTypeAdapter;
 
-/** CollegeId is a dummy class just to override compilation errors. */
+/**
+ * CollegeId is a class that represents the unique ID for a single college/university/institution.
+ */
 @AutoValue
-abstract class CollegeId {
+@GenerateTypeAdapter
+public abstract class CollegeId {
 
-  abstract int id();
+  public abstract int id();
+
+  public static CollegeId create(int id) {
+    return new AutoValue_CollegeId(id);
+  }
 }
