@@ -91,7 +91,7 @@ function displaySuggestions(trimArr, autocompleteList) {
   }
 }
 
-window.addEventListener("load", function() {
+document.addEventListener("DOMContentLoaded", function() {
   const inp = document.getElementById('search');
   /* Event occurrance when input is provided to autocomplete field */
   inp.addEventListener('input', function(e) {
