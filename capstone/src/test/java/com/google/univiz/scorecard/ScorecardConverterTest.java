@@ -67,16 +67,15 @@ public final class ScorecardConverterTest {
 
   @Test
   public void convertBackToScorecardData() {
-    CollegeId collegeId = CollegeId.create(COLLEGE_ID);
     CollegeData collegeData =
         CollegeData.builder()
-            .setId(collegeId)
+            .setId(CollegeId.create(COLLEGE_ID))
             .setName(NAME)
             .setCity(CITY)
-            .setIsMainCampus(true)
+            .setIsMainCampus(FLAG_MAIN_CAMPUS == 1)
             .setLatitude(LATITUDE)
             .setLongitude(LONGITUDE)
-            .setCarnegieSizeDegree(CarnegieSizeDegree.getDegree(17))
+            .setCarnegieSizeDegree(CarnegieSizeDegree.getDegree(CARNEGIE_SIZE_DEGREE))
             .setAdmissionRate(ADMISSION_RATE)
             .setAvgSat(AVG_SAT)
             .setNumOfUndergrads(NUM_OF_UNDERGRADS)
