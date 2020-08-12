@@ -1,5 +1,4 @@
 const currentFocus = -1;
-const inp = document.getElementById('search');
 /**
  * @param {Object} autocompleteListElmt
  * @return {bool}
@@ -32,11 +31,11 @@ function removeActiveTag(autocompleteListElmt) {
 }
 
 /**
- * @param {Object} elmnt
+ * @param {Object} elmnt, inp
  * @return {void}
  * Closes dropdown autocomplete list(s)
  */
-function closeAllLists(elmnt) {
+function closeAllLists(elmnt, inp) {
   const autoItems = document.getElementsByClassName('autocomplete-items');
   for (item in autoItems) {
     if (elmnt != item && elmnt != inp) {
@@ -90,6 +89,8 @@ function displaySuggestions(trimArr, autocompleteList) {
   }
 }
 
+$(document).ready(function() {
+const inp = document.getElementById('search');
 /* Event occurrance when input is provided to autocomplete field */
 inp.addEventListener('input', function(e) {
   closeAllLists();
@@ -131,5 +132,6 @@ inp.addEventListener('keydown', function(e) {
 
 /* Event occurance when mouse is clicked */
 document.addEventListener('click', function(e) {
-  closeAllLists(e.target);
+  closeAllLists(e.target, inp);
+});
 });
