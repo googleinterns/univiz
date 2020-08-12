@@ -3,6 +3,6 @@ describe('Autocomplete Suggests correct array', () => {
     const fullData = ['Ahoy', 'Hello', 'Wattup'];
     const relevantData = ['Hello'];
     const retData = getRelevantDataSuggestions(fullData, 'H');
-    expect(retData).toEqual(relevantData);	  
+    expect(retData).toEqual(relevantData); 
   });
 });
