@@ -1,5 +1,8 @@
 package com.google.univiz.api;
 
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,5 +15,11 @@ public final class SearchResourceImplTest {
   @Rule public MockitoRule mockitoRule = MockitoJUnit.rule();
 
   @Test
-  public void testGetSuggestions() throws Exception {}
+  public void testGetSuggestions() throws Exception {
+    String partialCollegeName = "Sta";
+    List<SearchData> ret = getSearchSuggestions(partialCollegeName);
+    SearchData expected = create("Stanford University", 0);
+    assertThat(expected.getCollegeName()).isEqualTo(ret.get(0).getCollegeName());
+    assertThat(expected.getCollegeId()).isEqualTo(ret.get(0).getCollegeId());
+  }
 }
