@@ -1,6 +1,6 @@
 package com.google.univiz.api;
 
-import com.google.univiz.CollegeData;
+import com.google.univiz.CollegeId;
 import com.google.univiz.api.dataviz.Deadline;
 import com.google.univiz.api.dataviz.Timeline;
 import com.google.univiz.api.dataviz.TuitionStats;
@@ -19,7 +19,7 @@ public interface VisResource {
    * @param colleges the raw data for each of the user's selected colleges
    * @return the list of statistics per college.
    */
-  List<TuitionStats> getTuitionStats(List<CollegeData> colleges);
+  List<TuitionStats> getTuitionStats(List<CollegeId> colleges);
 
   /**
    * For every college the user selected, obtain the recommended set of actions for the user to take
@@ -28,7 +28,7 @@ public interface VisResource {
    * @param colleges the raw data for each of the user's selected colleges
    * @return the actions/time range pairs for each college.
    */
-  List<Timeline> getRecommendedTimeline(List<CollegeData> colleges);
+  List<Timeline> getRecommendedTimeline(List<CollegeId> colleges);
 
   /**
    * For every college the user selected, obtain the application deadlines.
@@ -36,5 +36,5 @@ public interface VisResource {
    * @param colleges the raw data for each of the user's selected colleges
    * @return the application deadlines (application release/due date) per college.
    */
-  List<Deadline> getDeadlines(List<CollegeData> colleges);
+  List<Deadline> getDeadlines(List<CollegeId> colleges);
 }
