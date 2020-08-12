@@ -1,20 +1,8 @@
 describe('Autocomplete Suggests correct array', () => {
-  let search; 
-
-  beforeEach(() => {
-   let id = 'search';
-   search = "<input id='search' type='text'>";
-   document.body.innerHTML += search;
-  });
-
   it('Autocomplete selects correct items', () => {
-   const fullData = ['Ahoy', 'Hello', 'Wattup'];
-   const relevantData = ['Hello'];
-   autocomplete(search, fullData);
+    const fullData = ['Ahoy', 'Hello', 'Wattup'];
+    const relevantData = ['Hello'];
+    let retData = getRelevantSuggestions(fullData, 'H');
+    expect(retData).toBe(relevantData);	  
   });
-
-  /*afterEach(function(){
-    search.remove();
-    search = null;
-  });*/
 });
