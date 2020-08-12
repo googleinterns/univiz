@@ -59,6 +59,7 @@ function getListOfSuggestions() {
  * Identifies and returns relevant suggestions in the arr
  */ 
 function getRelevantDataSuggestions(arr, val) {
+  const trimArr = [];
   for (arrElt in arr) {
     if (arrElt.substr(0, val.length).toUpperCase() == val.toUpperCase()) {
       trimArr.append(arrElt);
