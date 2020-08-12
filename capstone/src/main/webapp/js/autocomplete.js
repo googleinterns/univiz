@@ -49,9 +49,10 @@ function closeAllLists(elmnt, inp) {
  * Current placeholder until servlet is created
  */
 function getListOfSuggestions() {
-  let arr = ['Hello', 'Hi', 'Howdy'];
+  const arr = ['Hello', 'Hi', 'Howdy'];
   return arr;
 }
+
 /**
  * @param {Object, string} arr, val
  * @return {Object} trimArr
@@ -89,7 +90,7 @@ function displaySuggestions(trimArr, autocompleteList) {
   }
 }
 
-$(document).ready(function() {
+//$(document).ready(function() {
   const inp = document.getElementById('search');
   /* Event occurrance when input is provided to autocomplete field */
   inp.addEventListener('input', function(e) {
@@ -134,4 +135,4 @@ $(document).ready(function() {
   document.addEventListener('click', function(e) {
     closeAllLists(e.target, inp);
   });
-});
+//});
