@@ -1,4 +1,4 @@
-package com.google.univiz;
+package com.google.univiz.api;
 
 import java.util.List;
 
@@ -11,5 +11,5 @@ public interface SuggestionDataApi {
    * Takes a fragment of a college name or a complete college name and returns a list of
    * SuggestionData objects
    */
-  List<SuggestionData> getCollegeSuggestions(String collegeName);
+  List<SuggestionData> getSuggestions(String collegeName);
 }
