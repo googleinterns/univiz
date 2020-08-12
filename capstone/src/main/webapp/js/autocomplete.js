@@ -94,8 +94,7 @@ function displaySuggestions(trimArr, autocompleteList) {
 //document.addEventListener("DOMContentLoaded", function() {
   const inp = document.getElementById('search');
   /* Event occurrance when input is provided to autocomplete field */
-  //inp.addEventListener('input', 
-function inputEvent(this) {
+  document.addEventListener('input', function(e){
     closeAllLists();
     const val = this.value;
     if (!val) {
@@ -109,8 +108,7 @@ function inputEvent(this) {
     this.parentNode.appendChild(autocompleteList);
     const trimArr = getRelevantDataSuggestions(arr, val);
     displaySuggestions(trimArr, autocompleteList);  
-}
- //);
+  });
 //});
   /* Event occurance when arrow keys are pressed */
  /* inp.addEventListener('keydown', function(e) {
