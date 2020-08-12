@@ -91,10 +91,10 @@ function displaySuggestions(trimArr, autocompleteList) {
   }
 }
 
-//$(document).ready(function() {
+window.addEventListener("load", function() {
   const inp = document.getElementById('search');
   /* Event occurrance when input is provided to autocomplete field */
-inp.addEventListener('input', function(e) {
+  inp.addEventListener('input', function(e) {
     closeAllLists();
     const val = this.value;
     if (!val) {
@@ -109,7 +109,7 @@ inp.addEventListener('input', function(e) {
     const trimArr = getRelevantDataSuggestions(arr, val);
     displaySuggestions(trimArr, autocompleteList);  
   });
-
+});
   /* Event occurance when arrow keys are pressed */
  /* inp.addEventListener('keydown', function(e) {
     const listElmt = document.getElementById(this.id + 'autocomplete-list');
