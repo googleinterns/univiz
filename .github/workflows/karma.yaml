@@ -11,4 +11,4 @@ jobs:
       - name: Install npm packages
         run: npm install
       - name: Test
-        run: npx karma start univiz.conf.js --single-run --browsers PhantomJS --no-fail-on-empty-test-suite
+        run: npx karma start univiz.conf.js --single-run --browsers ChromeHeadless --no-fail-on-empty-test-suite
