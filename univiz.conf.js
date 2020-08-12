@@ -15,8 +15,9 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'capstone/src/test/javascript/**/*[Ss]pec.js',
+      'https://www.gstatic.com/charts/loader.js',
       'capstone/src/main/webapp/js/*.js',
+      'capstone/src/test/javascript/**/*[Ss]pec.js',
     ],
 
 

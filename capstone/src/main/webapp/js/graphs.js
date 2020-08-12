@@ -11,7 +11,6 @@ script.onload = () => {
    * Google Charts API and JSON object consisting of college tuition data.
    */
   function graphGrossNetTuition() {
-    const data = deserializeTuitionData();
     const options = {
       title: 'Gross and Net Price of Colleges',
       hAxis: {
@@ -23,7 +22,7 @@ script.onload = () => {
     };
     const chart =
       new google.visualization.ColumnChart(document.getElementById('data'));
-    chart.draw(data, options);
+    deserializeTuitionData().then((data) => chart.draw(data, options));
   }
 
   /**
@@ -32,9 +31,9 @@ script.onload = () => {
    * @return {google.visualization.DataTable} data the DataTable corresponding to
    *     the tuition data
    */
-  function deserializeTuitionData() {
+  async function deserializeTuitionData() {
     const data = new google.visualization.DataTable();
-    fetch('/tuition-data')
+    await fetch('/tuition-data')
         .then((response) => response.json())
         .then((tuitionInfo) => populateDataTable(data, tuitionInfo));
     return data;
