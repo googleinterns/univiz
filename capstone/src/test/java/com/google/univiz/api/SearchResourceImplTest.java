@@ -1,23 +1,21 @@
 package com.google.univiz.api;
 
 import static com.google.common.truth.Truth.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnit;
-import org.mockito.junit.MockitoRule;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-import java.util.ArrayList;
-import java.util.List;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnit;
+import org.mockito.junit.MockitoRule;
 
 @RunWith(JUnit4.class)
 public final class SearchResourceImplTest {
-  @Mock private SuggestionDataApi mockSuggestionApi; 
+  @Mock private SuggestionDataApi mockSuggestionApi;
 
   @Rule public MockitoRule mockitoRule = MockitoJUnit.rule();
 
@@ -28,7 +26,7 @@ public final class SearchResourceImplTest {
     List<SuggestionData> cannedResponse = new ArrayList<>();
     cannedResponse.add(stanford);
     when(mockSuggestionApi.getSuggestions(partialCollegeName)).thenReturn(cannedResponse);
-    
+
     SearchResourceImpl search = new SearchResourceImpl(mockSuggestionApi);
     List<SearchData> ret = search.getSearchSuggestions(partialCollegeName);
     SearchData expected = SearchData.create("Stanford University", 0);
