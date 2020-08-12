@@ -2,11 +2,11 @@
  * @return{void}
  * Communicates with search servlet to get data
  */
-function getSearchOptions() {
+/*function getSearchOptions() {
   fetch('/search').then((response) => response.json()).then((searchOptions) => {
     autocomplete(searchOptions);
   });
-}
+}*/
 /**
  * @param {string[]} arr
  * @return {void}

@@ -1,20 +1,19 @@
-describe('Autocomplete Suggests correct array', function() {
-  let search;
+describe('Autocomplete Suggests correct array', () => {
 
-  beforeEach(function() {
+  beforeEach(() => {
    let id = 'search';
-   search = $('<input id='+id+'/>');
-   $(document.body).append(search);
+   let search = '<input id='+id+'/>';
+   document.body.innerHTML += search;
   });
 
   it('Autocomplete selects correct items', () => {
    const fullData = ['Ahoy', 'Hello', 'Wattup'];
    const relevantData = ['Hello'];
    autocomplete(fullData);
-  })
+  });
 
-  afterEach(function(){
+  /*afterEach(function(){
     search.remove();
     search = null;
-  });
+  });*/
 });
