@@ -94,7 +94,7 @@ public class SuggestionDataApiImpl implements SuggestionDataApi {
   }
 
   @Override
-  public List<SuggestionData> getSuggestions(String collegeName) {
+  public List<SuggestionData> getCollegeSuggestions(String collegeName) {
     JSONObject returnJson = requestRESTApiData(proposedCollegeName);
     List<SuggestionData> returnSuggestionData = convertJsonToSuggestionData(returnJson);
     return returnSuggestionData;
