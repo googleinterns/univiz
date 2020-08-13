@@ -88,8 +88,8 @@ public class SuggestionDataApiImpl implements SuggestionDataApi {
   /** Takes REST API Json response and converts it to SuggestionData */
   private List<SuggestionData> convertJsonToSuggestionData(JSONObject suggestionResults) {
     List<SuggestionData> listSuggestions = new ArrayList<>();
-    for () {
-    }
+    Gson gson = new GsonBuilder().registerTypeAdapterFactory(GenerateTypeAdapter.FACTORY).create();
+    SuggestionData retSuggestions = gson.fromJson(suggestionResults, SuggestionData.class);
     return listSuggestions;
   }
 
