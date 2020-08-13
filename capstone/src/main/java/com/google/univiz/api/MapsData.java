@@ -25,7 +25,7 @@ public abstract class MapsData {
 
   @AutoValue.Builder
   public abstract static class Builder {
-    
+
     public abstract Builder setName(String value);
 
     public abstract Builder setCity(String city);
