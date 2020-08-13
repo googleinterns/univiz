@@ -15,7 +15,7 @@ import org.mockito.junit.MockitoRule;
 
 @RunWith(JUnit4.class)
 public final class SearchResourceImplTest {
-  @Mock private SuggestionDataApi mockSuggestionApi;
+  @Mock private final SuggestionDataApi mockSuggestionApi;
 
   @Rule public MockitoRule mockitoRule = MockitoJUnit.rule();
 

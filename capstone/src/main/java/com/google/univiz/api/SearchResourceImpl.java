@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import javax.inject.Inject;
 
-class SearchResourceImpl implements SearchResource {
+final class SearchResourceImpl implements SearchResource {
   private final SuggestionDataApi suggestionApi;
 
   @Inject
