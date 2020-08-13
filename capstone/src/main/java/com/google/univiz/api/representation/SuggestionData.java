@@ -15,5 +15,5 @@ abstract SuggestionData {
 
   @SerializedName("id")
   @Nullable
-  abstract CollegeId id();
+  abstract int id();
 }
