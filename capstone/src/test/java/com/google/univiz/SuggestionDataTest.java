@@ -21,9 +21,9 @@ public final class SuggestionDataTest {
   @Test
   public void testJsonDeserializes() throws Exception {
     Gson gson = new GsonBuilder().registerTypeAdapterFactory(GenerateTypeAdapter.FACTORY).create();
-    InputStream suggestionDataStream = this.getClass().getClassLoader().getResourceAsStream("suggestion.json");
     InputStreamReader suggestionDataReader =
-        new InputStreamReader(suggestionDataStream);
+        new InputStreamReader(
+            Resources.getResource(SuggestionDataTest.class, "suggestion.json").openStream()); 
     SuggestionData suggestionData = gson.fromJson(suggestionDataReader, SuggestionData.class);
 
     assertThat(suggestionData.name()).isEqualTo("Stanford University");
