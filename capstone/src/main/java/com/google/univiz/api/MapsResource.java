@@ -1,5 +1,6 @@
 package com.google.univiz.api;
 
+import com.google.univiz.CollegeData;
 import java.util.List;
 
 /**

@@ -4,7 +4,7 @@ import com.google.auto.value.AutoValue;
 
 /**
  * The MapsData is a class representing all relevant college data that is specific to the Maps
- * feature
+ * feature.
  */
 @AutoValue
 public abstract class MapsData {
@@ -20,7 +20,7 @@ public abstract class MapsData {
   public abstract double longitude();
 
   public static Builder builder() {
-    return new AutoValue_MapData.Builder();
+    return new AutoValue_MapsData.Builder();
   }
 
   @AutoValue.Builder
