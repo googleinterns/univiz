@@ -17,7 +17,7 @@ import org.mockito.junit.MockitoRule;
 public final class SearchResourceImplTest {
   @Mock private SuggestionDataApi mockSuggestionApi;
 
-  @Rule public MockitoRule mockitoRule = MockitoJUnit.rule();
+  @Rule public final MockitoRule mockitoRule = MockitoJUnit.rule();
 
   @Test
   public void testGetSuggestions() throws Exception {
