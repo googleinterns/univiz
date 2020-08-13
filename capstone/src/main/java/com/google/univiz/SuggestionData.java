@@ -8,12 +8,11 @@ import javax.annotation.Nullable;
 /** SuggestionData represents the college data specific to the Search feature */
 @GenerateTypeAdapter
 @AutoValue
-abstract SuggestionData {
+abstract class SuggestionData {
   @SerializedName("school.name")
   @Nullable
   abstract String name();
 
   @SerializedName("id")
-  @Nullable
   abstract int id();
 }
