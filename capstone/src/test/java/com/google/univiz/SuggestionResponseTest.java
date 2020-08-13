@@ -13,7 +13,7 @@ import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
 public final class SuggestionResponseTest {
-  /** Tests whether the JSON properly deserializes into a SuggestionResponse object correctly */
+  /** Tests whether the JSON properly deserializes into the SuggestionResponse object correctly */
   @Test
   public void testJsonDeserializes() throws Exception {
     Gson gson = new GsonBuilder().registerTypeAdapterFactory(GenerateTypeAdapter.FACTORY).create();
