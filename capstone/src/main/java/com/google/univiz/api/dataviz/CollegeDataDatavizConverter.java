@@ -2,15 +2,13 @@ package com.google.univiz.api.dataviz;
 
 import com.google.common.base.Converter;
 import com.google.univiz.CollegeData;
-import com.google.univiz.CarnegieSizeDegree;
 
-final class CollegeDataDatavizConverter extends Converter<CollegeData, TuitionStats> {
+final class CollegeDataDatavizConverter extends Converter<CollegeData, CollegeStats> {
 
   @Override
-  protected TuitionStats doForward(CollegeData college) {
-    TuitionStats stats =
-        TuitionStats.builder()
-            .setCarnegieSizeDegree(college.carnegieSizeDegree())
+  protected CollegeStats doForward(CollegeData college) {
+    CollegeStats stats =
+        CollegeStats.builder()
             .setAdmissionRate(college.admissionRate())
             .setAvgSat(college.avgSat())
             .setNumOfUndergrads(college.numOfUndergrads())
@@ -22,7 +20,7 @@ final class CollegeDataDatavizConverter extends Converter<CollegeData, TuitionSt
   }
 
   @Override
-  protected CollegeData doBackward(TuitionStats stats) {
+  protected CollegeData doBackward(CollegeStats stats) {
     throw new UnsupportedOperationException();
   }
 }

@@ -1,17 +1,10 @@
 package com.google.univiz.api.dataviz;
 
-import com.google.univiz.CarnegieSizeDegree;
 import com.google.auto.value.AutoValue;
 
-/**
- * Contains statistics related to tuition for a particular college. The following will be included:
- * average tuition cost before and after financial aid is considered, and tuition cost over the last
- * five years.
- */
+/** CollegeStats is a class that contains statistics related to tuition for a particular college. */
 @AutoValue
-public abstract class TuitionStats {
-
-  public abstract CarnegieSizeDegree carnegieSizeDegree();
+public abstract class CollegeStats {
 
   public abstract double admissionRate();
 
@@ -26,13 +19,11 @@ public abstract class TuitionStats {
   public abstract double ratioOfWomen();
 
   public static Builder builder() {
-    return new AutoValue_TuitionStats.Builder()
+    return new AutoValue_CollegeStats.Builder();
   }
 
   @AutoValue.Builder
   public abstract static class Builder {
-
-    public abstract Builder setCarnegieSizeDegree(CarnegieSizeDegree value);
 
     public abstract Builder setAdmissionRate(double value);
 
@@ -46,6 +37,6 @@ public abstract class TuitionStats {
 
     public abstract Builder setRatioOfWomen(double value);
 
-    public abstract TuitionStats build();
+    public abstract CollegeStats build();
   }
 }
