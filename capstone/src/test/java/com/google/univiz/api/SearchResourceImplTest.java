@@ -15,7 +15,7 @@ import org.mockito.junit.MockitoRule;
 
 @RunWith(JUnit4.class)
 public final class SearchResourceImplTest {
-  @Mock private final SuggestionDataApi mockSuggestionApi;
+  @Mock private SuggestionDataApi mockSuggestionApi;
 
   @Rule public MockitoRule mockitoRule = MockitoJUnit.rule();
 
@@ -30,7 +30,6 @@ public final class SearchResourceImplTest {
     SearchResourceImpl search = new SearchResourceImpl(mockSuggestionApi);
     List<SearchData> ret = search.getSearchSuggestions(partialCollegeName);
     SearchData expected = SearchData.create("Stanford University", 0);
-    assertThat(expected.getCollegeName()).isEqualTo(ret.get(0).getCollegeName());
-    assertThat(expected.getCollegeId()).isEqualTo(ret.get(0).getCollegeId());
+    assertThat(ret).containsExactly(expected);
   }
 }
