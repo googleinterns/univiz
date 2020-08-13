@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import com.ryanharter.auto.value.gson.GenerateTypeAdapter;
 import java.util.List;
 
-/** SuggestionResponse represents the list SuggestionData specific to the Search feature */
+/** SuggestionResponse represents the list SuggestionData specific for the Search feature */
 @GenerateTypeAdapter
 @AutoValue
 abstract class SuggestionResponse {
