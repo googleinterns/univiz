@@ -1,7 +1,5 @@
 package com.google.univiz.api;
 
-// TODO: imports
-//
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.inject.Inject;
