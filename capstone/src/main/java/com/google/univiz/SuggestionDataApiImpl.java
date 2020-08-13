@@ -1,104 +1,92 @@
 package com.google.univiz;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.net.HttpUrlConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
-import org.json.simple.JSONObject;
 import org.apache.http.client.utils.URIBuilder;
+import org.json.simple.JSONObject;
+
 public class SuggestionDataApiImpl implements SuggestionDataApi {
-  private static final frontUrl = "https://api.data.gov/ed/collegescorecard/v1/schools.json?";
-  private static final paramCollegeName = "school.name";
-  private static final paramFields = "fields";
-  private static final paramFieldsValId = "id";
-  private static final paramFieldsValName = "school.name";
+  private static final String frontUrl =
+      "https://api.data.gov/ed/collegescorecard/v1/schools.json?";
+  private static final String paramCollegeName = "school.name";
+  private static final String paramFields = "fields";
+  private static final String paramFieldsVal = "id,school.name";
   private static final int timeout = 5000;
-  
-  private boolean customizeUrlConnection (HttpUrlConnection con) {
+
+  /** Adds desired settings for the url connection */
+  private boolean customizeUrlConnection(HttpUrlConnection con) {
     con.setDoOutput(true);
     con.setRequestMethod("GET");
     con.setRequestProperty("Content-Type", "application/json");
   }
 
-  private boolean addUrlParameters (HttpUrlConnection con) {
-    Map<String, String> parameters = new HashMap<>();
-    parameters.put(paramFields, paramFieldsValId);
-    parameters.put(paramFields, paramFieldsValName);
-    parameters.put(paramCollegeName, proposedCollegeName);
-
-    DataSetOutput out = new DataOutputStream(con.getOutputStream());
-    out.writeBytes(/*TODO*/);
-    out.flush();
-    out.close();
+  /** Builds desired URL with the base and relevant parameters */
+  private URL buildURL(String proposedCollegeName) {
+    URIBuilder builtUri = new URIBuilder(frontUrl);
+    builtUri.addParameter(paramCollegeName, proposedCollegeName);
+    builtUri.addParameter(paramFields, paramFieldsVal);
+    return b.build().toUrl();
   }
 
-  private boolean setTimeout (HttpUrlConnection con) {
+  /** Sets timeout for the connection */
+  private void setTimeout(HttpUrlConnection con) {
     con.setConnectTimeout(timeout);
     con.setReadTimeout(timeout);
   }
 
-  /** Makes REST request to the CollegeScorecard API  */
+  /** Gets URL Output from the connection */
+  private String getUrlOutput(URL url) {
+    Scanner scanUrl = new Scanner(url.openStream());
+    String urlOutput = "";
+    while (scanUrl.hasNext()) {
+      urlOutput += scanUrl.nextLine();
+    }
+    scanUrl.close();
+    return urlOutput;
+  }
+
+  /** Makes REST request to the CollegeScorecard API */
   private JSONObject requestRESTApiData(String proposedCollegeName) {
     JSONObject jsonData = new JSONObject();
     try {
-      URL url = new URL(frontUrl);
+      URL url = buildURL(proposedCollegeName);
       HttpUrlConnection con = (HttpUrlConnection) url.openConnection();
       customizeUrlConnection(con);
-      addUrlParameters(con);
       setTimeout(con);
 
       con.connect();
       if (con.getResponseCode() != 200) {
-         throw new RuntimeException("HTTPResponseCode: " + con.getResponseCode());
+        throw new RuntimeException("HTTPResponseCode: " + con.getResponseCode());
       }
+
+      String urlOutput = getUrlOutput(url);
       JSONParser parseJson = new JSONParser();
-      JSONObject retJson = (JSONObject) parseJson.parse(/*TODO*/);
+      jsonData = (JSONObject) parseJson.parse(parseJson);
       con.disconnect();
     } catch (MalformedURLException e) {
-      /*handle malformed URL Exceptions*/
+      System.out.println("MalformedURLException: ", e);
     } catch (IOException e) {
-      /*handle IOExceptions*/
+      System.out.println("IOException: ", e);
     } catch (RuntimeException e) {
-      /*handle RuntimeException*/
+      System.out.println("RuntimeException: ", e);
+    } catch (URISyntaxException e) {
+      System.out.println("URISyntaxException: ", e);
     } finally {
       if (con.getResponseCode() == 200) {
         con.disconnect();
       }
     }
-    
-    //TODO: Move this stuff up or out
-    DataSetOutput out = new DataOutputStream(con.getOutputStream());
-    out.writeBytes(/*TODO*/);
-    out.flush();
-    out.close();
-
-    //Reads the content from the URL
-    BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-    String inputLine;
-    StringBuffer content = new StringBuffer();
-    while ((inputLine = in.readLine()) != null) {
-      content.append(inputLine);
-    }
-    in.close();
-    int status = con.getResponseCode();
- 
-    Reader streamReader = null;
-    if (status > 299) {
-      streamReader = new InputStreamReader(con.getErrorStream());
-    } else {
-      streamReader = new InputStreamReader(con.getInputStream());
-    }
+    return jsonData;
   }
 
   /** Takes REST API Json response and converts it to SuggestionData */
   private List<SuggestionData> convertJsonToSuggestionData(JSONObject suggestionResults) {
-  
+    // TODO: SuggestionData
   }
-  
+
   @Override
   public List<SuggestionData> getSuggestions(String collegeName) {
     JSONObject returnJson = requestRESTApiData(proposedCollegeName);
