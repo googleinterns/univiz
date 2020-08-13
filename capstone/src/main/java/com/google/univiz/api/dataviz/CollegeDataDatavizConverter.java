@@ -2,6 +2,7 @@ package com.google.univiz.api.dataviz;
 
 import com.google.common.base.Converter;
 import com.google.univiz.CollegeData;
+import com.google.univiz.CarnegieSizeDegree;
 
 final class CollegeDataDatavizConverter extends Converter<CollegeData, TuitionStats> {
 
@@ -9,7 +10,7 @@ final class CollegeDataDatavizConverter extends Converter<CollegeData, TuitionSt
   protected TuitionStats doForward(CollegeData college) {
     TuitionStats stats =
         TuitionStats.builder()
-            .setCarnegieSizeDegree(college.carnegieSizeDegree)
+            .setCarnegieSizeDegree(college.carnegieSizeDegree())
             .setAdmissionRate(college.admissionRate())
             .setAvgSat(college.avgSat())
             .setNumOfUndergrads(college.numOfUndergrads())
