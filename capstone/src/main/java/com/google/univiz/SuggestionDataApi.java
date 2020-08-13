@@ -3,13 +3,13 @@ package com.google.univiz;
 import java.util.List;
 
 /**
- * Communicates directly with the REST API to get a list of college suggestions related to a client
- * query
+ * Communicates directly with the data source to get a list of college suggestions related to a
+ * client query
  */
 public interface SuggestionDataApi {
   /**
-   * Takes a list of college names and returns a list of SuggestionData objects, where each object
-   * is unique to each college name providede in the first list
+   * Takes a fragment of a college name or a complete college name and returns a list of
+   * SuggestionData objects
    */
   List<SuggestionData> getCollegeSuggestions(String collegeName);
 }
