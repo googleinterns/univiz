@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.HttpUrlConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import org.apache.http.client.utils.URIBuilder;
 import org.json.simple.JSONObject;
@@ -14,10 +15,11 @@ public class SuggestionDataApiImpl implements SuggestionDataApi {
   private static final String paramCollegeName = "school.name";
   private static final String paramFields = "fields";
   private static final String paramFieldsVal = "id,school.name";
+  private static final String paramApiKey = "api_key";
   private static final int timeout = 5000;
-
+  
   /** Adds desired settings for the url connection */
-  private boolean customizeUrlConnection(HttpUrlConnection con) {
+  private void customizeUrlConnection(HttpUrlConnection con) {
     con.setDoOutput(true);
     con.setRequestMethod("GET");
     con.setRequestProperty("Content-Type", "application/json");
@@ -28,6 +30,7 @@ public class SuggestionDataApiImpl implements SuggestionDataApi {
     URIBuilder builtUri = new URIBuilder(frontUrl);
     builtUri.addParameter(paramCollegeName, proposedCollegeName);
     builtUri.addParameter(paramFields, paramFieldsVal);
+    builtUri.addParameter(paramApiKey, "PUT_API_KEY_HERE");
     return b.build().toUrl();
   }
 
@@ -67,13 +70,13 @@ public class SuggestionDataApiImpl implements SuggestionDataApi {
       jsonData = (JSONObject) parseJson.parse(parseJson);
       con.disconnect();
     } catch (MalformedURLException e) {
-      System.out.println("MalformedURLException: ", e);
+      System.out.println("MalformedURLException: " + e);
     } catch (IOException e) {
-      System.out.println("IOException: ", e);
+      System.out.println("IOException: " + e);
     } catch (RuntimeException e) {
-      System.out.println("RuntimeException: ", e);
+      System.out.println("RuntimeException: " + e);
     } catch (URISyntaxException e) {
-      System.out.println("URISyntaxException: ", e);
+      System.out.println("URISyntaxException: " + e);
     } finally {
       if (con.getResponseCode() == 200) {
         con.disconnect();
@@ -84,7 +87,10 @@ public class SuggestionDataApiImpl implements SuggestionDataApi {
 
   /** Takes REST API Json response and converts it to SuggestionData */
   private List<SuggestionData> convertJsonToSuggestionData(JSONObject suggestionResults) {
-    // TODO: SuggestionData
+    List<SuggestionData> listSuggestions = new ArrayList<>();
+    for () {
+    }
+    return listSuggestions;
   }
 
   @Override
