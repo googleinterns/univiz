@@ -4,8 +4,7 @@ import com.google.auto.value.AutoValue;
 import com.ryanharter.auto.value.gson.GenerateTypeAdapter;
 
 /**
- * MapsData is a class representing all relevant college data that is specific to the Maps
- * feature.
+ * MapsData is a class representing all relevant college data that is specific to the Maps feature.
  */
 @GenerateTypeAdapter
 @AutoValue
