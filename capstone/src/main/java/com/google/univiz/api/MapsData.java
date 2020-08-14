@@ -1,11 +1,13 @@
 package com.google.univiz.api;
 
 import com.google.auto.value.AutoValue;
+import com.ryanharter.auto.value.gson.GenerateTypeAdapter;
 
 /**
  * The MapsData is a class representing all relevant college data that is specific to the Maps
  * feature.
  */
+@GenerateTypeAdapter
 @AutoValue
 public abstract class MapsData {
 
