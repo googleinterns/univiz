@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public final class CollegeDataDatavizConverterTest {
+public final class CollegeDataStatsConverterTest {
 
   private static final int COLLEGE_ID = 193900;
   private static final String NAME = "New York University";
@@ -27,7 +27,7 @@ public final class CollegeDataDatavizConverterTest {
   private static final double RATIO_OF_MEN = 0.4253;
   private static final double RATIO_OF_WOMEN = 0.5747;
 
-  private final CollegeDataDatavizConverter converter = new CollegeDataDatavizConverter();
+  private final CollegeDataStatsConverter converter = new CollegeDataStatsConverter();
 
   @Test
   public void convertToCollegeStats() {

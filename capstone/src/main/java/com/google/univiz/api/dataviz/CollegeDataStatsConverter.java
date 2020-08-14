@@ -3,7 +3,7 @@ package com.google.univiz.api.dataviz;
 import com.google.common.base.Converter;
 import com.google.univiz.CollegeData;
 
-final class CollegeDataDatavizConverter extends Converter<CollegeData, CollegeStats> {
+final class CollegeDataStatsConverter extends Converter<CollegeData, CollegeStats> {
 
   @Override
   protected CollegeStats doForward(CollegeData college) {
