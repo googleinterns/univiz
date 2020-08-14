@@ -29,7 +29,7 @@ public class CollegeDataApiImpl implements CollegeDataApi {
           gson.fromJson(readerProvider.getReaderFromCollegeId(id), ScorecardResponse.class);
       ScorecardData scorecard = scorecardResponse.scorecardData().get(0);
       // Then convert to a CollegeData
-      CollegeData college = scorecardConverter.doForward(scorecard);
+      CollegeData college = scorecardConverter.convert(scorecard);
       colleges.add(college);
     }
     return colleges;
