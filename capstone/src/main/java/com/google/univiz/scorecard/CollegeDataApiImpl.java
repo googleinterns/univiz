@@ -26,7 +26,8 @@ public class CollegeDataApiImpl implements CollegeDataApi {
     List<CollegeData> colleges = new ArrayList<>();
     for (CollegeId id : ids) {
       // Then deserialize into a ScorecardResponse
-      Gson gson = new GsonBuilder().registerTypeAdapterFactory(GenerateTypeAdapter.FACTORY).create();
+      Gson gson =
+          new GsonBuilder().registerTypeAdapterFactory(GenerateTypeAdapter.FACTORY).create();
       ScorecardResponse scorecardResponse =
           gson.fromJson(readerProvider.getReaderFromCollegeId(id), ScorecardResponse.class);
       ScorecardData scorecard = scorecardResponse.scorecardData().get(0);
