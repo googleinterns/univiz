@@ -4,7 +4,7 @@ import com.google.univiz.CollegeId;
 import java.util.List;
 
 /**
- * The MapResource interface is responsible for all data management/processing specific for the maps
+ * The MapsResource interface is responsible for all data management/processing specific for the maps
  * feature of the UniViz webapp.
  */
 public interface MapsResource {
