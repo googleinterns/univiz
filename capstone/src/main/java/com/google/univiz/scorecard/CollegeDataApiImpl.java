@@ -1,17 +1,9 @@
 package com.google.univiz.scorecard;
 
 import com.google.gson.Gson;
-import com.google.univiz.config.UnivizConfig;
 import com.google.univiz.CollegeData;
 import com.google.univiz.CollegeDataApi;
 import com.google.univiz.api.CollegeId;
-import com.google.univiz.scorecard.ScorecardResponse;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.IOException;
-import java.io.Reader;
-import java.net.URL;
-import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -21,7 +13,8 @@ public class CollegeDataApiImpl implements CollegeDataApi {
   private final CollegeIdReaderProvider readerProvider;
 
   @Inject
-  public CollegeDataApiImpl(ScorecardConverter scorecardConverter, CollegeIdReaderProvider readerProvider) {
+  public CollegeDataApiImpl(
+      ScorecardConverter scorecardConverter, CollegeIdReaderProvider readerProvider) {
     this.scorecardConverter = scorecardConverter;
     this.readerProvider = readerProvider;
   }
@@ -29,11 +22,11 @@ public class CollegeDataApiImpl implements CollegeDataApi {
   @Override
   public List<CollegeData> getCollegesById(List<CollegeId> ids) {
     List<CollegeData> colleges = new ArrayList<>();
-    for (CollegeId id: ids) {
+    for (CollegeId id : ids) {
       // Then deserialize into a ScorecardResponse
       Gson gson = new Gson();
       ScorecardResponse scorecardResponse =
-        gson.fromJson(readerProvider.getReaderFromCollegeId(id), ScorecardResponse.class);
+          gson.fromJson(readerProvider.getReaderFromCollegeId(id), ScorecardResponse.class);
       ScorecardData scorecard = scorecardResponse.scorecardData().get(0);
       // Then convert to a CollegeData
       CollegeData college = scorecardConverter.doForward(scorecard);

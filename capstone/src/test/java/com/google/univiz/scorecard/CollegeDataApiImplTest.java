@@ -7,8 +7,8 @@ import com.google.common.io.Resources;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.inject.Guice;
-import com.google.inject.testing.fieldbinder.BoundFieldModule;
 import com.google.inject.testing.fieldbinder.Bind;
+import com.google.inject.testing.fieldbinder.BoundFieldModule;
 import com.google.univiz.CollegeData;
 import com.google.univiz.api.CollegeId;
 import com.ryanharter.auto.value.gson.GenerateTypeAdapter;
@@ -33,7 +33,7 @@ public final class CollegeDataApiImplTest {
   @Bind @Mock CollegeIdReaderProvider mockReaderProvider;
   @Bind ScorecardConverter scorecardConverter = new ScorecardConverter();
   @Inject CollegeDataApiImpl testImpl;
-  
+
   @Before
   public void setup() {
     Guice.createInjector(BoundFieldModule.of(this)).injectMembers(this);
@@ -42,7 +42,10 @@ public final class CollegeDataApiImplTest {
   @Test
   public void testGetCollegesById() throws IOException {
     Gson gson = new GsonBuilder().registerTypeAdapterFactory(GenerateTypeAdapter.FACTORY).create();
-    InputStreamReader scorecardReader = new InputStreamReader(Resources.getResource(CollegeDataApiImplTest.class, "scorecard_response.json").openStream());
+    InputStreamReader scorecardReader =
+        new InputStreamReader(
+            Resources.getResource(CollegeDataApiImplTest.class, "scorecard_response.json")
+                .openStream());
     CollegeId collegeId = CollegeId.create(193900);
     when(mockReaderProvider.getReaderFromCollegeId(collegeId)).thenReturn(scorecardReader);
     List<CollegeData> colleges = testImpl.getCollegesById(Arrays.asList(collegeId));
