@@ -3,7 +3,9 @@ package com.google.univiz.api.dataviz;
 import com.google.auto.value.AutoValue;
 import com.ryanharter.auto.value.gson.GenerateTypeAdapter;
 
-/** CollegeStats is a class that contains statistics related to tuition for a particular college. */
+/**
+ * CollegeStats is a class that contains statistics for a particular college/university/institution.
+ */
 @GenerateTypeAdapter
 @AutoValue
 public abstract class CollegeStats {
