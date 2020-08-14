@@ -11,7 +11,7 @@ public class MapsResourceImpl implements MapsResource {
   private final CollegeDataApi collegeDataApi;
 
   @Inject
-  public MapsResourceImpl(CollegeDataApi collegeDataApi) {
+  MapsResourceImpl(CollegeDataApi collegeDataApi) {
     this.collegeDataApi = collegeDataApi;
   }
 
