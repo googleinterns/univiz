@@ -2,28 +2,28 @@
  * Callback function to generate charts.
  */
 function drawCharts() {
-  const freqData = new google.visualization.DataTable();
+  const frequencyData = new google.visualization.DataTable();
   const timelineData = new google.visualization.DataTable();
   fetch('/suggested-cal').
       then((response) => response.json()).
       then((deadlineInfo) =>
-        populateDataTables(freqData, timelineData, deadlineInfo)).
-      then(drawFrequencyChart(freqData)).
+        populateDataTables(frequencyData, timelineData, deadlineInfo)).
+      then(drawFrequencyChart(frequencyData)).
       then(drawTimelineChart(timelineData));
 }
 
 /**
  * Generate frequency calendar chart of deadlines.
- * @param {google.visualization.DataTable} freqData the DataTable corresponding
+ * @param {google.visualization.DataTable} frequencyData the DataTable corresponding
  *     to the frequency of deadlines
  */
-function drawFrequencyChart(freqData) {
+function drawFrequencyChart(frequencyData) {
   const options = {
     'title': 'Expected Application Heat Map',
   };
   const chart = new google.visualization.Calendar(
       document.getElementById('calendar-freq-map'));
-  chart.draw(freqData, options);
+  chart.draw(frequencyData, options);
 }
 
 /**
@@ -44,7 +44,7 @@ function drawTimelineChart(timelineData) {
  * Helper function to transfer elements from JSON object with deadline
  * information to two DataTables.
  *
- * @param {google.visualization.DataTable} freqData the DataTable with the data
+ * @param {google.visualization.DataTable} frequencyData the DataTable with the data
  *     the frequency chart will use. Will consist of sample deadlines for each
  *     of the user's selected colleges.
  *
@@ -56,7 +56,7 @@ function drawTimelineChart(timelineData) {
  *     information that will be added to the previously mentioned DataTables.
  *
  */
-function populateDataTables(freqData, timelineData, deadlineInfo) {
-  // TODO(ihsan314): update freqData datatable
+function populateDataTables(frequencyData, timelineData, deadlineInfo) {
+  // TODO(ihsan314): update frequencyData datatable
   // and update timelineData datatable
 }
