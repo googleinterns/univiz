@@ -1,4 +1,4 @@
-package com.google.univiz;
+package com.google.univiz.api.resource;
 
 import java.util.List;
 

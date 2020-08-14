@@ -1,4 +1,4 @@
-package com.google.univiz.api;
+package com.google.univiz.api.resource;
 
 /** The MapsData class will contain all college data that is specific to the Maps feature */
 public class MapsData {}

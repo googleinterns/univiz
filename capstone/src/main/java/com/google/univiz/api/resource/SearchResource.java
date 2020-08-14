@@ -1,4 +1,4 @@
-package com.google.univiz.api;
+package com.google.univiz.api.resource;
 
 /**
  * The SearchResoure interface is responsible for all data management/processing specific for the

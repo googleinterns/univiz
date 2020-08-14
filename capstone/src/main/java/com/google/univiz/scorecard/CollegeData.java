@@ -1,5 +1,6 @@
-package com.google.univiz;
+package com.google.univiz.scorecard;
 
+import com.google.univiz.api.resource.CollegeId;
 import com.google.auto.value.AutoValue;
 
 /** CollegeData is a class representing a single university/college/institution. */

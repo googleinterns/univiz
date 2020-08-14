@@ -3,9 +3,7 @@ package com.google.univiz.scorecard;
 import static com.google.common.truth.Truth.assertThat;
 import static org.junit.Assert.assertThrows;
 
-import com.google.univiz.CarnegieSizeDegree;
-import com.google.univiz.CollegeData;
-import com.google.univiz.CollegeId;
+import com.google.univiz.api.resource.CollegeId;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
