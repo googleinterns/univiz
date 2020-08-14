@@ -13,7 +13,7 @@ import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
 @RunWith(JUnit4.class)
-public class CollegeDataApiImplTest {
+public final class CollegeDataApiImplTest {
 
   /**
   */

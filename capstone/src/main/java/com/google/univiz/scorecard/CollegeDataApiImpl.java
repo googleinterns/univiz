@@ -5,6 +5,7 @@ import com.google.univiz.config.UnivizConfig;
 import com.google.univiz.CollegeData;
 import com.google.univiz.CollegeDataApi;
 import com.google.univiz.api.CollegeId;
+import com.google.univiz.scorecard.ScorecardResponse;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.IOException;
@@ -31,12 +32,12 @@ public class CollegeDataApiImpl implements CollegeDataApi {
     for (CollegeId id: ids) {
       // Then deserialize into a ScorecardResponse
       Gson gson = new Gson();
-      // ScorecardResponse scorecardResponse =
-      //   gson.fromJson(getReaderFromCollegeId(id), ScorecardResponse.class);
-      // ScorecardData scorecard = response.scorecardData().get(0);
+      ScorecardResponse scorecardResponse =
+        gson.fromJson(getReaderFromCollegeId(id), ScorecardResponse.class);
+      ScorecardData scorecard = scorecardResponse.scorecardData().get(0);
       // Then convert to a CollegeData
-      // CollegeData college = scorecardConverter.doForward(scorecard);
-      // colleges.add(college);
+      CollegeData college = scorecardConverter.doForward(scorecard);
+      colleges.add(college);
     }
     return colleges;
   }
@@ -44,7 +45,7 @@ public class CollegeDataApiImpl implements CollegeDataApi {
   protected Reader getReaderFromCollegeId(CollegeId id) {
     String urlString =
       "https://api.data.gov/ed/collegescorecard/v1/schools.json?id=";
-    // urlString += (String)id.id();
+    urlString += Integer.toString(id.id());
     urlString += "&per_page=1&fields=id,school.name,school.city,school.main_";
     urlString +=
       "campus,location.lat,location.lon,school.carnegie_size_setting,";
