@@ -12,5 +12,5 @@ public interface MapsResource {
    * Takes a list of college ids and returns a list of MapsData objects to the caller. This object
    * contains all data relevant to the Maps feature.
    */
-  List<MapsData> getMapData(List<CollegeId> colleges);
+  List<MapsData> getMapsData(List<CollegeId> colleges);
 }
