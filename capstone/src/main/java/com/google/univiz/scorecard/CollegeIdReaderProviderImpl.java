@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 import javax.inject.Inject;
 
 class CollegeIdReaderProviderImpl implements CollegeIdReaderProvider {
@@ -19,9 +20,14 @@ class CollegeIdReaderProviderImpl implements CollegeIdReaderProvider {
   }
 
   @Override
-  public Reader getReaderFromCollegeId(CollegeId id) throws IOException {
+  public Reader getReaderFromCollegeIds(List<CollegeId> ids) throws IOException {
     String urlString = "https://api.data.gov/ed/collegescorecard/v1/schools.json?id=";
-    urlString += Integer.toString(id.id());
+    for (CollegeId id : ids) {
+      urlString += Integer.toString(id.id());
+      urlString += ",";
+    }
+    // chop off extra comma
+    urlString = urlString.substring(0, urlString.length() - 1);
     urlString += "&per_page=1&fields=id,school.name,school.city,school.main_";
     urlString += "campus,location.lat,location.lon,school.carnegie_size_setting,";
     urlString += "latest.admissions.admission_rate.overall,";

@@ -43,7 +43,8 @@ public final class CollegeDataApiImplTest {
             Resources.getResource(CollegeDataApiImplTest.class, "scorecard_response.json")
                 .openStream());
     CollegeId collegeId = CollegeId.create(193900);
-    when(mockReaderProvider.getReaderFromCollegeId(collegeId)).thenReturn(scorecardReader);
+    when(mockReaderProvider.getReaderFromCollegeIds(Arrays.asList(collegeId)))
+        .thenReturn(scorecardReader);
     List<CollegeData> colleges = testImpl.getCollegesById(Arrays.asList(collegeId));
     assertThat(colleges).hasSize(1);
     CollegeData collegeData = colleges.get(0);

@@ -21,18 +21,16 @@ final class CollegeDataApiImpl implements CollegeDataApi {
       ScorecardConverter scorecardConverter, CollegeIdReaderProvider readerProvider) {
     this.scorecardConverter = scorecardConverter;
     this.readerProvider = readerProvider;
-    this.gson =
-          new GsonBuilder().registerTypeAdapterFactory(GenerateTypeAdapter.FACTORY).create();
+    this.gson = new GsonBuilder().registerTypeAdapterFactory(GenerateTypeAdapter.FACTORY).create();
   }
 
   @Override
   public List<CollegeData> getCollegesById(List<CollegeId> ids) throws IOException {
     List<CollegeData> colleges = new ArrayList<>();
-    for (CollegeId id : ids) {
-      // Then deserialize into a ScorecardResponse
-      ScorecardResponse scorecardResponse =
-          gson.fromJson(readerProvider.getReaderFromCollegeId(id), ScorecardResponse.class);
-      ScorecardData scorecard = scorecardResponse.scorecardData().get(0);
+    // Then deserialize into a ScorecardResponse
+    ScorecardResponse scorecardResponse =
+        gson.fromJson(readerProvider.getReaderFromCollegeIds(ids), ScorecardResponse.class);
+    for (ScorecardData scorecard : scorecardResponse.scorecardData()) {
       // Then convert to a CollegeData
       CollegeData college = scorecardConverter.convert(scorecard);
       colleges.add(college);
