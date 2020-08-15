@@ -4,14 +4,11 @@ import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Mockito.when;
 
 import com.google.common.io.Resources;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.inject.Guice;
 import com.google.inject.testing.fieldbinder.Bind;
 import com.google.inject.testing.fieldbinder.BoundFieldModule;
 import com.google.univiz.CollegeData;
 import com.google.univiz.api.CollegeId;
-import com.ryanharter.auto.value.gson.GenerateTypeAdapter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
@@ -29,10 +26,10 @@ import org.mockito.junit.MockitoRule;
 @RunWith(JUnit4.class)
 public final class CollegeDataApiImplTest {
 
-  @Rule public MockitoRule rule = MockitoJUnit.rule();
-  @Bind @Mock CollegeIdReaderProvider mockReaderProvider;
-  @Bind ScorecardConverter scorecardConverter = new ScorecardConverter();
-  @Inject CollegeDataApiImpl testImpl;
+  @Rule public final MockitoRule rule = MockitoJUnit.rule();
+  @Bind @Mock private CollegeIdReaderProvider mockReaderProvider;
+  @Bind private ScorecardConverter scorecardConverter = new ScorecardConverter();
+  @Inject private CollegeDataApiImpl testImpl;
 
   @Before
   public void setup() {
@@ -41,7 +38,6 @@ public final class CollegeDataApiImplTest {
 
   @Test
   public void testGetCollegesById() throws IOException {
-    Gson gson = new GsonBuilder().registerTypeAdapterFactory(GenerateTypeAdapter.FACTORY).create();
     InputStreamReader scorecardReader =
         new InputStreamReader(
             Resources.getResource(CollegeDataApiImplTest.class, "scorecard_response.json")

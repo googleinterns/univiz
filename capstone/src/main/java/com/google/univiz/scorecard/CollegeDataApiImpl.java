@@ -6,28 +6,30 @@ import com.google.univiz.CollegeData;
 import com.google.univiz.CollegeDataApi;
 import com.google.univiz.api.CollegeId;
 import com.ryanharter.auto.value.gson.GenerateTypeAdapter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 
-public class CollegeDataApiImpl implements CollegeDataApi {
+final class CollegeDataApiImpl implements CollegeDataApi {
   private final ScorecardConverter scorecardConverter;
   private final CollegeIdReaderProvider readerProvider;
+  private final Gson gson;
 
   @Inject
-  public CollegeDataApiImpl(
+  protected CollegeDataApiImpl(
       ScorecardConverter scorecardConverter, CollegeIdReaderProvider readerProvider) {
     this.scorecardConverter = scorecardConverter;
     this.readerProvider = readerProvider;
+    this.gson =
+          new GsonBuilder().registerTypeAdapterFactory(GenerateTypeAdapter.FACTORY).create();
   }
 
   @Override
-  public List<CollegeData> getCollegesById(List<CollegeId> ids) {
+  public List<CollegeData> getCollegesById(List<CollegeId> ids) throws IOException {
     List<CollegeData> colleges = new ArrayList<>();
     for (CollegeId id : ids) {
       // Then deserialize into a ScorecardResponse
-      Gson gson =
-          new GsonBuilder().registerTypeAdapterFactory(GenerateTypeAdapter.FACTORY).create();
       ScorecardResponse scorecardResponse =
           gson.fromJson(readerProvider.getReaderFromCollegeId(id), ScorecardResponse.class);
       ScorecardData scorecard = scorecardResponse.scorecardData().get(0);

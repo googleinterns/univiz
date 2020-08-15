@@ -14,12 +14,12 @@ class CollegeIdReaderProviderImpl implements CollegeIdReaderProvider {
   private final UnivizConfig univizConfig;
 
   @Inject
-  public CollegeIdReaderProviderImpl(UnivizConfig univizConfig) {
+  protected CollegeIdReaderProviderImpl(UnivizConfig univizConfig) {
     this.univizConfig = univizConfig;
   }
 
   @Override
-  public Reader getReaderFromCollegeId(CollegeId id) {
+  public Reader getReaderFromCollegeId(CollegeId id) throws IOException {
     String urlString = "https://api.data.gov/ed/collegescorecard/v1/schools.json?id=";
     urlString += Integer.toString(id.id());
     urlString += "&per_page=1&fields=id,school.name,school.city,school.main_";
@@ -36,25 +36,7 @@ class CollegeIdReaderProviderImpl implements CollegeIdReaderProvider {
       URL url = new URL(urlString);
       is = url.openStream();
     } catch (MalformedURLException e) {
-      // log this
-      // then create empty stream
-      is =
-          new InputStream() {
-            @Override
-            public int read() {
-              return 0;
-            }
-          };
-    } catch (IOException e) {
-      // log this
-      // then create empty stream
-      is =
-          new InputStream() {
-            @Override
-            public int read() {
-              return 0;
-            }
-          };
+      throw new AssertionError(e);
     }
     return new InputStreamReader(is);
   }
