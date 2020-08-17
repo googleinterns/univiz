@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class VisResourceImpl implements VisResource {
-  
+
   public List<TuitionStats> getTuitionStats(List<CollegeId> colleges) {
     List<TuitionStats> stats = new ArrayList<>();
     return stats;
