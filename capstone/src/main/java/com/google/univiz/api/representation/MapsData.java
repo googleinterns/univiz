@@ -25,18 +25,18 @@ public abstract class MapsData {
   }
 
   @AutoValue.Builder
-  abstract static class Builder {
+  public abstract static class Builder {
 
-    abstract Builder setName(String value);
+    public abstract Builder setName(String value);
 
-    abstract Builder setCity(String city);
+    public abstract Builder setCity(String city);
 
-    abstract Builder setIsMainCampus(boolean value);
+    public abstract Builder setIsMainCampus(boolean value);
 
-    abstract Builder setLatitude(double value);
+    public abstract Builder setLatitude(double value);
 
-    abstract Builder setLongitude(double value);
+    public abstract Builder setLongitude(double value);
 
-    abstract MapsData build();
+    public abstract MapsData build();
   }
 }

@@ -1,4 +1,4 @@
-package com.google.univiz.api.representation;
+package com.google.univiz.api.resource;
 
 import com.google.common.base.Converter;
 import com.google.univiz.api.representation.CollegeData;
