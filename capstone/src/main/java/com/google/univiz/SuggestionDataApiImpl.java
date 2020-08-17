@@ -1,13 +1,15 @@
 package com.google.univiz;
 
 import java.io.IOException;
-import java.net.HttpUrlConnection;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import javax.inject.Inject;
 import org.apache.http.client.utils.URIBuilder;
-import org.json.simple.JSONObject;
 
 public class SuggestionDataApiImpl implements SuggestionDataApi {
   private static final String frontUrl =
@@ -19,7 +21,7 @@ public class SuggestionDataApiImpl implements SuggestionDataApi {
   private static final int timeout = 5000;
   
   /** Adds desired settings for the url connection */
-  private void customizeUrlConnection(HttpUrlConnection con) {
+  private void customizeUrlConnection(HttpURLConnection con) {
     con.setDoOutput(true);
     con.setRequestMethod("GET");
     con.setRequestProperty("Content-Type", "application/json");
@@ -30,73 +32,69 @@ public class SuggestionDataApiImpl implements SuggestionDataApi {
     URIBuilder builtUri = new URIBuilder(frontUrl);
     builtUri.addParameter(paramCollegeName, proposedCollegeName);
     builtUri.addParameter(paramFields, paramFieldsVal);
-    builtUri.addParameter(paramApiKey, "PUT_API_KEY_HERE");
+    builtUri.addParameter(paramApiKey, univizConfig.scorecardApiKey());
     return b.build().toUrl();
   }
 
   /** Sets timeout for the connection */
-  private void setTimeout(HttpUrlConnection con) {
+  private void setTimeout(HttpURLConnection con) {
     con.setConnectTimeout(timeout);
     con.setReadTimeout(timeout);
   }
 
   /** Gets URL Output from the connection */
-  private String getUrlOutput(URL url) {
-    Scanner scanUrl = new Scanner(url.openStream());
-    String urlOutput = "";
-    while (scanUrl.hasNext()) {
-      urlOutput += scanUrl.nextLine();
+  private String getUrlOutput(BufferedReader streamReader) {
+    StringBuilder responseBuilder = new StringBuilder();
+    String lineResponse = "";
+    while (!(lineResponse = streamReader.readLine())) {
+      responseBuilder.append(lineResponse);
     }
-    scanUrl.close();
-    return urlOutput;
+    return responseBuilder.string(); 
   }
 
   /** Makes REST request to the CollegeScorecard API */
-  private JSONObject requestRESTApiData(String proposedCollegeName) {
-    JSONObject jsonData = new JSONObject();
+  private String requestRESTApiData(String proposedCollegeName) throws IOException {
+    String urlResponse = "";
+    InputStream in;
     try {
       URL url = buildURL(proposedCollegeName);
-      HttpUrlConnection con = (HttpUrlConnection) url.openConnection();
+      HttpURLConnection con = (HttpURLConnection) url.openConnection();
       customizeUrlConnection(con);
       setTimeout(con);
-
-      con.connect();
+      
+      //Set up the streams and check that the connection is valid
+      in = con.getInputStream();
+      BufferedReader streamReader = new BufferedReader(new InputStreamReader(in));
       if (con.getResponseCode() != 200) {
         throw new RuntimeException("HTTPResponseCode: " + con.getResponseCode());
       }
 
-      String urlOutput = getUrlOutput(url);
-      JSONParser parseJson = new JSONParser();
-      jsonData = (JSONObject) parseJson.parse(parseJson);
+      String urlResponse = getUrlOutput(streamReader);
+      
+      //Close open connections
       con.disconnect();
+      in.close();
     } catch (MalformedURLException e) {
-      System.out.println("MalformedURLException: " + e);
-    } catch (IOException e) {
-      System.out.println("IOException: " + e);
-    } catch (RuntimeException e) {
-      System.out.println("RuntimeException: " + e);
+      throw new AssertionError(e);
     } catch (URISyntaxException e) {
-      System.out.println("URISyntaxException: " + e);
+      throw new AssertionError(e);
     } finally {
       if (con.getResponseCode() == 200) {
         con.disconnect();
       }
     }
-    return jsonData;
+    return urlResponse;
   }
 
   /** Takes REST API Json response and converts it to SuggestionData */
-  private List<SuggestionData> convertJsonToSuggestionData(JSONObject suggestionResults) {
-    List<SuggestionData> listSuggestions = new ArrayList<>();
+  private SuggestionResponse convertJsonToSuggestionResponse(String suggestionResults) {
     Gson gson = new GsonBuilder().registerTypeAdapterFactory(GenerateTypeAdapter.FACTORY).create();
-    SuggestionData retSuggestions = gson.fromJson(suggestionResults, SuggestionData.class);
-    return listSuggestions;
+    return gson.fromJson(suggestionResults, SuggestionResponse.class);
   }
 
   @Override
-  public List<SuggestionData> getCollegeSuggestions(String collegeName) {
-    JSONObject returnJson = requestRESTApiData(proposedCollegeName);
-    List<SuggestionData> returnSuggestionData = convertJsonToSuggestionData(returnJson);
-    return returnSuggestionData;
+  public void getCollegeSuggestions(String collegeName) {
+    String suggestionResults = requestRESTApiData(proposedCollegeName);
+    return convertJsonToSuggestionResponse(suggestionResults);
   }
 }
