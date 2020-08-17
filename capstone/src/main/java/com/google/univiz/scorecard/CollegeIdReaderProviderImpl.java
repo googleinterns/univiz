@@ -37,13 +37,17 @@ class CollegeIdReaderProviderImpl implements CollegeIdReaderProvider {
     urlString += univizConfig.scorecardApiKey();
 
     // Make REST call
+    return new InputStreamReader(getStreamFromUrl(urlString));
+  }
+
+  public InputStream getStreamFromUrl(String urlString) throws IOException {
     InputStream is;
     try {
       URL url = new URL(urlString);
       is = url.openStream();
+      return is;
     } catch (MalformedURLException e) {
       throw new AssertionError(e);
     }
-    return new InputStreamReader(is);
   }
 }
