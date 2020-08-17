@@ -1,5 +1,7 @@
 package com.google.univiz.scorecard;
 
+import static java.util.stream.Collectors.joining;
+
 import com.google.univiz.api.CollegeId;
 import com.google.univiz.config.UnivizConfig;
 import java.io.IOException;
@@ -21,19 +23,10 @@ class CollegeIdReaderProviderImpl implements CollegeIdReaderProvider {
 
   @Override
   public Reader getReaderFromCollegeIds(List<CollegeId> ids) throws IOException {
-    StringBuilder urlStringBuilder = new StringBuilder();
+    final StringBuilder urlStringBuilder = new StringBuilder();
     urlStringBuilder.append("https://api.data.gov/ed/collegescorecard/v1/schools.json?id=");
-    /*
-    for (CollegeId id : ids) {
-      urlStringBuilder.append(Integer.toString(id.id()));
-      urlStringBuilder.append(",");
-    }
-    */
-    ids.stream()
-        .map(id -> Integer.toString(id.id()))
-        .forEach(idString -> urlStringBuilder.append(idString + ","));
-    // chop off extra comma
-    urlStringBuilder.deleteCharAt(urlStringBuilder.length() - 1);
+    String stringWithIds = ids.stream().map(id -> Integer.toString(id.id())).collect(joining(","));
+    urlStringBuilder.append(stringWithIds);
     urlStringBuilder.append("&per_page=1&fields=id,school.name,school.city,school.main_");
     urlStringBuilder.append("campus,location.lat,location.lon,school.carnegie_size_setting,");
     urlStringBuilder.append("latest.admissions.admission_rate.overall,");
