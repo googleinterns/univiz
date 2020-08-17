@@ -13,7 +13,21 @@ import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
 public final class SuggestionDataApiImplTest {
+  @Rule public final MockitoRule rule = MockitoJUnit.rule();
+  @Inject private SuggestionDataApiImpl testImpl;
+  
+  @Before
+  public void setup() {
+    Guice.createInjector(BoundFieldModule.of(this)).injectMembers(this);
+  }
+
+
   @Test
-  public void testGetSuggestions() {
+  public void testGetSuggestionsByFragment() { //TODO
+    InputStreamReader scorecardReader =
+        new InputStreamReader(
+            Resources.getResource(SuggestionDataApiImplTest.class, "suggestion_response.json")
+                .openStream());
+
   }
 }

@@ -93,7 +93,7 @@ public class SuggestionDataApiImpl implements SuggestionDataApi {
   }
 
   @Override
-  public void getCollegeSuggestions(String collegeName) {
+  public SuggestionResponse getCollegeSuggestions(String collegeName) {
     String suggestionResults = requestRESTApiData(proposedCollegeName);
     return convertJsonToSuggestionResponse(suggestionResults);
   }
