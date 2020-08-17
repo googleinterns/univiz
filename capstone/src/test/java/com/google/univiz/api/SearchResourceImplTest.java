@@ -15,10 +15,16 @@ import org.mockito.junit.MockitoRule;
 
 @RunWith(JUnit4.class)
 public final class SearchResourceImplTest {
+  private SearchResourceImpl search;
   @Mock private SuggestionDataApi mockSuggestionApi;
 
   @Rule public final MockitoRule mockitoRule = MockitoJUnit.rule();
-
+  
+  @Before
+  public void setup() {
+    search = new SearchResourceImpl(mockSuggestionApi);
+  }
+  
   @Test
   public void testGetSuggestions() throws Exception {
     String partialCollegeName = "Sta";
@@ -27,7 +33,6 @@ public final class SearchResourceImplTest {
     cannedResponse.add(stanford);
     when(mockSuggestionApi.getCollegeSuggestions(partialCollegeName)).thenReturn(cannedResponse);
 
-    SearchResourceImpl search = new SearchResourceImpl(mockSuggestionApi);
     List<SearchData> ret = search.getSearchSuggestions(partialCollegeName);
     SearchData expected = SearchData.create("Stanford University", 0);
     assertThat(ret).containsExactly(expected);
