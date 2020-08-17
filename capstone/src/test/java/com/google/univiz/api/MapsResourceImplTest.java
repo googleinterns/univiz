@@ -31,7 +31,5 @@ public final class MapsResourceImplTest {
   }
 
   @Test
-  public void testMapsResourceImpl() {
-    
-  }
+  public void testMapsResourceImpl() {}
 }
