@@ -1,4 +1,4 @@
-package com.google.univiz.api;
+package com.google.univiz;
 
 import com.google.univiz.api.representation.SuggestionData;
 import com.google.univiz.scorecard.SuggestionResponse;
