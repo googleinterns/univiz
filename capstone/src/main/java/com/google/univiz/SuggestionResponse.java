@@ -10,5 +10,5 @@ import java.util.List;
 @AutoValue
 abstract class SuggestionResponse {
   @SerializedName("results")
-  abstract List<SuggestionData> suggestionData();
+  abstract List<SuggestionData> suggestions();
 }
