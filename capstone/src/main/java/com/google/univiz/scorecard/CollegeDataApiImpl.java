@@ -30,7 +30,7 @@ final class CollegeDataApiImpl implements CollegeDataApi {
     ScorecardResponse scorecardResponse =
         gson.fromJson(readerProvider.getReaderFromCollegeIds(ids), ScorecardResponse.class);
     scorecardResponse.scorecardData().stream()
-        .map(scorecard -> scorecardConverter.convert(scorecard))
+        .map(scorecardConverter::convert)
         .forEach(college -> colleges.add(college));
     return colleges;
   }
