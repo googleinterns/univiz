@@ -1,6 +1,8 @@
 package com.google.univiz.scorecard;
 
 import com.google.common.base.Converter;
+import com.google.univiz.api.representation.CarnegieSizeDegree;
+import com.google.univiz.api.representation.CollegeData;
 import com.google.univiz.api.representation.CollegeId;
 
 final class ScorecardConverter extends Converter<ScorecardData, CollegeData> {

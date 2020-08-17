@@ -1,8 +1,9 @@
 package com.google.univiz.api.resource;
 
-import com.google.univiz.api.dataviz.Deadline;
-import com.google.univiz.api.dataviz.Timeline;
-import com.google.univiz.api.dataviz.TuitionStats;
+import com.google.univiz.api.representation.CollegeId;
+import com.google.univiz.api.representation.Deadline;
+import com.google.univiz.api.representation.Timeline;
+import com.google.univiz.api.representation.TuitionStats;
 import java.util.List;
 
 /**

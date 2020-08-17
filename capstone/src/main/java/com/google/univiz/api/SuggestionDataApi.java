@@ -1,5 +1,6 @@
 package com.google.univiz.api;
 
+import com.google.univiz.api.representation.SuggestionData;
 import java.util.List;
 
 /**
