@@ -27,7 +27,6 @@ final class CollegeDataApiImpl implements CollegeDataApi {
   @Override
   public List<CollegeData> getCollegesById(List<CollegeId> ids) throws IOException {
     List<CollegeData> colleges = new ArrayList<>();
-    // Then deserialize into a ScorecardResponse
     ScorecardResponse scorecardResponse =
         gson.fromJson(readerProvider.getReaderFromCollegeIds(ids), ScorecardResponse.class);
     scorecardResponse.scorecardData().stream()
