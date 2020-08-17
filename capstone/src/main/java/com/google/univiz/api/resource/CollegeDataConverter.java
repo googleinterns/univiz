@@ -1,7 +1,8 @@
-package com.google.univiz.api;
+package com.google.univiz.api.representation;
 
 import com.google.common.base.Converter;
-import com.google.univiz.CollegeData;
+import com.google.univiz.api.representation.CollegeData;
+import com.google.univiz.api.representation.MapsData;
 
 final class CollegeDataConverter extends Converter<CollegeData, MapsData> {
 
