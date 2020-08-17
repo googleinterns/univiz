@@ -1,4 +1,4 @@
-const inp = document.getElementById('search');
+const searchInput = document.getElementById('search');
 const currentFocus = -1;
 /**
  * @param {Object} autocompleteListElmt
