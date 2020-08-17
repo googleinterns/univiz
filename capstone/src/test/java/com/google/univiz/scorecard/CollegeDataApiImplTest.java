@@ -28,7 +28,6 @@ public final class CollegeDataApiImplTest {
 
   @Rule public final MockitoRule rule = MockitoJUnit.rule();
   @Bind @Mock private CollegeIdReaderProvider mockReaderProvider;
-  @Bind private ScorecardConverter scorecardConverter = new ScorecardConverter();
   @Inject private CollegeDataApiImpl testImpl;
 
   @Before
