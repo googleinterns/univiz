@@ -18,7 +18,7 @@ public class MapsResourceImpl implements MapsResource {
   }
 
   @Override
-  public List<MapsData> getMapData(List<CollegeId> ids) {
+  public List<MapsData> getMapsData(List<CollegeId> ids) {
     List<CollegeData> colleges = collegeDataApi.getCollegesById(ids);
     List<MapsData> mapsData = new ArrayList<>();
 
