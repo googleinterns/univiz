@@ -19,7 +19,7 @@ public final class SuggestionResponseTest {
     Gson gson = new GsonBuilder().registerTypeAdapterFactory(GenerateTypeAdapter.FACTORY).create();
     InputStreamReader suggestionResponseReader =
         new InputStreamReader(
-            Resources.getResource(SuggestionResponseTest.class, "suggestion_response.json")
+            Resources.getResource(SuggestionResponseTest.class, "suggestion-response.json")
                 .openStream());
     SuggestionResponse suggestionResponse =
         gson.fromJson(suggestionResponseReader, SuggestionResponse.class);
