@@ -1,5 +1,7 @@
 package com.google.univiz.scorecard;
 
+import static java.util.stream.Collectors.toList;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.univiz.CollegeData;
@@ -26,12 +28,10 @@ final class CollegeDataApiImpl implements CollegeDataApi {
 
   @Override
   public List<CollegeData> getCollegesById(List<CollegeId> ids) throws IOException {
-    List<CollegeData> colleges = new ArrayList<>();
     ScorecardResponse scorecardResponse =
         gson.fromJson(readerProvider.getReaderFromCollegeIds(ids), ScorecardResponse.class);
-    scorecardResponse.scorecardData().stream()
+    return scorecardResponse.scorecardData().stream()
         .map(scorecardConverter::convert)
-        .forEach(college -> colleges.add(college));
-    return colleges;
+        .collect(toList());
   }
 }
