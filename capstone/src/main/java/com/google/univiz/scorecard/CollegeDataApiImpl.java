@@ -9,7 +9,6 @@ import com.google.univiz.CollegeDataApi;
 import com.google.univiz.api.CollegeId;
 import com.ryanharter.auto.value.gson.GenerateTypeAdapter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 

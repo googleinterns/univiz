@@ -21,23 +21,30 @@ class CollegeIdReaderProviderImpl implements CollegeIdReaderProvider {
 
   @Override
   public Reader getReaderFromCollegeIds(List<CollegeId> ids) throws IOException {
-    String urlString = "https://api.data.gov/ed/collegescorecard/v1/schools.json?id=";
+    StringBuilder urlStringBuilder = new StringBuilder();
+    urlStringBuilder.append("https://api.data.gov/ed/collegescorecard/v1/schools.json?id=");
+    /*
     for (CollegeId id : ids) {
-      urlString += Integer.toString(id.id());
-      urlString += ",";
+      urlStringBuilder.append(Integer.toString(id.id()));
+      urlStringBuilder.append(",");
     }
+    */
+    ids.stream()
+        .map(id -> Integer.toString(id.id()))
+        .forEach(idString -> urlStringBuilder.append(idString + ","));
     // chop off extra comma
-    urlString = urlString.substring(0, urlString.length() - 1);
-    urlString += "&per_page=1&fields=id,school.name,school.city,school.main_";
-    urlString += "campus,location.lat,location.lon,school.carnegie_size_setting,";
-    urlString += "latest.admissions.admission_rate.overall,";
-    urlString += "latest.admissions.sat_scores.average.overall,latest.student.size,";
-    urlString += "latest.cost.attendance.academic_year,latest.student.demographics.men,";
-    urlString += "latest.student.demographics.women&api_key=";
-    urlString += univizConfig.scorecardApiKey();
+    urlStringBuilder.deleteCharAt(urlStringBuilder.length() - 1);
+    urlStringBuilder.append("&per_page=1&fields=id,school.name,school.city,school.main_");
+    urlStringBuilder.append("campus,location.lat,location.lon,school.carnegie_size_setting,");
+    urlStringBuilder.append("latest.admissions.admission_rate.overall,");
+    urlStringBuilder.append("latest.admissions.sat_scores.average.overall,latest.student.size,");
+    urlStringBuilder.append(
+        "latest.cost.attendance.academic_year,latest.student.demographics.men,");
+    urlStringBuilder.append("latest.student.demographics.women&api_key=");
+    urlStringBuilder.append(univizConfig.scorecardApiKey());
 
     // Make REST call
-    return new InputStreamReader(getStreamFromUrl(urlString));
+    return new InputStreamReader(getStreamFromUrl(urlStringBuilder.toString()));
   }
 
   public InputStream getStreamFromUrl(String urlString) throws IOException {
