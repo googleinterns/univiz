@@ -25,7 +25,7 @@ public final class SearchResourceImplTest {
     SuggestionData stanford = new SuggestionData("Stanford University", 0);
     List<SuggestionData> cannedResponse = new ArrayList<>();
     cannedResponse.add(stanford);
-    when(mockSuggestionApi.getSuggestions(partialCollegeName)).thenReturn(cannedResponse);
+    when(mockSuggestionApi.getCollegeSuggestions(partialCollegeName)).thenReturn(cannedResponse);
 
     SearchResourceImpl search = new SearchResourceImpl(mockSuggestionApi);
     List<SearchData> ret = search.getSearchSuggestions(partialCollegeName);
