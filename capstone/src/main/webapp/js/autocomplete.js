@@ -106,7 +106,7 @@ document.addEventListener('input', function(e) {
   currentFocus = -1;
   const autocompleteList = document.createElement('div');
   autocompleteList.setAttribute('id', this.id + 'autocomplete-list');
-  autcompleteList.setAttribute('class', 'autocomplete-items');
+  autocompleteList.setAttribute('class', 'autocomplete-items');
   this.parentNode.appendChild(autocompleteList);
   const trimArr = getRelevantDataSuggestions(arr, val);
   displaySuggestions(trimArr, autocompleteList);
