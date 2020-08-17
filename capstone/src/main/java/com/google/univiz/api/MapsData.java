@@ -1,11 +1,12 @@
 package com.google.univiz.api;
 
 import com.google.auto.value.AutoValue;
+import com.ryanharter.auto.value.gson.GenerateTypeAdapter;
 
 /**
- * The MapsData is a class representing all relevant college data that is specific to the Maps
- * feature.
+ * MapsData is a class representing all relevant college data that is specific to the Maps feature.
  */
+@GenerateTypeAdapter
 @AutoValue
 public abstract class MapsData {
 
@@ -24,18 +25,18 @@ public abstract class MapsData {
   }
 
   @AutoValue.Builder
-  public abstract static class Builder {
+  abstract static class Builder {
 
-    public abstract Builder setName(String value);
+    abstract Builder setName(String value);
 
-    public abstract Builder setCity(String city);
+    abstract Builder setCity(String city);
 
-    public abstract Builder setIsMainCampus(boolean value);
+    abstract Builder setIsMainCampus(boolean value);
 
-    public abstract Builder setLatitude(double value);
+    abstract Builder setLatitude(double value);
 
-    public abstract Builder setLongitude(double value);
+    abstract Builder setLongitude(double value);
 
-    public abstract MapsData build();
+    abstract MapsData build();
   }
 }
