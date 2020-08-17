@@ -19,13 +19,13 @@ public final class SuggestionResponseTest {
     Gson gson = new GsonBuilder().registerTypeAdapterFactory(GenerateTypeAdapter.FACTORY).create();
     InputStreamReader suggestionResponseReader =
         new InputStreamReader(
-            Resources.getResource(SuggestionResponseTest.class, "suggestion_response.json")
+            Resources.getResource(SuggestionResponseTest.class, "suggestion-response.json")
                 .openStream());
     SuggestionResponse suggestionResponse =
         gson.fromJson(suggestionResponseReader, SuggestionResponse.class);
 
-    assertThat(suggestionResponse.suggestionData()).hasSize(1);
-    assertThat(suggestionResponse.suggestionData().get(0).name()).isEqualTo("Stanford University");
-    assertThat(suggestionResponse.suggestionData().get(0).id()).isEqualTo(243744);
+    assertThat(suggestionResponse.suggestions()).hasSize(1);
+    assertThat(suggestionResponse.suggestions().get(0).name()).isEqualTo("Stanford University");
+    assertThat(suggestionResponse.suggestions().get(0).id()).isEqualTo(243744);
   }
 }
