@@ -10,9 +10,9 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.HashSet;
 import javax.inject.Inject;
 
 class CollegeIdReaderProviderImpl implements CollegeIdReaderProvider {
