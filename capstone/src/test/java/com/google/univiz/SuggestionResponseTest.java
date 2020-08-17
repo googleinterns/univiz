@@ -24,8 +24,8 @@ public final class SuggestionResponseTest {
     SuggestionResponse suggestionResponse =
         gson.fromJson(suggestionResponseReader, SuggestionResponse.class);
 
-    assertThat(suggestionResponse.suggestionData()).hasSize(1);
-    assertThat(suggestionResponse.suggestionData().get(0).name()).isEqualTo("Stanford University");
-    assertThat(suggestionResponse.suggestionData().get(0).id()).isEqualTo(243744);
+    assertThat(suggestionResponse.suggestions()).hasSize(1);
+    assertThat(suggestionResponse.suggestions().get(0).name()).isEqualTo("Stanford University");
+    assertThat(suggestionResponse.suggestions().get(0).id()).isEqualTo(243744);
   }
 }
