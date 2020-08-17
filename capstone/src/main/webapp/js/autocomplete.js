@@ -35,7 +35,7 @@ function removeActiveTag(autocompleteListElmt) {
  * @param {Object} elmnt
  * @param {Object} inp
  * @return {void}
- * Closes dropdown autocomplete list(s)
+ * Closes dropdown autocomplete list
  */
 function closeAllLists(elmnt, inp) {
   const autoItems = document.getElementsByClassName('autocomplete-items');
