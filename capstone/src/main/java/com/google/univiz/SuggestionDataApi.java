@@ -11,5 +11,5 @@ public interface SuggestionDataApi {
    * Takes a fragment of a college name or a complete college name and returns a list of
    * SuggestionData objects
    */
-  List<SuggestionData> getCollegeSuggestions(String collegeName);
+  SuggestionResponse getCollegeSuggestions(String collegeName);
 }
