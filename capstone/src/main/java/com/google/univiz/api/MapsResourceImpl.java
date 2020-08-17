@@ -9,25 +9,22 @@ import javax.inject.Inject;
 
 public class MapsResourceImpl implements MapsResource {
   private final CollegeDataApi collegeDataApi;
+  private final CollegeDataConverter converter;
 
   @Inject
-  MapsResourceImpl(CollegeDataApi collegeDataApi) {
+  MapsResourceImpl(CollegeDataApi collegeDataApi, CollegeDataConverter converter) {
     this.collegeDataApi = collegeDataApi;
+    this.converter = converter;
   }
 
   @Override
   public List<MapsData> getMapData(List<CollegeId> ids) {
     List<CollegeData> colleges = collegeDataApi.getCollegesById(ids);
     List<MapsData> mapsData = new ArrayList<>();
-    CollegeDataConverter converter = new CollegeDataConverter();
 
-    if (colleges.size() == 0) {
-      return mapsData;
-    } else {
-      for (CollegeData college : colleges) {
-        MapsData mapsDataFromCollege = converter.convert(college);
-        mapsData.add(mapsDataFromCollege);
-      }
+    for (CollegeData college : colleges) {
+      MapsData mapsDataFromCollege = converter.convert(college);
+      mapsData.add(mapsDataFromCollege);
     }
 
     return mapsData;
