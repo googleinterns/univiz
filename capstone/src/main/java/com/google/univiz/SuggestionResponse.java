@@ -1,4 +1,4 @@
 package com.google.univiz;
 
-/** SuggestionData represents the college data specific to the Search feature */
+/** SuggestionResponse represents the list college data specific to the Search feature */
 public class SuggestionResponse {}
