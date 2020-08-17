@@ -1,7 +1,7 @@
 package com.google.univiz.scorecard;
 
 import com.google.common.base.Converter;
-import com.google.univiz.api.resource.CollegeId;
+import com.google.univiz.api.representation.CollegeId;
 
 final class ScorecardConverter extends Converter<ScorecardData, CollegeData> {
 

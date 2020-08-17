@@ -1,4 +1,4 @@
-package com.google.univiz.scorecard;
+package com.google.univiz.api;
 
 import com.google.univiz.api.resource.CollegeId;
 import java.util.List;

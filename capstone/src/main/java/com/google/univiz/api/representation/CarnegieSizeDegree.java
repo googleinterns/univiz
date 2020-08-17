@@ -1,4 +1,4 @@
-package com.google.univiz.scorecard;
+package com.google.univiz.api.representation;
 
 /**
  * CarnegieSizeDegree is a class that holds the enum for the range of values for a school's carnegie
