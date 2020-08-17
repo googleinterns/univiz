@@ -1,6 +1,5 @@
 package com.google.univiz;
 
-
 /**
  * Communicates directly with the data source to get a list of college suggestions related to a
  * client query
