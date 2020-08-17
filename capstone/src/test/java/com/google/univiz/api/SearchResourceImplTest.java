@@ -29,8 +29,7 @@ public final class SearchResourceImplTest {
   public void testGetSuggestions() throws Exception {
     String partialCollegeName = "Sta";
     SuggestionData stanford = new SuggestionData("Stanford University", 0);
-    List<SuggestionData> cannedResponse = new ArrayList<>();
-    cannedResponse.add(stanford);
+    List<SuggestionData> cannedResponse = List.newArrayList(stanford);
     when(mockSuggestionApi.getCollegeSuggestions(partialCollegeName)).thenReturn(cannedResponse);
 
     List<SearchData> ret = search.getSearchSuggestions(partialCollegeName);
