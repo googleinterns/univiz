@@ -19,7 +19,7 @@ public final class SuggestionDataTest {
     Gson gson = new GsonBuilder().registerTypeAdapterFactory(GenerateTypeAdapter.FACTORY).create();
     InputStreamReader suggestionDataReader =
         new InputStreamReader(
-            Resources.getResource(SuggestionDataTest.class, "suggestion_data.json").openStream());
+            Resources.getResource(SuggestionDataTest.class, "suggestion.json").openStream());
     SuggestionData suggestionData = gson.fromJson(suggestionDataReader, SuggestionData.class);
 
     assertThat(suggestionData.name()).isEqualTo("Stanford University");
