@@ -2,7 +2,6 @@ package com.google.univiz.scorecard;
 
 import com.google.auto.value.AutoValue;
 import com.google.gson.annotations.SerializedName;
-import com.google.univiz.scorecard.SuggestionData;
 import com.ryanharter.auto.value.gson.GenerateTypeAdapter;
 import java.util.List;
 
