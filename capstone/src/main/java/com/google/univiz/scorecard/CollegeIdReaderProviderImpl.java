@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Set;
 import javax.inject.Inject;
 
-class CollegeIdReaderProviderImpl implements CollegeIdReaderProvider {
+final class CollegeIdReaderProviderImpl implements CollegeIdReaderProvider {
   private final UnivizConfig univizConfig;
 
   @Inject
@@ -57,8 +57,7 @@ class CollegeIdReaderProviderImpl implements CollegeIdReaderProvider {
     InputStream is;
     try {
       URL url = new URL(urlString);
-      is = url.openStream();
-      return is;
+      return url.openStream();
     } catch (MalformedURLException e) {
       throw new AssertionError(e);
     }
