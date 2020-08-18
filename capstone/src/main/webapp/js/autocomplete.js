@@ -1,5 +1,8 @@
 const searchInput = document.getElementById('search');
 const currentFocus = -1;
+const itemClass = 'autocomplete-items';
+const activeClass = 'autocomplete-active';
+const listId = 'autocomplete-list';
 /**
  * @param {Object} autocompleteListElmt
  * @return {bool}
@@ -15,7 +18,7 @@ function addActiveTag(autocompleteListElmt) {
   } else if (currentFocus < 0) {
     currentFocus = (autocompleteListElmt.length - 1);
   }
-  autocompleteListElmt[currentFocus].classList.add('autocomplete-active');
+  autocompleteListElmt[currentFocus].classList.add(activeClass);
 }
 
 /**
@@ -24,7 +27,7 @@ function addActiveTag(autocompleteListElmt) {
  * Removes the 'active' tag from an autocomplete elmt
  */
 function removeActiveTag(autocompleteListElmt) {
-  autocompleteListElmt.forEach(element => element.classList.remove('autocomplete-active'));
+  autocompleteListElmt.forEach(element => element.classList.remove(activeClass));
 }
 
 /**
@@ -34,7 +37,7 @@ function removeActiveTag(autocompleteListElmt) {
  * Closes dropdown autocomplete list
  */
 function closeAllLists(elmnt, inp) {
-  const autoItems = document.getElementsByClassName('autocomplete-items');
+  const autoItems = document.getElementsByClassName(itemClass);
   for (item in autoItems) {
     if (elmnt != item && elmnt != inp) {
       item.parentNode.removeChild(item);
@@ -101,8 +104,8 @@ document.addEventListener('input', function(e) {
   const arr = getListOfSuggestions();
   currentFocus = -1;
   const autocompleteList = document.createElement('div');
-  autocompleteList.setAttribute('id', this.id + 'autocomplete-list');
-  autocompleteList.setAttribute('class', 'autocomplete-items');
+  autocompleteList.setAttribute('id', this.id + listId);
+  autocompleteList.setAttribute('class', itemClass);
   this.parentNode.appendChild(autocompleteList);
   const trimArr = getRelevantDataSuggestions(arr, val);
   displaySuggestions(trimArr, autocompleteList);
@@ -110,7 +113,7 @@ document.addEventListener('input', function(e) {
 
 /* Event occurance when arrow keys are pressed */
 document.addEventListener('keydown', function(e) {
-  const listElmt = document.getElementById(this.id + 'autocomplete-list');
+  const listElmt = document.getElementById(this.id + listId);
   if (listElmt) {
     listElmt = listElmt.getElementsByTagName('div');
   }
