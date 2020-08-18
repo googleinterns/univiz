@@ -24,11 +24,7 @@ function addActiveTag(autocompleteListElmt) {
  * Removes the 'active' tag from an autocomplete elmt
  */
 function removeActiveTag(autocompleteListElmt) {
-  for (listElmt in autocompleteListElmt) {
-    if (true) {
-      listElmt.classList.remove('autocomplete-active');
-    }
-  }
+  autocompleteListElmt.forEach(element => element.classList.remove('autocomplete-active'));
 }
 
 /**
