@@ -33,7 +33,8 @@ public final class SearchResourceImplTest {
     when(mockSuggestionApi.getCollegeSuggestions(partialCollegeName)).thenReturn(cannedResponse);
 
     List<SearchData> ret = search.getSearchSuggestions(partialCollegeName);
-    SearchData expected = SearchData.create("Stanford University", 0);
+    CollegeId collegeId = CollegeId.create(0);
+    SearchData expected = SearchData.create("Stanford University", collegeId);
     assertThat(ret).containsExactly(expected);
   }
 }
