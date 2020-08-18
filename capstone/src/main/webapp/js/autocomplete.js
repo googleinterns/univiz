@@ -38,11 +38,8 @@ function removeActiveTag(autocompleteListElmt) {
  */
 function closeAllLists(elmnt, inp) {
   const autoItems = document.getElementsByClassName(itemClass);
-  for (item in autoItems) {
-    if (elmnt != item && elmnt != inp) {
-      item.parentNode.removeChild(item);
-    }
-  }
+  autoItems.filter(elt => (elt != item && elt != inp))
+           .forEach(item => item.parentNode.removeChild(item));
 }
 
 /**
