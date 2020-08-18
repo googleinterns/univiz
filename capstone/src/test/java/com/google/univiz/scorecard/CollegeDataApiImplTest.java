@@ -4,13 +4,14 @@ import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Mockito.when;
 
 import com.google.common.io.Resources;
+import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
+import com.google.inject.Provides;
 import com.google.inject.testing.fieldbinder.Bind;
 import com.google.inject.testing.fieldbinder.BoundFieldModule;
 import com.google.univiz.CollegeData;
 import com.google.univiz.api.CollegeId;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.List;
 import javax.inject.Inject;
@@ -27,23 +28,29 @@ import org.mockito.junit.MockitoRule;
 public final class CollegeDataApiImplTest {
 
   @Rule public final MockitoRule rule = MockitoJUnit.rule();
-  @Bind @Mock private CollegeIdReaderProvider mockReaderProvider;
+  @Bind @Mock private URLProvider mockUrlProvider;
   @Inject private CollegeDataApiImpl testImpl;
+
+  static final class ReaderProviderModule extends AbstractModule {
+    @Provides
+    CollegeIdReaderProvider provideCollegeIdReaderProvider() {
+      return new CollegeIdReaderProviderImpl();
+    }
+  }
 
   @Before
   public void setup() {
-    Guice.createInjector(BoundFieldModule.of(this)).injectMembers(this);
+    Guice.createInjector(new ReaderProviderModule(), BoundFieldModule.of(this)).injectMembers(this);
   }
 
   @Test
   public void testGetCollegesById() throws IOException {
-    InputStreamReader scorecardReader =
-        new InputStreamReader(
-            Resources.getResource(CollegeDataApiImplTest.class, "scorecard_response.json")
-                .openStream());
+
     CollegeId collegeId = CollegeId.create(193900);
-    when(mockReaderProvider.getReaderFromCollegeIds(Arrays.asList(collegeId)))
-        .thenReturn(scorecardReader);
+    String scorecardUrlString =
+        Resources.getResource(CollegeDataApiImplTest.class, "scorecard_response.json").toString();
+    when(mockUrlProvider.getUrlFromCollegeIds(Arrays.asList(collegeId)))
+        .thenReturn(scorecardUrlString);
     List<CollegeData> colleges = testImpl.getCollegesById(Arrays.asList(collegeId));
     assertThat(colleges).hasSize(1);
     CollegeData collegeData = colleges.get(0);
