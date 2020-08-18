@@ -1,5 +1,5 @@
 const searchInput = document.getElementById('search');
-const currentFocus = -1;
+const selectedSuggElt = -1;
 const itemClass = 'autocomplete-items';
 const activeClass = 'autocomplete-active';
 const listId = 'autocomplete-list';
@@ -13,12 +13,12 @@ function addActiveTag(autocompleteListElmt) {
     return false;
   }
   removeActiveTag(autocompleteListElmt);
-  if (currentFocus >= autocompleteListElmt.length) {
-    currentFocus = 0;
-  } else if (currentFocus < 0) {
-    currentFocus = (autocompleteListElmt.length - 1);
+  if (selectedSuggElt >= autocompleteListElmt.length) {
+    selectedSuggElt = 0;
+  } else if (selectedSuggElt < 0) {
+    selectedSuggElt = (autocompleteListElmt.length - 1);
   }
-  autocompleteListElmt[currentFocus].classList.add(activeClass);
+  autocompleteListElmt[selectedSuggElt].classList.add(activeClass);
 }
 
 /**
@@ -102,7 +102,7 @@ document.addEventListener('input', function(e) {
     return false;
   }
   const arr = getListOfSuggestions();
-  currentFocus = -1;
+  selectedSuggElt = -1;
   const autocompleteList = document.createElement('div');
   autocompleteList.setAttribute('id', this.id + listId);
   autocompleteList.setAttribute('class', itemClass);
@@ -118,16 +118,16 @@ document.addEventListener('keydown', function(e) {
     listElmt = listElmt.getElementsByTagName('div');
   }
   if (e.keyCode == 40) {/* Up key */
-    currentFocus++;
+    selectedSuggElt++;
     addActiveTag(listElmt);
   } else if (e.keyCode == 38) {/* Down key */
-    currentFocus--;
+    selectedSuggElt--;
     addActiveTag(listElmt);
   } else if (e.keyCode == 13) {/* Enter key */
     e.preventDefault();
-    if (currentFocus > -1) {
+    if (selectedSuggElt > -1) {
       if (listElmt) {
-        listElmt[currentFocus].click();
+        listElmt[selectedSuggElt].click();
       }
     }
   }
