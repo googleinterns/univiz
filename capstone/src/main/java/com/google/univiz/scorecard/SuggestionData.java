@@ -13,6 +13,5 @@ public abstract class SuggestionData {
   @Nullable
   public abstract String name();
 
-  @SerializedName("id")
   public abstract int id();
 }
