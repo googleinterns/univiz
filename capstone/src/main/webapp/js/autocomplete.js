@@ -4,9 +4,9 @@ const itemClass = 'autocomplete-items';
 const activeClass = 'autocomplete-active';
 const listId = 'autocomplete-list';
 /**
+ * Adds the 'active' tag to an autocomplete elmt
  * @param {Object} autocompleteListElmt
  * @return {bool}
- * Adds the 'active' tag to an autocomplete elmt
  */
 function addActiveTag(autocompleteListElmt) {
   if (!autocompleteListElmt) {
@@ -22,22 +22,21 @@ function addActiveTag(autocompleteListElmt) {
 }
 
 /**
+ * Removes the 'active' tag from an autocomplete elmt
  * @param {Object} autocompleteListElmt
  * @return {void}
- * Removes the 'active' tag from an autocomplete elmt
  */
 function removeActiveTag(autocompleteListElmt) {
   for (elmt of autocompleteListElmt) {
     elmt.classList.remove(activeClass);
   }
-  //autocompleteListElmt.forEach((element) => element.classList.remove(activeClass));
 }
 
 /**
+ * Closes dropdown autocomplete list
  * @param {Object} elmnt
  * @param {Object} inp
  * @return {void}
- * Closes dropdown autocomplete list
  */
 function closeAllLists(elmnt) {
   const autoItems = document.getElementsByClassName(itemClass);
@@ -46,13 +45,11 @@ function closeAllLists(elmnt) {
       item.parentNode.removeChild(item);
     }
   }
- // autoItems.filter((item) => (item != elmnt && item != searchInput))
-   //        .forEach((item) => item.parentNode.removeChild(item));
 }
 
 /**
- * @return{Object} arr
  * Current placeholder until servlet is created
+ * @return{Object} arr
  */
 function getListOfSuggestions() {
   const arr = ['Hello', 'Hi', 'Howdy'];
@@ -60,10 +57,10 @@ function getListOfSuggestions() {
 }
 
 /**
+ * Identifies and returns relevant suggestions in the arr
  * @param {Object} arr
  * @param {string} val
  * @return {Object} trimArr
- * Identifies and returns relevant suggestions in the arr
  */
 function getRelevantDataSuggestions(arr, val) {
   const trimArr = [];
@@ -76,10 +73,10 @@ function getRelevantDataSuggestions(arr, val) {
 }
 
 /**
+ * Takes relevant suggestions and displays them in DOM
  * @param {Object} trimArr
  * @param {Object} autocompleteList
  * @return {void}
- * Takes relevant suggestions and displays them in DOM
  */
 function displaySuggestions(trimArr, autocompleteList, val) {
   for (arrElt of trimArr) {
@@ -99,8 +96,10 @@ function displaySuggestions(trimArr, autocompleteList, val) {
   }
 }
 
-/* TODO: JSDoc
- * Event occurrance when input is provided to autocomplete field */
+/**
+ * Event occurrance when input is provided to autocomplete field 
+ * @return {void}
+ */
 function giveSuggestions() {
   closeAllLists();
   const val = searchInput.value;
@@ -117,7 +116,11 @@ function giveSuggestions() {
   displaySuggestions(trimArr, autocompleteList, val);
 }
 
-/* Event occurance when arrow keys are pressed */
+/**
+ * Event occurance when arrow keys are pressed 
+ * @param {event} e
+ * @return {void}
+ */ 
 function keyDown(e) {
   console.log("Key down!");
   let listElmt = document.getElementById(searchInput.id + listId);
