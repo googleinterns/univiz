@@ -14,8 +14,11 @@ final class SearchResourceImpl implements SearchResource {
 
   @Override
   public List<SearchData> getSearchSuggestions(String partialCollegeName) {
-    List<SuggestionData> collegeSuggestions = suggestionApi.getCollegeSuggestions(partialCollegeName);
-    return collegeSuggestions.stream()
+    if (!partialCollegeName || !partialCollegeName.match("[a-zA-Z]+")) {
+      partialCollegeName = "";
+    }
+    SuggestionResponse collegeSuggestions = suggestionApi.getCollegeSuggestions(partialCollegeName);
+    return collegeSuggestions.suggestions().stream()
         .map(college -> SearchData.create(college.collegeName(), college.collegeId()))
         .collect(Collectors.toList());
   }
