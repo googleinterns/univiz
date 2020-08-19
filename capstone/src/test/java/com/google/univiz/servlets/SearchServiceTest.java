@@ -31,14 +31,10 @@ import org.mockito.junit.MockitoRule;
 @RunWith(JUnit4.class)
 public final class SearchServiceTest {
 
-  @Rule
-  public final MockitoRule rule = MockitoJUnit.rule();
+  @Rule public final MockitoRule rule = MockitoJUnit.rule();
 
-  @Mock
-  @Bind
-  private SearchResource mockSearchResource;
-  @Inject
-  private SearchService searchService;
+  @Mock @Bind private SearchResource mockSearchResource;
+  @Inject private SearchService searchService;
 
   private static final SearchData STANFORD_COLLEGE_DATA = SearchData.create("stanford", 1);
   private static final SearchData USC_COLLEGE_DATA = SearchData.create("USC", 2);
