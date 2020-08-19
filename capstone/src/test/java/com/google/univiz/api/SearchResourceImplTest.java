@@ -3,7 +3,6 @@ package com.google.univiz.api;
 import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Mockito.when;
 
-import java.util.ArrayList;
 import java.util.List;
 import org.junit.Rule;
 import org.junit.Test;
@@ -20,12 +19,12 @@ public final class SearchResourceImplTest {
   @Mock private SuggestionResponse cannedResponse;
   @Mock private SuggestionData cannedSuggestion;
   @Rule public final MockitoRule mockitoRule = MockitoJUnit.rule();
-  
+
   @Before
   public void setup() {
     search = new SearchResourceImpl(mockSuggestionApi);
   }
-  
+
   @Test
   public void testSuggestionsForFullCollegeName() throws Exception {
     String fullCollegeName = "Stanford University";
@@ -85,9 +84,8 @@ public final class SearchResourceImplTest {
     SearchData expected = SearchData.create("", collegeId);
     assertThat(ret).containsExactly(expected);
   }
- 
-  
-/*TODO:  @Test
+
+  /*TODO:  @Test
   public void testMultipleSuggestionsForPartialCollegeName() throws Exception {
   }
 
