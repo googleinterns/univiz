@@ -1,6 +1,7 @@
 package com.google.univiz.api;
 
 import com.google.univiz.api.representation.SuggestionData;
+import com.google.univiz.scorecard.SuggestionResponse;
 import java.util.List;
 
 /**
@@ -10,7 +11,7 @@ import java.util.List;
 public interface SuggestionDataApi {
   /**
    * Takes a fragment of a college name or a complete college name and returns a list of
-   * SuggestionData objects
+   * SuggestionData objects, represented as a SuggestionResponse object
    */
-  List<SuggestionData> getCollegeSuggestions(String collegeName);
+  SuggestionResponse getCollegeSuggestions(String collegeName);
 }
