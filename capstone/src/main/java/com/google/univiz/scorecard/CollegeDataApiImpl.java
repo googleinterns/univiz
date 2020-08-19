@@ -3,11 +3,9 @@ package com.google.univiz.scorecard;
 import static java.util.stream.Collectors.toList;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.univiz.CollegeData;
 import com.google.univiz.CollegeDataApi;
 import com.google.univiz.api.CollegeId;
-import com.ryanharter.auto.value.gson.GenerateTypeAdapter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
@@ -23,11 +21,12 @@ final class CollegeDataApiImpl implements CollegeDataApi {
   protected CollegeDataApiImpl(
       ScorecardConverter scorecardConverter,
       CollegeIdReaderProvider readerProvider,
-      URLProvider urlProvider) {
+      URLProvider urlProvider,
+      Gson gson) {
     this.scorecardConverter = scorecardConverter;
     this.readerProvider = readerProvider;
     this.urlProvider = urlProvider;
-    this.gson = new GsonBuilder().registerTypeAdapterFactory(GenerateTypeAdapter.FACTORY).create();
+    this.gson = gson;
   }
 
   @Override

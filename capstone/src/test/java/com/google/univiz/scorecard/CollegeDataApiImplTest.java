@@ -10,6 +10,7 @@ import com.google.inject.Provides;
 import com.google.inject.testing.fieldbinder.Bind;
 import com.google.inject.testing.fieldbinder.BoundFieldModule;
 import com.google.univiz.CollegeData;
+import com.google.univiz.GsonModule;
 import com.google.univiz.api.CollegeId;
 import java.io.IOException;
 import java.util.Arrays;
@@ -40,7 +41,8 @@ public final class CollegeDataApiImplTest {
 
   @Before
   public void setup() {
-    Guice.createInjector(new ReaderProviderModule(), BoundFieldModule.of(this)).injectMembers(this);
+    Guice.createInjector(new GsonModule(), new ReaderProviderModule(), BoundFieldModule.of(this))
+        .injectMembers(this);
   }
 
   @Test
