@@ -9,9 +9,8 @@ public final class ServletHelper {
 
   public static void writeJsonToResponse(Gson gson, HttpServletResponse response, Object result)
       throws IOException {
-    String json = gson.toJson(results);
     response.setContentType("application/json");
-    response.getWriter().println(json);
+    response.getWriter().println(gson.toJson(result));
   }
 
   private ServletHelper() {}
