@@ -2,8 +2,8 @@ package com.google.univiz.servlets;
 
 import com.google.common.base.Strings;
 import com.google.gson.Gson;
-import com.google.univiz.api.SearchData;
-import com.google.univiz.api.SearchResource;
+import com.google.univiz.api.representation.SearchData;
+import com.google.univiz.api.resource.SearchResource;
 import com.google.univiz.common.ServletHelper;
 import java.io.IOException;
 import java.util.List;
