@@ -3,7 +3,7 @@ package com.google.univiz.api.resource;
 import com.google.univiz.api.representation.CollegeId;
 import com.google.univiz.api.representation.Deadline;
 import com.google.univiz.api.representation.Timeline;
-import com.google.univiz.api.representation.TuitionStats;
+import com.google.univiz.api.representation.CollegeStats;
 import java.util.List;
 
 /**
