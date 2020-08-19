@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  * service is best used for the auto-complete feature.
  */
 @WebServlet("/search")
-public class SearchService extends HttpServlet {
+public final class SearchService extends HttpServlet {
 
   private final Gson gson;
   private final SearchResource searchResource;
