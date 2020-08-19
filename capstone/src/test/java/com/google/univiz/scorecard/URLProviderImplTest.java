@@ -24,7 +24,7 @@ public final class URLProviderImplTest {
 
   @Before
   public void setup() {
-    Guice.createInjector(new UnivizConfigModule(), BoundFieldModule.of(this)).injectMembers(this);
+    Guice.createInjector(new UnivizConfigModule()).injectMembers(this);
   }
 
   @Test
