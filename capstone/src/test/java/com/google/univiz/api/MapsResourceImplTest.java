@@ -21,8 +21,6 @@ public final class MapsResourceImplTest {
 
   @Bind @Mock private CollegeDataApi collegeDataApi;
 
-  @Bind private CollegeDataConverter converter = new CollegeDataConverter();
-
   @Inject private MapsResourceImpl mapsImpl;
 
   @Before
