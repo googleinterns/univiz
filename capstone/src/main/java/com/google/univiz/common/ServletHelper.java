@@ -4,9 +4,7 @@ import com.google.gson.Gson;
 import java.io.IOException;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * A set of static utility methods that are common among servlet classes.
- */
+/** A set of static utility methods that are common among servlet classes. */
 public final class ServletHelper {
 
   public static void writeJsonToResponse(Gson gson, HttpServletResponse response, Object results)
@@ -16,5 +14,5 @@ public final class ServletHelper {
     response.getWriter().println(json);
   }
 
-  private ServletHelper() { }
+  private ServletHelper() {}
 }
