@@ -1,12 +1,13 @@
 package com.google.univiz.scorecard;
 
 import static java.util.stream.Collectors.joining;
-import static java.util.stream.Collectors.toSet;
+import static java.util.stream.Collectors.toCollection;
 
 import com.google.gson.annotations.SerializedName;
 import com.google.univiz.api.CollegeId;
 import com.google.univiz.config.UnivizConfig;
 import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -24,7 +25,7 @@ final class URLProviderImpl implements URLProvider {
             .map(field -> field.getAnnotation(SerializedName.class))
             .filter(Objects::nonNull)
             .map(SerializedName::value)
-            .collect(toSet());
+            .collect(toCollection(LinkedHashSet::new));
   }
 
   @Override
