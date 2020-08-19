@@ -1,11 +1,11 @@
-package com.google.univiz.api.dataviz;
+package com.google.univiz.api.representation;
 
 import static com.google.common.truth.Truth.assertThat;
 import static org.junit.Assert.assertThrows;
 
-import com.google.univiz.CarnegieSizeDegree;
-import com.google.univiz.CollegeData;
-import com.google.univiz.CollegeId;
+import com.google.univiz.api.representation.CarnegieSizeDegree;
+import com.google.univiz.api.representation.CollegeData;
+import com.google.univiz.api.representation.CollegeId;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
