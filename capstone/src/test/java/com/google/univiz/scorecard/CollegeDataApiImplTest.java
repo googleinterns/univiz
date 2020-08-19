@@ -47,7 +47,6 @@ public final class CollegeDataApiImplTest {
 
   @Test
   public void testGetCollegesById() throws IOException {
-
     CollegeId collegeId = CollegeId.create(193900);
     String scorecardUrlString =
         Resources.getResource(CollegeDataApiImplTest.class, "scorecard_response.json").toString();
@@ -57,5 +56,34 @@ public final class CollegeDataApiImplTest {
     assertThat(colleges).hasSize(1);
     CollegeData collegeData = colleges.get(0);
     assertThat(collegeData.name()).isEqualTo("New York University");
+  }
+
+  @Test
+  public void testEmptyResults() throws IOException {
+    CollegeId collegeId = CollegeId.create(193900);
+    String scorecardUrlString =
+        Resources.getResource(CollegeDataApiImplTest.class, "scorecard_response_empty.json")
+            .toString();
+    when(mockUrlProvider.getUrlFromCollegeIds(Arrays.asList(collegeId)))
+        .thenReturn(scorecardUrlString);
+    List<CollegeData> colleges = testImpl.getCollegesById(Arrays.asList(collegeId));
+    assertThat(colleges).isEmpty();
+  }
+
+  @Test
+  public void testMultipleResults() throws IOException {
+    CollegeId collegeId = CollegeId.create(193900);
+    CollegeId collegeId2 = CollegeId.create(13900);
+    String scorecardUrlString =
+        Resources.getResource(CollegeDataApiImplTest.class, "scorecard_response_multiple.json")
+            .toString();
+    when(mockUrlProvider.getUrlFromCollegeIds(Arrays.asList(collegeId)))
+        .thenReturn(scorecardUrlString);
+    List<CollegeData> colleges = testImpl.getCollegesById(Arrays.asList(collegeId));
+    assertThat(colleges).hasSize(2);
+    CollegeData collegeData = colleges.get(0);
+    assertThat(collegeData.name()).isEqualTo("New York University");
+    collegeData = colleges.get(1);
+    assertThat(collegeData.name()).isEqualTo("New University");
   }
 }
