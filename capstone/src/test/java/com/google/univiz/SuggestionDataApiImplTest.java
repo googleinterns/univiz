@@ -14,7 +14,8 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public final class SuggestionDataApiImplTest {
   @Rule public final MockitoRule rule = MockitoJUnit.rule();
-  @Inject private SuggestionDataApiImpl testImpl;
+  @Bind @Mock private URLProvider mockUrlProvider;
+  @Inject private SuggestionDataApiImpl testSuggestionDataApiImpl;
   
   @Before
   public void setup() {
@@ -23,11 +24,10 @@ public final class SuggestionDataApiImplTest {
 
   @Test
   public void testGetSuggestionsByEmpty() {
-    InputStreamReader suggestionApiReader =
-        new InputStreamReader(
-            Resources.getResource(SuggestionDataApiImplTest.class, "suggestion_api_impl.json")
-                .openStream());
-   
-
+    String collegeName = "";
+    String testUrl = Resources.resource(SuggestionDataApiImplTest.class, "suggestion_api_impl.json").toString();
+    when(mockUrlProvider.getUrlFromCollegeName(collegeName)).thenReturn(testUrl);
+    SuggestionResource suggestionResource = testSuggestionDataApiImpl.getCollegeSuggestions(collegeName);
+    assertThat(suggestionResource.suggestions()).hasSize(1);
   }
 }
