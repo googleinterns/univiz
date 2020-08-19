@@ -21,13 +21,13 @@ public final class SuggestionDataApiImplTest {
     Guice.createInjector(BoundFieldModule.of(this)).injectMembers(this);
   }
 
-
   @Test
-  public void testGetSuggestionsByFragment() { //TODO
-    InputStreamReader scorecardReader =
+  public void testGetSuggestionsByEmpty() {
+    InputStreamReader suggestionApiReader =
         new InputStreamReader(
-            Resources.getResource(SuggestionDataApiImplTest.class, "suggestion_response.json")
+            Resources.getResource(SuggestionDataApiImplTest.class, "suggestion_api_impl.json")
                 .openStream());
+   
 
   }
 }
