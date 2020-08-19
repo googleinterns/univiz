@@ -20,7 +20,7 @@ class URLProviderImpl implements URLProvider {
   protected URLProviderImpl(UnivizConfig univizConfig) {
     this.univizConfig = univizConfig;
     fields =
-        Arrays.stream(ScorecardData.class.getDeclaredFields())
+        Arrays.stream(ScorecardData.class.getDeclaredMethods())
             .map(field -> field.getAnnotation(SerializedName.class))
             .filter(Objects::nonNull)
             .map(SerializedName::value)
