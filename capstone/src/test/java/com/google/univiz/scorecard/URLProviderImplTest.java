@@ -53,7 +53,7 @@ public final class URLProviderImplTest {
     expectedFields.add("latest.student.demographics.women");
 
     StringBuilder expectedBuilder =
-        new StringBuilder("https://api.data.gov/ed/collegescorecard/v1/schools.json?id=");
+        new StringBuilder("https://api.data.gov/ed/collegescorecard/v1/schools.json?=");
     expectedBuilder.append(
         String.format("%d,%d,%d", fakeCollegeId1.id(), fakeCollegeId2.id(), fakeCollegeId3.id()));
     expectedBuilder.append("&per_page=1&fields=");
