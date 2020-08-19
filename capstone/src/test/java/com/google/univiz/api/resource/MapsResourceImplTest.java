@@ -1,9 +1,9 @@
-package com.google.univiz.api;
+package com.google.univiz.api.resource;
 
 import com.google.inject.Guice;
 import com.google.inject.testing.fieldbinder.Bind;
 import com.google.inject.testing.fieldbinder.BoundFieldModule;
-import com.google.univiz.CollegeDataApi;
+import com.google.univiz.api.CollegeDataApi;
 import javax.inject.Inject;
 import org.junit.Before;
 import org.junit.Rule;
