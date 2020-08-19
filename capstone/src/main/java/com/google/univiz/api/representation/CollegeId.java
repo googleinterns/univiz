@@ -1,4 +1,4 @@
-package com.google.univiz;
+package com.google.univiz.api.representation;
 
 import com.google.auto.value.AutoValue;
 import com.ryanharter.auto.value.gson.GenerateTypeAdapter;

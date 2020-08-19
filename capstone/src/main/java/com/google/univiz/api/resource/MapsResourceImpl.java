@@ -1,8 +1,9 @@
-package com.google.univiz.api;
+package com.google.univiz.api.resource;
 
-import com.google.univiz.CollegeData;
-import com.google.univiz.CollegeDataApi;
-import com.google.univiz.CollegeId;
+import com.google.univiz.api.representation.CollegeData;
+import com.google.univiz.api.representation.CollegeDataApi;
+import com.google.univiz.api.representation.CollegeId;
+import com.google.univiz.api.representation.MapsData;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
