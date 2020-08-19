@@ -1,12 +1,11 @@
 package com.google.univiz.scorecard;
 
 import static com.google.common.truth.Truth.assertThat;
+import static org.junit.Assert.assertThrows;
 import static org.mockito.Mockito.when;
 
 import com.google.common.io.Resources;
-import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
-import com.google.inject.Provides;
 import com.google.inject.testing.fieldbinder.Bind;
 import com.google.inject.testing.fieldbinder.BoundFieldModule;
 import com.google.univiz.CollegeData;
@@ -30,19 +29,13 @@ public final class CollegeDataApiImplTest {
 
   @Rule public final MockitoRule rule = MockitoJUnit.rule();
   @Bind @Mock private URLProvider mockUrlProvider;
+  @Bind @Mock private CollegeIdReaderProvider mockReaderProvider;
+  private CollegeIdReaderProvider readerProvider = new CollegeIdReaderProviderImpl();
   @Inject private CollegeDataApiImpl testImpl;
-
-  static final class ReaderProviderModule extends AbstractModule {
-    @Provides
-    CollegeIdReaderProvider provideCollegeIdReaderProvider() {
-      return new CollegeIdReaderProviderImpl();
-    }
-  }
 
   @Before
   public void setup() {
-    Guice.createInjector(new GsonModule(), new ReaderProviderModule(), BoundFieldModule.of(this))
-        .injectMembers(this);
+    Guice.createInjector(new GsonModule(), BoundFieldModule.of(this)).injectMembers(this);
   }
 
   @Test
@@ -52,6 +45,8 @@ public final class CollegeDataApiImplTest {
         Resources.getResource(CollegeDataApiImplTest.class, "scorecard_response.json").toString();
     when(mockUrlProvider.getUrlFromCollegeIds(Arrays.asList(collegeId)))
         .thenReturn(scorecardUrlString);
+    when(mockReaderProvider.getStreamFromUrl(scorecardUrlString))
+        .then(invocation -> readerProvider.getStreamFromUrl(scorecardUrlString));
     List<CollegeData> colleges = testImpl.getCollegesById(Arrays.asList(collegeId));
     assertThat(colleges).hasSize(1);
     CollegeData collegeData = colleges.get(0);
@@ -66,6 +61,8 @@ public final class CollegeDataApiImplTest {
             .toString();
     when(mockUrlProvider.getUrlFromCollegeIds(Arrays.asList(collegeId)))
         .thenReturn(scorecardUrlString);
+    when(mockReaderProvider.getStreamFromUrl(scorecardUrlString))
+        .then(invocation -> readerProvider.getStreamFromUrl(scorecardUrlString));
     List<CollegeData> colleges = testImpl.getCollegesById(Arrays.asList(collegeId));
     assertThat(colleges).isEmpty();
   }
@@ -79,11 +76,25 @@ public final class CollegeDataApiImplTest {
             .toString();
     when(mockUrlProvider.getUrlFromCollegeIds(Arrays.asList(collegeId)))
         .thenReturn(scorecardUrlString);
+    when(mockReaderProvider.getStreamFromUrl(scorecardUrlString))
+        .then(invocation -> readerProvider.getStreamFromUrl(scorecardUrlString));
     List<CollegeData> colleges = testImpl.getCollegesById(Arrays.asList(collegeId));
     assertThat(colleges).hasSize(2);
     CollegeData collegeData = colleges.get(0);
     assertThat(collegeData.name()).isEqualTo("New York University");
     collegeData = colleges.get(1);
     assertThat(collegeData.name()).isEqualTo("New University");
+  }
+
+  @Test
+  public void testIOException() throws IOException {
+    CollegeId collegeId = CollegeId.create(193900);
+    String scorecardUrlString =
+        Resources.getResource(CollegeDataApiImplTest.class, "scorecard_response_empty.json")
+            .toString();
+    when(mockUrlProvider.getUrlFromCollegeIds(Arrays.asList(collegeId)))
+        .thenReturn(scorecardUrlString);
+    when(mockReaderProvider.getStreamFromUrl(scorecardUrlString)).thenThrow(new IOException());
+    assertThrows(IOException.class, () -> testImpl.getCollegesById(Arrays.asList(collegeId)));
   }
 }
