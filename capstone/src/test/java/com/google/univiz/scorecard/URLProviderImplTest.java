@@ -44,8 +44,9 @@ public final class URLProviderImplTest {
     expectedBuilder.append("latest.admissions.sat_scores.average.overall,latest.student.size,");
     expectedBuilder.append("latest.cost.attendance.academic_year,latest.student.demographics.men,");
     expectedBuilder.append("latest.student.demographics.women&api_key=");
+    expectedBuilder.append("scorecard_test_key");
     String expected = expectedBuilder.toString();
 
-    assertThat(actual.substring(0, expected.length())).isEqualTo(expected);
+    assertThat(actual).isEqualTo(expected);
   }
 }
