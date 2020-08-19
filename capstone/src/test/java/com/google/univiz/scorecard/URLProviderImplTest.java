@@ -3,7 +3,6 @@ package com.google.univiz.scorecard;
 import static com.google.common.truth.Truth.assertThat;
 
 import com.google.inject.Guice;
-import com.google.inject.testing.fieldbinder.BoundFieldModule;
 import com.google.univiz.api.CollegeId;
 import com.google.univiz.config.UnivizConfigModule;
 import java.util.Arrays;

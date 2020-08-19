@@ -12,7 +12,7 @@ import java.util.Objects;
 import java.util.Set;
 import javax.inject.Inject;
 
-class URLProviderImpl implements URLProvider {
+final class URLProviderImpl implements URLProvider {
   private final UnivizConfig univizConfig;
   private final Set<String> fields;
 
@@ -30,9 +30,10 @@ class URLProviderImpl implements URLProvider {
   @Override
   public String getUrlFromCollegeIds(List<CollegeId> ids) {
     String stringWithFields = fields.stream().collect(joining(","));
-    final StringBuilder urlStringBuilder = new StringBuilder();
+    StringBuilder urlStringBuilder = new StringBuilder();
     urlStringBuilder.append("https://api.data.gov/ed/collegescorecard/v1/schools.json?id=");
-    String stringWithIds = ids.stream().map(CollegeId::id).map(Integer::toString).collect(joining(","));
+    String stringWithIds =
+        ids.stream().map(CollegeId::id).map(Integer::toString).collect(joining(","));
     urlStringBuilder.append(stringWithIds);
     urlStringBuilder.append("&per_page=1&fields=");
     urlStringBuilder.append(stringWithFields);
