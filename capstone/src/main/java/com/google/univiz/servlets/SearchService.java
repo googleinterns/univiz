@@ -35,8 +35,7 @@ public class SearchService extends HttpServlet {
     if (Strings.isNullOrEmpty(query)) {
       throw new IllegalArgumentException("Expected the query to be a non-empty string");
     }
-    List<SearchData> searchResults = searchResource
-        .getSearchSuggestions(query);
+    List<SearchData> searchResults = searchResource.getSearchSuggestions(query);
     ServletHelper.writeJsonToResponse(gson, response, searchResults);
   }
 }
