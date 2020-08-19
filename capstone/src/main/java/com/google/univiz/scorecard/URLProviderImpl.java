@@ -34,7 +34,7 @@ final class URLProviderImpl implements URLProvider {
     StringBuilder urlStringBuilder = new StringBuilder();
     urlStringBuilder.append("https://api.data.gov/ed/collegescorecard/v1/schools.json?id=");
     String stringWithIds =
-        ids.stream().map(CollegeId::id).map(Integer::toString).collect(joining(","));
+        ids.stream().map(CollegeId::id).map(String::valueOf).collect(joining(","));
     urlStringBuilder.append(stringWithIds);
     urlStringBuilder.append("&per_page=1&fields=");
     urlStringBuilder.append(stringWithFields);
