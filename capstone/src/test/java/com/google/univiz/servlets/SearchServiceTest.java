@@ -63,9 +63,10 @@ public final class SearchServiceTest {
 
     String returnedJson = doGet(query);
 
-    assertThat(returnedJson).isEqualTo(
-        "[{\"collegeName\":\"stanford\",\"collegeId\":1},"
-            + "{\"collegeName\":\"USC\",\"collegeId\":2}]\n");
+    assertThat(returnedJson)
+        .isEqualTo(
+            "[{\"collegeName\":\"stanford\",\"collegeId\":1},"
+                + "{\"collegeName\":\"USC\",\"collegeId\":2}]\n");
   }
 
   @Test
@@ -80,16 +81,16 @@ public final class SearchServiceTest {
 
   @Test
   public void getSearchResults_nullQuery_throws() {
-    IllegalArgumentException expected = assertThrows(IllegalArgumentException.class,
-        () -> doGet(null));
+    IllegalArgumentException expected =
+        assertThrows(IllegalArgumentException.class, () -> doGet(null));
 
     assertThat(expected).hasMessageThat().startsWith("Expected the query to be a non-empty string");
   }
 
   @Test
   public void getSearchResults_emptyQuery_throws() {
-    IllegalArgumentException expected = assertThrows(IllegalArgumentException.class,
-        () -> doGet(""));
+    IllegalArgumentException expected =
+        assertThrows(IllegalArgumentException.class, () -> doGet(""));
 
     assertThat(expected).hasMessageThat().startsWith("Expected the query to be a non-empty string");
   }
