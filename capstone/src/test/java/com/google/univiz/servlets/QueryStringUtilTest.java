@@ -15,6 +15,16 @@ public final class QueryStringUtilTest {
   }
 
   @Test
+  public void onlyDelimiters_yieldsEmptyMultimap() {
+    assertThat(QueryStringUtil.getQueryParams("&&")).isEmpty();
+  }
+
+  @Test
+  public void singleParamEmptyVal_yieldsMultimap() {
+    assertThat(QueryStringUtil.getQueryParams("foo=")).containsExactly("foo", "");
+  }
+
+  @Test
   public void singleParamSingleVal_yieldsMultimap() {
     assertThat(QueryStringUtil.getQueryParams("foo=bar")).containsExactly("foo", "bar");
   }
@@ -28,6 +38,12 @@ public final class QueryStringUtilTest {
   @Test
   public void multiParamsMultiVals_yieldsMultimap() {
     assertThat(QueryStringUtil.getQueryParams("foo=bar,baz&fizz=buzz"))
+        .containsExactly("foo", "bar", "foo", "baz", "fizz", "buzz");
+  }
+
+  @Test
+  public void extraDelimiters_yieldsMultimap() {
+    assertThat(QueryStringUtil.getQueryParams("&foo=bar,baz&&fizz=buzz&"))
         .containsExactly("foo", "bar", "foo", "baz", "fizz", "buzz");
   }
 }
