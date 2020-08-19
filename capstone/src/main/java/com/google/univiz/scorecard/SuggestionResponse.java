@@ -1,4 +1,14 @@
 package com.google.univiz.scorecard;
 
-/** SuggestionResponse represents the list of college data specific to the Search feature */
-public class SuggestionResponse {}
+import com.google.auto.value.AutoValue;
+import com.google.gson.annotations.SerializedName;
+import com.ryanharter.auto.value.gson.GenerateTypeAdapter;
+import java.util.List;
+
+/** SuggestionResponse represents the list of SuggestionData specific for the Search feature */
+@GenerateTypeAdapter
+@AutoValue
+public abstract class SuggestionResponse {
+  @SerializedName("results")
+  public abstract List<SuggestionData> suggestions();
+}
