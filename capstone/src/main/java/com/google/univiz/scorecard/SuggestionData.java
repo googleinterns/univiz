@@ -1,4 +1,4 @@
-package com.google.univiz;
+package com.google.univiz.scorecard;
 
 import com.google.auto.value.AutoValue;
 import com.google.gson.annotations.SerializedName;
@@ -8,11 +8,10 @@ import javax.annotation.Nullable;
 /** SuggestionData represents the college data specific to the Search feature */
 @GenerateTypeAdapter
 @AutoValue
-abstract class SuggestionData {
+public abstract class SuggestionData {
   @SerializedName("school.name")
   @Nullable
-  abstract String name();
+  public abstract String name();
 
-  @SerializedName("id")
-  abstract int id();
+  public abstract int id();
 }

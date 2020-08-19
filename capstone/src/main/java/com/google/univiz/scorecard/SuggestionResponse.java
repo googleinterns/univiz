@@ -1,4 +1,4 @@
-package com.google.univiz;
+package com.google.univiz.scorecard;
 
 import com.google.auto.value.AutoValue;
 import com.google.gson.annotations.SerializedName;
@@ -8,7 +8,7 @@ import java.util.List;
 /** SuggestionResponse represents the list of SuggestionData specific for the Search feature */
 @GenerateTypeAdapter
 @AutoValue
-abstract class SuggestionResponse {
+public abstract class SuggestionResponse {
   @SerializedName("results")
-  abstract List<SuggestionData> suggestions();
+  public abstract List<SuggestionData> suggestions();
 }
