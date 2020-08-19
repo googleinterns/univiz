@@ -1,5 +1,7 @@
 package com.google.univiz.api;
 
+import com.google.univiz.SuggestionDataApi;
+import com.google.univiz.scorecard.SuggestionResponse;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.inject.Inject;
@@ -14,7 +16,7 @@ final class SearchResourceImpl implements SearchResource {
 
   @Override
   public List<SearchData> getSearchSuggestions(String partialCollegeName) {
-    if (!partialCollegeName || !partialCollegeName.match("[a-zA-Z]+")) {
+    if (partialCollegeName == null || !partialCollegeName.matches("[a-zA-Z]+")) {
       partialCollegeName = "";
     }
     SuggestionResponse collegeSuggestions = suggestionApi.getCollegeSuggestions(partialCollegeName);

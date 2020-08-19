@@ -3,6 +3,7 @@ package com.google.univiz.api;
 import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Mockito.when;
 
+import com.google.univiz.SuggestionDataApi;
 import java.util.List;
 import org.junit.Rule;
 import org.junit.Test;
