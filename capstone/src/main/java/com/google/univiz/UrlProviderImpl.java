@@ -1,5 +1,8 @@
 package com.google.univiz;
 
+import com.google.univiz.config.UnivizConfig;
+import javax.inject.Inject;
+
 final class UrlProviderImpl implements UrlProvider {
   private static final String frontUrl =
       "https://api.data.gov/ed/collegescorecard/v1/schools.json?";

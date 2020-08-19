@@ -1,31 +1,34 @@
 package com.google.univiz;
 
+import com.google.gson.Gson;
+import com.google.univiz.scorecard.SuggestionResponse;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
 import javax.inject.Inject;
 
 public class SuggestionDataApiImpl implements SuggestionDataApi {
   private final UrlProvider urlProvider;
-  private final ReaderProvider readerProvider;
+  private final SuggestionApiReaderProvider readerProvider;
+  private final Gson gson;
 
   @Inject
-  protected SuggestionDataApiImpl(UrlProvider urlProvider, ReaderProvider readerProvider) {
+  protected SuggestionDataApiImpl(
+      UrlProvider urlProvider, SuggestionApiReaderProvider readerProvider, Gson gson) {
     this.urlProvider = urlProvider;
     this.readerProvider = readerProvider;
+    this.gson = gson;
   }
 
   /** Takes REST API Json response and converts it to SuggestionData */
   private SuggestionResponse convertJsonToSuggestionResponse(InputStreamReader suggestionReader) {
-    Gson gson = new GsonBuilder().registerTypeAdapterFactory(GenerateTypeAdapter.FACTORY).create();
     return gson.fromJson(suggestionReader, SuggestionResponse.class);
   }
 
   @Override
-  public SuggestionResponse getCollegeSuggestions(String collegeName) {
-    InputStreamReader suggestionReader = new InputStreamReader(readerProvider.getStreamFromUrl(urlProvider.getUrlFromCollegeName(collegeName)));
-    String suggestionResults = requestRESTApiData(suggestionReader);
-    return convertJsonToSuggestionResponse(suggestionResults);
+  public SuggestionResponse getCollegeSuggestions(String collegeName) throws IOException {
+    InputStreamReader suggestionReader =
+        new InputStreamReader(
+            readerProvider.getStreamFromUrl(urlProvider.getUrlFromCollegeName(collegeName)));
+    return convertJsonToSuggestionResponse(suggestionReader);
   }
 }
