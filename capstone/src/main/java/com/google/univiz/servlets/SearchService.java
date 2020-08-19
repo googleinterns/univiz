@@ -1,5 +1,6 @@
 package com.google.univiz.servlets;
 
+import com.google.common.base.Strings;
 import com.google.gson.Gson;
 import com.google.univiz.api.SearchData;
 import com.google.univiz.api.SearchResource;
@@ -30,8 +31,12 @@ public class SearchService extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    String query = request.getParameter("query");
+    if (Strings.isNullOrEmpty(query)) {
+      throw new IllegalArgumentException("Expected the query to be a non-empty string");
+    }
     List<SearchData> searchResults = searchResource
-        .getSearchSuggestions(request.getParameter("query"));
+        .getSearchSuggestions(query);
     ServletHelper.writeJsonToResponse(gson, response, searchResults);
   }
 }
