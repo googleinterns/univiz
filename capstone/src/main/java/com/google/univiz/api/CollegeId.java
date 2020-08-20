@@ -1,8 +1,18 @@
 package com.google.univiz.api;
 
+import com.google.auto.value.AutoValue;
+import com.ryanharter.auto.value.gson.GenerateTypeAdapter;
+
 /**
- * This data structure contains all the college fields that are needed to uniquely identify a
- * college. If two colleges have the same id, they they are the same college. Furthermore this
- * structure may contain other alternative fields that could be used to uniquely identify a college.
+ * CollegeId is a class that represents the unique ID for a single college/university/institution.
  */
-public class CollegeId {}
+@AutoValue
+@GenerateTypeAdapter
+public abstract class CollegeId {
+
+  public abstract int id();
+
+  public static CollegeId create(int id) {
+    return new AutoValue_CollegeId(id);
+  }
+}
