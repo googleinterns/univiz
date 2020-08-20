@@ -1,8 +1,8 @@
-const searchInput = document.getElementById('search');
-let selectedSuggElt = -1;
-const itemClass = 'autocomplete-items';
-const activeClass = 'autocomplete-active';
-const listId = 'autocomplete-list';
+const SEARCH_INPUT = document.getElementById('search');
+let SELECTED_SUGG_ELT = -1;
+const ITEM_CLASS = 'autocomplete-items';
+const ACTIVE_CLASS = 'autocomplete-active';
+const LIST_ID = 'autocomplete-list';
 /**
  * Adds the 'active' tag to an autocomplete elmt
  * @param {Object} autocompleteListElmt
@@ -13,12 +13,12 @@ function addActiveTag(autocompleteListElmt) {
     return false;
   }
   removeActiveTag(autocompleteListElmt);
-  if (selectedSuggElt >= autocompleteListElmt.length) {
-    selectedSuggElt = 0;
-  } else if (selectedSuggElt < 0) {
-    selectedSuggElt = (autocompleteListElmt.length - 1);
+  if (SELECTED_SUGG_ELT >= autocompleteListElmt.length) {
+    SELECTED_SUGG_ELT = 0;
+  } else if (SELECTED_SUGG_ELT < 0) {
+    SELECTED_SUGG_ELT = (autocompleteListElmt.length - 1);
   }
-  autocompleteListElmt[selectedSuggElt].classList.add(activeClass);
+  autocompleteListElmt[SELECTED_SUGG_ELT].classList.add(ACTIVE_CLASS);
 }
 
 /**
@@ -28,7 +28,7 @@ function addActiveTag(autocompleteListElmt) {
  */
 function removeActiveTag(autocompleteListElmt) {
   for (elmt of autocompleteListElmt) {
-    elmt.classList.remove(activeClass);
+    elmt.classList.remove(ACTIVE_CLASS);
   }
 }
 
@@ -39,9 +39,9 @@ function removeActiveTag(autocompleteListElmt) {
  * @return {void}
  */
 function closeAllLists(elmnt) {
-  const autoItems = document.getElementsByClassName(itemClass);
+  const autoItems = document.getElementsByClassName(ITEM_CLASS);
   for (const item of autoItems) {
-    if (item != elmnt && item != searchInput) {
+    if (item != elmnt && item != SEARCH_INPUT) {
       item.parentNode.removeChild(item);
     }
   }
@@ -89,7 +89,7 @@ function displaySuggestions(trimArr, autocompleteList, val) {
       listElmt.innerHTML += arrElt.substr(val.length);
       listElmt.innerHTML += '<input type=\'hidden\' value=\'arrElt\'>';
       listElmt.addEventListener('click', function(e) {
-        searchInput.value = searchInput.getElementsByTagName('input')[0].value;
+        SEARCH_INPUT.value = SEARCH_INPUT.getElementsByTagName('input')[0].value;
         closeAllLists();
       });
       autocompleteList.appendChild(listElmt);
@@ -103,16 +103,16 @@ function displaySuggestions(trimArr, autocompleteList, val) {
  */
 function giveSuggestions() {
   closeAllLists();
-  const val = searchInput.value;
+  const val = SEARCH_INPUT.value;
   if (!val) {
     return false;
   }
   const arr = getListOfSuggestions();
-  selectedSuggElt = -1;
+  SELECTED_SUGG_ELT = -1;
   const autocompleteList = document.createElement('div');
-  autocompleteList.setAttribute('id', searchInput.id + listId);
-  autocompleteList.setAttribute('class', itemClass);
-  searchInput.parentNode.appendChild(autocompleteList);
+  autocompleteList.setAttribute('id', SEARCH_INPUT.id + LIST_ID);
+  autocompleteList.setAttribute('class', ITEM_CLASS);
+  SEARCH_INPUT.parentNode.appendChild(autocompleteList);
   const trimArr = getRelevantDataSuggestions(arr, val);
   displaySuggestions(trimArr, autocompleteList, val);
 }
@@ -123,21 +123,21 @@ function giveSuggestions() {
  * @return {void}
  */
 function keyDown(e) {
-  let listElmt = document.getElementById(searchInput.id + listId);
+  let listElmt = document.getElementById(SEARCH_INPUT.id + LIST_ID);
   if (listElmt) {
     listElmt = listElmt.getElementsByTagName('div');
   }
   if (e.keyCode == 40) {/* Up key */
-    selectedSuggElt++;
+    SELECTED_SUGG_ELT++;
     addActiveTag(listElmt);
   } else if (e.keyCode == 38) {/* Down key */
-    selectedSuggElt--;
+    SELECTED_SUGG_ELT--;
     addActiveTag(listElmt);
   } else if (e.keyCode == 13) {/* Enter key */
     e.preventDefault();
-    if (selectedSuggElt > -1) {
+    if (SELECTED_SUGG_ELT > -1) {
       if (listElmt) {
-        listElmt[selectedSuggElt].click();
+        listElmt[SELECTED_SUGG_ELT].click();
       }
     }
   }
@@ -145,5 +145,5 @@ function keyDown(e) {
 
 /* Event occurance when mouse is clicked */
 document.addEventListener('click', function(e) {
-  closeAllLists(e.target, searchInput);
+  closeAllLists(e.target, SEARCH_INPUT);
 });
