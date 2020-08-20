@@ -22,7 +22,6 @@ final class SearchResourceImpl implements SearchResource {
     if (partialCollegeName == null || !partialCollegeName.matches("[a-zA-Z]+")) {
       return Lists.newArrayList(SearchData.create("", CollegeId.create(0)));
     }
-    System.out.println(partialCollegeName);
     SuggestionResponse collegeSuggestions = suggestionApi.getCollegeSuggestions(partialCollegeName);
     return collegeSuggestions.suggestions().stream()
         .map(college -> SearchData.create(college.name(), CollegeId.create(college.id())))
