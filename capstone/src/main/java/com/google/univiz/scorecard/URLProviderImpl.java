@@ -18,7 +18,7 @@ final class URLProviderImpl implements URLProvider {
   private final Set<String> fields;
 
   @Inject
-  protected URLProviderImpl(UnivizConfig univizConfig) {
+  URLProviderImpl(UnivizConfig univizConfig) {
     this.univizConfig = univizConfig;
     fields =
         Arrays.stream(ScorecardData.class.getDeclaredMethods())
