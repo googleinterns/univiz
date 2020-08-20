@@ -35,7 +35,7 @@ public final class URLProviderImplTest {
     CollegeId fakeCollegeId2 = CollegeId.create(2);
     CollegeId fakeCollegeId3 = CollegeId.create(3);
     List<CollegeId> ids = Arrays.asList(fakeCollegeId1, fakeCollegeId2, fakeCollegeId3);
-    String result = testImpl.getUrlFromCollegeIds(ids);
+    String actual = testImpl.getUrlFromCollegeIds(ids);
 
     Set<String> expectedFields = new LinkedHashSet<>();
     expectedFields.add("id");
@@ -53,16 +53,14 @@ public final class URLProviderImplTest {
     expectedFields.add("latest.student.demographics.women");
 
     StringBuilder expectedBuilder =
-        new StringBuilder("https://api.data.gov/ed/collegescorecard/v1/schools.json?=");
+        new StringBuilder("https://api.data.gov/ed/collegescorecard/v1/schools.json?id=");
     expectedBuilder.append(
         String.format("%d,%d,%d", fakeCollegeId1.id(), fakeCollegeId2.id(), fakeCollegeId3.id()));
     expectedBuilder.append("&per_page=3&fields=");
-    expectedBuilder.append(expectedFields.stream().map(field -> "").collect(joining(",")));
+    expectedBuilder.append(expectedFields.stream().sorted().collect(joining(",")));
     expectedBuilder.append("&api_key=scorecard_test_key");
     String expected = expectedBuilder.toString();
 
-    String actual =
-        expectedFields.stream().reduce(result, (temp, field) -> temp.replace(field, ""));
     assertThat(actual).isEqualTo(expected);
   }
 }
