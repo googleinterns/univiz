@@ -1,5 +1,6 @@
-package com.google.univiz.api;
+package com.google.univiz.api.resource;
 
+import com.google.univiz.api.representation.SearchData;
 import java.util.List;
 
 /**

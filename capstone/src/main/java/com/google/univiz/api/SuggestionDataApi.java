@@ -1,6 +1,6 @@
-package com.google.univiz;
+package com.google.univiz.api;
 
-import java.util.List;
+import com.google.univiz.api.representation.SuggestionResponse;
 
 /**
  * Communicates directly with the data source to get a list of college suggestions related to a
@@ -9,7 +9,7 @@ import java.util.List;
 public interface SuggestionDataApi {
   /**
    * Takes a fragment of a college name or a complete college name and returns a list of
-   * SuggestionData objects
+   * SuggestionData objects, represented as a SuggestionResponse object
    */
-  List<SuggestionData> getCollegeSuggestions(String collegeName);
+  SuggestionResponse getCollegeSuggestions(String collegeName);
 }
