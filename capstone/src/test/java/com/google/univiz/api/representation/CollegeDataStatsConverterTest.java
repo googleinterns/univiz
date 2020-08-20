@@ -68,6 +68,7 @@ public final class CollegeDataStatsConverterTest {
             .setAvgCost(AVG_COST)
             .setRatioOfMen(RATIO_OF_MEN)
             .setRatioOfWomen(RATIO_OF_WOMEN)
+            .setName(NAME)
             .build();
 
     assertThrows(UnsupportedOperationException.class, () -> converter.reverse().convert(stats));

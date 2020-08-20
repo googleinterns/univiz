@@ -14,6 +14,7 @@ final class CollegeDataStatsConverter extends Converter<CollegeData, CollegeStat
             .setAvgCost(college.avgCost())
             .setRatioOfMen(college.ratioOfMen())
             .setRatioOfWomen(college.ratioOfWomen())
+            .setName(college.name())
             .build();
     return stats;
   }
