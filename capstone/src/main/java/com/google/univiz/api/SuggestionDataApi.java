@@ -1,7 +1,6 @@
 package com.google.univiz.api;
 
-import com.google.univiz.api.representation.SuggestionData;
-import com.google.univiz.scorecard.SuggestionResponse;
+import com.google.univiz.api.representation.SuggestionResponse;
 import java.util.List;
 
 /**
