@@ -70,9 +70,9 @@ public final class CollegeDataApiImplTest {
     String scorecardUrlString =
         Resources.getResource(CollegeDataApiImplTest.class, "scorecard_response_multiple.json")
             .toString();
-    when(mockUrlProvider.getUrlFromCollegeIds(Arrays.asList(collegeId)))
+    when(mockUrlProvider.getUrlFromCollegeIds(Arrays.asList(collegeId, collegeId2)))
         .thenReturn(scorecardUrlString);
-    List<CollegeData> colleges = testImpl.getCollegesById(Arrays.asList(collegeId));
+    List<CollegeData> colleges = testImpl.getCollegesById(Arrays.asList(collegeId, collegeId2));
     assertThat(colleges).hasSize(2);
     CollegeData collegeData = colleges.get(0);
     assertThat(collegeData.name()).isEqualTo("New York University");
