@@ -4,8 +4,8 @@ import com.google.univiz.api.CollegeDataApi;
 import com.google.univiz.api.representation.CollegeData;
 import com.google.univiz.api.representation.CollegeId;
 import com.google.univiz.api.representation.MapsData;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.inject.Inject;
 
 public class MapsResourceImpl implements MapsResource {
@@ -21,13 +21,7 @@ public class MapsResourceImpl implements MapsResource {
   @Override
   public List<MapsData> getMapsData(List<CollegeId> ids) {
     List<CollegeData> colleges = collegeDataApi.getCollegesById(ids);
-    List<MapsData> mapsData = new ArrayList<>();
 
-    for (CollegeData college : colleges) {
-      MapsData mapsDataFromCollege = converter.convert(college);
-      mapsData.add(mapsDataFromCollege);
-    }
-
-    return mapsData;
+    return colleges.stream().map(converter::convert).collect(Collectors.toList());
   }
 }
