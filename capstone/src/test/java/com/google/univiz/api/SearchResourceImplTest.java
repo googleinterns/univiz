@@ -55,7 +55,7 @@ public final class SearchResourceImplTest {
     SearchData expected = SearchData.create("", collegeId);
     assertThat(ret).containsExactly(expected);
   }
-  
+
   @Test
   public void testSuggestionsForNullSuggestion() throws Exception {
     String nullCollegeName = null;
