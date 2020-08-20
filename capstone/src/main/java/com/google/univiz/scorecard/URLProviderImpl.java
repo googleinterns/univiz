@@ -25,6 +25,7 @@ final class URLProviderImpl implements URLProvider {
             .map(field -> field.getAnnotation(SerializedName.class))
             .filter(Objects::nonNull)
             .map(SerializedName::value)
+            .sorted()
             .collect(toCollection(LinkedHashSet::new));
   }
 
