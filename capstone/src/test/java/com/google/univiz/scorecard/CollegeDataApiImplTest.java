@@ -21,6 +21,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import org.mockito.Mock;
+import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
@@ -29,8 +30,7 @@ public final class CollegeDataApiImplTest {
 
   @Rule public final MockitoRule rule = MockitoJUnit.rule();
   @Bind @Mock private URLProvider mockUrlProvider;
-  @Bind @Mock private CollegeIdReaderProvider mockReaderProvider;
-  private CollegeIdReaderProvider readerProvider = new CollegeIdReaderProviderImpl();
+  @Bind @Spy private CollegeIdReaderProvider readerProvider = new CollegeIdReaderProviderImpl();
   @Inject private CollegeDataApiImpl testImpl;
 
   @Before
@@ -45,8 +45,6 @@ public final class CollegeDataApiImplTest {
         Resources.getResource(CollegeDataApiImplTest.class, "scorecard_response.json").toString();
     when(mockUrlProvider.getUrlFromCollegeIds(Arrays.asList(collegeId)))
         .thenReturn(scorecardUrlString);
-    when(mockReaderProvider.getStreamFromUrl(scorecardUrlString))
-        .then(invocation -> readerProvider.getStreamFromUrl(scorecardUrlString));
     List<CollegeData> colleges = testImpl.getCollegesById(Arrays.asList(collegeId));
     assertThat(colleges).hasSize(1);
     CollegeData collegeData = colleges.get(0);
@@ -61,8 +59,6 @@ public final class CollegeDataApiImplTest {
             .toString();
     when(mockUrlProvider.getUrlFromCollegeIds(Arrays.asList(collegeId)))
         .thenReturn(scorecardUrlString);
-    when(mockReaderProvider.getStreamFromUrl(scorecardUrlString))
-        .then(invocation -> readerProvider.getStreamFromUrl(scorecardUrlString));
     List<CollegeData> colleges = testImpl.getCollegesById(Arrays.asList(collegeId));
     assertThat(colleges).isEmpty();
   }
@@ -76,8 +72,6 @@ public final class CollegeDataApiImplTest {
             .toString();
     when(mockUrlProvider.getUrlFromCollegeIds(Arrays.asList(collegeId)))
         .thenReturn(scorecardUrlString);
-    when(mockReaderProvider.getStreamFromUrl(scorecardUrlString))
-        .then(invocation -> readerProvider.getStreamFromUrl(scorecardUrlString));
     List<CollegeData> colleges = testImpl.getCollegesById(Arrays.asList(collegeId));
     assertThat(colleges).hasSize(2);
     CollegeData collegeData = colleges.get(0);
@@ -94,7 +88,7 @@ public final class CollegeDataApiImplTest {
             .toString();
     when(mockUrlProvider.getUrlFromCollegeIds(Arrays.asList(collegeId)))
         .thenReturn(scorecardUrlString);
-    when(mockReaderProvider.getStreamFromUrl(scorecardUrlString)).thenThrow(new IOException());
+    when(readerProvider.getStreamFromUrl(scorecardUrlString)).thenThrow(new IOException());
     assertThrows(IOException.class, () -> testImpl.getCollegesById(Arrays.asList(collegeId)));
   }
 }

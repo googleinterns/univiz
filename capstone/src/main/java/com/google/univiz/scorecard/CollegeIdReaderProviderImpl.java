@@ -5,7 +5,7 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-final class CollegeIdReaderProviderImpl implements CollegeIdReaderProvider {
+class CollegeIdReaderProviderImpl implements CollegeIdReaderProvider {
   public InputStream getStreamFromUrl(String urlString) throws IOException {
     try {
       URL url = new URL(urlString);
