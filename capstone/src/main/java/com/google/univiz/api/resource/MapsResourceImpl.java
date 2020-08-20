@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import javax.inject.Inject;
 
-public class MapsResourceImpl implements MapsResource {
+final class MapsResourceImpl implements MapsResource {
   private final CollegeDataApi collegeDataApi;
   private final CollegeDataConverter converter;
 
