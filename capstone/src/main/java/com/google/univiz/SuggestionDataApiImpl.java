@@ -7,8 +7,9 @@ import java.io.InputStreamReader;
 import javax.inject.Inject;
 
 public class SuggestionDataApiImpl implements SuggestionDataApi {
+  private final static String application = "SUGGESTION";
   private final UrlProvider urlProvider;
-  private final SuggestionApiReaderProvider readerProvider;
+  private final ReaderProvider readerProvider;
   private final Gson gson;
 
   @Inject
@@ -28,7 +29,7 @@ public class SuggestionDataApiImpl implements SuggestionDataApi {
   public SuggestionResponse getCollegeSuggestions(String collegeName) throws IOException {
     InputStreamReader suggestionReader =
         new InputStreamReader(
-            readerProvider.getStreamFromUrl(urlProvider.getUrlFromCollegeName(collegeName)));
+            readerProvider.getStreamFromUrl(urlProvider.getUrlFromCollegeName(collegeName, application)));
     return convertJsonToSuggestionResponse(suggestionReader);
   }
 }

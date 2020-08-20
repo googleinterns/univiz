@@ -14,6 +14,9 @@ import java.util.Set;
 import javax.inject.Inject;
 
 final class URLProviderImpl implements URLProvider {
+  private final String frontUrl = "https://api.data.gov/ed/collegescorecard/v1/schools.json?";
+  private final String queryTypeName = "school.name=";
+  private final String queryTypeId = "id=";
   private final UnivizConfig univizConfig;
   private final Set<String> fields;
 
@@ -27,6 +30,27 @@ final class URLProviderImpl implements URLProvider {
             .map(SerializedName::value)
             .sorted()
             .collect(toCollection(LinkedHashSet::new));
+  }
+
+  @Override String getUrl(String partialCollegeName, List<CollegeId>... ids) throws RuntimeException {
+    StringBuilder urlStringBuilder = new StringBuilder();
+    urlStringBuilder.append(frontUrl);
+    if (partialCollegeName != null && (ids.length == 0)) {
+      buildSuggestionUrl(partialCollegeName);
+    } else if (ids.length > 0) {
+      buildDataUrl(ids[0]);
+    } else {
+      throw RuntimeException("No valid URL intent was provided!");
+    }
+    urlStringBuilder.append("&api_key=");
+    urlStringBuilder.append(univizConfig.scorecardApiKey());
+    return urlStringBuilder.toString();
+  }
+
+  @Override
+  public String getUrlFromPartialCollegeName(String partialCollegeName) {
+    StringBuilder urlStringBuilder = new StringBuilder();
+    urlStringBuilder.append();
   }
 
   @Override
