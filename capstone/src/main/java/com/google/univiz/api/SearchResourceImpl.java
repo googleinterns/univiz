@@ -1,11 +1,10 @@
 package com.google.univiz.api;
 
 import com.google.common.collect.Lists;
-import com.google.univiz.api.SuggestionDataApi;
+import com.google.univiz.api.representation.CollegeId;
+import com.google.univiz.api.representation.SearchData;
 import com.google.univiz.api.representation.SuggestionResponse;
 import com.google.univiz.api.resource.SearchResource;
-import com.google.univiz.api.representation.SearchData;
-import com.google.univiz.api.representation.CollegeId;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.inject.Inject;
