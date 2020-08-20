@@ -36,7 +36,7 @@ final class URLProviderImpl implements URLProvider {
     String stringWithIds =
         ids.stream().map(CollegeId::id).map(String::valueOf).collect(joining(","));
     urlStringBuilder.append(stringWithIds);
-    urlStringBuilder.append("&per_page=1&fields=");
+    urlStringBuilder.append(String.format("&per_page=%d&fields=", ids.size()));
     urlStringBuilder.append(stringWithFields);
     urlStringBuilder.append("&api_key=");
     urlStringBuilder.append(univizConfig.scorecardApiKey());

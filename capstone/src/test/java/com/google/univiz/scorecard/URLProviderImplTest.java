@@ -56,7 +56,7 @@ public final class URLProviderImplTest {
         new StringBuilder("https://api.data.gov/ed/collegescorecard/v1/schools.json?=");
     expectedBuilder.append(
         String.format("%d,%d,%d", fakeCollegeId1.id(), fakeCollegeId2.id(), fakeCollegeId3.id()));
-    expectedBuilder.append("&per_page=1&fields=");
+    expectedBuilder.append("&per_page=3&fields=");
     expectedBuilder.append(expectedFields.stream().map(field -> "").collect(joining(",")));
     expectedBuilder.append("&api_key=scorecard_test_key");
     String expected = expectedBuilder.toString();
