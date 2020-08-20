@@ -17,6 +17,9 @@ final class URLProviderImpl implements URLProvider {
   private final String frontUrl = "https://api.data.gov/ed/collegescorecard/v1/schools.json?";
   private final String queryTypeName = "school.name=";
   private final String queryTypeId = "id=";
+  private final String perPage = "&per_page=";
+  private final String fields = "&fields=";
+  private final String suggestionFields = "id,school.name";
   private final UnivizConfig univizConfig;
   private final Set<String> fields;
 
@@ -32,13 +35,14 @@ final class URLProviderImpl implements URLProvider {
             .collect(toCollection(LinkedHashSet::new));
   }
 
-  @Override String getUrl(String partialCollegeName, List<CollegeId>... ids) throws RuntimeException {
+  @Override 
+  public String getUrl(String partialCollegeName, List<CollegeId>... ids) throws RuntimeException {
     StringBuilder urlStringBuilder = new StringBuilder();
     urlStringBuilder.append(frontUrl);
     if (partialCollegeName != null && (ids.length == 0)) {
-      buildSuggestionUrl(partialCollegeName);
+      urlStringBuilder = buildSuggestionUrl(urlStringBuilder, partialCollegeName);
     } else if (ids.length > 0) {
-      buildDataUrl(ids[0]);
+      urlStringBuilder = buildDataUrl(urlStringBuilder, ids[0]);
     } else {
       throw RuntimeException("No valid URL intent was provided!");
     }
@@ -47,24 +51,22 @@ final class URLProviderImpl implements URLProvider {
     return urlStringBuilder.toString();
   }
 
-  @Override
-  public String getUrlFromPartialCollegeName(String partialCollegeName) {
-    StringBuilder urlStringBuilder = new StringBuilder();
-    urlStringBuilder.append();
+  private StringBuilder getUrlFromPartialCollegeName(StringBuilder urlStringBuilder, String partialCollegeName) {
+    urlStringBuilder.append(queryTypeName);
+    urlStringBuilder.append(partialCollegeName);
+    urlStringBuilder.append(fields);
+    urlStringBuilder.append(suggestionFields);
   }
 
-  @Override
-  public String getUrlFromCollegeIds(List<CollegeId> ids) {
+  private StringBuilder getUrlFromCollegeIds(StringBuilder stringBuilder, List<CollegeId> ids) {
     String stringWithFields = fields.stream().collect(joining(","));
-    StringBuilder urlStringBuilder = new StringBuilder();
-    urlStringBuilder.append("https://api.data.gov/ed/collegescorecard/v1/schools.json?id=");
     String stringWithIds =
         ids.stream().map(CollegeId::id).map(String::valueOf).collect(joining(","));
     urlStringBuilder.append(stringWithIds);
-    urlStringBuilder.append(String.format("&per_page=%d&fields=", ids.size()));
+    urlStringBuilder.append(perPage);
+    urlStringBuilder.append(String.format("%d", ids.size()));
+    urlStringBuilder.append(fields);
     urlStringBuilder.append(stringWithFields);
-    urlStringBuilder.append("&api_key=");
-    urlStringBuilder.append(univizConfig.scorecardApiKey());
     return urlStringBuilder.toString();
   }
 }

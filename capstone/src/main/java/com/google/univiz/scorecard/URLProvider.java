@@ -5,16 +5,11 @@ import java.util.List;
 
 /** Construct a URL string based on the user's preferred colleges. */
 interface URLProvider {
-  /**
-   * Return URL in String form to a remote resource corresponding to the given partialCollegeName
+   /**
+   * Return URL in String form to a remote resource which is either aiming to get college name suggestions or data resources 
    *
    * @param partialCollegeName the partial college name input provided by the client
+   * @param ids the optional list of CollegeIds of the client's preferred colleges
    */
-  String getUrlFromPartialCollegeName(String partialCollegeName);
-  /**
-   * Return URL in String form to a remote resource corresponding to the given CollegeIds.
-   *
-   * @param ids the CollegeIds of the user's preferred colleges
-   */
-  String getUrlFromCollegeIds(List<CollegeId> ids);
+  String getUrl(String partialCollegeName, List<CollegeId>... ids);
 }
