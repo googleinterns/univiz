@@ -18,7 +18,7 @@ final class CollegeDataApiImpl implements CollegeDataApi {
   private final Gson gson;
 
   @Inject
-  protected CollegeDataApiImpl(
+  CollegeDataApiImpl(
       ScorecardConverter scorecardConverter,
       CollegeIdReaderProvider readerProvider,
       URLProvider urlProvider,

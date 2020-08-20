@@ -6,6 +6,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 class CollegeIdReaderProviderImpl implements CollegeIdReaderProvider {
+  @Override
   public InputStream getStreamFromUrl(String urlString) throws IOException {
     try {
       URL url = new URL(urlString);
