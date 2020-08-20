@@ -2,15 +2,9 @@
  * The callback function that will generate the double bar graph. Uses
  * Google Charts API and JSON object consisting of college tuition data.
  */
-function graphGrossNetTuition() {
+function graphNetTuition() {
   const options = {
-    title: 'Gross and Net Price of Colleges',
-    hAxis: {
-      title: 'Your Colleges',
-    },
-    vAxis: {
-      title: 'Tuition Price (USD)',
-    },
+    title: 'Net Price of Colleges',
   };
   const chart =
     new google.visualization.ColumnChart(document.getElementById('data'));
@@ -41,6 +35,9 @@ async function deserializeTuitionData() {
  *     that will be graphed.
  */
 function populateDataTable(data, tuitionInfo) {
-  // TODO(ihsan314): iterate over tuitionInfo and append to data
-  // when format of JSON is confirmed
+  data.addColumn('string', 'Your Colleges');
+  data.addColumn('number', 'Tuition Cost (USD)');
+  tuitionInfo.forEach((college) => {
+    data.addRow([college['name'], college['avgCost']]);
+  });
 }

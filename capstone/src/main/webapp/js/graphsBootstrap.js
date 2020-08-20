@@ -1,2 +1,2 @@
 google.charts.load('current', {packages: ['corechart', 'bar']});
-google.charts.setOnLoadCallback(graphGrossNetTuition);
+google.charts.setOnLoadCallback(graphNetTuition);
