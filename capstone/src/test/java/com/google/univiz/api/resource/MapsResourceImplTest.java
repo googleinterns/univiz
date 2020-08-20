@@ -88,14 +88,11 @@ public final class MapsResourceImplTest {
   @Test
   public void testEmptyMapsResourcesImpl() {
     List<CollegeId> ids = new ArrayList<>();
-    assertThat(ids).hasSize(0);
-
     List<CollegeData> collegesData = new ArrayList<>();
-    assertThat(collegesData).hasSize(0);
 
     when(collegeDataApi.getCollegesById(ids)).thenReturn(collegesData);
     List<MapsData> mapsData = mapsImpl.getMapsData(ids);
-    assertThat(mapsData).hasSize(0);
+    assertThat(mapsData).isEmpty();
   }
 
   @Test
