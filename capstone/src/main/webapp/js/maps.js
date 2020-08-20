@@ -18,10 +18,15 @@ function createMap() {
   }
 };
 
+/**
+ * Helper function to fetch data from servlet as JSON.
+ *
+ * @return {type?} mapsData
+ */
 async function fetchData() {
-  await fetch('/map').then(response => response.json()).then((mapsDataList) => {
+  await fetch('/map').then(response => response.json()).then((mapsDataFromJSON) => {
     console.log('Fetching data...');
-    console.log(mapsDataList);
-  return mapsDataList;
+    console.log(mapsDataFromJSON);
+  return mapsDataFromJSON;
   }); 
 }
