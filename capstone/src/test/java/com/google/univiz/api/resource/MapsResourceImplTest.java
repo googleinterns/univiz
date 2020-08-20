@@ -1,6 +1,7 @@
 package com.google.univiz.api.resource;
 
 import static com.google.common.truth.Truth.assertThat;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
 
 import com.google.common.collect.Lists;
