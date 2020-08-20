@@ -2,7 +2,10 @@ const SEARCH_INPUT = document.getElementById('search');
 const ITEM_CLASS = 'autocomplete-items';
 const ACTIVE_CLASS = 'autocomplete-active';
 const LIST_ID = 'autocomplete-list';
-let SELECTED_SUGG_ELT = -1;
+const UP_KEY = 40;
+const DOWN_KEY = 38;
+const ENTER = 13;
+let selectedElmntPos = -1;
 
 /**
  * Adds the 'active' tag to an autocomplete elmt
@@ -14,18 +17,17 @@ function addActiveTag(autocompleteListElmt) {
     return false;
   }
   removeActiveTag(autocompleteListElmt);
-  if (SELECTED_SUGG_ELT >= autocompleteListElmt.length) {
-    SELECTED_SUGG_ELT = 0;
-  } else if (SELECTED_SUGG_ELT < 0) {
-    SELECTED_SUGG_ELT = (autocompleteListElmt.length - 1);
+  if (selectedElmntPos >= autocompleteListElmt.length) {
+    selectedElmntPos = 0;
+  } else if (selectedElmntPos < 0) {
+    selectedElmntPos = (autocompleteListElmt.length - 1);
   }
-  autocompleteListElmt[SELECTED_SUGG_ELT].classList.add(ACTIVE_CLASS);
+  autocompleteListElmt[selectedElmntPos].classList.add(ACTIVE_CLASS);
 }
 
 /**
  * Removes the 'active' tag from an autocomplete elmt
  * @param {Object} autocompleteListElmt
- * @return {void}
  */
 function removeActiveTag(autocompleteListElmt) {
   for (elmt of autocompleteListElmt) {
@@ -35,10 +37,11 @@ function removeActiveTag(autocompleteListElmt) {
 
 /**
  * Closes dropdown autocomplete list
+ * Does not close the element provided
  * @param {Object} elmnt
  * @return {void}
  */
-function closeAllLists(elmnt) {
+function closeAllElmntExcept(elmnt) {
   const autoItems = document.getElementsByClassName(ITEM_CLASS);
   for (const item of autoItems) {
     if (item != elmnt && item != SEARCH_INPUT) {
@@ -58,9 +61,9 @@ function getListOfSuggestions() {
 
 /**
  * Identifies and returns relevant suggestions in the arr
- * @param {Object} arr
+ * @param {string[]} arr
  * @param {string} val
- * @return {Object} trimArr
+ * @return {string[]} trimArr
  */
 function getRelevantDataSuggestions(arr, val) {
   const trimArr = [];
@@ -87,10 +90,9 @@ function displaySuggestions(trimArr, autocompleteList, val) {
                          arrElt.substr(0, val.length) +
                          '</strong>';
     listElmt.innerHTML += arrElt.substr(val.length);
-    listElmt.innerHTML += '<input type=\'hidden\' value=\'arrElt\'>';
-    listElmt.addEventListener('click', function(e) {
-      SEARCH_INPUT.value = SEARCH_INPUT.getElementsByTagName('input')[0].value;
-      closeAllLists();
+    listElmt.addEventListener('click', (e) => {
+      SEARCH_INPUT.value = arrElt;
+      closeAllElmntExcept();
     });
     autocompleteList.appendChild(listElmt);
   }
@@ -101,16 +103,14 @@ function displaySuggestions(trimArr, autocompleteList, val) {
  * @return {void}
  */
 function giveSuggestions() {
-  closeAllLists();
+  closeAllElmntExcept();
   const val = SEARCH_INPUT.value;
   if (!val) {
     return false;
   }
   const arr = getListOfSuggestions();
-  SELECTED_SUGG_ELT = -1;
-  const autocompleteList = document.createElement('div');
-  autocompleteList.setAttribute('id', SEARCH_INPUT.id + LIST_ID);
-  autocompleteList.setAttribute('class', ITEM_CLASS);
+  selectedElmntPos = -1;
+  const autocompleteList = document.getElementById(LIST_ID);
   SEARCH_INPUT.parentNode.appendChild(autocompleteList);
   const trimArr = getRelevantDataSuggestions(arr, val);
   displaySuggestions(trimArr, autocompleteList, val);
@@ -118,25 +118,25 @@ function giveSuggestions() {
 
 /**
  * Event occurance when arrow keys are pressed
- * @param {event} e
+ * @param {keypress} e
  * @return {void}
  */
 function keyDown(e) {
-  let listElmt = document.getElementById(SEARCH_INPUT.id + LIST_ID);
+  let listElmt = document.getElementById(LIST_ID);
   if (listElmt) {
     listElmt = listElmt.getElementsByTagName('div');
   }
-  if (e.keyCode == 40) {/* Up key */
-    SELECTED_SUGG_ELT++;
+  if (e.keyCode == UP_KEY) {
+    selectedElmntPos++;
     addActiveTag(listElmt);
-  } else if (e.keyCode == 38) {/* Down key */
-    SELECTED_SUGG_ELT--;
+  } else if (e.keyCode == DOWN_KEY) {
+    selectedElmntPos--;
     addActiveTag(listElmt);
-  } else if (e.keyCode == 13) {/* Enter key */
+  } else if (e.keyCode == ENTER) {
     e.preventDefault();
-    if (SELECTED_SUGG_ELT > -1) {
+    if (selectedElmntPos > -1) {
       if (listElmt) {
-        listElmt[SELECTED_SUGG_ELT].click();
+        listElmt[selectedElmntPos].click();
       }
     }
   }
@@ -144,5 +144,5 @@ function keyDown(e) {
 
 /* Event occurance when mouse is clicked */
 document.addEventListener('click', (e) => {
-  closeAllLists(e.target, SEARCH_INPUT);
+  closeAllElmntExcept(e.target, SEARCH_INPUT);
 });
