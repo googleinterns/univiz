@@ -145,6 +145,6 @@ function keyDown(e) {
 }
 
 /* Event occurance when mouse is clicked */
-document.addEventListener('click', function(e) {
+document.addEventListener('click', (e) => {
   closeAllLists(e.target, SEARCH_INPUT);
 });
