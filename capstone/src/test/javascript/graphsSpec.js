@@ -24,8 +24,8 @@ google.visualization.DataTable = class {
 };
 
 
-describe('Data Table Construction', async () => {
-  it('Will add correct columns/rows to DataTable from JSON', () => {
+describe('Data Table Construction', () => {
+  it('Will add correct columns/rows to DataTable from JSON', async () => {
     const mockTuitionInfo = [
       {'name': 'University of British Columbia', 'avgCost': 5000},
       {'name': 'Simon Fraser University', 'avgCost': 4000},
