@@ -35,7 +35,6 @@ function removeActiveTag(autocompleteListElmt) {
 /**
  * Closes dropdown autocomplete list
  * @param {Object} elmnt
- * @param {Object} inp
  * @return {void}
  */
 function closeAllLists(elmnt) {
@@ -49,7 +48,7 @@ function closeAllLists(elmnt) {
 
 /**
  * Current placeholder until servlet is created
- * @return{Object} arr
+ * @return{Object[]} arr
  */
 function getListOfSuggestions() {
   const arr = ['Hello', 'Hi', 'Howdy'];
