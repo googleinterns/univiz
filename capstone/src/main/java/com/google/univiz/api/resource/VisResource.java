@@ -1,8 +1,9 @@
-package com.google.univiz.api;
+package com.google.univiz.api.resource;
 
-import com.google.univiz.api.dataviz.Deadline;
-import com.google.univiz.api.dataviz.Timeline;
-import com.google.univiz.api.dataviz.TuitionStats;
+import com.google.univiz.api.representation.CollegeId;
+import com.google.univiz.api.representation.Deadline;
+import com.google.univiz.api.representation.Timeline;
+import com.google.univiz.api.representation.CollegeStats;
 import java.util.List;
 
 /**
@@ -13,12 +14,12 @@ public interface VisResource {
 
   /**
    * For every college the user selected, obtain the raw statistics and compute summary statistics
-   * on tuition-related data.
+   * on college-related data.
    *
    * @param colleges the IDs for each of the user's selected colleges
    * @return the list of statistics per college.
    */
-  List<TuitionStats> getTuitionStats(List<CollegeId> colleges);
+  List<CollegeStats> getCollegeStats(List<CollegeId> colleges);
 
   /**
    * For every college the user selected, obtain the recommended set of actions for the user to take
