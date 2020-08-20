@@ -123,7 +123,6 @@ function giveSuggestions() {
  * @return {void}
  */ 
 function keyDown(e) {
-  console.log("Key down!");
   let listElmt = document.getElementById(searchInput.id + listId);
   if (listElmt) {
     listElmt = listElmt.getElementsByTagName('div');
