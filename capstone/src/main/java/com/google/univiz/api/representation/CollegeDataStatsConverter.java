@@ -1,7 +1,6 @@
-package com.google.univiz.api.dataviz;
+package com.google.univiz.api.representation;
 
 import com.google.common.base.Converter;
-import com.google.univiz.CollegeData;
 
 final class CollegeDataStatsConverter extends Converter<CollegeData, CollegeStats> {
 

@@ -3,9 +3,9 @@ package com.google.univiz.scorecard;
 import static java.util.stream.Collectors.toList;
 
 import com.google.gson.Gson;
-import com.google.univiz.CollegeData;
-import com.google.univiz.CollegeDataApi;
-import com.google.univiz.api.CollegeId;
+import com.google.univiz.api.CollegeDataApi;
+import com.google.univiz.api.representation.CollegeData;
+import com.google.univiz.api.representation.CollegeId;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;

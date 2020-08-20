@@ -4,7 +4,7 @@ import static com.google.common.truth.Truth.assertThat;
 import static java.util.stream.Collectors.joining;
 
 import com.google.inject.Guice;
-import com.google.univiz.api.CollegeId;
+import com.google.univiz.api.representation.CollegeId;
 import com.google.univiz.config.UnivizConfigModule;
 import java.util.Arrays;
 import java.util.LinkedHashSet;

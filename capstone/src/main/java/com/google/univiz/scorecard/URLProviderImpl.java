@@ -4,7 +4,7 @@ import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toCollection;
 
 import com.google.gson.annotations.SerializedName;
-import com.google.univiz.api.CollegeId;
+import com.google.univiz.api.representation.CollegeId;
 import com.google.univiz.config.UnivizConfig;
 import java.util.Arrays;
 import java.util.LinkedHashSet;

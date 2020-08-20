@@ -1,4 +1,4 @@
-package com.google.univiz;
+package com.google.univiz.api.representation;
 
 import static com.google.common.truth.Truth.assertThat;
 

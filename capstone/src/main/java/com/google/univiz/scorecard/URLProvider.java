@@ -1,6 +1,6 @@
 package com.google.univiz.scorecard;
 
-import com.google.univiz.api.CollegeId;
+import com.google.univiz.api.representation.CollegeId;
 import java.util.List;
 
 /** Construct a URL string based on the user's preferred colleges. */
