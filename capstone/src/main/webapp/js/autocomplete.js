@@ -76,6 +76,7 @@ function getRelevantDataSuggestions(arr, val) {
  * Takes relevant suggestions and displays them in DOM
  * @param {Object} trimArr
  * @param {Object} autocompleteList
+ * @param {string} val
  * @return {void}
  */
 function displaySuggestions(trimArr, autocompleteList, val) {
@@ -97,7 +98,7 @@ function displaySuggestions(trimArr, autocompleteList, val) {
 }
 
 /**
- * Event occurrance when input is provided to autocomplete field 
+ * Event occurrance when input is provided to autocomplete field
  * @return {void}
  */
 function giveSuggestions() {
@@ -117,7 +118,7 @@ function giveSuggestions() {
 }
 
 /**
- * Event occurance when arrow keys are pressed 
+ * Event occurance when arrow keys are pressed
  * @param {event} e
  * @return {void}
  */ 
