@@ -34,7 +34,6 @@ public final class SearchResourceImplTest {
   @Test
   public void testSuggestionsForCollegeNameNoSpace() throws Exception {
     String collegeName = "Stanford";
-    SearchResourceImpl search = new SearchResourceImpl(mockSuggestionApi);
     List<SuggestionData> suggestions = Lists.newArrayList(cannedSuggestion);
     when(cannedResponse.suggestions()).thenReturn(suggestions);
     when(cannedSuggestion.name()).thenReturn("Stanford University");

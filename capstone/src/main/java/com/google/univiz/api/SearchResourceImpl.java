@@ -6,6 +6,7 @@ import com.google.univiz.api.representation.SearchData;
 import com.google.univiz.api.representation.SuggestionResponse;
 import com.google.univiz.api.resource.SearchResource;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.stream.Collectors;
 import javax.inject.Inject;
 
@@ -19,8 +20,9 @@ final class SearchResourceImpl implements SearchResource {
 
   @Override
   public List<SearchData> getSearchSuggestions(String partialCollegeName) {
-    if (partialCollegeName == null || !partialCollegeName.matches("[a-zA-Z]+")) {
-      return Lists.newArrayList(SearchData.create("", CollegeId.create(0)));
+    if (partialCollegeName == null) {
+      List<SearchData> emptyList = new ArrayList<>();
+      return emptyList;
     }
     SuggestionResponse collegeSuggestions = suggestionApi.getCollegeSuggestions(partialCollegeName);
     return collegeSuggestions.suggestions().stream()
