@@ -1,8 +1,9 @@
 const SEARCH_INPUT = document.getElementById('search');
-let SELECTED_SUGG_ELT = -1;
 const ITEM_CLASS = 'autocomplete-items';
 const ACTIVE_CLASS = 'autocomplete-active';
 const LIST_ID = 'autocomplete-list';
+let SELECTED_SUGG_ELT = -1;
+
 /**
  * Adds the 'active' tag to an autocomplete elmt
  * @param {Object} autocompleteListElmt
@@ -48,7 +49,7 @@ function closeAllLists(elmnt) {
 
 /**
  * Current placeholder until servlet is created
- * @return{Object[]} arr
+ * @retur{Array<string>} arr
  */
 function getListOfSuggestions() {
   const arr = ['Hello', 'Hi', 'Howdy'];
@@ -63,6 +64,7 @@ function getListOfSuggestions() {
  */
 function getRelevantDataSuggestions(arr, val) {
   const trimArr = [];
+  val = va.toUpperCase();
   for (const arrElt of arr) {
     if (arrElt.substr(0, val.length).toUpperCase() == val.toUpperCase()) {
       trimArr.push(arrElt);
