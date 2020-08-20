@@ -3,8 +3,14 @@ package com.google.univiz.api;
 import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Mockito.when;
 
-import com.google.univiz.SuggestionDataApi;
+import com.google.common.collect.Lists;
+import com.google.univiz.api.SuggestionDataApi;
+import com.google.univiz.api.representation.CollegeId;
+import com.google.univiz.api.representation.SearchData;
+import com.google.univiz.api.representation.SuggestionData;
+import com.google.univiz.api.representation.SuggestionResponse;
 import java.util.List;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,11 +35,11 @@ public final class SearchResourceImplTest {
   @Test
   public void testSuggestionsForFullCollegeName() throws Exception {
     String fullCollegeName = "Stanford University";
-    List<SuggestionData> suggestions = newArrayList(cannedSuggestion);
+    List<SuggestionData> suggestions = Lists.newArrayList(cannedSuggestion);
     when(cannedResponse.suggestions()).thenReturn(suggestions);
     when(cannedSuggestion.name()).thenReturn("Stanford University");
     when(cannedSuggestion.id()).thenReturn(1);
-    when(mockSuggestionApi.getCollegeSuggestions(emptyCollegeName)).thenReturn(cannedResponse);
+    when(mockSuggestionApi.getCollegeSuggestions(fullCollegeName)).thenReturn(cannedResponse);
 
     List<SearchData> ret = search.getSearchSuggestions(fullCollegeName);
     CollegeId collegeId = CollegeId.create(1);
@@ -44,7 +50,7 @@ public final class SearchResourceImplTest {
   @Test
   public void testSuggestionsForEmptySuggestion() throws Exception {
     String emptyCollegeName = "";
-    List<SuggestionData> suggestions = newArrayList(cannedSuggestion);
+    List<SuggestionData> suggestions = Lists.newArrayList(cannedSuggestion);
     when(cannedResponse.suggestions()).thenReturn(suggestions);
     when(cannedSuggestion.name()).thenReturn("");
     when(cannedSuggestion.id()).thenReturn(0);
@@ -59,7 +65,7 @@ public final class SearchResourceImplTest {
   @Test
   public void testSuggestionsForNullSuggestion() throws Exception {
     String nullCollegeName = null;
-    List<SuggestionData> suggestions = newArrayList(cannedSuggestion);
+    List<SuggestionData> suggestions = Lists.newArrayList(cannedSuggestion);
     when(cannedResponse.suggestions()).thenReturn(suggestions);
     when(cannedSuggestion.name()).thenReturn("");
     when(cannedSuggestion.id()).thenReturn(0);
@@ -74,11 +80,11 @@ public final class SearchResourceImplTest {
   @Test
   public void testSuggestionsForInvalidSuggestion() throws Exception {
     String invalidCollegeName = "%$#@!1235566";
-    List<SuggestionData> suggestions = newArrayList(cannedSuggestion);
+    List<SuggestionData> suggestions = Lists.newArrayList(cannedSuggestion);
     when(cannedResponse.suggestions()).thenReturn(suggestions);
     when(cannedSuggestion.name()).thenReturn("");
     when(cannedSuggestion.id()).thenReturn(0);
-    when(mockSuggestionApi.getCollegeSuggestions(nullCollegeName)).thenReturn(cannedResponse);
+    when(mockSuggestionApi.getCollegeSuggestions(invalidCollegeName)).thenReturn(cannedResponse);
 
     List<SearchData> ret = search.getSearchSuggestions(invalidCollegeName);
     CollegeId collegeId = CollegeId.create(0);
