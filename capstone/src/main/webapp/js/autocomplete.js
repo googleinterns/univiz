@@ -82,7 +82,7 @@ function getRelevantDataSuggestions(arr, val) {
  */
 function displaySuggestions(trimArr, autocompleteList, val) {
   for (arrElt of trimArr) {
-    if (true) {
+    //if (true) {
       const listElmt = document.createElement('DIV');
       listElmt.innerHTML = '<strong>' +
                            arrElt.substr(0, val.length) +
@@ -94,7 +94,7 @@ function displaySuggestions(trimArr, autocompleteList, val) {
         closeAllLists();
       });
       autocompleteList.appendChild(listElmt);
-    }
+   // }
   }
 }
 
