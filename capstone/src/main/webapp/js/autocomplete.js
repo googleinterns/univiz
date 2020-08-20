@@ -121,7 +121,7 @@ function giveSuggestions() {
  * Event occurance when arrow keys are pressed
  * @param {event} e
  * @return {void}
- */ 
+ */
 function keyDown(e) {
   let listElmt = document.getElementById(searchInput.id + listId);
   if (listElmt) {
