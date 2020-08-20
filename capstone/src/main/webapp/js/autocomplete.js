@@ -49,7 +49,7 @@ function closeAllLists(elmnt) {
 
 /**
  * Current placeholder until servlet is created
- * @retur{Array<string>} arr
+ * @return{Array<string>} arr
  */
 function getListOfSuggestions() {
   const arr = ['Hello', 'Hi', 'Howdy'];
