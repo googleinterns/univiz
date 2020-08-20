@@ -82,19 +82,17 @@ function getRelevantDataSuggestions(arr, val) {
  */
 function displaySuggestions(trimArr, autocompleteList, val) {
   for (arrElt of trimArr) {
-    //if (true) {
-      const listElmt = document.createElement('DIV');
-      listElmt.innerHTML = '<strong>' +
-                           arrElt.substr(0, val.length) +
-                           '</strong>';
-      listElmt.innerHTML += arrElt.substr(val.length);
-      listElmt.innerHTML += '<input type=\'hidden\' value=\'arrElt\'>';
-      listElmt.addEventListener('click', function(e) {
-        SEARCH_INPUT.value = SEARCH_INPUT.getElementsByTagName('input')[0].value;
-        closeAllLists();
-      });
-      autocompleteList.appendChild(listElmt);
-   // }
+    const listElmt = document.createElement('DIV');
+    listElmt.innerHTML = '<strong>' +
+                         arrElt.substr(0, val.length) +
+                         '</strong>';
+    listElmt.innerHTML += arrElt.substr(val.length);
+    listElmt.innerHTML += '<input type=\'hidden\' value=\'arrElt\'>';
+    listElmt.addEventListener('click', function(e) {
+      SEARCH_INPUT.value = SEARCH_INPUT.getElementsByTagName('input')[0].value;
+      closeAllLists();
+    });
+    autocompleteList.appendChild(listElmt);
   }
 }
 
