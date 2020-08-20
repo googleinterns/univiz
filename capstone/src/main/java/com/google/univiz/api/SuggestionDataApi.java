@@ -1,8 +1,6 @@
 package com.google.univiz.api;
 
-import com.google.univiz.api.representation.SuggestionData;
-import com.google.univiz.scorecard.SuggestionResponse;
-import java.util.List;
+import com.google.univiz.api.representation.SuggestionResponse;
 
 /**
  * Communicates directly with the data source to get a list of college suggestions related to a
