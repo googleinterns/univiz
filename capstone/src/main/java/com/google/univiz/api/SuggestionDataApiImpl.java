@@ -1,20 +1,21 @@
-package com.google.univiz;
+package com.google.univiz.api;
 
 import com.google.gson.Gson;
-import com.google.univiz.scorecard.SuggestionResponse;
+import com.google.univiz.api.representation.SuggestionResponse;
+import com.google.univiz.scorecard.URLProvider;
+import com.google.univiz.scorecard.CollegeIdReaderProvider;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import javax.inject.Inject;
 
 public class SuggestionDataApiImpl implements SuggestionDataApi {
-  private final static String application = "SUGGESTION";
-  private final UrlProvider urlProvider;
-  private final ReaderProvider readerProvider;
+  private final URLProvider urlProvider;
+  private final CollegeIdReaderProvider readerProvider;
   private final Gson gson;
 
   @Inject
   protected SuggestionDataApiImpl(
-      UrlProvider urlProvider, SuggestionApiReaderProvider readerProvider, Gson gson) {
+      URLProvider urlProvider, CollegeIdReaderProvider readerProvider, Gson gson) {
     this.urlProvider = urlProvider;
     this.readerProvider = readerProvider;
     this.gson = gson;
@@ -29,7 +30,7 @@ public class SuggestionDataApiImpl implements SuggestionDataApi {
   public SuggestionResponse getCollegeSuggestions(String collegeName) throws IOException {
     InputStreamReader suggestionReader =
         new InputStreamReader(
-            readerProvider.getStreamFromUrl(urlProvider.getUrlFromCollegeName(collegeName, application)));
+            readerProvider.getStreamFromUrl(urlProvider.getUrl(collegeName)));
     return convertJsonToSuggestionResponse(suggestionReader);
   }
 }

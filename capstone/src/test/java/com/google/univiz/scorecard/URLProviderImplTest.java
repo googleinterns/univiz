@@ -4,11 +4,7 @@ import static com.google.common.truth.Truth.assertThat;
 import static java.util.stream.Collectors.joining;
 
 import com.google.inject.Guice;
-<<<<<<< HEAD
-import com.google.univiz.api.CollegeId;
-=======
 import com.google.univiz.api.representation.CollegeId;
->>>>>>> master
 import com.google.univiz.config.UnivizConfigModule;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
@@ -25,6 +21,11 @@ import org.mockito.junit.MockitoRule;
 
 @RunWith(JUnit4.class)
 public final class URLProviderImplTest {
+  private final String frontUrl = "https://api.data.gov/ed/collegescorecard/v1/schools.json?";
+  private final String querySchoolName = "school.name=";
+  private final String queryTypeId = "id=";
+  private final String perPage = "&per_page=";
+  private final String suggestionFields = "&fields=id,school.name";
   @Rule public final MockitoRule rule = MockitoJUnit.rule();
   @Inject private URLProviderImpl testImpl;
 
@@ -43,6 +44,7 @@ public final class URLProviderImplTest {
     expectedBuilder.append(querySchoolName);
     expectedBuilder.append(partialCollegeName);
     expectedBuilder.append(suggestionFields);
+    expectedBuilder.append("&api_key=scorecard_test_key");
     String expected = expectedBuilder.toString();
 
     assertThat(actual).isEqualTo(expected);
