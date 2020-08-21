@@ -35,10 +35,8 @@ public final class VisResourceImplTest {
 
   @Inject private VisResourceImpl visImpl;
 
-  private static final CollegeId NYU_COLLEGE_ID = CollegeId.create(193900);
   private static final CollegeData NYU_COLLEGE_DATA = MockCollegeData.getNyuData();
 
-  private static final CollegeId STANFORD_COLLEGE_ID = CollegeId.create(243744);
   private static final CollegeData STANFORD_COLLEGE_DATA = MockCollegeData.getStanfordData();
 
   @Before
@@ -48,7 +46,7 @@ public final class VisResourceImplTest {
 
   @Test
   public void testVisResourceImpl() throws IOException {
-    List<CollegeId> ids = Lists.newArrayList(NYU_COLLEGE_ID);
+    List<CollegeId> ids = Lists.newArrayList(NYU_COLLEGE_DATA.id());
 
     List<CollegeData> collegesData = Lists.newArrayList(NYU_COLLEGE_DATA);
 
@@ -73,7 +71,7 @@ public final class VisResourceImplTest {
 
   @Test
   public void testManyVisResourcesImpl() throws IOException {
-    List<CollegeId> ids = Lists.newArrayList(NYU_COLLEGE_ID, STANFORD_COLLEGE_ID);
+    List<CollegeId> ids = Lists.newArrayList(NYU_COLLEGE_DATA.id(), STANFORD_COLLEGE_DATA.id());
 
     List<CollegeData> collegesData = Lists.newArrayList(NYU_COLLEGE_DATA, STANFORD_COLLEGE_DATA);
 
@@ -91,14 +89,14 @@ public final class VisResourceImplTest {
 
   @Test
   public void testGetRecommendedTimelineUnsupported() {
-    List<CollegeId> ids = Lists.newArrayList(NYU_COLLEGE_ID, STANFORD_COLLEGE_ID);
+    List<CollegeId> ids = Lists.newArrayList(NYU_COLLEGE_DATA.id(), STANFORD_COLLEGE_DATA.id());
 
     assertThrows(UnsupportedOperationException.class, () -> visImpl.getRecommendedTimeline(ids));
   }
 
   @Test
   public void testGetDealinesUnsupported() {
-    List<CollegeId> ids = Lists.newArrayList(NYU_COLLEGE_ID, STANFORD_COLLEGE_ID);
+    List<CollegeId> ids = Lists.newArrayList(NYU_COLLEGE_DATA.id(), STANFORD_COLLEGE_DATA.id());
 
     assertThrows(UnsupportedOperationException.class, () -> visImpl.getDeadlines(ids));
   }
