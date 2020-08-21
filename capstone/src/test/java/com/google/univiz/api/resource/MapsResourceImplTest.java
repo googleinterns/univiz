@@ -36,12 +36,11 @@ public final class MapsResourceImplTest {
 
   @Inject private MapsResourceImpl mapsImpl;
 
-  private final CollegeData nyu = MockCollegeData.getNyuData();
+  private static final CollegeData nyu = MockCollegeData.getNyuData();
 
   private static final CollegeId STANFORD_COLLEGE_ID = CollegeId.create(243744);
   private static final String STANDFORD_NAME = "Stanford University";
   private static final double STANFORD_LATITUDE = 37.429434;
-
   private static final CollegeData stanford =
       CollegeData.builder()
           .setId(STANFORD_COLLEGE_ID)
