@@ -9,7 +9,7 @@ google.visualization.DataTable = class {
   /**
    * Dummy function for adding rows to mock DataTable class.
    *
-   * @param {Object} values the array of pairs corresponding to a row.
+   * @param {Array} values the array of pairs corresponding to a row.
    */
   addRow(values) {}
 
