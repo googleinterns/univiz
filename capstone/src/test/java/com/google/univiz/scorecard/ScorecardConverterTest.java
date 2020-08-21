@@ -27,7 +27,7 @@ public final class ScorecardConverterTest {
   private static final double RATIO_OF_MEN = 0.4253;
   private static final double RATIO_OF_WOMEN = 0.5747;
 
-  private static final CollegeData nyu = MockCollegeData.getNyuData();
+  private static final CollegeData NYU_COLLEGE_DATA = MockCollegeData.getNyuData();
 
   private final ScorecardConverter converter = new ScorecardConverter();
 
@@ -70,6 +70,6 @@ public final class ScorecardConverterTest {
 
   @Test
   public void convertBackToScorecardData() {
-    assertThrows(UnsupportedOperationException.class, () -> converter.reverse().convert(nyu));
+    assertThrows(UnsupportedOperationException.class, () -> converter.reverse().convert(NYU_COLLEGE_DATA));
   }
 }
