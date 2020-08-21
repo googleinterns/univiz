@@ -14,4 +14,9 @@ public abstract class SuggestionData {
   public abstract String name();
 
   public abstract int id();
+  
+  public static SuggestionData create(String name, int id) {
+    return new AutoValue_SuggestionData(name, id);
+  }
+
 }

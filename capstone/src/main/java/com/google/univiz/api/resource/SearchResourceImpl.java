@@ -21,10 +21,6 @@ final class SearchResourceImpl implements SearchResource {
 
   @Override
   public List<SearchData> getSearchSuggestions(String partialCollegeName) {
-    if (partialCollegeName == null) {
-      List<SearchData> emptyList = new ArrayList<>();
-      return emptyList;
-    }
     SuggestionResponse collegeSuggestions = suggestionApi.getCollegeSuggestions(partialCollegeName);
     return collegeSuggestions.suggestions().stream()
         .map(college -> SearchData.create(college.name(), CollegeId.create(college.id())))

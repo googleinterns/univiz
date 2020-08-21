@@ -4,6 +4,7 @@ import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Mockito.when;
 
 import com.google.common.collect.Lists;
+import com.google.univiz.api.SuggestionDataApi;
 import com.google.univiz.api.representation.CollegeId;
 import com.google.univiz.api.representation.SearchData;
 import com.google.univiz.api.representation.SuggestionData;
@@ -21,8 +22,8 @@ import org.mockito.junit.MockitoRule;
 @RunWith(JUnit4.class)
 public final class SearchResourceImplTest {
   @Mock private SuggestionDataApi mockSuggestionApi;
-  @Mock private SuggestionResponse cannedResponse;
-  @Mock private SuggestionData cannedSuggestion;
+  private static final SuggestionData STANFORD_SUGGESTION_DATA = SuggestionData.create("Stanford University", 1);
+  private static final SuggestionResponse STANFORD_SUGGESTION_RESPONSE = SuggestionResponse.create(Lists.newArrayList(STANFORD_SUGGESTION_DATA));
   @Rule public final MockitoRule mockitoRule = MockitoJUnit.rule();
   private SearchResourceImpl search;
 
@@ -34,29 +35,11 @@ public final class SearchResourceImplTest {
   @Test
   public void testCollegeNameNoSpace() throws Exception {
     String collegeName = "Stanford";
-    List<SuggestionData> suggestions = Lists.newArrayList(cannedSuggestion);
-    when(cannedResponse.suggestions()).thenReturn(suggestions);
-    when(cannedSuggestion.name()).thenReturn("Stanford University");
-    when(cannedSuggestion.id()).thenReturn(1);
-    when(mockSuggestionApi.getCollegeSuggestions(collegeName)).thenReturn(cannedResponse);
+    when(mockSuggestionApi.getCollegeSuggestions(collegeName)).thenReturn(STANFORD_SUGGESTION_RESPONSE);
 
     List<SearchData> ret = search.getSearchSuggestions(collegeName);
     CollegeId collegeId = CollegeId.create(1);
     SearchData expected = SearchData.create("Stanford University", collegeId);
     assertThat(ret).containsExactly(expected);
-  }
-
-  @Test
-  public void testEmptyName() throws Exception {
-    String emptyCollegeName = "";
-    List<SearchData> ret = search.getSearchSuggestions(emptyCollegeName);
-    assertThat(ret).isEmpty();
-  }
-
-  @Test
-  public void testNullName() throws Exception {
-    String nullCollegeName = null;
-    List<SearchData> ret = search.getSearchSuggestions(nullCollegeName);
-    assertThat(ret).isEmpty();
   }
 }
