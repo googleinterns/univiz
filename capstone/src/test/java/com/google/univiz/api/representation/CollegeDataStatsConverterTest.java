@@ -11,7 +11,7 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public final class CollegeDataStatsConverterTest {
 
-  private static CollegeData nyu = MockCollegeData.getNyuData();
+  private static final CollegeData nyu = MockCollegeData.getNyuData();
 
   private final CollegeDataStatsConverter converter = new CollegeDataStatsConverter();
 
