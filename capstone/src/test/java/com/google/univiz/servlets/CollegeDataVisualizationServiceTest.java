@@ -115,6 +115,7 @@ public final class CollegeDataVisualizationServiceTest {
         .setAvgSat(1.0)
         .setRatioOfWomen(1.0)
         .setRatioOfMen(1.0)
+        .setName("Name")
         .build();
   }
 }
