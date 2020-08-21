@@ -1,4 +1,4 @@
-package com.google.univiz.scorecard;
+package com.google.univiz.api.representation;
 
 import com.google.auto.value.AutoValue;
 import com.google.gson.annotations.SerializedName;

@@ -1,6 +1,6 @@
-package com.google.univiz;
+package com.google.univiz.api;
 
-import com.google.univiz.scorecard.SuggestionResponse;
+import com.google.univiz.api.representation.SuggestionResponse;
 import java.io.IOException;
 
 /**

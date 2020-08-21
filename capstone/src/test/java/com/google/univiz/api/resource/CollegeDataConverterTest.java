@@ -1,17 +1,18 @@
-package com.google.univiz.api.dataviz;
+package com.google.univiz.api.resource;
 
 import static com.google.common.truth.Truth.assertThat;
 import static org.junit.Assert.assertThrows;
 
-import com.google.univiz.CarnegieSizeDegree;
-import com.google.univiz.CollegeData;
-import com.google.univiz.CollegeId;
+import com.google.univiz.api.representation.CarnegieSizeDegree;
+import com.google.univiz.api.representation.CollegeData;
+import com.google.univiz.api.representation.CollegeId;
+import com.google.univiz.api.representation.MapsData;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public final class CollegeDataStatsConverterTest {
+public final class CollegeDataConverterTest {
 
   private static final int COLLEGE_ID = 193900;
   private static final String NAME = "New York University";
@@ -27,10 +28,10 @@ public final class CollegeDataStatsConverterTest {
   private static final double RATIO_OF_MEN = 0.4253;
   private static final double RATIO_OF_WOMEN = 0.5747;
 
-  private final CollegeDataStatsConverter converter = new CollegeDataStatsConverter();
+  private final CollegeDataConverter converter = new CollegeDataConverter();
 
   @Test
-  public void convertToCollegeStats() {
+  public void convertToMapsData() throws Exception {
     CollegeData college =
         CollegeData.builder()
             .setId(CollegeId.create(COLLEGE_ID))
@@ -48,28 +49,26 @@ public final class CollegeDataStatsConverterTest {
             .setRatioOfWomen(RATIO_OF_WOMEN)
             .build();
 
-    CollegeStats stats = converter.convert(college);
+    MapsData mapData = converter.convert(college);
 
-    assertThat(stats.admissionRate()).isEqualTo(ADMISSION_RATE);
-    assertThat(stats.avgSat()).isEqualTo(AVG_SAT);
-    assertThat(stats.numOfUndergrads()).isEqualTo(NUM_OF_UNDERGRADS);
-    assertThat(stats.avgCost()).isEqualTo(AVG_COST);
-    assertThat(stats.ratioOfMen()).isEqualTo(RATIO_OF_MEN);
-    assertThat(stats.ratioOfWomen()).isEqualTo(RATIO_OF_WOMEN);
+    assertThat(mapData.name()).isEqualTo(NAME);
+    assertThat(mapData.city()).isEqualTo(CITY);
+    assertThat(mapData.isMainCampus()).isEqualTo(FLAG_MAIN_CAMPUS);
+    assertThat(mapData.latitude()).isEqualTo(LATITUDE);
+    assertThat(mapData.longitude()).isEqualTo(LONGITUDE);
   }
 
   @Test
   public void convertBackToCollegeData() {
-    CollegeStats stats =
-        CollegeStats.builder()
-            .setAdmissionRate(ADMISSION_RATE)
-            .setAvgSat(AVG_SAT)
-            .setNumOfUndergrads(NUM_OF_UNDERGRADS)
-            .setAvgCost(AVG_COST)
-            .setRatioOfMen(RATIO_OF_MEN)
-            .setRatioOfWomen(RATIO_OF_WOMEN)
+    MapsData mapData =
+        MapsData.builder()
+            .setName(NAME)
+            .setCity(CITY)
+            .setIsMainCampus(FLAG_MAIN_CAMPUS)
+            .setLatitude(LATITUDE)
+            .setLongitude(LONGITUDE)
             .build();
 
-    assertThrows(UnsupportedOperationException.class, () -> converter.reverse().convert(stats));
+    assertThrows(UnsupportedOperationException.class, () -> converter.reverse().convert(mapData));
   }
 }
