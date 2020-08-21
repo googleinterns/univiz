@@ -6,7 +6,6 @@ import static java.util.stream.Collectors.toCollection;
 import com.google.gson.annotations.SerializedName;
 import com.google.univiz.api.representation.CollegeId;
 import com.google.univiz.config.UnivizConfig;
-import java.lang.RuntimeException;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -36,7 +35,7 @@ public final class URLProviderImpl implements URLProvider {
             .collect(toCollection(LinkedHashSet::new));
   }
 
-  @Override 
+  @Override
   public String getUrl(String partialCollegeName, List<CollegeId>... ids) throws RuntimeException {
     StringBuilder urlStringBuilder = new StringBuilder();
     urlStringBuilder.append(frontUrl);
@@ -52,7 +51,8 @@ public final class URLProviderImpl implements URLProvider {
     return urlStringBuilder.toString();
   }
 
-  private StringBuilder buildSuggestionUrl(StringBuilder urlStringBuilder, String partialCollegeName) {
+  private StringBuilder buildSuggestionUrl(
+      StringBuilder urlStringBuilder, String partialCollegeName) {
     urlStringBuilder.append(queryTypeName);
     urlStringBuilder.append(partialCollegeName);
     urlStringBuilder.append(fieldsParam);

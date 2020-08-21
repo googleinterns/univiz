@@ -33,12 +33,12 @@ public final class URLProviderImplTest {
   public void setup() {
     Guice.createInjector(new UnivizConfigModule()).injectMembers(this);
   }
-  
+
   @Test
   public void testGetUrlFromPartialCollegeName() {
     String partialCollegeName = "Sta";
-    String actual = testImpl.getUrl(partialCollegeName); 
-    
+    String actual = testImpl.getUrl(partialCollegeName);
+
     StringBuilder expectedBuilder = new StringBuilder();
     expectedBuilder.append(frontUrl);
     expectedBuilder.append(querySchoolName);
@@ -48,7 +48,6 @@ public final class URLProviderImplTest {
     String expected = expectedBuilder.toString();
 
     assertThat(actual).isEqualTo(expected);
-
   }
 
   @Test
