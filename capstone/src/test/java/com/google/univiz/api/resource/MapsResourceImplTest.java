@@ -73,8 +73,8 @@ public final class MapsResourceImplTest {
     assertThat(mapsData).hasSize(1);
 
     MapsData collegeMapData = mapsData.get(0);
-    assertThat(collegeMapData.name()).isEqualTo("New York University");
-    assertThat(collegeMapData.latitude()).isEqualTo(40.729452);
+    assertThat(collegeMapData.name()).isEqualTo(nyu.name());
+    assertThat(collegeMapData.latitude()).isEqualTo(nyu.latitude());
   }
 
   @Test
