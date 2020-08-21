@@ -1,0 +1,37 @@
+{
+  "metadata": {
+    "total":40,
+    "page":0,
+    "per_page":1
+  },
+  "results": [
+    {
+      "latest.cost.attendance.academic_year":69830,
+      "location.lon":-73.997264,"school.main_campus":1,
+      "school.name":"New York University",
+      "latest.student.size":26339,
+      "latest.student.demographics.men":0.4253,
+      "latest.student.demographics.women":0.5747,
+      "school.city":"New York",
+      "location.lat":40.729452,
+      "latest.admissions.sat_scores.average.overall":1419.0,
+      "latest.admissions.admission_rate.overall":0.1999,
+      "id":193900,
+      "school.carnegie_size_setting":17
+    },
+    {
+      "latest.cost.attendance.academic_year":9830,
+      "location.lon":-73.99264,"school.main_campus":1,
+      "school.name":"New University",
+      "latest.student.size":6339,
+      "latest.student.demographics.men":0.425,
+      "latest.student.demographics.women":0.575,
+      "school.city":"New York",
+      "location.lat":40.7252,
+      "latest.admissions.sat_scores.average.overall":419.0,
+      "latest.admissions.admission_rate.overall":0.8999,
+      "id":13900,
+      "school.carnegie_size_setting":7
+    }
+  ]
+}
