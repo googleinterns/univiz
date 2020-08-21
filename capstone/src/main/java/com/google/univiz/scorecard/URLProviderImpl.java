@@ -64,6 +64,7 @@ public final class URLProviderImpl implements URLProvider {
     String stringWithFields = fields.stream().collect(joining(","));
     String stringWithIds =
         ids.stream().map(CollegeId::id).map(String::valueOf).collect(joining(","));
+    urlStringBuilder.append(queryTypeId);
     urlStringBuilder.append(stringWithIds);
     urlStringBuilder.append(perPage);
     urlStringBuilder.append(String.format("%d", ids.size()));
