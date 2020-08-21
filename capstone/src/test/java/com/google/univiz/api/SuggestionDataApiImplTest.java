@@ -1,6 +1,7 @@
 package com.google.univiz.api;
 
 import static com.google.common.truth.Truth.assertThat;
+import static org.junit.Assert.assertThrows;
 import static org.mockito.Mockito.when;
 
 import com.google.common.io.Resources;
@@ -40,7 +41,8 @@ public final class SuggestionDataApiImplTest {
   @Test
   public void testEmptySuggestion() throws IOException {
     String collegeName = "";
-    String testUrl = Resources.getResource(SuggestionDataApiImplTest.class, "suggestion_empty.json").toString();
+    String testUrl =
+        Resources.getResource(SuggestionDataApiImplTest.class, "suggestion_empty.json").toString();
     when(mockUrlProvider.getUrl(collegeName)).thenReturn(testUrl);
     SuggestionResponse suggestionResponse =
         testSuggestionDataApiImpl.getCollegeSuggestions(collegeName);
@@ -50,7 +52,8 @@ public final class SuggestionDataApiImplTest {
   @Test
   public void testSingleSuggestion() throws IOException {
     String collegeName = "Stanf";
-    String testUrl = Resources.getResource(SuggestionDataApiImplTest.class, "suggestion_single.json").toString();
+    String testUrl =
+        Resources.getResource(SuggestionDataApiImplTest.class, "suggestion_single.json").toString();
     when(mockUrlProvider.getUrl(collegeName)).thenReturn(testUrl);
     SuggestionResponse suggestionResponse =
         testSuggestionDataApiImpl.getCollegeSuggestions(collegeName);
@@ -62,14 +65,28 @@ public final class SuggestionDataApiImplTest {
   @Test
   public void testMultipleSuggestions() throws IOException {
     String collegeName = "Stan";
-    String testUrl = Resources.getResource(SuggestionDataApiImplTest.class, "suggestion_multiple.json").toString();
+    String testUrl =
+        Resources.getResource(SuggestionDataApiImplTest.class, "suggestion_multiple.json")
+            .toString();
     when(mockUrlProvider.getUrl(collegeName)).thenReturn(testUrl);
     SuggestionResponse suggestionResponse =
         testSuggestionDataApiImpl.getCollegeSuggestions(collegeName);
     assertThat(suggestionResponse.suggestions()).hasSize(2);
     SuggestionData suggDataOne = suggestionResponse.suggestions().get(0);
     assertThat(suggDataOne.name()).isEqualTo("Stanford University");
-     SuggestionData suggDataTwo = suggestionResponse.suggestions().get(1);
+    SuggestionData suggDataTwo = suggestionResponse.suggestions().get(1);
     assertThat(suggDataTwo.name()).isEqualTo("Standford University");
+  }
+
+  @Test
+  public void testIOException() throws IOException {
+    String collegeName = "";
+    String testUrl =
+        Resources.getResource(SuggestionDataApiImplTest.class, "suggestion_multiple.json")
+            .toString();
+    when(mockUrlProvider.getUrl(collegeName)).thenReturn(testUrl);
+    when(readerProvider.getStreamFromUrl(testUrl)).thenThrow(new IOException());
+    assertThrows(
+        IOException.class, () -> testSuggestionDataApiImpl.getCollegeSuggestions(collegeName));
   }
 }
