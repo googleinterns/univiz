@@ -70,6 +70,7 @@ public final class ScorecardConverterTest {
 
   @Test
   public void convertBackToScorecardData() {
-    assertThrows(UnsupportedOperationException.class, () -> converter.reverse().convert(NYU_COLLEGE_DATA));
+    assertThrows(
+        UnsupportedOperationException.class, () -> converter.reverse().convert(NYU_COLLEGE_DATA));
   }
 }
