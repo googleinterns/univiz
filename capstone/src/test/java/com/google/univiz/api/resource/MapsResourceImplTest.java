@@ -1,6 +1,7 @@
 package com.google.univiz.api.resource;
 
 import static com.google.common.truth.Truth.assertThat;
+import static org.junit.Assert.assertThrows;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
 
@@ -110,7 +111,7 @@ public final class MapsResourceImplTest {
     List<CollegeId> ids = Lists.newArrayList(nyu.id());
     List<CollegeData> collegesData = Lists.newArrayList(nyu);
 
-    doThrow(new IOException()).when(collegeDataApi.getCollegesById(ids));
-    List<MapsData> mapsData = mapsImpl.getMapsData(ids);
+    when(collegeDataApi.getCollegesById(ids)).thenThrow(IOException.class);
+    assertThrows(IOException.class, () -> mapsImpl.getMapsData(ids));
   }
 }
