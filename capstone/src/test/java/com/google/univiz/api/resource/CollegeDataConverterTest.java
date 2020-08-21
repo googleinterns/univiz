@@ -3,9 +3,7 @@ package com.google.univiz.api.resource;
 import static com.google.common.truth.Truth.assertThat;
 import static org.junit.Assert.assertThrows;
 
-import com.google.univiz.api.representation.CarnegieSizeDegree;
 import com.google.univiz.api.representation.CollegeData;
-import com.google.univiz.api.representation.CollegeId;
 import com.google.univiz.api.representation.MapsData;
 import com.google.univiz.common.MockCollegeData;
 import org.junit.Test;
