@@ -9,7 +9,6 @@ import com.google.univiz.api.representation.CollegeStats;
 import com.google.univiz.api.representation.Deadline;
 import com.google.univiz.api.representation.Timeline;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 
@@ -32,11 +31,11 @@ final class VisResourceImpl implements VisResource {
 
   @Override
   public List<Timeline> getRecommendedTimeline(List<CollegeId> colleges) {
-    return new ArrayList<Timeline>();
+    throw new UnsupportedOperationException();
   }
 
   @Override
   public List<Deadline> getDeadlines(List<CollegeId> colleges) {
-    return new ArrayList<Deadline>();
+    throw new UnsupportedOperationException();
   }
 }

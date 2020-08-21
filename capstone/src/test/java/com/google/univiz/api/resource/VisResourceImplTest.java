@@ -1,6 +1,7 @@
 package com.google.univiz.api.resource;
 
 import static com.google.common.truth.Truth.assertThat;
+import static org.junit.Assert.assertThrows;
 import static org.mockito.Mockito.when;
 
 import com.google.common.collect.Lists;
@@ -86,5 +87,19 @@ public final class VisResourceImplTest {
     assertThat(college1Stats.avgCost()).isEqualTo(69830);
     assertThat(college2Stats.name()).isEqualTo("Stanford University");
     assertThat(college2Stats.avgCost()).isEqualTo(69109);
+  }
+
+  @Test
+  public void testGetRecommendedTimelineUnsupported() {
+    List<CollegeId> ids = Lists.newArrayList(NYU_COLLEGE_ID, STANFORD_COLLEGE_ID);
+
+    assertThrows(UnsupportedOperationException.class, () -> visImpl.getRecommendedTimeline(ids));
+  }
+
+  @Test
+  public void testGetDealinesUnsupported() {
+    List<CollegeId> ids = Lists.newArrayList(NYU_COLLEGE_ID, STANFORD_COLLEGE_ID);
+
+    assertThrows(UnsupportedOperationException.class, () -> visImpl.getDeadlines(ids));
   }
 }
