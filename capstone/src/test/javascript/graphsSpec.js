@@ -9,10 +9,9 @@ google.visualization.DataTable = class {
   /**
    * Dummy function for adding rows to mock DataTable class.
    *
-   * @param {Object} value1 the value for the first column.
-   * @param {Object} value2 the value for the second column.
+   * @param {Object} values the array of pairs corresponding to a row.
    */
-  addRow(value1, value2) {}
+  addRow(values) {}
 
   /**
    * Dummy function for adding columns to mock DataTable class.
@@ -36,15 +35,15 @@ describe('Data Table Construction', () => {
     spyOn(google.visualization.DataTable.prototype, 'addColumn');
     await deserializeTuitionData();
     expect(google.visualization.DataTable.prototype.addRow)
-        .toHaveBeenCalledWith(
-            mockTuitionInfo[0]['name'],
-            mockTuitionInfo[0]['avgCost'],
-        );
+        .toHaveBeenCalledWith([
+          mockTuitionInfo[0]['name'],
+          mockTuitionInfo[0]['avgCost'],
+        ]);
     expect(google.visualization.DataTable.prototype.addRow)
-        .toHaveBeenCalledWith(
-            mockTuitionInfo[1]['name'],
-            mockTuitionInfo[1]['avgCost'],
-        );
+        .toHaveBeenCalledWith([
+          mockTuitionInfo[1]['name'],
+          mockTuitionInfo[1]['avgCost'],
+        ]);
     expect(google.visualization.DataTable.prototype.addRow.calls.count())
         .toEqual(2);
     expect(google.visualization.DataTable.prototype.addColumn)
