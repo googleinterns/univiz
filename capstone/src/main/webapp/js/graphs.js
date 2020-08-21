@@ -19,7 +19,7 @@ function graphNetTuition() {
  */
 async function deserializeTuitionData() {
   const data = new google.visualization.DataTable();
-  await fetch('/tuition-data')
+  await fetch('/viz/stats')
       .then((response) => response.json())
       .then((tuitionInfo) => populateDataTable(data, tuitionInfo));
   return data;
