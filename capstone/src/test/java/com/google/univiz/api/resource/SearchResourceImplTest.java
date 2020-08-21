@@ -1,4 +1,4 @@
-package com.google.univiz.api;
+package com.google.univiz.api.resource;
 
 import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Mockito.when;
@@ -32,7 +32,7 @@ public final class SearchResourceImplTest {
   }
 
   @Test
-  public void testSuggestionsForCollegeNameNoSpace() throws Exception {
+  public void testCollegeNameNoSpace() throws Exception {
     String collegeName = "Stanford";
     List<SuggestionData> suggestions = Lists.newArrayList(cannedSuggestion);
     when(cannedResponse.suggestions()).thenReturn(suggestions);
@@ -47,29 +47,16 @@ public final class SearchResourceImplTest {
   }
 
   @Test
-  public void testSuggestionsForEmptySuggestion() throws Exception {
+  public void testEmptyName() throws Exception {
     String emptyCollegeName = "";
     List<SearchData> ret = search.getSearchSuggestions(emptyCollegeName);
-    CollegeId collegeId = CollegeId.create(0);
-    SearchData expected = SearchData.create("", collegeId);
-    assertThat(ret).containsExactly(expected);
+    assertThat(ret).isEmpty();
   }
 
   @Test
-  public void testSuggestionsForNullSuggestion() throws Exception {
+  public void testNullName() throws Exception {
     String nullCollegeName = null;
     List<SearchData> ret = search.getSearchSuggestions(nullCollegeName);
-    CollegeId collegeId = CollegeId.create(0);
-    SearchData expected = SearchData.create("", collegeId);
-    assertThat(ret).containsExactly(expected);
-  }
-
-  @Test
-  public void testSuggestionsForInvalidSuggestion() throws Exception {
-    String invalidCollegeName = "%$#@!1235566";
-    List<SearchData> ret = search.getSearchSuggestions(invalidCollegeName);
-    CollegeId collegeId = CollegeId.create(0);
-    SearchData expected = SearchData.create("", collegeId);
-    assertThat(ret).containsExactly(expected);
+    assertThat(ret).isEmpty();
   }
 }

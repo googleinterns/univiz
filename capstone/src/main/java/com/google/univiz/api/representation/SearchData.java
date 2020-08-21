@@ -9,7 +9,7 @@ public abstract class SearchData {
     return new AutoValue_SearchData(collegeName, collegeId);
   }
 
-  public abstract String getCollegeName();
+  public abstract String collegeName();
 
-  public abstract CollegeId getCollegeId();
+  public abstract CollegeId collegeId();
 }
