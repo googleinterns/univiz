@@ -22,6 +22,8 @@ public abstract class CollegeStats {
 
   public abstract double ratioOfWomen();
 
+  public abstract String name();
+
   public static Builder builder() {
     return new AutoValue_CollegeStats.Builder();
   }
@@ -40,6 +42,8 @@ public abstract class CollegeStats {
     public abstract Builder setRatioOfMen(double value);
 
     public abstract Builder setRatioOfWomen(double value);
+
+    public abstract Builder setName(String value);
 
     public abstract CollegeStats build();
   }
