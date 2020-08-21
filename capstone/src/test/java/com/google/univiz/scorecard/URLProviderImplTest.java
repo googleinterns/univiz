@@ -28,6 +28,22 @@ public final class URLProviderImplTest {
   public void setup() {
     Guice.createInjector(new UnivizConfigModule()).injectMembers(this);
   }
+  
+  @Test
+  public void testGetUrlFromPartialCollegeName() {
+    String partialCollegeName = "Sta";
+    String actual = testImpl.getUrl(partialCollegeName); 
+    
+    StringBuilder expectedBuilder = new StringBuilder();
+    expectedBuilder.append(frontUrl);
+    expectedBuilder.append(querySchoolName);
+    expectedBuilder.append(partialCollegeName);
+    expectedBuilder.append(suggestionFields);
+    String expected = expectedBuilder.toString();
+
+    assertThat(actual).isEqualTo(expected);
+
+  }
 
   @Test
   public void testGetUrlFromCollegeIds() {
@@ -35,7 +51,7 @@ public final class URLProviderImplTest {
     CollegeId fakeCollegeId2 = CollegeId.create(2);
     CollegeId fakeCollegeId3 = CollegeId.create(3);
     List<CollegeId> ids = Arrays.asList(fakeCollegeId1, fakeCollegeId2, fakeCollegeId3);
-    String actual = testImpl.getUrlFromCollegeIds(ids);
+    String actual = testImpl.getUrl(null, ids);
 
     Set<String> expectedFields = new LinkedHashSet<>();
     expectedFields.add("id");

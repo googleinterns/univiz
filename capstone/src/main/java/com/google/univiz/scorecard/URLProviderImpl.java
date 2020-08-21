@@ -56,6 +56,7 @@ final class URLProviderImpl implements URLProvider {
     urlStringBuilder.append(partialCollegeName);
     urlStringBuilder.append(fields);
     urlStringBuilder.append(suggestionFields);
+    return urlStringBuilder;
   }
 
   private StringBuilder getUrlFromCollegeIds(StringBuilder stringBuilder, List<CollegeId> ids) {
@@ -67,6 +68,6 @@ final class URLProviderImpl implements URLProvider {
     urlStringBuilder.append(String.format("%d", ids.size()));
     urlStringBuilder.append(fields);
     urlStringBuilder.append(stringWithFields);
-    return urlStringBuilder.toString();
+    return urlStringBuilder;
   }
 }
