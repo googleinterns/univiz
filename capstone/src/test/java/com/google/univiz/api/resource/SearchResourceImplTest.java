@@ -41,7 +41,7 @@ public final class SearchResourceImplTest {
         .thenReturn(STANFORD_SUGGESTION_RESPONSE);
 
     List<SearchData> ret = search.getSearchSuggestions(collegeName);
-    CollegeId collegeId = CollegeId.create(1);
+    CollegeId collegeId = CollegeId.create(STANFORD_SUGGESTION_DATA.id());
     SearchData expected = SearchData.create("Stanford University", collegeId);
     assertThat(ret).containsExactly(expected);
   }
