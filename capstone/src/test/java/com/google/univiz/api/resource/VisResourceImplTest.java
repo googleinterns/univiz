@@ -95,7 +95,7 @@ public final class VisResourceImplTest {
   }
 
   @Test
-  public void testGetDealinesUnsupported() {
+  public void testGetDeadlinesUnsupported() {
     List<CollegeId> ids = Lists.newArrayList(NYU_COLLEGE_DATA.id(), STANFORD_COLLEGE_DATA.id());
 
     assertThrows(UnsupportedOperationException.class, () -> visImpl.getDeadlines(ids));
