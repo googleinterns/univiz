@@ -11,32 +11,33 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public final class CollegeDataStatsConverterTest {
 
-  private static final CollegeData nyu = MockCollegeData.getNyuData();
+  private static final CollegeData NYU_COLLEGE_DATA = MockCollegeData.getNyuData();
 
   private final CollegeDataStatsConverter converter = new CollegeDataStatsConverter();
 
   @Test
   public void convertToCollegeStats() {
-    CollegeStats stats = converter.convert(nyu);
+    CollegeStats stats = converter.convert(NYU_COLLEGE_DATA);
 
-    assertThat(stats.admissionRate()).isEqualTo(nyu.admissionRate());
-    assertThat(stats.avgSat()).isEqualTo(nyu.avgSat());
-    assertThat(stats.numOfUndergrads()).isEqualTo(nyu.numOfUndergrads());
-    assertThat(stats.avgCost()).isEqualTo(nyu.avgCost());
-    assertThat(stats.ratioOfMen()).isEqualTo(nyu.ratioOfMen());
-    assertThat(stats.ratioOfWomen()).isEqualTo(nyu.ratioOfWomen());
+    assertThat(stats.admissionRate()).isEqualTo(NYU_COLLEGE_DATA.admissionRate());
+    assertThat(stats.avgSat()).isEqualTo(NYU_COLLEGE_DATA.avgSat());
+    assertThat(stats.numOfUndergrads()).isEqualTo(NYU_COLLEGE_DATA.numOfUndergrads());
+    assertThat(stats.avgCost()).isEqualTo(NYU_COLLEGE_DATA.avgCost());
+    assertThat(stats.ratioOfMen()).isEqualTo(NYU_COLLEGE_DATA.ratioOfMen());
+    assertThat(stats.ratioOfWomen()).isEqualTo(NYU_COLLEGE_DATA.ratioOfWomen());
   }
 
   @Test
   public void convertBackToCollegeData() {
     CollegeStats stats =
         CollegeStats.builder()
-            .setAdmissionRate(nyu.admissionRate())
-            .setAvgSat(nyu.avgSat())
-            .setNumOfUndergrads(nyu.numOfUndergrads())
-            .setAvgCost(nyu.avgCost())
-            .setRatioOfMen(nyu.ratioOfMen())
-            .setRatioOfWomen(nyu.ratioOfWomen())
+            .setAdmissionRate(NYU_COLLEGE_DATA.admissionRate())
+            .setAvgSat(NYU_COLLEGE_DATA.avgSat())
+            .setNumOfUndergrads(NYU_COLLEGE_DATA.numOfUndergrads())
+            .setAvgCost(NYU_COLLEGE_DATA.avgCost())
+            .setRatioOfMen(NYU_COLLEGE_DATA.ratioOfMen())
+            .setRatioOfWomen(NYU_COLLEGE_DATA.ratioOfWomen())
+            .setName(NYU_COLLEGE_DATA.name())
             .build();
 
     assertThrows(UnsupportedOperationException.class, () -> converter.reverse().convert(stats));

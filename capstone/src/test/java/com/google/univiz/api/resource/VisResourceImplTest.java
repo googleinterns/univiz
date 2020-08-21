@@ -11,7 +11,7 @@ import com.google.inject.testing.fieldbinder.BoundFieldModule;
 import com.google.univiz.api.CollegeDataApi;
 import com.google.univiz.api.representation.CollegeData;
 import com.google.univiz.api.representation.CollegeId;
-import com.google.univiz.api.representation.MapsData;
+import com.google.univiz.api.representation.CollegeStats;
 import com.google.univiz.common.MockCollegeData;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -27,15 +27,16 @@ import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
 @RunWith(JUnit4.class)
-public final class MapsResourceImplTest {
+public final class VisResourceImplTest {
 
   @Rule public final MockitoRule rule = MockitoJUnit.rule();
 
   @Bind @Mock private CollegeDataApi collegeDataApi;
 
-  @Inject private MapsResourceImpl mapsImpl;
+  @Inject private VisResourceImpl visImpl;
 
   private static final CollegeData NYU_COLLEGE_DATA = MockCollegeData.getNyuData();
+
   private static final CollegeData STANFORD_COLLEGE_DATA = MockCollegeData.getStanfordData();
 
   @Before
@@ -44,17 +45,18 @@ public final class MapsResourceImplTest {
   }
 
   @Test
-  public void testMapsResourceImpl() throws IOException {
+  public void testVisResourceImpl() throws IOException {
     List<CollegeId> ids = Lists.newArrayList(NYU_COLLEGE_DATA.id());
+
     List<CollegeData> collegesData = Lists.newArrayList(NYU_COLLEGE_DATA);
 
     when(collegeDataApi.getCollegesById(ids)).thenReturn(collegesData);
-    List<MapsData> mapsData = mapsImpl.getMapsData(ids);
-    assertThat(mapsData).hasSize(1);
+    List<CollegeStats> visData = visImpl.getCollegeStats(ids);
+    assertThat(visData).hasSize(1);
 
-    MapsData collegeMapData = mapsData.get(0);
-    assertThat(collegeMapData.name()).isEqualTo(NYU_COLLEGE_DATA.name());
-    assertThat(collegeMapData.latitude()).isEqualTo(NYU_COLLEGE_DATA.latitude());
+    CollegeStats collegeStats = visData.get(0);
+    assertThat(collegeStats.name()).isEqualTo("New York University");
+    assertThat(collegeStats.avgCost()).isEqualTo(69830);
   }
 
   @Test
@@ -63,33 +65,39 @@ public final class MapsResourceImplTest {
     List<CollegeData> collegesData = new ArrayList<>();
 
     when(collegeDataApi.getCollegesById(ids)).thenReturn(collegesData);
-    List<MapsData> mapsData = mapsImpl.getMapsData(ids);
-    assertThat(mapsData).isEmpty();
+    List<CollegeStats> visData = visImpl.getCollegeStats(ids);
+    assertThat(visData).isEmpty();
   }
 
   @Test
-  public void testManyMapsResourcesImpl() throws IOException {
+  public void testManyVisResourcesImpl() throws IOException {
     List<CollegeId> ids = Lists.newArrayList(NYU_COLLEGE_DATA.id(), STANFORD_COLLEGE_DATA.id());
+
     List<CollegeData> collegesData = Lists.newArrayList(NYU_COLLEGE_DATA, STANFORD_COLLEGE_DATA);
 
     when(collegeDataApi.getCollegesById(ids)).thenReturn(collegesData);
-    List<MapsData> mapsData = mapsImpl.getMapsData(ids);
-    assertThat(mapsData).hasSize(2);
+    List<CollegeStats> visData = visImpl.getCollegeStats(ids);
+    assertThat(visData).hasSize(2);
 
-    MapsData college1MapData = mapsData.get(0);
-    MapsData college2MapData = mapsData.get(1);
-    assertThat(college1MapData.name()).isEqualTo(NYU_COLLEGE_DATA.name());
-    assertThat(college1MapData.latitude()).isEqualTo(NYU_COLLEGE_DATA.latitude());
-    assertThat(college2MapData.name()).isEqualTo(STANFORD_COLLEGE_DATA.name());
-    assertThat(college2MapData.latitude()).isEqualTo(STANFORD_COLLEGE_DATA.latitude());
+    CollegeStats college1Stats = visData.get(0);
+    CollegeStats college2Stats = visData.get(1);
+    assertThat(college1Stats.name()).isEqualTo("New York University");
+    assertThat(college1Stats.avgCost()).isEqualTo(69830);
+    assertThat(college2Stats.name()).isEqualTo("Stanford University");
+    assertThat(college2Stats.avgCost()).isEqualTo(69109);
   }
 
   @Test
-  public void testException() throws IOException {
-    List<CollegeId> ids = Lists.newArrayList(NYU_COLLEGE_DATA.id());
-    List<CollegeData> collegesData = Lists.newArrayList(NYU_COLLEGE_DATA);
+  public void testGetRecommendedTimelineUnsupported() {
+    List<CollegeId> ids = Lists.newArrayList(NYU_COLLEGE_DATA.id(), STANFORD_COLLEGE_DATA.id());
 
-    when(collegeDataApi.getCollegesById(ids)).thenThrow(IOException.class);
-    assertThrows(IOException.class, () -> mapsImpl.getMapsData(ids));
+    assertThrows(UnsupportedOperationException.class, () -> visImpl.getRecommendedTimeline(ids));
+  }
+
+  @Test
+  public void testGetDealinesUnsupported() {
+    List<CollegeId> ids = Lists.newArrayList(NYU_COLLEGE_DATA.id(), STANFORD_COLLEGE_DATA.id());
+
+    assertThrows(UnsupportedOperationException.class, () -> visImpl.getDeadlines(ids));
   }
 }
