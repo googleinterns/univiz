@@ -24,19 +24,6 @@ public class MockCollegeData {
   private static final double NYU_RATIO_OF_MEN = 0.4253;
   private static final double NYU_RATIO_OF_WOMEN = 0.5747;
 
-  private static final CollegeId STANFORD_COLLEGE_ID = CollegeId.create(243744);
-  private static final String STANDFORD_NAME = "Stanford University";
-  private static final String STANDFORD_CITY = "Stanford";
-  private static final boolean STANFORD_FLAG_MAIN_CAMPUS = true;
-  private static final double STANFORD_LATITUDE = 37.429434;
-  private static final double STANFORD_LONGITUDE = -122.167359;
-  private static final double STANFORD_ADMISSION_RATE = 0.0436;
-  private static final double STANFORD_AVG_SAT = 1497.0;
-  private static final int STANFORD_NUM_OF_UNDERGRADS = 7083;
-  private static final int STANFORD_AVG_COST = 69109;
-  private static final double STANFORD_RATIO_OF_MEN = 0.4991;
-  private static final double STANFORD_RATIO_OF_WOMEN = 0.5009;
-
   public static CollegeData getNyuData() {
     CollegeData college =
         CollegeData.builder()
@@ -53,26 +40,6 @@ public class MockCollegeData {
             .setAvgCost(NYU_AVG_COST)
             .setRatioOfMen(NYU_RATIO_OF_MEN)
             .setRatioOfWomen(NYU_RATIO_OF_WOMEN)
-            .build();
-    return college;
-  }
-
-  public static CollegeData getStanfordData() {
-    CollegeData college =
-        CollegeData.builder()
-            .setId(STANFORD_COLLEGE_ID)
-            .setName(STANDFORD_NAME)
-            .setCity(STANDFORD_CITY)
-            .setIsMainCampus(STANFORD_FLAG_MAIN_CAMPUS)
-            .setLatitude(STANFORD_LATITUDE)
-            .setLongitude(STANFORD_LONGITUDE)
-            .setCarnegieSizeDegree(CarnegieSizeDegree.getDegree(CARNEGIE_SIZE_DEGREE))
-            .setAdmissionRate(STANFORD_ADMISSION_RATE)
-            .setAvgSat(STANFORD_AVG_SAT)
-            .setNumOfUndergrads(STANFORD_NUM_OF_UNDERGRADS)
-            .setAvgCost(STANFORD_AVG_COST)
-            .setRatioOfMen(STANFORD_RATIO_OF_MEN)
-            .setRatioOfWomen(STANFORD_RATIO_OF_WOMEN)
             .build();
     return college;
   }
