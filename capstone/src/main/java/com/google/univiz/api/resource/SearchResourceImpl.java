@@ -23,6 +23,7 @@ final class SearchResourceImpl implements SearchResource {
   public List<SearchData> getSearchSuggestions(String partialCollegeName) {
     SuggestionResponse collegeSuggestions = suggestionApi.getCollegeSuggestions(partialCollegeName);
     return collegeSuggestions.suggestions().stream()
+	.filter(suggestion -> suggestion.name() != null)
         .map(college -> SearchData.create(college.name(), CollegeId.create(college.id())))
         .collect(Collectors.toList());
   }
