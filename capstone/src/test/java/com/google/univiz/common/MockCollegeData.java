@@ -10,6 +10,8 @@ import com.google.univiz.api.representation.CollegeId;
  */
 public final class MockCollegeData {
 
+  private MockCollegeData() {}
+
   public static CollegeData getNyuData() {
     CollegeData college =
         CollegeData.builder()
@@ -30,5 +32,23 @@ public final class MockCollegeData {
     return college;
   }
 
-  private MockCollegeData() {}
+  public static CollegeData getStanfordData() {
+    CollegeData college =
+        CollegeData.builder()
+            .setId(CollegeId.create(243744))
+            .setName("Stanford University")
+            .setCity("Stanford")
+            .setIsMainCampus(true)
+            .setLatitude(37.429434)
+            .setLongitude(-122.167359)
+            .setCarnegieSizeDegree(CarnegieSizeDegree.getDegree(17))
+            .setAdmissionRate(0.0436)
+            .setAvgSat(1497.0)
+            .setNumOfUndergrads(7083)
+            .setAvgCost(69109)
+            .setRatioOfMen(0.4991)
+            .setRatioOfWomen(0.5009)
+            .build();
+    return college;
+  }
 }
