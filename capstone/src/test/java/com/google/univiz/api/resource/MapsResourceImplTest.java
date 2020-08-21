@@ -12,7 +12,7 @@ import com.google.univiz.api.representation.CarnegieSizeDegree;
 import com.google.univiz.api.representation.CollegeData;
 import com.google.univiz.api.representation.CollegeId;
 import com.google.univiz.api.representation.MapsData;
-import com.google.univiz.api.representation.MockCollegeData;
+import com.google.univiz.common.MockCollegeData;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
