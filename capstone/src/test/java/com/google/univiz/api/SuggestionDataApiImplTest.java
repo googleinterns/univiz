@@ -32,7 +32,7 @@ public final class SuggestionDataApiImplTest {
 
   @Before
   public void setup() {
-    Guice.createInjector(BoundFieldModule.of(this)).injectMembers(this);
+    Guice.createInjector(new GsonModule(), BoundFieldModule.of(this)).injectMembers(this);
   }
 
   @Test
