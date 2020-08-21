@@ -14,7 +14,7 @@ final class SearchResourceImpl implements SearchResource {
   private final SuggestionDataApi suggestionApi;
 
   @Inject
-  public SearchResourceImpl(SuggestionDataApi suggestionApi) {
+  SearchResourceImpl(SuggestionDataApi suggestionApi) {
     this.suggestionApi = suggestionApi;
   }
 
