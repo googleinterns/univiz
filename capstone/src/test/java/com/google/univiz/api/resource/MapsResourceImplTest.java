@@ -1,6 +1,7 @@
 package com.google.univiz.api.resource;
 
 import static com.google.common.truth.Truth.assertThat;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
 
 import com.google.common.collect.Lists;
@@ -102,5 +103,14 @@ public final class MapsResourceImplTest {
     assertThat(college1MapData.latitude()).isEqualTo(nyu.latitude());
     assertThat(college2MapData.name()).isEqualTo(STANDFORD_NAME);
     assertThat(college2MapData.latitude()).isEqualTo(STANFORD_LATITUDE);
+  }
+
+  @Test
+  public void testException() throws IOException {
+    List<CollegeId> ids = Lists.newArrayList(nyu.id());
+    List<CollegeData> collegesData = Lists.newArrayList(nyu);
+
+    doThrow(new IOException()).when(collegeDataApi.getCollegesById(ids));
+    List<MapsData> mapsData = mapsImpl.getMapsData(ids);
   }
 }
