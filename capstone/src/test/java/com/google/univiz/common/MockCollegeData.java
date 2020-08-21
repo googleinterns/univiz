@@ -8,7 +8,7 @@ import com.google.univiz.api.representation.CollegeId;
  * MockCollegeData is a class with static methods returning CollegeData objects only to be used for
  * testing purposes.
  */
-public class MockCollegeData {
+final class MockCollegeData {
 
   public static CollegeData getNyuData() {
     CollegeData college =
@@ -29,4 +29,6 @@ public class MockCollegeData {
             .build();
     return college;
   }
+
+  private MockCollegeData() {}
 }
