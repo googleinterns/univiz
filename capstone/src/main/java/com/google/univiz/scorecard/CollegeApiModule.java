@@ -14,5 +14,7 @@ public final class CollegeApiModule extends AbstractModule {
   protected void configure() {
     bind(CollegeDataApi.class).to(CollegeDataApiImpl.class);
     bind(SuggestionDataApi.class).to(SuggestionDataApiImpl.class);
+    bind(CollegeIdReaderProvider.class).to(CollegeIdReaderProviderImpl.class);
+    bind(URLProvider.class).to(URLProviderImpl.class);
   }
 }
