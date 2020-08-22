@@ -18,8 +18,8 @@ public final class UnivizBootstrapModuleTest {
   public void testAllWebServletsCanLoad() {
     Injector injector = Guice.createInjector(new UnivizBootstrapModule());
     Reflections reflections = new Reflections("com.google.univiz");
-    Set<Class<? extends HttpServlet>> existingServletClasses = reflections
-        .getSubTypesOf(HttpServlet.class);
+    Set<Class<? extends HttpServlet>> existingServletClasses =
+        reflections.getSubTypesOf(HttpServlet.class);
 
     assertThat(existingServletClasses).isNotEmpty();
     for (Class<?> servletClass : existingServletClasses) {
