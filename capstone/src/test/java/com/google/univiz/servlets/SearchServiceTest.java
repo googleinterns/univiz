@@ -10,6 +10,7 @@ import static org.mockito.Mockito.when;
 import com.google.inject.Guice;
 import com.google.inject.testing.fieldbinder.Bind;
 import com.google.inject.testing.fieldbinder.BoundFieldModule;
+import com.google.univiz.api.representation.CollegeId;
 import com.google.univiz.api.representation.SearchData;
 import com.google.univiz.api.resource.SearchResource;
 import java.io.IOException;
@@ -36,8 +37,9 @@ public final class SearchServiceTest {
   @Mock @Bind private SearchResource mockSearchResource;
   @Inject private SearchService searchService;
 
-  private static final SearchData STANFORD_COLLEGE_DATA = SearchData.create("stanford", 1);
-  private static final SearchData USC_COLLEGE_DATA = SearchData.create("USC", 2);
+  private static final SearchData STANFORD_COLLEGE_DATA =
+      SearchData.create("stanford", CollegeId.create(1));
+  private static final SearchData USC_COLLEGE_DATA = SearchData.create("USC", CollegeId.create(2));
 
   @Before
   public void setUp() {
@@ -52,7 +54,7 @@ public final class SearchServiceTest {
 
     String returnedJson = doGet(query);
 
-    assertThat(returnedJson).isEqualTo("[{\"collegeName\":\"stanford\",\"collegeId\":1}]");
+    assertThat(returnedJson).isEqualTo("[{\"collegeName\":\"stanford\",\"collegeId\":{\"id\":1}}]");
   }
 
   @Test
@@ -65,8 +67,8 @@ public final class SearchServiceTest {
 
     assertThat(returnedJson)
         .isEqualTo(
-            "[{\"collegeName\":\"stanford\",\"collegeId\":1},"
-                + "{\"collegeName\":\"USC\",\"collegeId\":2}]");
+            "[{\"collegeName\":\"stanford\",\"collegeId\":{\"id\":1}},"
+                + "{\"collegeName\":\"USC\",\"collegeId\":{\"id\":2}}]");
   }
 
   @Test
