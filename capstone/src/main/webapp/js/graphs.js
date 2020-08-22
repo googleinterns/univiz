@@ -1,3 +1,5 @@
+/* eslint no-unused-vars: ["error", {"varsIgnorePattern": "graphNetTuition"}] */
+
 /**
  * The callback function that will generate the double bar graph. Uses
  * Google Charts API and JSON object consisting of college tuition data.
