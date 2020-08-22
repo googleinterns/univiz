@@ -1,5 +1,6 @@
-package com.google.univiz.api;
+package com.google.univiz.scorecard;
 
+import com.google.univiz.api.SuggestionDataApi;
 import com.google.univiz.api.representation.SuggestionResponse;
 
 final class SuggestionDataApiImpl implements SuggestionDataApi {
