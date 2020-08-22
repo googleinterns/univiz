@@ -5,7 +5,7 @@ import static com.google.common.truth.Truth.assertThat;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import java.util.Set;
-import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -18,7 +18,8 @@ public final class UnivizBootstrapModuleTest {
   public void testAllWebServletsCanLoad() {
     Injector injector = Guice.createInjector(new UnivizBootstrapModule());
     Reflections reflections = new Reflections("com.google.univiz");
-    Set<Class<?>> existingServletClasses = reflections.getTypesAnnotatedWith(WebServlet.class);
+    Set<Class<? extends HttpServlet>> existingServletClasses = reflections
+        .getSubTypesOf(HttpServlet.class);
 
     assertThat(existingServletClasses).isNotEmpty();
     for (Class<?> servletClass : existingServletClasses) {
