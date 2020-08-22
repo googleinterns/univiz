@@ -48,14 +48,14 @@ public final class CollegeDataVisualizationServiceTest {
   public void getStatsResults_emptyQuery() throws Exception {
     String response = doGet("/viz/" + CollegeDataVisualizationService.STATS_SUFFIX, "");
 
-    assertThat(response).isEqualTo("[]\n");
+    assertThat(response).isEqualTo("[]");
   }
 
   @Test
   public void getStatsResults_nullQuery() throws Exception {
     String response = doGet("/viz/" + CollegeDataVisualizationService.STATS_SUFFIX, null);
 
-    assertThat(response).isEqualTo("[]\n");
+    assertThat(response).isEqualTo("[]");
   }
 
   @Test
