@@ -26,6 +26,11 @@ public final class SearchResourceImplTest {
       SuggestionData.create("Stanford University", 1);
   private static final SuggestionResponse STANFORD_SUGGESTION_RESPONSE =
       SuggestionResponse.create(Lists.newArrayList(STANFORD_SUGGESTION_DATA));
+  private static final SuggestionData NULL_SUGGESTION_DATA =
+      SuggestionData.create(null, 1);
+  private static final SuggestionResponse NULL_SUGGESTION_RESPONSE =
+      SuggestionResponse.create(Lists.newArrayList(NULL_SUGGESTION_DATA));
+  
   @Rule public final MockitoRule mockitoRule = MockitoJUnit.rule();
   private SearchResourceImpl search;
 
@@ -35,7 +40,7 @@ public final class SearchResourceImplTest {
   }
 
   @Test
-  public void testCollegeNameNoSpace() throws Exception {
+  public void testCollegeName() throws Exception {
     String collegeName = "Stanford";
     when(mockSuggestionApi.getCollegeSuggestions(collegeName))
         .thenReturn(STANFORD_SUGGESTION_RESPONSE);
@@ -44,5 +49,15 @@ public final class SearchResourceImplTest {
     CollegeId collegeId = CollegeId.create(1);
     SearchData expected = SearchData.create("Stanford University", collegeId);
     assertThat(ret).containsExactly(expected);
+  }
+
+  @Test
+  public void testNullCollegeName() throws Exception {
+    String collegeName = "Stanford";
+    when(mockSuggestionApi.getCollegeSuggestions(collegeName))
+	.thenReturn(NULL_SUGGESTION_RESPONSE);
+
+    List<SearchData> ret = search.getSearchSuggestions(collegeName);
+    assertThat(ret).isEmpty();
   }
 }
