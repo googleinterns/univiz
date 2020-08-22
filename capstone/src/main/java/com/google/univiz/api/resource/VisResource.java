@@ -4,6 +4,7 @@ import com.google.univiz.api.representation.CollegeId;
 import com.google.univiz.api.representation.CollegeStats;
 import com.google.univiz.api.representation.Deadline;
 import com.google.univiz.api.representation.Timeline;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -19,7 +20,7 @@ public interface VisResource {
    * @param colleges the IDs for each of the user's selected colleges
    * @return the list of statistics per college.
    */
-  List<CollegeStats> getCollegeStats(List<CollegeId> colleges);
+  List<CollegeStats> getCollegeStats(List<CollegeId> colleges) throws IOException;
 
   /**
    * For every college the user selected, obtain the recommended set of actions for the user to take
