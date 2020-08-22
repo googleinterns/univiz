@@ -52,7 +52,7 @@ public final class SearchServiceTest {
 
     String returnedJson = doGet(query);
 
-    assertThat(returnedJson).isEqualTo("[{\"collegeName\":\"stanford\",\"collegeId\":1}]\n");
+    assertThat(returnedJson).isEqualTo("[{\"collegeName\":\"stanford\",\"collegeId\":1}]");
   }
 
   @Test
@@ -66,7 +66,7 @@ public final class SearchServiceTest {
     assertThat(returnedJson)
         .isEqualTo(
             "[{\"collegeName\":\"stanford\",\"collegeId\":1},"
-                + "{\"collegeName\":\"USC\",\"collegeId\":2}]\n");
+                + "{\"collegeName\":\"USC\",\"collegeId\":2}]");
   }
 
   @Test
@@ -76,7 +76,7 @@ public final class SearchServiceTest {
 
     String returnedJson = doGet(query);
 
-    assertThat(returnedJson).isEqualTo("[]\n");
+    assertThat(returnedJson).isEqualTo("[]");
   }
 
   @Test
