@@ -2,7 +2,7 @@ package com.google.univiz.api.representation;
 
 import com.google.common.base.Converter;
 
-final class CollegeDataStatsConverter extends Converter<CollegeData, CollegeStats> {
+public final class CollegeDataStatsConverter extends Converter<CollegeData, CollegeStats> {
 
   @Override
   protected CollegeStats doForward(CollegeData college) {
