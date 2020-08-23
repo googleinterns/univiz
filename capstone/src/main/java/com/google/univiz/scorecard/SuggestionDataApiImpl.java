@@ -6,20 +6,20 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import javax.inject.Inject;
 
-public class SuggestionDataApiImpl implements SuggestionDataApi {
+final class SuggestionDataApiImpl implements SuggestionDataApi {
   private final URLProvider urlProvider;
   private final CollegeIdReaderProvider readerProvider;
   private final Gson gson;
 
   @Inject
-  protected SuggestionDataApiImpl(
+  SuggestionDataApiImpl(
       URLProvider urlProvider, CollegeIdReaderProvider readerProvider, Gson gson) {
     this.urlProvider = urlProvider;
     this.readerProvider = readerProvider;
     this.gson = gson;
   }
 
-  // Takes REST API Json response and converts it to SuggestionData
+  /** Takes REST API Json response and converts it to SuggestionData */
   private SuggestionResponse convertJsonToSuggestionResponse(InputStreamReader suggestionReader) {
     return gson.fromJson(suggestionReader, SuggestionResponse.class);
   }
