@@ -14,7 +14,7 @@ final class SuggestionDataApiImpl implements SuggestionDataApi {
   private final Gson gson;
 
   @Inject
-  protected SuggestionDataApiImpl(
+  SuggestionDataApiImpl(
       URLProvider urlProvider, CollegeIdReaderProvider readerProvider, Gson gson) {
     this.urlProvider = urlProvider;
     this.readerProvider = readerProvider;
