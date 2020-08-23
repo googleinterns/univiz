@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import javax.inject.Inject;
 
-public class SuggestionDataApiImpl implements SuggestionDataApi {
+final class SuggestionDataApiImpl implements SuggestionDataApi {
   private final URLProvider urlProvider;
   private final CollegeIdReaderProvider readerProvider;
   private final Gson gson;
