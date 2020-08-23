@@ -21,7 +21,7 @@ final class SuggestionDataApiImpl implements SuggestionDataApi {
     this.gson = gson;
   }
 
-  // Takes REST API Json response and converts it to SuggestionData
+  /** Takes REST API Json response and converts it to SuggestionData */
   private SuggestionResponse convertJsonToSuggestionResponse(InputStreamReader suggestionReader) {
     return gson.fromJson(suggestionReader, SuggestionResponse.class);
   }
