@@ -1,9 +1,7 @@
-package com.google.univiz.api;
+package com.google.univiz.scorecard;
 
 import com.google.gson.Gson;
 import com.google.univiz.api.representation.SuggestionResponse;
-import com.google.univiz.scorecard.CollegeIdReaderProvider;
-import com.google.univiz.scorecard.URLProvider;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import javax.inject.Inject;

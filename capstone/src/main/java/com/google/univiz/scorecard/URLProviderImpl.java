@@ -13,13 +13,13 @@ import java.util.Objects;
 import java.util.Set;
 import javax.inject.Inject;
 
-public final class URLProviderImpl implements URLProvider {
-  private final String frontUrl = "https://api.data.gov/ed/collegescorecard/v1/schools.json?";
-  private final String queryTypeName = "school.name=";
-  private final String queryTypeId = "id=";
-  private final String perPage = "&per_page=";
-  private final String fieldsParam = "&fields=";
-  private final String suggestionFields = "id,school.name";
+final class URLProviderImpl implements URLProvider {
+  private static final String FRONT_URL = "https://api.data.gov/ed/collegescorecard/v1/schools.json?";
+  private static final String QUERY_TYPE_NAME = "school.name=";
+  private static final String QUERY_TYPE_ID = "id=";
+  private static final String PER_PAGE = "&per_page=";
+  private static final String FIELDS_PARAM = "&fields=";
+  private static final String SUGGESTION_FIELDS = "id,school.name";
   private final UnivizConfig univizConfig;
   private final Set<String> fields;
 
@@ -38,7 +38,7 @@ public final class URLProviderImpl implements URLProvider {
   @Override
   public String getUrl(String partialCollegeName, List<CollegeId>... ids) throws RuntimeException {
     StringBuilder urlStringBuilder = new StringBuilder();
-    urlStringBuilder.append(frontUrl);
+    urlStringBuilder.append(FRONT_URL);
     if (partialCollegeName != null && (ids.length == 0)) {
       urlStringBuilder = buildSuggestionUrl(urlStringBuilder, partialCollegeName);
     } else if (ids.length > 0) {
@@ -53,10 +53,10 @@ public final class URLProviderImpl implements URLProvider {
 
   private StringBuilder buildSuggestionUrl(
       StringBuilder urlStringBuilder, String partialCollegeName) {
-    urlStringBuilder.append(queryTypeName);
+    urlStringBuilder.append(QUERY_TYPE_NAME);
     urlStringBuilder.append(partialCollegeName);
-    urlStringBuilder.append(fieldsParam);
-    urlStringBuilder.append(suggestionFields);
+    urlStringBuilder.append(FIELDS_PARAM);
+    urlStringBuilder.append(SUGGESTION_FIELDS);
     return urlStringBuilder;
   }
 
@@ -64,11 +64,11 @@ public final class URLProviderImpl implements URLProvider {
     String stringWithFields = fields.stream().collect(joining(","));
     String stringWithIds =
         ids.stream().map(CollegeId::id).map(String::valueOf).collect(joining(","));
-    urlStringBuilder.append(queryTypeId);
+    urlStringBuilder.append(QUERY_TYPE_ID);
     urlStringBuilder.append(stringWithIds);
-    urlStringBuilder.append(perPage);
+    urlStringBuilder.append(PER_PAGE);
     urlStringBuilder.append(String.format("%d", ids.size()));
-    urlStringBuilder.append(fieldsParam);
+    urlStringBuilder.append(FIELDS_PARAM);
     urlStringBuilder.append(stringWithFields);
     return urlStringBuilder;
   }

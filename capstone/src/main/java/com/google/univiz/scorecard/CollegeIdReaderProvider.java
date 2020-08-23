@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /** Perform an arbitrary REST call given a URL. */
-public interface CollegeIdReaderProvider {
+interface CollegeIdReaderProvider {
 
   /**
    * Open the InputStream corresponding to the URL given in String form.

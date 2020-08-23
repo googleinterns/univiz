@@ -1,4 +1,4 @@
-package com.google.univiz.api;
+package com.google.univiz.scorecard;
 
 import static com.google.common.truth.Truth.assertThat;
 import static org.junit.Assert.assertThrows;
