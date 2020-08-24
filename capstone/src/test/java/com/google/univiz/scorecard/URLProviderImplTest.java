@@ -61,6 +61,8 @@ public final class URLProviderImplTest {
     expectedBuilder.append(partialCollegeName);
     expectedBuilder.append(FIELDS_PARAM);
     expectedBuilder.append(SUGGESTION_FIELDS);
+    expectedBuilder.append(PER_PAGE);
+    expectedBuilder.append("20");
     expectedBuilder.append(API_KEY);
     String expected = expectedBuilder.toString();
 

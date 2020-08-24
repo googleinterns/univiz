@@ -21,6 +21,7 @@ final class URLProviderImpl implements URLProvider {
   private static final String PER_PAGE = "&per_page=";
   private static final String FIELDS_PARAM = "&fields=";
   private static final String SUGGESTION_FIELDS = "id,school.name";
+  private static final String SUGGESTION_PER_PAGE = "20";
   private final UnivizConfig univizConfig;
   private final Set<String> fields;
 
@@ -44,6 +45,8 @@ final class URLProviderImpl implements URLProvider {
     urlStringBuilder.append(partialCollegeName);
     urlStringBuilder.append(FIELDS_PARAM);
     urlStringBuilder.append(SUGGESTION_FIELDS);
+    urlStringBuilder.append(PER_PAGE);
+    urlStringBuilder.append(SUGGESTION_PER_PAGE);
     urlStringBuilder.append("&api_key=");
     urlStringBuilder.append(univizConfig.scorecardApiKey());
     return urlStringBuilder.toString();
