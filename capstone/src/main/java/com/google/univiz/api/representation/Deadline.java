@@ -7,6 +7,7 @@ import com.google.auto.value.AutoValue;
  * for the purpose of graphing due dates.
  */
 @AutoValue
+@GenerateTypeAdapter
 public abstract class Deadline {
   public abstract int openingMonth();
 
