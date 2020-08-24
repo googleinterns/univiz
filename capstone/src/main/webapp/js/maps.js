@@ -41,13 +41,14 @@ function createMap() {
  * @return {JSON} an array of dictionaries corresponding to relevant map data
  */
 async function fetchData() {
+  // TODO(biancamacias): insert path to maps servlet
   await fetch('/map')
       .then((response) => response.json())
       .then((mapsDataFromJSON) => {
         console.log('Fetching data...');
         console.log(mapsDataFromJSON);
+        return mapsDataFromJSON;
       });
-  return mapsDataFromJSON;
 }
 
 /**

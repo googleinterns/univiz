@@ -17,6 +17,6 @@ describe('Map Marker and InfoWindow Display', () => {
         spyOn(window, 'fetch')
             .and.returnValue(Promise.resolve({json: () => mapsJsonData}));
         await fetchData();
-        //TODO(biancamacias): mock? assert functions work? but how?
+        // TODO(biancamacias): mock? assert functions work? but how?
       });
 });
