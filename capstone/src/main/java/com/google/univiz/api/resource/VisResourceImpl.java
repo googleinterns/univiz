@@ -36,6 +36,15 @@ final class VisResourceImpl implements VisResource {
 
   @Override
   public List<Deadline> getDeadlines(List<CollegeId> colleges) {
-    throw new UnsupportedOperationException();
+    Deadline deadline =
+        Deadline.builder()
+            .setOpeningMonth(9)
+            .setOpeningDay(1)
+            .setOpeningYear(2020)
+            .setClosingMonth(12)
+            .setClosingDay(1)
+            .setClosingYear(2020)
+            .build();
+    return colleges.stream().map(college -> deadline).collect(toList());
   }
 }

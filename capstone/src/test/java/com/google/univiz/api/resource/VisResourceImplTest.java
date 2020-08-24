@@ -12,6 +12,7 @@ import com.google.univiz.api.CollegeDataApi;
 import com.google.univiz.api.representation.CollegeData;
 import com.google.univiz.api.representation.CollegeId;
 import com.google.univiz.api.representation.CollegeStats;
+import com.google.univiz.api.representation.Deadline;
 import com.google.univiz.common.MockCollegeData;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -95,9 +96,23 @@ public final class VisResourceImplTest {
   }
 
   @Test
-  public void testGetDeadlinesUnsupported() {
+  public void testGetDeadlines() {
     List<CollegeId> ids = Lists.newArrayList(NYU_COLLEGE_DATA.id(), STANFORD_COLLEGE_DATA.id());
 
-    assertThrows(UnsupportedOperationException.class, () -> visImpl.getDeadlines(ids));
+    List<Deadline> deadlines = visImpl.getDeadlines(ids);
+
+    assertThat(deadlines).hasSize(ids.size());
+
+    Deadline expectedDeadline =
+        Deadline.builder()
+            .setOpeningMonth(9)
+            .setOpeningDay(1)
+            .setOpeningYear(2020)
+            .setClosingMonth(12)
+            .setClosingDay(1)
+            .setClosingYear(2020)
+            .build();
+
+    deadlines.stream().forEach(deadline -> assertThat(deadline).isEqualTo(expectedDeadline));
   }
 }

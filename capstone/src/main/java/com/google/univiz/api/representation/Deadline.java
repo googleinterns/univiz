@@ -20,8 +20,6 @@ public abstract class Deadline {
 
   public abstract int closingYear();
 
-  public abstract String name();
-
   public static Builder builder() {
     return new AutoValue_Deadline.Builder();
   }
