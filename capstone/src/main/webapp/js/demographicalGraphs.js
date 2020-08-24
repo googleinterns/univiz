@@ -19,17 +19,19 @@ function graphDemographics() {
   };
   const admissionRateChart =
     new google.visualization.ColumnChart(
-        document.getElementById('admissionRateData'),
+        document.getElementById('admission-rate-data'),
     );
   const avgSatChart =
-    new google.visualization.ColumnChart(document.getElementById('avgSatData'));
+    new google.visualization.ColumnChart(
+        document.getElementById('avg-sat-data'),
+    );
   const numUndergradsChart =
     new google.visualization.ColumnChart(
-        document.getElementById('numUndergradsData'),
+        document.getElementById('num-undergrads-data'),
     );
   const genderRatioChart =
     new google.visualization.ColumnChart(
-        document.getElementById('genderRatioData'),
+        document.getElementById('gender-ratio-data'),
     );
   deserializeGenderRatioData().then(
       (data) => genderRatioChart.draw(data, genderRatioOptions),
