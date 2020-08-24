@@ -4,7 +4,7 @@ import com.google.univiz.api.representation.SearchData;
 import java.util.List;
 
 /**
- * The SearchResoure interface is responsible for all data management/processing specific for the
+ * The SearchResource interface is responsible for all data management/processing specific for the
  * search feature of the UniViz webapp.
  */
 public interface SearchResource {
