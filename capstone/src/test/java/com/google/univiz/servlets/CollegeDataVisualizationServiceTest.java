@@ -91,7 +91,32 @@ public final class CollegeDataVisualizationServiceTest {
   }
 
   @Test
-  public void getDeadlineResults_throws() throws Exception {
+  public void getDeadlineResults_emptyQuery() throws Exception {
+    String response = doGet("/viz/" + CollegeDataVisualizationService.DEADLINES_SUFFIX, "");
+
+    assertThat(response).contains("[]");
+  }
+
+  @Test
+  public void getDeadlineResults_nullQuery() throws Exception {
+    String response = doGet("/viz/" + CollegeDataVisualizationService.DEADLINES_SUFFIX, null);
+
+    assertThat(response).contains("[]");
+  }
+
+  @Test
+  public void getDeadlineResults_singleResult() throws Exception {
+    when(visResource.getDeadlines(ImmutableList.of(CollegeId.create(1))))
+        .thenReturn(ImmutableList.of(DEADLINE));
+
+    String response = doGet("/viz/" + CollegeDataVisualizationService.DEADLINES_SUFFIX, "1");
+
+    assertThat(response).contains("\"openingMonth\":9");
+    assertThat(response).contains("\"openingDay\":1");
+  }
+
+  @Test
+  public void getDeadlineResults_multiResult() throws Exception {
     when(visResource.getDeadlines(ImmutableList.of(CollegeId.create(1), CollegeId.create(2))))
         .thenReturn(ImmutableList.of(DEADLINE, DEADLINE));
 
