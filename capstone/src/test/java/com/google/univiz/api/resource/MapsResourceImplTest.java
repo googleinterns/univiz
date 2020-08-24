@@ -9,7 +9,6 @@ import com.google.inject.Guice;
 import com.google.inject.testing.fieldbinder.Bind;
 import com.google.inject.testing.fieldbinder.BoundFieldModule;
 import com.google.univiz.api.CollegeDataApi;
-import com.google.univiz.api.representation.CarnegieSizeDegree;
 import com.google.univiz.api.representation.CollegeData;
 import com.google.univiz.api.representation.CollegeId;
 import com.google.univiz.api.representation.MapsData;
@@ -36,27 +35,8 @@ public final class MapsResourceImplTest {
 
   @Inject private MapsResourceImpl mapsImpl;
 
-  private static final CollegeData nyu = MockCollegeData.getNyuData();
-
-  private static final CollegeId STANFORD_COLLEGE_ID = CollegeId.create(243744);
-  private static final String STANDFORD_NAME = "Stanford University";
-  private static final double STANFORD_LATITUDE = 37.429434;
-  private static final CollegeData stanford =
-      CollegeData.builder()
-          .setId(STANFORD_COLLEGE_ID)
-          .setName(STANDFORD_NAME)
-          .setCity("Stanford")
-          .setIsMainCampus(true)
-          .setLatitude(STANFORD_LATITUDE)
-          .setLongitude(-122.167359)
-          .setCarnegieSizeDegree(CarnegieSizeDegree.getDegree(17))
-          .setAdmissionRate(0.0436)
-          .setAvgSat(1497.0)
-          .setNumOfUndergrads(7083)
-          .setAvgCost(69109)
-          .setRatioOfMen(0.4991)
-          .setRatioOfWomen(0.5009)
-          .build();
+  private static final CollegeData NYU_COLLEGE_DATA = MockCollegeData.getNyuData();
+  private static final CollegeData STANFORD_COLLEGE_DATA = MockCollegeData.getStanfordData();
 
   @Before
   public void guiceSetUp() {
@@ -65,16 +45,16 @@ public final class MapsResourceImplTest {
 
   @Test
   public void testMapsResourceImpl() throws IOException {
-    List<CollegeId> ids = Lists.newArrayList(nyu.id());
-    List<CollegeData> collegesData = Lists.newArrayList(nyu);
+    List<CollegeId> ids = Lists.newArrayList(NYU_COLLEGE_DATA.id());
+    List<CollegeData> collegesData = Lists.newArrayList(NYU_COLLEGE_DATA);
 
     when(collegeDataApi.getCollegesById(ids)).thenReturn(collegesData);
     List<MapsData> mapsData = mapsImpl.getMapsData(ids);
     assertThat(mapsData).hasSize(1);
 
     MapsData collegeMapData = mapsData.get(0);
-    assertThat(collegeMapData.name()).isEqualTo(nyu.name());
-    assertThat(collegeMapData.latitude()).isEqualTo(nyu.latitude());
+    assertThat(collegeMapData.name()).isEqualTo(NYU_COLLEGE_DATA.name());
+    assertThat(collegeMapData.latitude()).isEqualTo(NYU_COLLEGE_DATA.latitude());
   }
 
   @Test
@@ -89,8 +69,8 @@ public final class MapsResourceImplTest {
 
   @Test
   public void testManyMapsResourcesImpl() throws IOException {
-    List<CollegeId> ids = Lists.newArrayList(nyu.id(), STANFORD_COLLEGE_ID);
-    List<CollegeData> collegesData = Lists.newArrayList(nyu, stanford);
+    List<CollegeId> ids = Lists.newArrayList(NYU_COLLEGE_DATA.id(), STANFORD_COLLEGE_DATA.id());
+    List<CollegeData> collegesData = Lists.newArrayList(NYU_COLLEGE_DATA, STANFORD_COLLEGE_DATA);
 
     when(collegeDataApi.getCollegesById(ids)).thenReturn(collegesData);
     List<MapsData> mapsData = mapsImpl.getMapsData(ids);
@@ -98,16 +78,16 @@ public final class MapsResourceImplTest {
 
     MapsData college1MapData = mapsData.get(0);
     MapsData college2MapData = mapsData.get(1);
-    assertThat(college1MapData.name()).isEqualTo(nyu.name());
-    assertThat(college1MapData.latitude()).isEqualTo(nyu.latitude());
-    assertThat(college2MapData.name()).isEqualTo(STANDFORD_NAME);
-    assertThat(college2MapData.latitude()).isEqualTo(STANFORD_LATITUDE);
+    assertThat(college1MapData.name()).isEqualTo(NYU_COLLEGE_DATA.name());
+    assertThat(college1MapData.latitude()).isEqualTo(NYU_COLLEGE_DATA.latitude());
+    assertThat(college2MapData.name()).isEqualTo(STANFORD_COLLEGE_DATA.name());
+    assertThat(college2MapData.latitude()).isEqualTo(STANFORD_COLLEGE_DATA.latitude());
   }
 
   @Test
   public void testException() throws IOException {
-    List<CollegeId> ids = Lists.newArrayList(nyu.id());
-    List<CollegeData> collegesData = Lists.newArrayList(nyu);
+    List<CollegeId> ids = Lists.newArrayList(NYU_COLLEGE_DATA.id());
+    List<CollegeData> collegesData = Lists.newArrayList(NYU_COLLEGE_DATA);
 
     when(collegeDataApi.getCollegesById(ids)).thenThrow(IOException.class);
     assertThrows(IOException.class, () -> mapsImpl.getMapsData(ids));

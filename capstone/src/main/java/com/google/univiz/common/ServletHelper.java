@@ -10,7 +10,7 @@ public final class ServletHelper {
   public static void writeJsonToResponse(Gson gson, HttpServletResponse response, Object result)
       throws IOException {
     response.setContentType("application/json");
-    response.getWriter().println(gson.toJson(result));
+    gson.toJson(result, response.getWriter());
   }
 
   private ServletHelper() {}
