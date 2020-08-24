@@ -21,11 +21,11 @@ import org.mockito.junit.MockitoRule;
 
 @RunWith(JUnit4.class)
 public final class URLProviderImplTest {
-  private final String frontUrl = "https://api.data.gov/ed/collegescorecard/v1/schools.json?";
-  private final String querySchoolName = "school.name=";
-  private final String queryTypeId = "id=";
-  private final String perPage = "&per_page=";
-  private final String suggestionFields = "&fields=id,school.name";
+  private static final String FRONT_URL = "https://api.data.gov/ed/collegescorecard/v1/schools.json?";
+  private static final String QUERY_SCHOOL_NAME = "school.name=";
+  private static final String QUERY_TYPE_ID = "id=";
+  private static final String PER_PAGE = "&per_page=";
+  private static final String SUGGESTION_FIELDS = "&fields=id,school.name";
   @Rule public final MockitoRule rule = MockitoJUnit.rule();
   @Inject private URLProviderImpl testImpl;
 
@@ -40,10 +40,10 @@ public final class URLProviderImplTest {
     String actual = testImpl.getUrl(partialCollegeName);
 
     StringBuilder expectedBuilder = new StringBuilder();
-    expectedBuilder.append(frontUrl);
-    expectedBuilder.append(querySchoolName);
+    expectedBuilder.append(FRONT_URL);
+    expectedBuilder.append(QUERY_SCHOOL_NAME);
     expectedBuilder.append(partialCollegeName);
-    expectedBuilder.append(suggestionFields);
+    expectedBuilder.append(SUGGESTION_FIELDS);
     expectedBuilder.append("&api_key=scorecard_test_key");
     String expected = expectedBuilder.toString();
 
