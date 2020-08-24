@@ -5,7 +5,7 @@ import static org.junit.Assert.assertThrows;
 
 import com.google.univiz.api.representation.CarnegieSizeDegree;
 import com.google.univiz.api.representation.CollegeData;
-import com.google.univiz.api.representation.CollegeId;
+import com.google.univiz.common.MockCollegeData;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -26,6 +26,8 @@ public final class ScorecardConverterTest {
   private static final int AVG_COST = 69830;
   private static final double RATIO_OF_MEN = 0.4253;
   private static final double RATIO_OF_WOMEN = 0.5747;
+
+  private static final CollegeData NYU_COLLEGE_DATA = MockCollegeData.getNyuData();
 
   private final ScorecardConverter converter = new ScorecardConverter();
 
@@ -68,24 +70,7 @@ public final class ScorecardConverterTest {
 
   @Test
   public void convertBackToScorecardData() {
-    CollegeData collegeData =
-        CollegeData.builder()
-            .setId(CollegeId.create(COLLEGE_ID))
-            .setName(NAME)
-            .setCity(CITY)
-            .setIsMainCampus(FLAG_MAIN_CAMPUS == 1)
-            .setLatitude(LATITUDE)
-            .setLongitude(LONGITUDE)
-            .setCarnegieSizeDegree(CarnegieSizeDegree.getDegree(CARNEGIE_SIZE_DEGREE))
-            .setAdmissionRate(ADMISSION_RATE)
-            .setAvgSat(AVG_SAT)
-            .setNumOfUndergrads(NUM_OF_UNDERGRADS)
-            .setAvgCost(AVG_COST)
-            .setRatioOfMen(RATIO_OF_MEN)
-            .setRatioOfWomen(RATIO_OF_WOMEN)
-            .build();
-
     assertThrows(
-        UnsupportedOperationException.class, () -> converter.reverse().convert(collegeData));
+        UnsupportedOperationException.class, () -> converter.reverse().convert(NYU_COLLEGE_DATA));
   }
 }
