@@ -21,7 +21,8 @@ import org.mockito.junit.MockitoRule;
 
 @RunWith(JUnit4.class)
 public final class URLProviderImplTest {
-  private static final String FRONT_URL = "https://api.data.gov/ed/collegescorecard/v1/schools.json?";
+  private static final String FRONT_URL =
+      "https://api.data.gov/ed/collegescorecard/v1/schools.json?";
   private static final String QUERY_SCHOOL_NAME = "school.name=";
   private static final String QUERY_TYPE_ID = "id=";
   private static final String PER_PAGE = "&per_page=";
@@ -89,8 +90,7 @@ public final class URLProviderImplTest {
     expectedFields.add(MEN);
     expectedFields.add(WOMEN);
 
-    StringBuilder expectedBuilder =
-        new StringBuilder(FRONT_URL);
+    StringBuilder expectedBuilder = new StringBuilder(FRONT_URL);
     expectedBuilder.append(QUERY_TYPE_ID);
     expectedBuilder.append(
         String.format("%d,%d,%d", fakeCollegeId1.id(), fakeCollegeId2.id(), fakeCollegeId3.id()));

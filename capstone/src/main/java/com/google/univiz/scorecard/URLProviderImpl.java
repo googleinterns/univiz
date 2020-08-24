@@ -14,7 +14,8 @@ import java.util.Set;
 import javax.inject.Inject;
 
 final class URLProviderImpl implements URLProvider {
-  private static final String FRONT_URL = "https://api.data.gov/ed/collegescorecard/v1/schools.json?";
+  private static final String FRONT_URL =
+      "https://api.data.gov/ed/collegescorecard/v1/schools.json?";
   private static final String QUERY_TYPE_NAME = "school.name=";
   private static final String QUERY_TYPE_ID = "id=";
   private static final String PER_PAGE = "&per_page=";
