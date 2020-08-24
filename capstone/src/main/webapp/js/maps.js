@@ -24,7 +24,7 @@ function createMap() {
 
     (function(marker, mapsData) {
       google.maps.event.addListener(marker, 'click',
-          function(e) {
+          function() {
             infoWindow.setContent(setDescription(
                 mapsData['name'],
                 mapsData['city'],
