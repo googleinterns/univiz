@@ -51,7 +51,7 @@ public final class CollegeDataVisualizationService extends HttpServlet {
             .collect(toList());
     List<? extends Object> response;
     if (req.getServletPath().endsWith(DEADLINES_SUFFIX)) {
-      throw new UnsupportedOperationException();
+      response = visResource.getDeadlines(collegeIds);
     } else if (req.getServletPath().endsWith(STATS_SUFFIX)) {
       response = visResource.getCollegeStats(collegeIds);
     } else if (req.getServletPath().endsWith(TIMELINES_SUFFIX)) {

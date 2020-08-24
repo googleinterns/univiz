@@ -11,6 +11,7 @@ import com.google.inject.testing.fieldbinder.Bind;
 import com.google.inject.testing.fieldbinder.BoundFieldModule;
 import com.google.univiz.api.representation.CollegeId;
 import com.google.univiz.api.representation.CollegeStats;
+import com.google.univiz.api.representation.Deadline;
 import com.google.univiz.api.resource.VisResource;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -32,6 +33,16 @@ public final class CollegeDataVisualizationServiceTest {
 
   private static final CollegeStats COLLEGE_STATS_1 = collegeStatsOf(1234);
   private static final CollegeStats COLLEGE_STATS_2 = collegeStatsOf(2345);
+
+  private static final Deadline DEADLINE =
+      Deadline.builder()
+          .setOpeningMonth(9)
+          .setOpeningDay(1)
+          .setOpeningYear(2020)
+          .setClosingMonth(12)
+          .setClosingDay(1)
+          .setClosingYear(2020)
+          .build();
 
   @Rule public final MockitoRule rule = MockitoJUnit.rule();
 
@@ -81,9 +92,13 @@ public final class CollegeDataVisualizationServiceTest {
 
   @Test
   public void getDeadlineResults_throws() throws Exception {
-    assertThrows(
-        UnsupportedOperationException.class,
-        () -> doGet("/viz/" + CollegeDataVisualizationService.DEADLINES_SUFFIX, "1"));
+    when(visResource.getDeadlines(ImmutableList.of(CollegeId.create(1), CollegeId.create(2))))
+        .thenReturn(ImmutableList.of(DEADLINE, DEADLINE));
+
+    String response = doGet("/viz/" + CollegeDataVisualizationService.DEADLINES_SUFFIX, "1,2");
+
+    assertThat(response).contains("\"openingMonth\":9");
+    assertThat(response).contains("\"openingDay\":1");
   }
 
   @Test
