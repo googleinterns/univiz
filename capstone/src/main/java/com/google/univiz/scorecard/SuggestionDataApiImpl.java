@@ -27,7 +27,8 @@ final class SuggestionDataApiImpl implements SuggestionDataApi {
   @Override
   public SuggestionResponse getCollegeSuggestions(String collegeName) throws IOException {
     InputStreamReader suggestionReader =
-        new InputStreamReader(readerProvider.getStreamFromUrl(urlProvider.getSuggestionUrl(collegeName)));
+        new InputStreamReader(
+            readerProvider.getStreamFromUrl(urlProvider.getSuggestionUrl(collegeName)));
     return convertJsonToSuggestionResponse(suggestionReader);
   }
 }
