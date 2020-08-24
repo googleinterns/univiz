@@ -1,6 +1,7 @@
 package com.google.univiz.api.representation;
 
 import com.google.auto.value.AutoValue;
+import com.ryanharter.auto.value.gson.GenerateTypeAdapter;
 
 /**
  * Contains the date when applications are due for a particular college. Will be made serializable
