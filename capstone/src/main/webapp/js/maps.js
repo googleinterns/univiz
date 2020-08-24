@@ -65,10 +65,3 @@ function setDescription(name, city, isMainCampus) {
     return description + 'This is not the main campus.';
   }
 }
-
-// json = [{'latitude': 40.729452,
-// 'longitude': -73.997264, 'name': 'New York University',
-//     'city': 'New York', 'isMainCampus': true},
-// {'latitude': 37.429434, 'longitude': -122.167359,
-//     'name': 'Stanford University',
-// 'city': 'Stanford', 'isMainCampus': true}];
