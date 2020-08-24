@@ -1,2 +1,5 @@
 google.charts.load('current', {packages: ['corechart', 'bar']});
-google.charts.setOnLoadCallback(graphNetTuition);
+google.charts.setOnLoadCallback(() => {
+  graphNetTuition();
+  graphDemographics();
+});
