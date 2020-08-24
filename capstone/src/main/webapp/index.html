@@ -7,7 +7,7 @@
   </head>
   <body>
     <h2>Welcome to UniViz!</h2>
-    <form autocomplete="off">
+    <form action="/search" autocomplete="off" type="POST" id="search-bar">
       <label for="search">Search for colleges:</label><br>
       <input type="text" id="search" name="search" placeholder="College Name" oninput="giveSuggestions()" onkeydown="keyDown(event)"><br>
       <input type="submit" value="See your colleges!">

@@ -54,8 +54,7 @@ function closeAllElmntExcept(elmnt) {
  * Current placeholder until servlet is created
  * @return{Array<string>} arr
  */
-function getListOfSuggestions() {
-  const arr = ['Hello', 'Hi', 'Howdy'];
+function getListOfSuggestions(arr) {
   return arr;
 }
 
