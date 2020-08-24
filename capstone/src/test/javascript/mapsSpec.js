@@ -1,15 +1,21 @@
 
-describe('Map Marker and Info Window Content', () => {
-  it('will add markers and info window content with data from JSON', async () =>
-    const mapsJsonData = [{'latitude': 40.729452,
-      'longitude': -73.997264, 'name': 'New York University',
-      'city': 'New York', 'isMainCampus': true},
-      {'latitude': 37.429434, 'longitude': -122.167359,
-      'name': 'Stanford University','city': 'Stanford', 
-      'isMainCampus': true},
-    ];
-    spyOn(window, 'fetch')
-      .and.returnValue(Promise.resolve({json: () => mapsJsonData}));
-    await fetchData();
-    )
-})
+describe('Map Marker and InfoWindow Display', () => {
+  it('will add map content using data from JSON',
+      async () => {
+        const mapsJsonData = [
+          {'name': 'New York University',
+            'city': 'New York',
+            'isMainCampus': true,
+            'latitude': 40.729452,
+            'longitude': -73.997264},
+          {'name': 'Stanford University',
+            'city': 'Stanford',
+            'isMainCampus': true,
+            'latitude': 37.429434,
+            'longitude': -122.167359},
+        ];
+        spyOn(window, 'fetch')
+            .and.returnValue(Promise.resolve({json: () => mapsJsonData}));
+        await fetchData();
+      });
+});
