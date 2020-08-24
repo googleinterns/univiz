@@ -8,12 +8,12 @@ function createMap() {
   const mapsDataList = fetchData();
   
   for (const mapsData of mapsDataList) {
-    var latitudeLongitude = new google.maps.LatLng(mapsData.latitude, mapsData.longitude);
+    var latitudeLongitude = new google.maps.LatLng(mapsData['latitude'], mapsData['longitude']);
 
     var marker = new google.maps.Marker({
       position: latitudeLongitude,
       map: map,
-      title: mapsData.name
+      title: mapsData['name']
     });
   }
 };
