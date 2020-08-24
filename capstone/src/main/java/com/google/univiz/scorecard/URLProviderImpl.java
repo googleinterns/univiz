@@ -36,31 +36,22 @@ final class URLProviderImpl implements URLProvider {
   }
 
   @Override
-  public String getUrl(String partialCollegeName, List<CollegeId>... ids) throws RuntimeException {
+  public String getSuggestionUrl(String partialCollegeName) {
     StringBuilder urlStringBuilder = new StringBuilder();
     urlStringBuilder.append(FRONT_URL);
-    if (partialCollegeName != null && (ids.length == 0)) {
-      urlStringBuilder = buildSuggestionUrl(urlStringBuilder, partialCollegeName);
-    } else if (ids.length > 0) {
-      urlStringBuilder = buildDataUrl(urlStringBuilder, ids[0]);
-    } else {
-      throw new RuntimeException("No valid URL intent was provided!");
-    }
+    urlStringBuilder.append(QUERY_TYPE_NAME);
+    urlStringBuilder.append(partialCollegeName);
+    urlStringBuilder.append(FIELDS_PARAM);
+    urlStringBuilder.append(SUGGESTION_FIELDS);
     urlStringBuilder.append("&api_key=");
     urlStringBuilder.append(univizConfig.scorecardApiKey());
     return urlStringBuilder.toString();
   }
 
-  private StringBuilder buildSuggestionUrl(
-      StringBuilder urlStringBuilder, String partialCollegeName) {
-    urlStringBuilder.append(QUERY_TYPE_NAME);
-    urlStringBuilder.append(partialCollegeName);
-    urlStringBuilder.append(FIELDS_PARAM);
-    urlStringBuilder.append(SUGGESTION_FIELDS);
-    return urlStringBuilder;
-  }
-
-  private StringBuilder buildDataUrl(StringBuilder urlStringBuilder, List<CollegeId> ids) {
+  @Override
+  public String getDataUrl(List<CollegeId> ids) {
+    StringBuilder urlStringBuilder = new StringBuilder();
+    urlStringBuilder.append(FRONT_URL);
     String stringWithFields = fields.stream().collect(joining(","));
     String stringWithIds =
         ids.stream().map(CollegeId::id).map(String::valueOf).collect(joining(","));
@@ -70,6 +61,8 @@ final class URLProviderImpl implements URLProvider {
     urlStringBuilder.append(String.format("%d", ids.size()));
     urlStringBuilder.append(FIELDS_PARAM);
     urlStringBuilder.append(stringWithFields);
-    return urlStringBuilder;
+    urlStringBuilder.append("&api_key=");
+    urlStringBuilder.append(univizConfig.scorecardApiKey());
+    return urlStringBuilder.toString();
   }
 }

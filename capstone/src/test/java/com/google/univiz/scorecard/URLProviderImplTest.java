@@ -37,7 +37,7 @@ public final class URLProviderImplTest {
   @Test
   public void testGetUrlFromPartialCollegeName() {
     String partialCollegeName = "Sta";
-    String actual = testImpl.getUrl(partialCollegeName);
+    String actual = testImpl.getSuggestionUrl(partialCollegeName);
 
     StringBuilder expectedBuilder = new StringBuilder();
     expectedBuilder.append(FRONT_URL);
@@ -56,7 +56,7 @@ public final class URLProviderImplTest {
     CollegeId fakeCollegeId2 = CollegeId.create(2);
     CollegeId fakeCollegeId3 = CollegeId.create(3);
     List<CollegeId> ids = Arrays.asList(fakeCollegeId1, fakeCollegeId2, fakeCollegeId3);
-    String actual = testImpl.getUrl(null, ids);
+    String actual = testImpl.getDataUrl(ids);
 
     Set<String> expectedFields = new LinkedHashSet<>();
     expectedFields.add("id");
