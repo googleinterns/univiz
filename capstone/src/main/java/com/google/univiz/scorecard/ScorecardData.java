@@ -81,4 +81,40 @@ abstract class ScorecardData {
   /** Returns a double that represents the ratio of women enrolled at the undergraduate level. */
   @SerializedName("latest.student.demographics.women")
   abstract double ratioOfWomen();
+
+  static Builder builder() {
+    return new AutoValue_ScorecardData.Builder();
+  }
+
+  @AutoValue.Builder
+  abstract static class Builder {
+
+    abstract Builder setId(int value);
+
+    abstract Builder setName(String value);
+
+    abstract Builder setCity(String value);
+
+    abstract Builder setFlagMainCampus(int value);
+
+    abstract Builder setLatitude(double value);
+
+    abstract Builder setLongitude(double value);
+
+    abstract Builder setCarnegieSizeDegree(int value);
+
+    abstract Builder setAdmissionRate(double value);
+
+    abstract Builder setAvgSat(double value);
+
+    abstract Builder setNumOfUndergrads(int value);
+
+    abstract Builder setAvgCost(int value);
+
+    abstract Builder setRatioOfMen(double value);
+
+    abstract Builder setRatioOfWomen(double value);
+
+    abstract ScorecardData build();
+  }
 }
