@@ -16,6 +16,8 @@ import com.google.univiz.api.resource.VisResource;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.time.LocalDate;
+import java.time.Month;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -36,12 +38,8 @@ public final class CollegeDataVisualizationServiceTest {
 
   private static final Deadline DEADLINE =
       Deadline.builder()
-          .setOpeningMonth(9)
-          .setOpeningDay(1)
-          .setOpeningYear(2020)
-          .setClosingMonth(12)
-          .setClosingDay(1)
-          .setClosingYear(2020)
+          .setOpeningDate(LocalDate.of(2020, Month.SEPTEMBER, 1))
+          .setClosingDate(LocalDate.of(2020, Month.DECEMBER, 1))
           .build();
 
   @Rule public final MockitoRule rule = MockitoJUnit.rule();
@@ -111,8 +109,8 @@ public final class CollegeDataVisualizationServiceTest {
 
     String response = doGet("/viz/" + CollegeDataVisualizationService.DEADLINES_SUFFIX, "1");
 
-    assertThat(response).contains("\"openingMonth\":9");
-    assertThat(response).contains("\"openingDay\":1");
+    assertThat(response).contains("\"month\":9");
+    assertThat(response).contains("\"day\":1");
   }
 
   @Test
@@ -122,8 +120,8 @@ public final class CollegeDataVisualizationServiceTest {
 
     String response = doGet("/viz/" + CollegeDataVisualizationService.DEADLINES_SUFFIX, "1,2");
 
-    assertThat(response).contains("\"openingMonth\":9");
-    assertThat(response).contains("\"openingDay\":1");
+    assertThat(response).contains("\"month\":9");
+    assertThat(response).contains("\"day\":1");
   }
 
   @Test

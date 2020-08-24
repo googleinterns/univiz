@@ -9,6 +9,8 @@ import com.google.univiz.api.representation.CollegeStats;
 import com.google.univiz.api.representation.Deadline;
 import com.google.univiz.api.representation.Timeline;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.List;
 import javax.inject.Inject;
 
@@ -38,12 +40,8 @@ final class VisResourceImpl implements VisResource {
   public List<Deadline> getDeadlines(List<CollegeId> colleges) {
     Deadline deadline =
         Deadline.builder()
-            .setOpeningMonth(9)
-            .setOpeningDay(1)
-            .setOpeningYear(2020)
-            .setClosingMonth(12)
-            .setClosingDay(1)
-            .setClosingYear(2020)
+            .setOpeningDate(LocalDate.of(2020, Month.SEPTEMBER, 1))
+            .setClosingDate(LocalDate.of(2020, Month.DECEMBER, 1))
             .build();
     return colleges.stream().map(college -> deadline).collect(toList());
   }

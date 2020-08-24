@@ -2,6 +2,7 @@ package com.google.univiz.api.representation;
 
 import com.google.auto.value.AutoValue;
 import com.ryanharter.auto.value.gson.GenerateTypeAdapter;
+import java.time.LocalDate;
 
 /**
  * Contains the date when applications are due for a particular college. Will be made serializable
@@ -10,17 +11,9 @@ import com.ryanharter.auto.value.gson.GenerateTypeAdapter;
 @AutoValue
 @GenerateTypeAdapter
 public abstract class Deadline {
-  public abstract int openingMonth();
+  public abstract LocalDate openingDate();
 
-  public abstract int openingDay();
-
-  public abstract int openingYear();
-
-  public abstract int closingMonth();
-
-  public abstract int closingDay();
-
-  public abstract int closingYear();
+  public abstract LocalDate closingDate();
 
   public static Builder builder() {
     return new AutoValue_Deadline.Builder();
@@ -28,17 +21,9 @@ public abstract class Deadline {
 
   @AutoValue.Builder
   public abstract static class Builder {
-    public abstract Builder setOpeningMonth(int value);
+    public abstract Builder setOpeningDate(LocalDate value);
 
-    public abstract Builder setOpeningDay(int value);
-
-    public abstract Builder setOpeningYear(int value);
-
-    public abstract Builder setClosingMonth(int value);
-
-    public abstract Builder setClosingDay(int value);
-
-    public abstract Builder setClosingYear(int value);
+    public abstract Builder setClosingDate(LocalDate value);
 
     public abstract Deadline build();
   }
