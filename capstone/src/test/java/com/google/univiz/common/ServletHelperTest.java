@@ -23,19 +23,19 @@ public final class ServletHelperTest {
   @Test
   public void writeJsonToResponse_singleString() throws IOException {
     String response = writeJsonToResponse("some input");
-    assertThat(response).isEqualTo("\"some input\"\n");
+    assertThat(response).isEqualTo("\"some input\"");
   }
 
   @Test
   public void writeJsonToResponse_null() throws IOException {
     String response = writeJsonToResponse(null);
-    assertThat(response).isEqualTo("null\n");
+    assertThat(response).isEqualTo("null");
   }
 
   @Test
   public void writeJsonToResponse_stringArray() throws IOException {
     String response = writeJsonToResponse(Arrays.asList("item 1", "item 2"));
-    assertThat(response).isEqualTo("[\"item 1\",\"item 2\"]\n");
+    assertThat(response).isEqualTo("[\"item 1\",\"item 2\"]");
   }
 
   private String writeJsonToResponse(Object input) throws IOException {
