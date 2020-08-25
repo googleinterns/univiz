@@ -5,6 +5,7 @@ import static java.util.stream.Collectors.toCollection;
 
 import com.google.gson.annotations.SerializedName;
 import com.google.univiz.api.representation.CollegeId;
+import com.google.univiz.api.representation.SuggestionData;
 import com.google.univiz.config.UnivizConfig;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
@@ -20,16 +21,23 @@ final class URLProviderImpl implements URLProvider {
   private static final String QUERY_TYPE_ID = "id=";
   private static final String PER_PAGE = "&per_page=";
   private static final String FIELDS_PARAM = "&fields=";
-  private static final String SUGGESTION_FIELDS = "id,school.name";
   private static final String SUGGESTION_PER_PAGE = "20";
   private final UnivizConfig univizConfig;
   private final Set<String> fields;
+  private final Set<String> fieldsSugg;
 
   @Inject
   URLProviderImpl(UnivizConfig univizConfig) {
     this.univizConfig = univizConfig;
     fields =
         Arrays.stream(ScorecardData.class.getDeclaredMethods())
+            .map(field -> field.getAnnotation(SerializedName.class))
+            .filter(Objects::nonNull)
+            .map(SerializedName::value)
+            .sorted()
+            .collect(toCollection(LinkedHashSet::new));
+    fieldsSugg =
+        Arrays.stream(SuggestionData.class.getDeclaredMethods())
             .map(field -> field.getAnnotation(SerializedName.class))
             .filter(Objects::nonNull)
             .map(SerializedName::value)
@@ -44,7 +52,8 @@ final class URLProviderImpl implements URLProvider {
     urlStringBuilder.append(QUERY_TYPE_NAME);
     urlStringBuilder.append(partialCollegeName);
     urlStringBuilder.append(FIELDS_PARAM);
-    urlStringBuilder.append(SUGGESTION_FIELDS);
+    String suggestionFields = fieldsSugg.stream().collect(joining(","));
+    urlStringBuilder.append(suggestionFields);
     urlStringBuilder.append(PER_PAGE);
     urlStringBuilder.append(SUGGESTION_PER_PAGE);
     urlStringBuilder.append("&api_key=");
