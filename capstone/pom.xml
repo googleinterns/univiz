@@ -57,6 +57,12 @@
       <version>4.2.3</version>
     </dependency>
     <dependency>
+      <groupId>com.google.inject.extensions</groupId>
+      <artifactId>guice-testlib</artifactId>
+      <version>4.2.3</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
       <groupId>com.google.truth</groupId>
       <artifactId>truth</artifactId>
       <version>1.0.1</version>
@@ -85,6 +91,11 @@
       <version>3.4.0</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+    <groupId>org.reflections</groupId>
+    <artifactId>reflections</artifactId>
+    <version>0.9.12</version>
+  </dependency>
   </dependencies>
   <build>
     <finalName>capstone</finalName>
