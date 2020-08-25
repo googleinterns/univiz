@@ -38,4 +38,18 @@ public final class SearchService extends HttpServlet {
     List<SearchData> searchResults = searchResource.getSearchSuggestions(query);
     ServletHelper.writeJsonToResponse(gson, response, searchResults);
   }
+
+  @Override
+  public void doPost (HttpServletRequest request, HttpServletResponse response) throws IOException {
+    String numberOfCollegesStr = request.getParameter("collegeNumber");
+    int numberOfColleges = Integer.toInteger(numberofCollegesStr);
+    List<String> listToSend = new ArrayList<>();
+    for (int i = 0; i < numberOfCollegesStr; i++) {
+      StringBuilder parameterStr = "college";
+      parameterStr.append(i.toString());
+      String collegeName = request.getParameter(parameterStr.string());
+      listToSend.add(collegeName);
+    }
+    RequestDispatcher rd = request.getRequestDispatcher("map");
+  }
 }
