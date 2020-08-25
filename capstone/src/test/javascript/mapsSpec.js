@@ -51,19 +51,19 @@ describe('Map Marker and InfoWindow Display', () => {
   it('will add map content using data from JSON',
       async () => {
         spyOn(window, 'createMap');
-        spyOn(google.maps, 'Map');
+        spyOn(google.maps.prototype, 'Map');
         spyOn(window, 'fetchData')
             .and.returnValue(Promise.resolve({json: () => mapsJsonData}));
         await fetchData();
-        spyOn(google.maps, 'LatLon');
-        spyOn(google.maps, 'Marker');
-        spyOn(google.maps, 'InfoWindow');
+        spyOn(google.maps.prototype, 'LatLon');
+        spyOn(google.maps.prototype, 'Marker');
+        spyOn(google.maps.prototype, 'InfoWindow');
         spyOn(window, 'setDescription');
         expect(google.maps.Map.calls.count()).toEqual(1);
         expect(google.maps.LatLon).toHaveBeenCalledWith([
           nyuLat,
           nyuLon,
-        ]);
+        ]);d
         expect(google.maps.LatLon).toHaveBeenCalledWith([
           stanLat,
           stanLon,
