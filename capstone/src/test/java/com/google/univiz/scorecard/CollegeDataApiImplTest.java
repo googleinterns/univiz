@@ -43,8 +43,7 @@ public final class CollegeDataApiImplTest {
     CollegeId collegeId = CollegeId.create(193900);
     String scorecardUrlString =
         Resources.getResource(CollegeDataApiImplTest.class, "scorecard_response.json").toString();
-    when(mockUrlProvider.getUrlFromCollegeIds(Arrays.asList(collegeId)))
-        .thenReturn(scorecardUrlString);
+    when(mockUrlProvider.getDataUrl(Arrays.asList(collegeId))).thenReturn(scorecardUrlString);
     List<CollegeData> colleges = testImpl.getCollegesById(Arrays.asList(collegeId));
     assertThat(colleges).hasSize(1);
     CollegeData collegeData = colleges.get(0);
@@ -57,8 +56,7 @@ public final class CollegeDataApiImplTest {
     String scorecardUrlString =
         Resources.getResource(CollegeDataApiImplTest.class, "scorecard_response_empty.json")
             .toString();
-    when(mockUrlProvider.getUrlFromCollegeIds(Arrays.asList(collegeId)))
-        .thenReturn(scorecardUrlString);
+    when(mockUrlProvider.getDataUrl(Arrays.asList(collegeId))).thenReturn(scorecardUrlString);
     List<CollegeData> colleges = testImpl.getCollegesById(Arrays.asList(collegeId));
     assertThat(colleges).isEmpty();
   }
@@ -70,7 +68,7 @@ public final class CollegeDataApiImplTest {
     String scorecardUrlString =
         Resources.getResource(CollegeDataApiImplTest.class, "scorecard_response_multiple.json")
             .toString();
-    when(mockUrlProvider.getUrlFromCollegeIds(Arrays.asList(collegeId, collegeId2)))
+    when(mockUrlProvider.getDataUrl(Arrays.asList(collegeId, collegeId2)))
         .thenReturn(scorecardUrlString);
     List<CollegeData> colleges = testImpl.getCollegesById(Arrays.asList(collegeId, collegeId2));
     assertThat(colleges).hasSize(2);
@@ -86,8 +84,7 @@ public final class CollegeDataApiImplTest {
     String scorecardUrlString =
         Resources.getResource(CollegeDataApiImplTest.class, "scorecard_response_empty.json")
             .toString();
-    when(mockUrlProvider.getUrlFromCollegeIds(Arrays.asList(collegeId)))
-        .thenReturn(scorecardUrlString);
+    when(mockUrlProvider.getDataUrl(Arrays.asList(collegeId))).thenReturn(scorecardUrlString);
     when(readerProvider.getStreamFromUrl(scorecardUrlString)).thenThrow(new IOException());
     assertThrows(IOException.class, () -> testImpl.getCollegesById(Arrays.asList(collegeId)));
   }
