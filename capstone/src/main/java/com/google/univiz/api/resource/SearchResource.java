@@ -1,6 +1,7 @@
 package com.google.univiz.api.resource;
 
-import com.google.univiz.api.representation.SearchData;
+import com.google.univiz.api.representation.SearchData;i
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -19,5 +20,5 @@ public interface SearchResource {
    *     matches. The list is also not an exhaustive set of matches. It only includes few top
    *     results. If the input is invalid (empty, null, etc.), an empty list will be returned
    */
-  List<SearchData> getSearchSuggestions(String query);
+  List<SearchData> getSearchSuggestions(String query) throws IOException;
 }

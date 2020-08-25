@@ -17,7 +17,7 @@ final class SearchResourceImpl implements SearchResource {
   }
 
   @Override
-  public List<SearchData> getSearchSuggestions(String partialCollegeName) {
+  public List<SearchData> getSearchSuggestions(String partialCollegeName) throws IOException {
     SuggestionResponse collegeSuggestions = suggestionApi.getCollegeSuggestions(partialCollegeName);
     return collegeSuggestions.suggestions().stream()
         .filter(suggestion -> suggestion.name() != null)
