@@ -1,6 +1,5 @@
 package com.google.univiz.servlets;
 
-
 import com.google.common.collect.ImmutableList;
 import com.google.gson.Gson;
 import com.google.univiz.api.representation.CollegeId;
