@@ -52,8 +52,6 @@ function populateDataTables(frequencyData, deadlineInfo) {
           1,
         ],
     );
-  });
-  deadlineInfo.forEach((college) => {
     frequencyData.addRow(
         [
           new Date(
