@@ -26,7 +26,7 @@ input[type=text] {
 
 input[type=submit] {
   display: inline-block;
-  background-color: DodgerBlue;
+  background-color: dodgerblue;
   color: #fff;
 }
 
