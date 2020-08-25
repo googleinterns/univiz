@@ -1,9 +1,5 @@
 package com.google.univiz.servlets;
 
-import static com.google.common.base.Strings.*;
-import static java.util.stream.Collectors.*;
-
-import com.google.common.base.Splitter;
 import com.google.common.collect.ImmutableList;
 import com.google.gson.Gson;
 import com.google.univiz.api.representation.CollegeId;
@@ -24,8 +20,6 @@ public final class CollegeDataVisualizationService extends HttpServlet {
   public static final String STATS_SUFFIX = "stats";
   public static final String TIMELINES_SUFFIX = "timelines";
 
-  private static final String ID_PARAM = "id";
-
   private final VisResource visResource;
   private final Gson gson;
 
@@ -37,21 +31,10 @@ public final class CollegeDataVisualizationService extends HttpServlet {
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-    String idParam = req.getParameter(ID_PARAM);
-    if (isNullOrEmpty(idParam)) {
-      ServletHelper.writeJsonToResponse(gson, resp, ImmutableList.of());
-      return;
-    }
-    List<CollegeId> collegeIds =
-        Splitter.on(',')
-            .trimResults()
-            .splitToStream(idParam)
-            .map(Integer::parseInt)
-            .map(CollegeId::create)
-            .collect(toList());
+    List<CollegeId> collegeIds = CollegeIdParamParser.parseCollegeIds(req);
     List<? extends Object> response;
     if (req.getServletPath().endsWith(DEADLINES_SUFFIX)) {
-      throw new UnsupportedOperationException();
+      response = visResource.getDeadlines(collegeIds);
     } else if (req.getServletPath().endsWith(STATS_SUFFIX)) {
       response = visResource.getCollegeStats(collegeIds);
     } else if (req.getServletPath().endsWith(TIMELINES_SUFFIX)) {

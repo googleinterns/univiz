@@ -11,4 +11,8 @@ import java.util.List;
 public abstract class SuggestionResponse {
   @SerializedName("results")
   public abstract List<SuggestionData> suggestions();
+
+  public static SuggestionResponse create(List<SuggestionData> suggestions) {
+    return new AutoValue_SuggestionResponse(suggestions);
+  }
 }
