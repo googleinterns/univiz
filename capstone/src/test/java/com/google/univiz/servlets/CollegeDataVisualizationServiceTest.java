@@ -11,10 +11,13 @@ import com.google.inject.testing.fieldbinder.Bind;
 import com.google.inject.testing.fieldbinder.BoundFieldModule;
 import com.google.univiz.api.representation.CollegeId;
 import com.google.univiz.api.representation.CollegeStats;
+import com.google.univiz.api.representation.Deadline;
 import com.google.univiz.api.resource.VisResource;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.time.LocalDate;
+import java.time.Month;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -32,6 +35,12 @@ public final class CollegeDataVisualizationServiceTest {
 
   private static final CollegeStats COLLEGE_STATS_1 = collegeStatsOf(1234);
   private static final CollegeStats COLLEGE_STATS_2 = collegeStatsOf(2345);
+
+  private static final Deadline DEADLINE =
+      Deadline.builder()
+          .setOpeningDate(LocalDate.of(2020, Month.SEPTEMBER, 1))
+          .setClosingDate(LocalDate.of(2020, Month.DECEMBER, 1))
+          .build();
 
   @Rule public final MockitoRule rule = MockitoJUnit.rule();
 
@@ -80,10 +89,39 @@ public final class CollegeDataVisualizationServiceTest {
   }
 
   @Test
-  public void getDeadlineResults_throws() throws Exception {
-    assertThrows(
-        UnsupportedOperationException.class,
-        () -> doGet("/viz/" + CollegeDataVisualizationService.DEADLINES_SUFFIX, "1"));
+  public void getDeadlineResults_emptyQuery() throws Exception {
+    String response = doGet("/viz/" + CollegeDataVisualizationService.DEADLINES_SUFFIX, "");
+
+    assertThat(response).contains("[]");
+  }
+
+  @Test
+  public void getDeadlineResults_nullQuery() throws Exception {
+    String response = doGet("/viz/" + CollegeDataVisualizationService.DEADLINES_SUFFIX, null);
+
+    assertThat(response).contains("[]");
+  }
+
+  @Test
+  public void getDeadlineResults_singleResult() throws Exception {
+    when(visResource.getDeadlines(ImmutableList.of(CollegeId.create(1))))
+        .thenReturn(ImmutableList.of(DEADLINE));
+
+    String response = doGet("/viz/" + CollegeDataVisualizationService.DEADLINES_SUFFIX, "1");
+
+    assertThat(response).contains("\"month\":9");
+    assertThat(response).contains("\"day\":1");
+  }
+
+  @Test
+  public void getDeadlineResults_multiResult() throws Exception {
+    when(visResource.getDeadlines(ImmutableList.of(CollegeId.create(1), CollegeId.create(2))))
+        .thenReturn(ImmutableList.of(DEADLINE, DEADLINE));
+
+    String response = doGet("/viz/" + CollegeDataVisualizationService.DEADLINES_SUFFIX, "1,2");
+
+    assertThat(response).contains("\"month\":9");
+    assertThat(response).contains("\"day\":1");
   }
 
   @Test
