@@ -110,7 +110,9 @@ function giveSuggestions() {
   }
   const arr = getListOfSuggestions();
   selectedElmntPos = -1;
-  const autocompleteList = document.getElementById(LIST_ID);
+  let autocompleteList  = document.createElement("DIV");
+  autocompleteList.setAttribute("id", "autocomplete-list");
+  autocompleteList.setAttribute("class", "autocomplete-items");
   SEARCH_INPUT.parentNode.appendChild(autocompleteList);
   const trimArr = getRelevantDataSuggestions(arr, val);
   displaySuggestions(trimArr, autocompleteList, val);
