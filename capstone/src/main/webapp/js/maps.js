@@ -22,9 +22,9 @@ function createMap() {
       title: mapsData['name'],
     });
 
-    (function(marker, mapsData) {
+    ((marker, mapsData) => {
       google.maps.event.addListener(marker, 'click',
-          function() {
+          () => {
             infoWindow.setContent(setDescription(
                 mapsData['name'],
                 mapsData['city'],
@@ -42,12 +42,12 @@ function createMap() {
  */
 async function fetchData() {
   // TODO(biancamacias): insert path to maps servlet
-  await fetch('/map')
+  await fetch('/maps')
       .then((response) => response.json())
-      .then((mapsDataFromJSON) => {
+      .then((mapsJsonData) => {
         console.log('Fetching data...');
-        console.log(mapsDataFromJSON);
-        return mapsDataFromJSON;
+        console.log(mapsJsonData);
+        return mapsJsonData;
       });
 }
 
@@ -60,7 +60,7 @@ async function fetchData() {
  */
 function setDescription(name, city, isMainCampus) {
   const description = name + ' is located in ' + city + '. ';
-  if (isMainCampus == true) {
+  if (isMainCampus) {
     return description + 'This is the main campus.';
   } else {
     return description + 'This is not the main campus.';
