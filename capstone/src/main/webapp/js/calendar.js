@@ -1,15 +1,15 @@
+/* eslint no-unused-vars: ["error", {"varsIgnorePattern": "drawCharts"}] */
+
 /**
  * Callback function to generate charts.
  */
 function drawCharts() {
   const frequencyData = new google.visualization.DataTable();
-  const timelineData = new google.visualization.DataTable();
-  fetch('/suggested-cal').
+  fetch('/viz/deadlines?id=193900,243744').
       then((response) => response.json()).
       then((deadlineInfo) =>
-        populateDataTables(frequencyData, timelineData, deadlineInfo)).
-      then(drawFrequencyChart(frequencyData)).
-      then(drawTimelineChart(timelineData));
+        populateDataTables(frequencyData, deadlineInfo)).
+      then(() => drawFrequencyChart(frequencyData));
 }
 
 /**
@@ -27,36 +27,42 @@ function drawFrequencyChart(frequencyData) {
 }
 
 /**
- * Generate suggested timeline of actions related to deadlines.
- * @param {google.visualization.DataTable} timelineData the DataTable
- *     corresponding to the suggested actions to take before the deadlines
- */
-function drawTimelineChart(timelineData) {
-  const options = {
-    'title': 'Suggested Application Timeline',
-  };
-  const chart = new google.visualization.Timeline(
-      document.getElementById('timeline-chart'));
-  chart.draw(timelineData, options);
-}
-
-/**
  * Helper function to transfer elements from JSON object with deadline
- * information to two DataTables.
+ * information to a DataTable.
  *
  * @param {google.visualization.DataTable} frequencyData the DataTable with the
  *     data the frequency chart will use. Will consist of sample deadlines for
  *     each of the user's selected colleges.
  *
- * @param {google.visualization.DataTable} timelineData * the DataTable with the
- *     data for the timeline chart. Will consist of suggested courses of action
- *     for the user based on sample deadlines.
- *
- * @param {JSON} deadlineInfo the JSON object with the deadline and timeline
- *     information that will be added to the previously mentioned DataTables.
+ * @param {JSON} deadlineInfo the JSON object with the deadline information that
+ *     will be added to the previously mentioned DataTables.
  *
  */
-function populateDataTables(frequencyData, timelineData, deadlineInfo) {
-  // TODO(ihsan314): update frequencyData datatable
-  // and update timelineData datatable
+function populateDataTables(frequencyData, deadlineInfo) {
+  frequencyData.addColumn('date', 'Date');
+  frequencyData.addColumn('number', 'Application Opens/Closes');
+  deadlineInfo.forEach((college) => {
+    frequencyData.addRow(
+        [
+          new Date(
+              college['openingDate']['year'],
+              college['openingDate']['month'] - 1,
+              college['openingDate']['day'],
+          ),
+          1,
+        ],
+    );
+  });
+  deadlineInfo.forEach((college) => {
+    frequencyData.addRow(
+        [
+          new Date(
+              college['closingDate']['year'],
+              college['closingDate']['month'] - 1,
+              college['closingDate']['day'],
+          ),
+          0,
+        ],
+    );
+  });
 }
