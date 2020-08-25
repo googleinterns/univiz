@@ -116,7 +116,7 @@ function displaySuggestions(trimArr, autocompleteList, val) {
 
 /**
  * Event occurrance when input is provided to autocomplete field
- * @return {void}
+ * @return {bool}
  */
 function giveSuggestions() {
   closeAllElmntExcept();
@@ -132,6 +132,7 @@ function giveSuggestions() {
   SEARCH_INPUT.parentNode.appendChild(autocompleteList);
   const trimArr = getRelevantDataSuggestions(arr, val);
   displaySuggestions(trimArr, autocompleteList, val);
+  return true;
 }
 
 /**
