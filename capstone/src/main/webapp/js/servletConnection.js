@@ -9,6 +9,22 @@ function getSuggestions() {
   });
 }
 
+/**
+ *
+ */
 function postPartialCollegeName() {
+  /*FUNCTION MEAT*/
+}
 
+/**
+ *
+ */
+function sendCollegeInformation() {
+  const params = new URLSearchParams();
+  const listItems = document.querySelector('ul').children;
+  const listArray = Array.from(listItems);
+  for (elt in listArray) {
+    params.append('college', elt.innerHTML);
+  }
+  fetch('/search', {method: 'POST', body: params});
 }
