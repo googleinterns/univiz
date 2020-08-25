@@ -98,7 +98,7 @@ public final class CollegeDataVisualizationServiceTest {
     HttpServletResponse mockResponse = mock(HttpServletResponse.class);
 
     when(mockRequest.getServletPath()).thenReturn(servletPath);
-    when(mockRequest.getParameter("id")).thenReturn(idString);
+    when(mockRequest.getParameter(CollegeIdParamParser.ID_PARAM)).thenReturn(idString);
     StringWriter stringWriter = new StringWriter();
     when(mockResponse.getWriter()).thenReturn(new PrintWriter(stringWriter));
 
