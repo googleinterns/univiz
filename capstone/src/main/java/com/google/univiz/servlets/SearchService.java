@@ -6,12 +6,15 @@ import com.google.univiz.api.representation.SearchData;
 import com.google.univiz.api.resource.SearchResource;
 import com.google.univiz.common.ServletHelper;
 import java.io.IOException;
+import java.lang.StringBuilder;
+import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.RequestDispatcher;
 
 /**
  * Servlet that returns the list of matching college names based on a partial input query. This
@@ -41,13 +44,14 @@ public final class SearchService extends HttpServlet {
 
   @Override
   public void doPost (HttpServletRequest request, HttpServletResponse response) throws IOException {
-    String numberOfCollegesStr = request.getParameter("collegeNumber");
-    int numberOfColleges = Integer.toInteger(numberofCollegesStr);
+    String numberCollegesStr = request.getParameter("collegeNumber");
+    int numberOfColleges = Integer.parseInt(numberCollegesStr);
     List<String> listToSend = new ArrayList<>();
-    for (int i = 0; i < numberOfCollegesStr; i++) {
-      StringBuilder parameterStr = "college";
-      parameterStr.append(i.toString());
-      String collegeName = request.getParameter(parameterStr.string());
+    for (int i = 0; i < numberOfColleges; i++) {
+      StringBuilder parameterStr = new StringBuilder(); 
+      parameterStr.append("college");
+      parameterStr.append(Integer.toString(i));
+      String collegeName = request.getParameter(parameterStr.toString());
       listToSend.add(collegeName);
     }
     RequestDispatcher rd = request.getRequestDispatcher("map");
