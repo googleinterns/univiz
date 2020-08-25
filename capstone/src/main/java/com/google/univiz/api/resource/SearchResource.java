@@ -1,6 +1,6 @@
 package com.google.univiz.api.resource;
 
-import com.google.univiz.api.representation.SearchData;i
+import com.google.univiz.api.representation.SearchData;
 import java.io.IOException;
 import java.util.List;
 
