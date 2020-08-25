@@ -16,6 +16,7 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'capstone/src/main/webapp/js/calendar.js',
+      'capstone/src/main/webapp/js/graphs.js',
       'capstone/src/test/javascript/**/*[Ss]pec.js',
     ],
 
