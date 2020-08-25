@@ -1,3 +1,6 @@
+/*
+ * Largely inspired by JS code from W3Schools: https://www.w3schools.com/howto/howto_js_autocomplete.asp
+ */
 const SEARCH_INPUT = document.getElementById('search');
 const ITEM_CLASS = 'autocomplete-items';
 const ACTIVE_CLASS = 'autocomplete-active';
@@ -51,6 +54,17 @@ function closeAllElmntExcept(elmnt) {
 }
 
 /**
+ * Adds valid suggestions to list of stored suggestions
+ * @param{string} validSuggestion
+ */
+function keepTrackOfSuggestions(validSuggestion) {
+  const parent = document.getElementById('suggestions');
+  const listElt = document.createElement('li');
+  listElt.innerHTML = validSuggestion;
+  parent.appendChild(listElt);
+}
+
+/**
  * Current placeholder until servlet is created
  * @param{Array<string>} arr
  * @return{Array<string>} arr
@@ -90,8 +104,10 @@ function displaySuggestions(trimArr, autocompleteList, val) {
                          arrElt.substr(0, val.length) +
                          '</strong>';
     listElmt.innerHTML += arrElt.substr(val.length);
+    const cpyArrElt = arrElt;
     listElmt.addEventListener('click', (e) => {
-      SEARCH_INPUT.value = arrElt;
+      SEARCH_INPUT.value = cpyArrElt;
+      keepTrackOfSuggestions(cpyArrElt);
       closeAllElmntExcept();
     });
     autocompleteList.appendChild(listElmt);
@@ -100,7 +116,7 @@ function displaySuggestions(trimArr, autocompleteList, val) {
 
 /**
  * Event occurrance when input is provided to autocomplete field
- * @return {void}
+ * @return {bool}
  */
 function giveSuggestions() {
   closeAllElmntExcept();
@@ -110,10 +126,13 @@ function giveSuggestions() {
   }
   const arr = getListOfSuggestions();
   selectedElmntPos = -1;
-  const autocompleteList = document.getElementById(LIST_ID);
+  const autocompleteList = document.createElement('DIV');
+  autocompleteList.setAttribute('id', LIST_ID);
+  autocompleteList.setAttribute('class', ITEM_CLASS);
   SEARCH_INPUT.parentNode.appendChild(autocompleteList);
   const trimArr = getRelevantDataSuggestions(arr, val);
   displaySuggestions(trimArr, autocompleteList, val);
+  return true;
 }
 
 /**
