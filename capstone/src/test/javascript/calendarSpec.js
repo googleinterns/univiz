@@ -1,27 +1,3 @@
-const google = {};
-google.visualization = {};
-google.visualization.DataTable = class {
-  /**
-   * Dummy constructor for mock DataTable class.
-   */
-  constructor() {}
-
-  /**
-   * Dummy function for adding rows to mock DataTable class.
-   *
-   * @param {Array} values the array of pairs corresponding to a row.
-   */
-  addRow(values) {}
-
-  /**
-   * Dummy function for adding columns to mock DataTable class.
-   *
-   * @param {String} type the datatype of the column.
-   * @param {String} name the name of the column.
-   */
-  addColumn(type, name) {}
-};
-
 describe('DataTable Construction', () => {
   it('Will add correct columns/rows to DataTable from JSON', () => {
     const mockDeadlineInfo = [
