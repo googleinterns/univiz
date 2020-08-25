@@ -1,49 +1,34 @@
 const google = {};
-google.maps = {};
-google.maps.Map = class {
+google.maps = class {
   /**
-  * Constructor for google.maps.Map class
-  *
-  * @param {HTMLElement} div Div from HTML that map will be displayed in
-  * @param {Object} options Options for centering and viewing maps in HTML
-  */
-  constructor(div, options) {
-    this.div = div;
-    this.options = options;
-  }
-};
-google.maps.LatLng = class {
-  /**
-  * Constructor for google.maps.LatLng class
-  *
-  * @param {float} lat Location measured in latitude
-  * @param {float} lon Location measured in longitude
-  */
-  constructor(lat, lon) {
-    this.lat = lat;
-    this.lon = lon;
-  }
-};
-
-google.maps.Marker = class {
-  /**
-  * Constructor for google.maps.Marker class
-  *
-  * @param {google.maps.LatLon} latLon google.maps.LatLon object
-  * @param {google.maps.Map} map google.maps.Map object
-  * @param {string} title Name of college/university/institution
-  */
-  constructor(latLon, map, title) {
-    this.latLon = latLon;
-    this.map = map;
-    this.title = title;
-  }
-};
-google.maps.InfoWindow = class {
-  /**
-  * Constructor for google.maps.InfoWindow class
-  */
+    * Constructing google.maps for testing purposes
+    */
   constructor() {}
+
+  /**
+    *
+    * @param {HTMLElement} div Div from HTML that map will be displayed in
+    * @param {Object} options Options for centering and viewing maps in HTML
+    */
+  Map(div, options) {}
+
+  /**
+    * @param {float} lat Location measured in latitude
+    * @param {float} lon Location measured in longitude
+    */
+  LatLon(lat, lon) {}
+
+  /**
+    * @param {google.maps.LatLon} latLon google.maps.LatLon object
+    * @param {google.maps.Map} map google.maps.Map object
+    * @param {string} title Name of college/university/institution
+    */
+  Marker(latLon, map, title) {}
+
+  /**
+    * Creates InfoWindow on map
+    */
+  InfoWindow() {}
 };
 
 describe('Map Marker and InfoWindow Display', () => {
