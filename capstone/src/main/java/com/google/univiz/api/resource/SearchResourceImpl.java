@@ -4,6 +4,7 @@ import com.google.univiz.scorecard.SuggestionDataApi;
 import com.google.univiz.api.representation.CollegeId;
 import com.google.univiz.api.representation.SearchData;
 import com.google.univiz.api.representation.SuggestionResponse;
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.inject.Inject;
