@@ -4,9 +4,8 @@ google.maps.Map = class {
   /**
   * Constructor for google.maps.Map class
   *
-  * @param {HTMLElement} div Div from html that map will be displayed in
-  * @param {center: Object.<{lat: double, lon: double}>, zoom: integer>} options
-  Options for centering and viewing maps in HTML
+  * @param {HTMLElement} div Div from HTML that map will be displayed in
+  * @param {Object} options Options for centering and viewing maps in HTML
   */
   constructor(div, options) {
     this.div = div;
@@ -14,12 +13,26 @@ google.maps.Map = class {
   }
 };
 google.maps.LatLng = class {
+  /**
+  * Constructor for google.maps.LatLng class
+  *
+  * @param {float} lat Location measured in latitude
+  * @param {float} lon Location measured in longitude
+  */
   constructor(lat, lon) {
     this.lat = lat;
     this.lon = lon;
   }
 };
+
 google.maps.Marker = class {
+  /**
+  * Constructor for google.maps.Marker class
+  *
+  * @param {google.maps.LatLon} latLon google.maps.LatLon object
+  * @param {google.maps.Map} map google.maps.Map object
+  * @param {string} title Name of college/university/institution
+  */
   constructor(latLon, map, title) {
     this.latLon = latLon;
     this.map = map;
@@ -27,6 +40,9 @@ google.maps.Marker = class {
   }
 };
 google.maps.InfoWindow = class {
+  /**
+  * Constructor for google.maps.InfoWindow class
+  */
   constructor() {}
 };
 
