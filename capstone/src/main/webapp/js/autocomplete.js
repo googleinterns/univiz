@@ -58,8 +58,8 @@ function closeAllElmntExcept(elmnt) {
  * @param{string} validSuggestion
  */
 function keepTrackOfSuggestions(validSuggestion) {
-  const parent = document.getElementById("suggestions");
-  let listElt = document.createElement("li");
+  const parent = document.getElementById('suggestions');
+  const listElt = document.createElement('li');
   listElt.innerHTML = validSuggestion;
   parent.appendChild(listElt);
 }
@@ -104,7 +104,7 @@ function displaySuggestions(trimArr, autocompleteList, val) {
                          arrElt.substr(0, val.length) +
                          '</strong>';
     listElmt.innerHTML += arrElt.substr(val.length);
-    let cpyArrElt = arrElt;
+    const cpyArrElt = arrElt;
     listElmt.addEventListener('click', (e) => {
       SEARCH_INPUT.value = cpyArrElt;
       keepTrackOfSuggestions(cpyArrElt);
@@ -126,7 +126,7 @@ function giveSuggestions() {
   }
   const arr = getListOfSuggestions();
   selectedElmntPos = -1;
-  let autocompleteList  = document.createElement('DIV');
+  const autocompleteList = document.createElement('DIV');
   autocompleteList.setAttribute('id', LIST_ID);
   autocompleteList.setAttribute('class', ITEM_CLASS);
   SEARCH_INPUT.parentNode.appendChild(autocompleteList);
