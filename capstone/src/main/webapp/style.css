@@ -7,7 +7,6 @@ body {
  * Code source from W3Schools: https://www.w3schools.com/howto/howto_js_autocomplete.asp
  */
 .autocomplete {
-  /*the container must be positioned relative:*/
   position: relative;
   display: inline-block;
 }
@@ -20,27 +19,16 @@ input {
 }
 
 input[type=text] {
-  display:inline-block;
+  display: inline-block;
   background-color: #f1f1f1;
   width: 10%;
 }
 
 input[type=submit] {
-  display:inline-block;
+  display: inline-block;
   background-color: DodgerBlue;
   color: #fff;
 }
-
-/*.autocomplete-items {
-  position: absolute;
-  border: 1px solid #d4d4d4;
-  border-bottom: none;
-  border-top: none;
-  z-index: 99;
-  top: 100%;
-  left: 0;
-  right: 0;
-}*/
 
 .autocomplete-items div {
   padding: 10px;
@@ -54,7 +42,6 @@ input[type=submit] {
 }
 
 .autocomplete-active {
-  /*when navigating through the items using the arrow keys:*/
-  background-color: DodgerBlue !important;
-  color: #ffffff;
+  background-color: dodgerblue !important;
+  color: #fff;
 }
