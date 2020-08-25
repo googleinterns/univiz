@@ -52,6 +52,7 @@ function closeAllElmntExcept(elmnt) {
 
 /**
  * Current placeholder until servlet is created
+ * @param{Array<string>} arr
  * @return{Array<string>} arr
  */
 function getListOfSuggestions(arr) {
