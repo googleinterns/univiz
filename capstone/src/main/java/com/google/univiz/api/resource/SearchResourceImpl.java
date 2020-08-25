@@ -1,9 +1,9 @@
 package com.google.univiz.api.resource;
 
-import com.google.univiz.scorecard.SuggestionDataApi;
 import com.google.univiz.api.representation.CollegeId;
 import com.google.univiz.api.representation.SearchData;
 import com.google.univiz.api.representation.SuggestionResponse;
+import com.google.univiz.scorecard.SuggestionDataApi;
 import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
