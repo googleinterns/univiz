@@ -36,7 +36,6 @@ function drawFrequencyChart(frequencyData) {
  *
  * @param {JSON} deadlineInfo the JSON object with the deadline information that
  *     will be added to the previously mentioned DataTables.
- *
  */
 function populateDataTables(frequencyData, deadlineInfo) {
   frequencyData.addColumn('date', 'Date');
@@ -46,6 +45,8 @@ function populateDataTables(frequencyData, deadlineInfo) {
         [
           new Date(
               college['openingDate']['year'],
+              // Javascript months start at 0, but Java months start at 1.
+              // Hence the subtraction.
               college['openingDate']['month'] - 1,
               college['openingDate']['day'],
           ),
