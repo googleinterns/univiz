@@ -49,10 +49,9 @@ describe('Map Marker and InfoWindow Display', () => {
   const stanLon = mapsJsonData[1]['longitude'];
   it('will add map content using data from JSON',
       async () => {
-        spyOn(window, 'createMap');
         spyOn(google.maps.prototype, 'constructor');
         spyOn(google.maps.prototype, 'Map');
-        spyOn(window, 'fetchData')
+        spyOn(window, 'fetch')
             .and.returnValue(Promise.resolve({json: () => mapsJsonData}));
         await fetchData();
         spyOn(google.maps.prototype, 'LatLon');
