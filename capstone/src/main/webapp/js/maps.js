@@ -8,7 +8,7 @@ function createMap() {
       document.getElementById('map'),
       {center: {lat: 39.8097343, lng: -98.5556199}, zoom: 5});
 
-  const mapsDataList = fetchData();
+  const mapsDataPromise = fetchData();
 
   const infoWindow = new google.maps.InfoWindow();
   for (const mapsData of mapsDataList) {
@@ -41,13 +41,10 @@ function createMap() {
  * @return {JSON} an array of dictionaries corresponding to relevant map data
  */
 async function fetchData() {
-  await fetch('/maps')
-      .then((response) => response.json())
-      .then((mapsJsonData) => {
-        console.log('Fetching data...');
-        console.log(mapsJsonData);
-        return mapsJsonData;
-      });
+  const response = await fetch('/maps');
+  const json = response.json();
+  console.log(json);
+  return json;
 }
 
 /**
