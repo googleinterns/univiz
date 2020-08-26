@@ -59,18 +59,18 @@ describe('Map Marker and InfoWindow Display', () => {
         spyOn(google.maps.prototype, 'Marker');
         spyOn(google.maps.prototype, 'InfoWindow');
         spyOn(window, 'setDescription');
-        expect(google.maps.Map.calls.count()).toEqual(1);
-        expect(google.maps.LatLon).toHaveBeenCalledWith([
+        expect(google.maps.prototype.Map.calls.count()).toEqual(1);
+        expect(google.maps.prototype.LatLon).toHaveBeenCalledWith([
           nyuLat,
           nyuLon,
         ]);d
-        expect(google.maps.LatLon).toHaveBeenCalledWith([
+        expect(google.maps.prototype.LatLon).toHaveBeenCalledWith([
           stanLat,
           stanLon,
         ]);
-        expect(google.maps.LatLon.calls.count()).toEqual(2);
-        expect(google.maps.Marker.calls.count()).toEqual(2);
-        expect(google.maps.InfoWindow.calls.count()).toEqual(1);
+        expect(google.maps.prototype.LatLon.calls.count()).toEqual(2);
+        expect(google.maps.prototype.Marker.calls.count()).toEqual(2);
+        expect(google.maps.prototype.InfoWindow.calls.count()).toEqual(1);
         expect(setDescription).toHaveBeenCalledWith([
           mapsJsonData[0]['name'],
           mapsJsonData[0]['city'],
