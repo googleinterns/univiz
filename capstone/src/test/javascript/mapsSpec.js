@@ -1,4 +1,3 @@
-const google = {};
 google.maps = class {
   /**
     * Constructing google.maps for testing purposes
