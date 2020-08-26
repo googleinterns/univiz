@@ -33,83 +33,23 @@ function graphDemographics() {
     new google.visualization.ColumnChart(
         document.getElementById('gender-ratio-data'),
     );
-  deserializeGenderRatioData().then(
-      (data) => genderRatioChart.draw(data, genderRatioOptions),
-  );
-  deserializeAdmissionData().then(
-      (data) => admissionRateChart.draw(data, admissionRateOptions),
-  );
-  deserializeAvgSatData().then(
-      (data) => avgSatChart.draw(data, avgSatOptions),
-  );
-  deserializeNumUndergradsData().then(
-      (data) => numUndergradsChart.draw(data, numUndergradsOptions),
-  );
-}
-
-/**
- * Helper function to fetch elements from JSON servlet.
- *
- * @return {google.visualization.DataTable} data the DataTable corresponding to
- *     the admission rate data
- */
-async function deserializeAdmissionData() {
-  const data = new google.visualization.DataTable();
-  await fetch('/viz/stats')
+  const admissionRateDataTable = new google.visualization.DataTable();
+  const numUndergradsDataTable = new google.visualization.DataTable();
+  const avgSatDataTable = new google.visualization.DataTable();
+  const genderRatioDataTable = new google.visualization.DataTable();
+  fetch('/viz/stats')
       .then((response) => response.json())
-      .then(
-          (admissionInfo) =>
-            populateAdmissionRateDataTable(data, admissionInfo),
-      );
-  return data;
-}
-
-/**
- * Helper function to fetch elements from JSON servlet.
- *
- * @return {google.visualization.DataTable} data the DataTable corresponding to
- *     the average SAT score data
- */
-async function deserializeAvgSatData() {
-  const data = new google.visualization.DataTable();
-  await fetch('/viz/stats')
-      .then((response) => response.json())
-      .then((avgSatInfo) => populateAvgSatDataTable(data, avgSatInfo));
-  return data;
-}
-
-/**
- * Helper function to fetch elements from JSON servlet.
- *
- * @return {google.visualization.DataTable} data the DataTable corresponding to
- *     the data on the number of undergraduate students per college
- */
-async function deserializeNumUndergradsData() {
-  const data = new google.visualization.DataTable();
-  await fetch('/viz/stats')
-      .then((response) => response.json())
-      .then(
-          (numUndergradsInfo) =>
-            populateNumUndergradsDataTable(data, numUndergradsInfo),
-      );
-  return data;
-}
-
-/**
- * Helper function to fetch elements from JSON servlet.
- *
- * @return {google.visualization.DataTable} data the DataTable corresponding to
- *     the gender ratio data
- */
-async function deserializeGenderRatioData() {
-  const data = new google.visualization.DataTable();
-  await fetch('/viz/stats')
-      .then((response) => response.json())
-      .then(
-          (genderRatioInfo) =>
-            populateGenderRatioDataTable(data, genderRatioInfo),
-      );
-  return data;
+      .then((data) => {
+        populateAdmissionRateDataTable(admissionRateDataTable, data);
+        populateNumUndergradsDataTable(numUndergradsDataTable, data);
+        populateAvgSatDataTable(avgSatDataTable, data);
+        populateGenderRatioDataTable(genderRatioDataTable, data);
+      }).then(() => {
+        admissionRateChart.draw(admissionRateDataTable, admissionRateOptions);
+        numUndergradsChart.draw(numUndergradsDataTable, numUndergradsOptions);
+        avgSatChart.draw(avgSatDataTable, avgSatOptions);
+        genderRatioChart.draw(genderRatioDataTable, genderRatioOptions);
+      });
 }
 
 /**
