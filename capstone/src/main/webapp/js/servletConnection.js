@@ -4,17 +4,8 @@
  */
 function getSuggestions() {
   fetch('/search').then((response) => response.json()).then((suggestions) => {
-    getSuggestions(suggestions);
-    /*TODO: AUTOCOMPLETE FUNCTION HERE*/
+    provideSuggestions(suggestions);
   });
-}
-
-/**
- * Sends partial college name to the servlet
- * @return{void}
- */
-function postPartialCollegeName() {
-  /*FUNCTION MEAT*/
 }
 
 /**
@@ -25,8 +16,11 @@ function sendCollegeInformation() {
   const params = new URLSearchParams();
   const listItems = document.querySelector('ul').children;
   const listArray = Array.from(listItems);
+  const index = 0;
   for (elt in listArray) {
-    params.append('college', elt.innerHTML);
+    const paramId = 'college' + index;
+    params.append(paramId, elt.innerHTML);
+    index++;
   }
   fetch('/search', {method: 'POST', body: params});
 }

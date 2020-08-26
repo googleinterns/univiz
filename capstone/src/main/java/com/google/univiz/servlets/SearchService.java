@@ -54,5 +54,6 @@ public final class SearchService extends HttpServlet {
       listToSend.add(collegeName);
     }
     RequestDispatcher rd = request.getRequestDispatcher("map");
+    rd.forward(request, response);
   }
 }

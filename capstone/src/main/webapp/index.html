@@ -8,9 +8,9 @@
   </head>
   <body>
     <h2>Welcome to UniViz!</h2>
-    <form action="/search" autocomplete="off" type="POST" id="search-bar">
+    <form action="/search" autocomplete="off" type="GET" id="search-bar">
       <label for="search">Search for colleges:</label><br>
-      <input type="text" id="search" name="search" placeholder="College Name" oninput="giveSuggestions()" onkeydown="keyDown(event)"><br>
+      <input type="text" id="search" name="query" placeholder="College Name" oninput="giveSuggestions()" onkeydown="keyDown(event)"><br>
     </form>
     <p>Current List of Suggested Colleges:</p>
     <ul id="suggestions"></ul>
