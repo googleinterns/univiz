@@ -23,26 +23,23 @@ final class URLProviderImpl implements URLProvider {
   private static final String FIELDS_PARAM = "&fields=";
   private static final String SUGGESTION_PER_PAGE = "20";
   private final UnivizConfig univizConfig;
-  private final Set<String> fields;
-  private final Set<String> fieldsSugg;
+  private final Set<String> collegeDataFields;
+  private final Set<String> suggestionFields;
 
   @Inject
   URLProviderImpl(UnivizConfig univizConfig) {
     this.univizConfig = univizConfig;
-    fields =
-        Arrays.stream(ScorecardData.class.getDeclaredMethods())
-            .map(field -> field.getAnnotation(SerializedName.class))
-            .filter(Objects::nonNull)
-            .map(SerializedName::value)
-            .sorted()
-            .collect(toCollection(LinkedHashSet::new));
-    fieldsSugg =
-        Arrays.stream(SuggestionData.class.getDeclaredMethods())
-            .map(field -> field.getAnnotation(SerializedName.class))
-            .filter(Objects::nonNull)
-            .map(SerializedName::value)
-            .sorted()
-            .collect(toCollection(LinkedHashSet::new));
+    collegeDataFields = getCollect(ScorecardData.class);
+    suggestionFields = getCollect(SuggestionData.class);
+  }
+
+  private static Set<String> getCollect(Class<?> serializableClass) {
+    return Arrays.stream(serializableClass.getDeclaredMethods())
+        .map(field -> field.getAnnotation(SerializedName.class))
+        .filter(Objects::nonNull)
+        .map(SerializedName::value)
+        .sorted()
+        .collect(toCollection(LinkedHashSet::new));
   }
 
   @Override
@@ -52,8 +49,8 @@ final class URLProviderImpl implements URLProvider {
     urlStringBuilder.append(QUERY_TYPE_NAME);
     urlStringBuilder.append(partialCollegeName);
     urlStringBuilder.append(FIELDS_PARAM);
-    String suggestionFields = fieldsSugg.stream().collect(joining(","));
-    urlStringBuilder.append(suggestionFields);
+    String suggestionFieldParams = suggestionFields.stream().collect(joining(","));
+    urlStringBuilder.append(suggestionFieldParams);
     urlStringBuilder.append(PER_PAGE);
     urlStringBuilder.append(SUGGESTION_PER_PAGE);
     urlStringBuilder.append("&api_key=");
@@ -65,7 +62,7 @@ final class URLProviderImpl implements URLProvider {
   public String getDataUrl(List<CollegeId> ids) {
     StringBuilder urlStringBuilder = new StringBuilder();
     urlStringBuilder.append(FRONT_URL);
-    String stringWithFields = fields.stream().collect(joining(","));
+    String stringWithFields = collegeDataFields.stream().collect(joining(","));
     String stringWithIds =
         ids.stream().map(CollegeId::id).map(String::valueOf).collect(joining(","));
     urlStringBuilder.append(QUERY_TYPE_ID);

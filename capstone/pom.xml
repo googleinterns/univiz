@@ -53,6 +53,11 @@
     </dependency>
     <dependency>
       <groupId>com.google.inject.extensions</groupId>
+      <artifactId>guice-grapher</artifactId>
+      <version>4.2.3</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.inject.extensions</groupId>
       <artifactId>guice-servlet</artifactId>
       <version>4.2.3</version>
     </dependency>
