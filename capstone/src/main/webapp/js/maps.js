@@ -41,7 +41,6 @@ function createMap() {
  * @return {JSON} an array of dictionaries corresponding to relevant map data
  */
 async function fetchData() {
-  // TODO(biancamacias): insert path to maps servlet
   await fetch('/maps')
       .then((response) => response.json())
       .then((mapsJsonData) => {
