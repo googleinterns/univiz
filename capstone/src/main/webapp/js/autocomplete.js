@@ -11,6 +11,17 @@ const ENTER = 13;
 let selectedElmntPos = -1;
 
 /**
+ * Gets suggestions to display to the users
+ * @return{void}
+ */
+async function getSuggestions() {
+  fetch('/search').then((response) => response.json()).then((suggestions) => {
+    console.log('Here! ', suggestions);
+    giveSuggestions(suggestions);
+  });
+}
+
+/**
  * Adds the 'active' tag to an autocomplete elmt
  * @param {Object} autocompleteListElmt
  * @return {bool}
@@ -109,19 +120,18 @@ function displaySuggestions(trimArr, autocompleteList, val) {
  * Event occurrance when input is provided to autocomplete field
  * @return {bool}
  */
-function giveSuggestions() {
+function giveSuggestions(suggestions) {
   closeAllElmntExcept();
   const val = SEARCH_INPUT.value;
   if (!val) {
     return false;
   }
-  const arr = getListOfSuggestions();
   selectedElmntPos = -1;
   const autocompleteList = document.createElement('DIV');
   autocompleteList.setAttribute('id', LIST_ID);
   autocompleteList.setAttribute('class', ITEM_CLASS);
   SEARCH_INPUT.parentNode.appendChild(autocompleteList);
-  const trimArr = getRelevantDataSuggestions(arr, val);
+  const trimArr = getRelevantDataSuggestions(suggestions, val);
   displaySuggestions(trimArr, autocompleteList, val);
   return true;
 }
