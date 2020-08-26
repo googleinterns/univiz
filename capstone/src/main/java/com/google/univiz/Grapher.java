@@ -16,7 +16,6 @@ public final class Grapher {
     Injector injector = Guice.createInjector(new GraphvizModule());
     GraphvizGrapher grapher = injector.getInstance(GraphvizGrapher.class);
     grapher.setOut(out);
-    grapher.setRankdir("TB");
     grapher.graph(demoInjector);
   }
 }
