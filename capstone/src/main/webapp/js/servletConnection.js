@@ -23,5 +23,6 @@ function sendCollegeInformation() {
     params.append(paramId, elt.innerHTML);
     index++;
   }
+  params.append('collegeNumber', index);
   fetch('/search', {method: 'POST', body: params});
 }
