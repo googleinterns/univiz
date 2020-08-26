@@ -12,10 +12,10 @@ public final class Grapher {
   public static void main(String... args) throws IOException {
     String filename = "guice_graph.dot";
     PrintWriter out = new PrintWriter(new File(filename), "UTF-8");
-    Injector demoInjector = Guice.createInjector(new UnivizBootstrapModule());
+    Injector univizInjector = Guice.createInjector(new UnivizBootstrapModule());
     Injector injector = Guice.createInjector(new GraphvizModule());
     GraphvizGrapher grapher = injector.getInstance(GraphvizGrapher.class);
     grapher.setOut(out);
-    grapher.graph(demoInjector);
+    grapher.graph(univizInjector);
   }
 }
