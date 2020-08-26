@@ -4,11 +4,11 @@ import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Mockito.when;
 
 import com.google.common.collect.Lists;
-import com.google.univiz.api.SuggestionDataApi;
 import com.google.univiz.api.representation.CollegeId;
 import com.google.univiz.api.representation.SearchData;
 import com.google.univiz.api.representation.SuggestionData;
 import com.google.univiz.api.representation.SuggestionResponse;
+import com.google.univiz.scorecard.SuggestionDataApi;
 import java.util.List;
 import org.junit.Before;
 import org.junit.Rule;
