@@ -8,7 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class Grapher {
+public final class Grapher {
   public static void main(String... args) throws IOException {
     String filename = "guice_graph.dot";
     PrintWriter out = new PrintWriter(new File(filename), "UTF-8");
