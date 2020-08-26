@@ -64,7 +64,7 @@ describe('Map Marker and InfoWindow Display', () => {
         expect(google.maps.prototype.LatLon).toHaveBeenCalledWith([
           nyuLat,
           nyuLon,
-        ]); d;
+        ]);
         expect(google.maps.prototype.LatLon).toHaveBeenCalledWith([
           stanLat,
           stanLon,
