@@ -9,11 +9,11 @@
   <body>
     <h2>Welcome to UniViz!</h2>
     <label for="search">Search for colleges:</label><br>
-    <input type="text" id="search" name="query" placeholder="College Name" oninput="giveSuggestions()" onkeydown="keyDown(event)"><br>
-    dd</form>
+    <input type="text" id="search" name="query" placeholder="College Name" oninput="getSuggestions()" onkeydown="keyDown(event)"><br>
     <p>Current List of Suggested Colleges:</p>
     <ul id="suggestions"></ul>
     <button id="submit" onclick="sendCollegeInformation()">See your colleges' information!</button>
   </body>
   <script src="js/autocomplete.js"></script>
+  <script src="js/servletConnection.js"></script>
 </html>

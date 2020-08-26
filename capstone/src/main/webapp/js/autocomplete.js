@@ -14,8 +14,10 @@ let selectedElmntPos = -1;
  * Gets suggestions to display to the users
  * @return{void}
  */
-async function getSuggestions() {
-  fetch('/search').then((response) => response.json()).then((suggestions) => {
+function getSuggestions() {
+  const fetchStr = '/search?query=' + SEARCH_INPUT.value;
+  console.log('FetchStr: ', fetchStr);
+  fetch(fetchStr).then((response) => response.json()).then((suggestions) => {
     console.log('Here! ', suggestions);
     giveSuggestions(suggestions);
   });
@@ -71,7 +73,8 @@ function closeAllElmntExcept(elmnt) {
 function keepTrackOfSuggestions(validSuggestion) {
   const parent = document.getElementById('suggestions');
   const listElt = document.createElement('li');
-  listElt.innerHTML = validSuggestion;
+  listElt.setAttribute('id', validSuggestion.collegeId.id);
+  listElt.innerHTML = validSuggestion.collegeName;
   parent.appendChild(listElt);
 }
 
@@ -85,7 +88,7 @@ function getRelevantDataSuggestions(arr, val) {
   const trimArr = [];
   val = val.toUpperCase();
   for (const arrElt of arr) {
-    if (arrElt.substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+    if (arrElt.collegeName.substr(0, val.length).toUpperCase() == val.toUpperCase()) {
       trimArr.push(arrElt);
     }
   }
@@ -103,9 +106,9 @@ function displaySuggestions(trimArr, autocompleteList, val) {
   for (arrElt of trimArr) {
     const listElmt = document.createElement('DIV');
     listElmt.innerHTML = '<strong>' +
-                         arrElt.substr(0, val.length) +
+                         arrElt.collegeName.substr(0, val.length) +
                          '</strong>';
-    listElmt.innerHTML += arrElt.substr(val.length);
+    listElmt.innerHTML += arrElt.collegeName.substr(val.length);
     const cpyArrElt = arrElt;
     listElmt.addEventListener('click', (e) => {
       SEARCH_INPUT.value = cpyArrElt;

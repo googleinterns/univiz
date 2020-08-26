@@ -3,15 +3,11 @@
  * @return{void}
  */
 function sendCollegeInformation() {
-  const params = new URLSearchParams();
   const listItems = document.querySelector('ul').children;
   const listArray = Array.from(listItems);
-  const index = 0;
+  let urlHtml = 'dashboard.html?id=';
   for (const elt of listArray) {
-    const paramId = 'college' + index;
-    params.append(paramId, elt.innerHTML);
-    index++;
+    urlHtml += elt.id;
   }
-  params.append('collegeNumber', index);
-  fetch('/search', {method: 'POST', body: params});
+  window.location.href = urlHtml;
 }
