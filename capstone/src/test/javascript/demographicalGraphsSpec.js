@@ -18,13 +18,15 @@ describe('Demographical Data Table Construction', () => {
     },
   ];
   beforeEach(() => {
-    spyOn(window, 'fetch')
-        .and.returnValue(Promise.resolve({json: () => mockCollegeStatsInfo}));
     spyOn(google.visualization.DataTable.prototype, 'addRow');
     spyOn(google.visualization.DataTable.prototype, 'addColumn');
   });
   it('Will add correct columns/rows to Admission DataTable', async () => {
-    await deserializeAdmissionData();
+    const admissionRateDataTable = new google.visualization.DataTable();
+    populateAdmissionRateDataTable(
+        admissionRateDataTable,
+        mockCollegeStatsInfo,
+    );
     expect(google.visualization.DataTable.prototype.addRow)
         .toHaveBeenCalledWith([
           mockCollegeStatsInfo[0]['name'],
@@ -45,7 +47,8 @@ describe('Demographical Data Table Construction', () => {
         .toEqual(2);
   });
   it('Will add correct columns/rows to SAT score DataTable', async () => {
-    await deserializeAvgSatData();
+    const avgSatDataTable = new google.visualization.DataTable();
+    populateAvgSatDataTable(avgSatDataTable, mockCollegeStatsInfo);
     expect(google.visualization.DataTable.prototype.addRow)
         .toHaveBeenCalledWith([
           mockCollegeStatsInfo[0]['name'],
@@ -68,7 +71,11 @@ describe('Demographical Data Table Construction', () => {
   it(
       'Will add correct columns/rows to Number of Undergrads DataTable',
       async () => {
-        await deserializeNumUndergradsData();
+        const numUndergradsDataTable = new google.visualization.DataTable();
+        populateNumUndergradsDataTable(
+            numUndergradsDataTable,
+            mockCollegeStatsInfo,
+        );
         expect(google.visualization.DataTable.prototype.addRow)
             .toHaveBeenCalledWith([
               mockCollegeStatsInfo[0]['name'],
@@ -89,7 +96,8 @@ describe('Demographical Data Table Construction', () => {
             .toEqual(2);
       });
   it('Will add correct columns/rows to Gender Ratio DataTable', async () => {
-    await deserializeGenderRatioData();
+    const genderRatioDataTable = new google.visualization.DataTable();
+    populateGenderRatioDataTable(genderRatioDataTable, mockCollegeStatsInfo);
     expect(google.visualization.DataTable.prototype.addRow)
         .toHaveBeenCalledWith([
           mockCollegeStatsInfo[0]['name'],
