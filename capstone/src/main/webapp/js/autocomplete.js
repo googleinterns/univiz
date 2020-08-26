@@ -65,15 +65,6 @@ function keepTrackOfSuggestions(validSuggestion) {
 }
 
 /**
- * Current placeholder until servlet is created
- * @param{Array<string>} arr
- * @return{Array<string>} arr
- */
-function getListOfSuggestions(arr) {
-  return arr;
-}
-
-/**
  * Identifies and returns relevant suggestions in the arr
  * @param {string[]} arr
  * @param {string} val
