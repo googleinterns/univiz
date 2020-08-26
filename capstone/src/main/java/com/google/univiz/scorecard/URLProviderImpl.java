@@ -32,7 +32,7 @@ final class URLProviderImpl implements URLProvider {
     collegeDataFields = getCollect(ScorecardData.class);
     suggestionFields = getCollect(SuggestionData.class);
   }
-  
+
   private static Set<String> getCollect(Class<?> serializableClass) {
     return Arrays.stream(serializableClass.getDeclaredMethods())
         .map(field -> field.getAnnotation(SerializedName.class))
@@ -40,8 +40,8 @@ final class URLProviderImpl implements URLProvider {
         .map(SerializedName::value)
         .sorted()
         .collect(toCollection(LinkedHashSet::new));
-  } 
-  
+  }
+
   @Override
   public String getSuggestionUrl(String partialCollegeName) {
     StringBuilder urlStringBuilder = new StringBuilder();
