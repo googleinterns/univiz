@@ -2,7 +2,6 @@ package com.google.univiz.scorecard;
 
 import com.google.inject.AbstractModule;
 import com.google.univiz.api.CollegeDataApi;
-import com.google.univiz.api.SuggestionDataApi;
 
 /**
  * Adds bindings for all the interfaces for college data api implementations. They are currently
