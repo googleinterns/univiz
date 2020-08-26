@@ -54,8 +54,11 @@ public final class SearchService extends HttpServlet {
       listToSend.add(collegeName);
     }
 
-    /*TODO: the data forwarding*/
+    /*TODO: the data forwarding + the list type*/
+    HttpservletRequest dataRequest;
+    dataRequest.setParameter("collegeInformation", listToSend);
     RequestDispatcher rd = request.getRequestDispatcher("maps");
     rd.forward(request, response);
+    
   }
 }

@@ -7,7 +7,7 @@ function sendCollegeInformation() {
   const listItems = document.querySelector('ul').children;
   const listArray = Array.from(listItems);
   const index = 0;
-  for (elt in listArray) {
+  for (const elt of listArray) {
     const paramId = 'college' + index;
     params.append(paramId, elt.innerHTML);
     index++;
