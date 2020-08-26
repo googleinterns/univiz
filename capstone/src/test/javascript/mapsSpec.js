@@ -51,7 +51,7 @@ describe('Map Marker and InfoWindow Display', () => {
   it('will add map content using data from JSON',
       async () => {
         spyOn(window, 'createMap');
-        spyOn(google.maps.prototype, 'Map');
+        spyOn(google.maps.prototype, 'constructor');
         spyOn(window, 'fetchData')
             .and.returnValue(Promise.resolve({json: () => mapsJsonData}));
         await fetchData();
