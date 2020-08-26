@@ -1,4 +1,5 @@
 /**
+ * TODO: NOT DONE (just a sketch)
  * Gets suggestions to display to the users
  * @return{void}
  */

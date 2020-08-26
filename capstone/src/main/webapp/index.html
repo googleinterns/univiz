@@ -8,6 +8,7 @@
   </head>
   <body>
     <h2>Welcome to UniViz!</h2>
+    <!-- TODO: This form needs the most work (need to get data async) -->
     <form action="/search" autocomplete="off" type="GET" id="search-bar">
       <label for="search">Search for colleges:</label><br>
       <input type="text" id="search" name="query" placeholder="College Name" oninput="giveSuggestions()" onkeydown="keyDown(event)"><br>
