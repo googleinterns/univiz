@@ -47,17 +47,21 @@ describe('Map Marker and InfoWindow Display', () => {
   const nyuLon = mapsJsonData[0]['longitude'];
   const stanLat = mapsJsonData[1]['latitude'];
   const stanLon = mapsJsonData[1]['longitude'];
+  beforeEach(() => {
+    spyOn(google.maps.prototype, 'constructor');
+    spyOn(google.maps.prototype, 'Map');
+    spyOn(google.maps.prototype, 'LatLon');
+    spyOn(google.maps.prototype, 'Marker');
+    spyOn(google.maps.prototype, 'InfoWindow');
+    spyOn(window, 'setDescription');
+  });
   it('will add map content using data from JSON',
       async () => {
-        spyOn(google.maps.prototype, 'constructor');
-        spyOn(google.maps.prototype, 'Map');
         spyOn(window, 'fetch')
             .and.returnValue(Promise.resolve({json: () => mapsJsonData}));
         await fetchData();
-        spyOn(google.maps.prototype, 'LatLon');
-        spyOn(google.maps.prototype, 'Marker');
-        spyOn(google.maps.prototype, 'InfoWindow');
-        spyOn(window, 'setDescription');
+        createMap(mapsJsonData);
+        expect(createMap).toHaveBeenCalledWith(mapsJsonData);
         expect(google.maps.prototype.Map.calls.count()).toEqual(1);
         expect(google.maps.prototype.LatLon).toHaveBeenCalledWith([
           nyuLat,
