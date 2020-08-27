@@ -21,8 +21,8 @@ function graphNetTuition() {
  */
 async function deserializeTuitionData() {
   const data = new google.visualization.DataTable();
-  const queryURL = new URL(window.location.href);
-  const ids = queryURL.searchParams.get('id');
+  const queryUrl = new URL(window.location.href);
+  const ids = queryUrl.searchParams.get('id');
   await fetch('/viz/stats?id='+ids)
       .then((response) => response.json())
       .then((tuitionInfo) => populateDataTable(data, tuitionInfo));
