@@ -118,6 +118,7 @@ function displaySuggestions(trimArr, autocompleteList, val) {
 
 /**
  * Event occurrance when input is provided to autocomplete field
+ * @param{Object} suggestions
  */
 function giveSuggestions(suggestions) {
   closeAllElmntExcept();
