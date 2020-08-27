@@ -10,7 +10,7 @@ const LIST_ID = 'autocomplete-list';
 const UP_KEY = 'ArrowUp';
 const DOWN_KEY = 'ArrowDown';
 const ENTER = 'Enter';
-let selectedElmntPos = -1;
+let selectedSuggestionPosition = -1;
 
 /**
  * Adds the 'active' tag to an autocomplete elmt
@@ -21,12 +21,12 @@ function addActiveTag(autocompleteListElmt) {
     return;
   }
   removeActiveTag(autocompleteListElmt);
-  if (selectedElmntPos >= autocompleteListElmt.length) {
-    selectedElmntPos = 0;
-  } else if (selectedElmntPos < 0) {
-    selectedElmntPos = (autocompleteListElmt.length - 1);
+  if (selectedSuggestionPosition >= autocompleteListElmt.length) {
+    selectedSuggestionPosition = 0;
+  } else if (selectedSuggestionPosition < 0) {
+    selectedSuggestionPosition = (autocompleteListElmt.length - 1);
   }
-  autocompleteListElmt[selectedElmntPos].classList.add(ACTIVE_CLASS);
+  autocompleteListElmt[selectedSuggestionPosition].classList.add(ACTIVE_CLASS);
 }
 
 /**
@@ -77,27 +77,27 @@ function getListOfSuggestions() {
  * Identifies and returns relevant suggestions in the arr
  * @param {string[]} arr
  * @param {string} val
- * @return {string[]} trimArr
+ * @return {string[]} relevantSuggestions
  */
 function getRelevantDataSuggestions(arr, val) {
-  const trimArr = [];
+  const relevantSuggestions = [];
   val = val.toUpperCase();
   for (const arrElt of arr) {
     if (arrElt.substr(0, val.length).toUpperCase() === val.toUpperCase()) {
-      trimArr.push(arrElt);
+      relevantSuggestions.push(arrElt);
     }
   }
-  return trimArr;
+  return relevantSuggestions;
 }
 
 /**
  * Takes relevant suggestions and displays them in DOM
- * @param {Object} trimArr
+ * @param {Object} relevantSuggestions
  * @param {Object} autocompleteList
  * @param {string} val
  */
-function displaySuggestions(trimArr, autocompleteList, val) {
-  for (arrElt of trimArr) {
+function displaySuggestions(relevantSuggestions, autocompleteList, val) {
+  for (arrElt of relevantSuggestions) {
     const listElmt = document.createElement('div');
     listElmt.innerHTML = '<strong>' +
                          arrElt.substr(0, val.length) +
@@ -122,17 +122,14 @@ function giveSuggestions() {
   if (!val) {
     return;
   }
-  if (SEARCH_INPUT.value !== val) {
-    return;
-  }
   const arr = getListOfSuggestions();
-  selectedElmntPos = -1;
+  selectedSuggestionPosition = -1;
   const autocompleteList = document.createElement('div');
   autocompleteList.setAttribute('id', LIST_ID);
   autocompleteList.setAttribute('class', ITEM_CLASS);
   SEARCH_INPUT.parentNode.appendChild(autocompleteList);
-  const trimArr = getRelevantDataSuggestions(arr, val);
-  displaySuggestions(trimArr, autocompleteList, val);
+  const relevantSuggestions = getRelevantDataSuggestions(arr, val);
+  displaySuggestions(relevantSuggestions, autocompleteList, val);
 }
 
 /**
@@ -147,16 +144,16 @@ function keyDown(e) {
     return;
   }
   if (e.code === DOWN_KEY) {
-    selectedElmntPos++;
+    selectedSuggestionPosition++;
     addActiveTag(listElmt);
   } else if (e.code === UP_KEY) {
-    selectedElmntPos--;
+    selectedSuggestionPosition--;
     addActiveTag(listElmt);
   } else if (e.code === ENTER) {
     e.preventDefault();
-    if (selectedElmntPos > -1) {
+    if (selectedSuggestionPosition > -1) {
       if (listElmt) {
-        listElmt[selectedElmntPos].click();
+        listElmt[selectedSuggestionPosition].click();
       }
     }
   }
