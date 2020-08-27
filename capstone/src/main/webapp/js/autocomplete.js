@@ -24,6 +24,21 @@ function getSuggestions() {
 }
 
 /**
+ * Sends final college list to the dashboard
+ * @return{void}
+ */
+function sendCollegeInformation() {
+  const listItems = document.querySelector('ul').children;
+  const listArray = Array.from(listItems);
+  let urlHtml = 'dashboard.html?id=';
+  for (const elt of listArray) {
+    urlHtml += elt.id;
+    urlHtml += ',';
+  }
+  window.location.href = urlHtml;
+}
+
+/**
  * Adds the 'active' tag to an autocomplete elmt
  * @param {Object} autocompleteListElmt
  * @return {bool}
