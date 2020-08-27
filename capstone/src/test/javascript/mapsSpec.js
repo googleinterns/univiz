@@ -58,7 +58,6 @@ describe('Map Marker and InfoWindow Display', () => {
       async () => {
         spyOn(window, 'fetch')
             .and.returnValue(Promise.resolve({json: () => mapsJsonData}));
-        await fetchData();
         createMap(mapsJsonData);
         expect(createMap).toHaveBeenCalledWith(mapsJsonData);
         expect(google.maps.prototype.Map.calls.count()).toEqual(1);
