@@ -104,7 +104,7 @@ function displaySuggestions(trimArr, autocompleteList, val) {
                          '</strong>';
     listElmt.innerHTML += arrElt.substr(val.length);
     const cpyArrElt = arrElt;
-    listElmt.addEventListener('click', (e) => {
+    listElmt.addEventListener('click', () => {
       SEARCH_INPUT.value = cpyArrElt;
       keepTrackOfSuggestions(cpyArrElt);
       closeAllElmntExcept();
@@ -165,5 +165,5 @@ function keyDown(e) {
 /* Event occurance when mouse is clicked */
 document.addEventListener('click', (e) => {
   closeAllElmntExcept(e.target, SEARCH_INPUT);
-  SEARCH_INPUT.value = "";
+  SEARCH_INPUT.value = '';
 });
