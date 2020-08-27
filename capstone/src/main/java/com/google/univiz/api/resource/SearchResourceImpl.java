@@ -6,6 +6,7 @@ import com.google.univiz.api.representation.SuggestionResponse;
 import com.google.univiz.scorecard.SuggestionDataApi;
 import java.io.IOException;
 import java.util.List;
+import java.util.Iterator;
 import java.util.stream.Collectors;
 import javax.inject.Inject;
 
@@ -20,9 +21,19 @@ final class SearchResourceImpl implements SearchResource {
   @Override
   public List<SearchData> getSearchSuggestions(String partialCollegeName) throws IOException {
     SuggestionResponse collegeSuggestions = suggestionApi.getCollegeSuggestions(partialCollegeName);
-    return collegeSuggestions.suggestions().stream()
+    List<SearchData> suggestionCandidates = collegeSuggestions.suggestions().stream()
         .filter(suggestion -> suggestion.name() != null)
         .map(college -> SearchData.create(college.name(), CollegeId.create(college.id())))
         .collect(Collectors.toList());
+    Iterator<SearchData> it = suggestionCandidates.iterator();
+    String partialCollegeNameUpper = partialCollegeName.toUpperCase();
+    while (it.hasNext()) {
+      SearchData searchData = it.next();
+      String name = searchData.collegeName().toUpperCase();
+      if (partialCollegeNameUpper.compareTo(name.substring(0, partialCollegeName.length())) != 0) {
+        it.remove();
+      }
+    }
+    return suggestionCandidates;
   }
 }

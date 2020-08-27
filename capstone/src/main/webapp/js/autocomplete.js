@@ -94,23 +94,6 @@ function keepTrackOfSuggestions(validSuggestion) {
 }
 
 /**
- * Identifies and returns relevant suggestions in the arr
- * @param {string[]} arr
- * @param {string} val
- * @return {string[]} trimArr
- */
-function getRelevantDataSuggestions(arr, val) {
-  const trimArr = [];
-  val = val.toUpperCase();
-  for (const arrElt of arr) {
-    if (arrElt.collegeName.substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-      trimArr.push(arrElt);
-    }
-  }
-  return trimArr;
-}
-
-/**
  * Takes relevant suggestions and displays them in DOM
  * @param {Object} trimArr
  * @param {Object} autocompleteList
@@ -149,8 +132,7 @@ function giveSuggestions(suggestions) {
   autocompleteList.setAttribute('id', LIST_ID);
   autocompleteList.setAttribute('class', ITEM_CLASS);
   SEARCH_INPUT.parentNode.appendChild(autocompleteList);
-  const trimArr = getRelevantDataSuggestions(suggestions, val);
-  displaySuggestions(trimArr, autocompleteList, val);
+  displaySuggestions(suggestions, autocompleteList, val);
   return true;
 }
 
