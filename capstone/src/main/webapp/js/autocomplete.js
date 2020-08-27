@@ -9,7 +9,7 @@ const ACTIVE_CLASS = 'autocomplete-active';
 const LIST_ID = 'autocomplete-list';
 const UP_KEY = 'ArrowUp';
 const DOWN_KEY = 'ArrowDown';
-const ENTER = 'Enter';
+const ENTER_KEY = 'Enter';
 let selectedSuggestionPosition = -1;
 
 /**
