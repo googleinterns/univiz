@@ -19,7 +19,7 @@ public class GuiceServletConfig extends GuiceServletContextListener {
           @Override
           protected void configureServlets() {
             serve("/search").with(SearchService.class);
-	    serve("/maps").with(MapsService.class);
+            serve("/maps").with(MapsService.class);
             serve("/viz/" + CollegeDataVisualizationService.DEADLINES_SUFFIX)
                 .with(CollegeDataVisualizationService.class);
             serve("/viz/" + CollegeDataVisualizationService.STATS_SUFFIX)

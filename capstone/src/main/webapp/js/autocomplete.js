@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+
 /*
  * Largely inspired by JS code from W3Schools: https://www.w3schools.com/howto/howto_js_autocomplete.asp
  */
@@ -5,9 +7,9 @@ const SEARCH_INPUT = document.getElementById('search');
 const ITEM_CLASS = 'autocomplete-items';
 const ACTIVE_CLASS = 'autocomplete-active';
 const LIST_ID = 'autocomplete-list';
-const UP_KEY = 40;
-const DOWN_KEY = 38;
-const ENTER = 13;
+const UP_KEY = 'ArrowUp';
+const DOWN_KEY = 'ArrowDown';
+const ENTER = 'Enter';
 let selectedElmntPos = -1;
 
 /**
@@ -40,12 +42,11 @@ function sendCollegeInformation() {
 
 /**
  * Adds the 'active' tag to an autocomplete elmt
- * @param {Object} autocompleteListElmt
- * @return {bool}
+ * @param {HTMLDivElement} autocompleteListElmt
  */
 function addActiveTag(autocompleteListElmt) {
   if (!autocompleteListElmt) {
-    return false;
+    return;
   }
   removeActiveTag(autocompleteListElmt);
   if (selectedElmntPos >= autocompleteListElmt.length) {
@@ -70,7 +71,6 @@ function removeActiveTag(autocompleteListElmt) {
  * Closes dropdown autocomplete list
  * Does not close the element provided
  * @param {Object} elmnt
- * @return {void}
  */
 function closeAllElmntExcept(elmnt) {
   const autoItems = document.getElementsByClassName(ITEM_CLASS);
@@ -98,17 +98,16 @@ function keepTrackOfSuggestions(validSuggestion) {
  * @param {Object} trimArr
  * @param {Object} autocompleteList
  * @param {string} val
- * @return {void}
  */
 function displaySuggestions(trimArr, autocompleteList, val) {
   for (arrElt of trimArr) {
-    const listElmt = document.createElement('DIV');
+    const listElmt = document.createElement('div');
     listElmt.innerHTML = '<strong>' +
                          arrElt.collegeName.substr(0, val.length) +
                          '</strong>';
     listElmt.innerHTML += arrElt.collegeName.substr(val.length);
     const cpyArrElt = arrElt;
-    listElmt.addEventListener('click', (e) => {
+    listElmt.addEventListener('click', () => {
       SEARCH_INPUT.value = cpyArrElt;
       keepTrackOfSuggestions(cpyArrElt);
       closeAllElmntExcept();
@@ -119,40 +118,43 @@ function displaySuggestions(trimArr, autocompleteList, val) {
 
 /**
  * Event occurrance when input is provided to autocomplete field
- * @return {bool}
+ * @param{Object} suggestions
  */
 function giveSuggestions(suggestions) {
   closeAllElmntExcept();
   const val = SEARCH_INPUT.value;
   if (!val) {
-    return false;
+    return;
+  }
+  if (SEARCH_INPUT.value !== val) {
+    return;
   }
   selectedElmntPos = -1;
-  const autocompleteList = document.createElement('DIV');
+  const autocompleteList = document.createElement('div');
   autocompleteList.setAttribute('id', LIST_ID);
   autocompleteList.setAttribute('class', ITEM_CLASS);
   SEARCH_INPUT.parentNode.appendChild(autocompleteList);
   displaySuggestions(suggestions, autocompleteList, val);
-  return true;
 }
 
 /**
  * Event occurance when arrow keys are pressed
  * @param {keypress} e
- * @return {void}
  */
 function keyDown(e) {
   let listElmt = document.getElementById(LIST_ID);
   if (listElmt) {
     listElmt = listElmt.getElementsByTagName('div');
+  } else {
+    return;
   }
-  if (e.keyCode == UP_KEY) {
+  if (e.code === DOWN_KEY) {
     selectedElmntPos++;
     addActiveTag(listElmt);
-  } else if (e.keyCode == DOWN_KEY) {
+  } else if (e.code === UP_KEY) {
     selectedElmntPos--;
     addActiveTag(listElmt);
-  } else if (e.keyCode == ENTER) {
+  } else if (e.code === ENTER) {
     e.preventDefault();
     if (selectedElmntPos > -1) {
       if (listElmt) {
@@ -165,4 +167,5 @@ function keyDown(e) {
 /* Event occurance when mouse is clicked */
 document.addEventListener('click', (e) => {
   closeAllElmntExcept(e.target, SEARCH_INPUT);
+  SEARCH_INPUT.value = '';
 });
