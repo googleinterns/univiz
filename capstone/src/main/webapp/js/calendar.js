@@ -5,7 +5,9 @@
  */
 function drawCharts() {
   const frequencyData = new google.visualization.DataTable();
-  fetch('/viz/deadlines').
+  const queryURL = new URL(window.location.href);
+  const ids = queryURL.searchParams.get('id');
+  fetch('/viz/deadlines?id='+ids).
       then((response) => response.json()).
       then((deadlineInfo) =>
         populateDataTables(frequencyData, deadlineInfo)).
