@@ -7,9 +7,9 @@ const SEARCH_INPUT = document.getElementById('search');
 const ITEM_CLASS = 'autocomplete-items';
 const ACTIVE_CLASS = 'autocomplete-active';
 const LIST_ID = 'autocomplete-list';
-const UP_KEY = 40;
-const DOWN_KEY = 38;
-const ENTER = 13;
+const UP_KEY = 'ArrowUp';
+const DOWN_KEY = 'ArrowDown';
+const ENTER = 'Enter';
 let selectedElmntPos = -1;
 
 /**
@@ -146,13 +146,13 @@ function keyDown(e) {
   } else {
     return;
   }
-  if (e.keyCode === UP_KEY) {
+  if (e.code === DOWN_KEY) {
     selectedElmntPos++;
     addActiveTag(listElmt);
-  } else if (e.keyCode === DOWN_KEY) {
+  } else if (e.code === UP_KEY) {
     selectedElmntPos--;
     addActiveTag(listElmt);
-  } else if (e.keyCode === ENTER) {
+  } else if (e.code === ENTER) {
     e.preventDefault();
     if (selectedElmntPos > -1) {
       if (listElmt) {
