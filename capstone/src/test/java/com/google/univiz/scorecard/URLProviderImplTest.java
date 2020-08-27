@@ -26,6 +26,7 @@ public final class URLProviderImplTest {
   private static final String QUERY_SCHOOL_NAME = "school.name=";
   private static final String QUERY_TYPE_ID = "id=";
   private static final String PER_PAGE = "&per_page=";
+  private static final String PAGE_NUMBER = "&page=";
   private static final String FIELDS_PARAM = "&fields=";
   private static final String SUGGESTION_FIELDS = "id,school.name";
   private static final String ID_FIELD = "id";
@@ -53,7 +54,7 @@ public final class URLProviderImplTest {
   @Test
   public void testGetUrlFromPartialCollegeName() {
     String partialCollegeName = "Sta";
-    String actual = testImpl.getSuggestionUrl(partialCollegeName);
+    String actual = testImpl.getSuggestionUrl(partialCollegeName, "0");
 
     StringBuilder expectedBuilder = new StringBuilder();
     expectedBuilder.append(FRONT_URL);
@@ -62,7 +63,9 @@ public final class URLProviderImplTest {
     expectedBuilder.append(FIELDS_PARAM);
     expectedBuilder.append(SUGGESTION_FIELDS);
     expectedBuilder.append(PER_PAGE);
-    expectedBuilder.append("20");
+    expectedBuilder.append("100");
+    expectedBuilder.append(PAGE_NUMBER);
+    expectedBuilder.append("0");
     expectedBuilder.append(API_KEY);
     String expected = expectedBuilder.toString();
 

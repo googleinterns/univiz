@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 import javax.inject.Inject;
 
 final class SearchResourceImpl implements SearchResource {
+  private static final int MAX_SUGGESTIONS = 10;
   private final SuggestionDataApi suggestionApi;
 
   @Inject
@@ -34,6 +35,7 @@ final class SearchResourceImpl implements SearchResource {
         it.remove();
       }
     }
-    return suggestionCandidates;
+
+    return suggestionCandidates.stream().limit(MAX_SUGGESTIONS).collect(Collectors.toList());
   }
 }

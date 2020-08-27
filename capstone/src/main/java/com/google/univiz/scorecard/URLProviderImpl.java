@@ -20,8 +20,9 @@ final class URLProviderImpl implements URLProvider {
   private static final String QUERY_TYPE_NAME = "school.name=";
   private static final String QUERY_TYPE_ID = "id=";
   private static final String PER_PAGE = "&per_page=";
+  private static final String PAGE_NUMBER = "&page=";
   private static final String FIELDS_PARAM = "&fields=";
-  private static final String SUGGESTION_PER_PAGE = "20";
+  private static final String SUGGESTION_PER_PAGE = "100";
   private final UnivizConfig univizConfig;
   private final Set<String> collegeDataFields;
   private final Set<String> suggestionFields;
@@ -43,7 +44,7 @@ final class URLProviderImpl implements URLProvider {
   }
 
   @Override
-  public String getSuggestionUrl(String partialCollegeName) {
+  public String getSuggestionUrl(String partialCollegeName, String currentPageNumber) {
     StringBuilder urlStringBuilder = new StringBuilder();
     urlStringBuilder.append(FRONT_URL);
     urlStringBuilder.append(QUERY_TYPE_NAME);
@@ -53,6 +54,8 @@ final class URLProviderImpl implements URLProvider {
     urlStringBuilder.append(suggestionFieldParams);
     urlStringBuilder.append(PER_PAGE);
     urlStringBuilder.append(SUGGESTION_PER_PAGE);
+    urlStringBuilder.append(PAGE_NUMBER);
+    urlStringBuilder.append(currentPageNumber);
     urlStringBuilder.append("&api_key=");
     urlStringBuilder.append(univizConfig.scorecardApiKey());
     return urlStringBuilder.toString();

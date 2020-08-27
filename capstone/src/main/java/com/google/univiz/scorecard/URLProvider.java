@@ -10,7 +10,7 @@ interface URLProvider {
    *
    * @param partialCollegeName the partial college name input provided by the client
    */
-  String getSuggestionUrl(String partialCollegeName);
+  String getSuggestionUrl(String partialCollegeName, String currentPageNumber);
 
   /**
    * Return URL in String form to a remote resource which is aiming to get data resources
