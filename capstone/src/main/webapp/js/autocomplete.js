@@ -93,7 +93,7 @@ function keepTrackOfSuggestions(validSuggestion) {
 
 /**
  * Takes relevant suggestions and displays them in DOM
- * @param {Array<string, int>} trimArr
+ * @param {Array<string, int>} relevantSuggestions
  * @param {HTMLDivElement} autocompleteList
  * @param {string} val
  */
