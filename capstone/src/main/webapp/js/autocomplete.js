@@ -14,7 +14,6 @@ let selectedElmntPos = -1;
 
 /**
  * Gets suggestions to display to the users
- * @return{void}
  */
 function getSuggestions() {
   const fetchStr = '/search?query=' + SEARCH_INPUT.value;
@@ -27,7 +26,6 @@ function getSuggestions() {
 
 /**
  * Sends final college list to the dashboard
- * @return{void}
  */
 function sendCollegeInformation() {
   const listItems = document.querySelector('ul').children;
