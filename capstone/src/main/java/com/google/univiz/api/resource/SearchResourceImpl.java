@@ -36,7 +36,6 @@ final class SearchResourceImpl implements SearchResource {
         it.remove();
       }
     }
-
     return suggestionCandidates.stream().limit(MAX_SUGGESTIONS).collect(Collectors.toList());
   }
 }
