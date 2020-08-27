@@ -59,7 +59,7 @@ function addActiveTag(autocompleteListElmt) {
 
 /**
  * Removes the 'active' tag from an autocomplete elmt
- * @param {Object} autocompleteListElmt
+ * @param {HTMLDivElement} autocompleteListElmt
  */
 function removeActiveTag(autocompleteListElmt) {
   for (elmt of autocompleteListElmt) {
@@ -70,7 +70,7 @@ function removeActiveTag(autocompleteListElmt) {
 /**
  * Closes dropdown autocomplete list
  * Does not close the element provided
- * @param {Object} elmnt
+ * @param {HTMLDivElement} elmnt
  */
 function closeAllElmntExcept(elmnt) {
   const autoItems = document.getElementsByClassName(ITEM_CLASS);
@@ -95,8 +95,8 @@ function keepTrackOfSuggestions(validSuggestion) {
 
 /**
  * Takes relevant suggestions and displays them in DOM
- * @param {Object} trimArr
- * @param {Object} autocompleteList
+ * @param {Array<string, int>} trimArr
+ * @param {HTMLDivElement} autocompleteList
  * @param {string} val
  */
 function displaySuggestions(trimArr, autocompleteList, val) {
@@ -118,7 +118,7 @@ function displaySuggestions(trimArr, autocompleteList, val) {
 
 /**
  * Event occurrance when input is provided to autocomplete field
- * @param{Object} suggestions
+ * @param{Array<string, int>} suggestions
  */
 function giveSuggestions(suggestions) {
   closeAllElmntExcept();
