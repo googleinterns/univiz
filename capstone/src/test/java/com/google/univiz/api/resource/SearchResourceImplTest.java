@@ -1,6 +1,7 @@
 package com.google.univiz.api.resource;
 
 import static com.google.common.truth.Truth.assertThat;
+import static org.junit.Assert.assertThrows;
 import static org.mockito.Mockito.when;
 
 import com.google.common.collect.Lists;
@@ -9,6 +10,7 @@ import com.google.univiz.api.representation.SearchData;
 import com.google.univiz.api.representation.SuggestionData;
 import com.google.univiz.api.representation.SuggestionResponse;
 import com.google.univiz.scorecard.SuggestionDataApi;
+import java.io.IOException;
 import java.util.List;
 import org.junit.Before;
 import org.junit.Rule;
@@ -24,10 +26,13 @@ public final class SearchResourceImplTest {
   @Mock private SuggestionDataApi mockSuggestionApi;
   private static final SuggestionData STANFORD_SUGGESTION_DATA =
       SuggestionData.create("Stanford University", 1);
-  private static final SuggestionData CAL_STATE_SUGGESTION_DATA = SuggestionData.create("California State University Stanislaus", 2);
+  private static final SuggestionData CAL_STATE_SUGGESTION_DATA =
+      SuggestionData.create("California State University Stanislaus", 2);
   private static final SuggestionResponse STANFORD_SUGGESTION_RESPONSE =
       SuggestionResponse.create(Lists.newArrayList(STANFORD_SUGGESTION_DATA));
-  private static final SuggestionResponse MULTIPLE_SUGGESTION_RESPONSE = SuggestionResponse.create(Lists.newArrayList(STANFORD_SUGGESTION_DATA, CAL_STATE_SUGGESTION_DATA));
+  private static final SuggestionResponse MULTIPLE_SUGGESTION_RESPONSE =
+      SuggestionResponse.create(
+          Lists.newArrayList(STANFORD_SUGGESTION_DATA, CAL_STATE_SUGGESTION_DATA));
   private static final SuggestionData NULL_SUGGESTION_DATA = SuggestionData.create(null, 1);
   private static final SuggestionResponse NULL_SUGGESTION_RESPONSE =
       SuggestionResponse.create(Lists.newArrayList(NULL_SUGGESTION_DATA));
@@ -64,11 +69,18 @@ public final class SearchResourceImplTest {
   @Test
   public void testFilteringIncorrectSuggestions() throws Exception {
     String collegeName = "Stan";
-    when(mockSuggestionApi.getCollegeSuggestions(collegeName)).thenReturn(MULTIPLE_SUGGESTION_RESPONSE);
-    
+    when(mockSuggestionApi.getCollegeSuggestions(collegeName))
+        .thenReturn(MULTIPLE_SUGGESTION_RESPONSE);
     List<SearchData> ret = search.getSearchSuggestions(collegeName);
     CollegeId collegeId = CollegeId.create(STANFORD_SUGGESTION_DATA.id());
     SearchData expected = SearchData.create("Stanford University", collegeId);
     assertThat(ret).containsExactly(expected);
+  }
+
+  @Test
+  public void testIOException() throws IOException {
+    String collegeName = "";
+    when(mockSuggestionApi.getCollegeSuggestions(collegeName)).thenThrow(IOException.class);
+    assertThrows(IOException.class, () -> search.getSearchSuggestions(collegeName));
   }
 }
