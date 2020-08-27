@@ -20,21 +20,25 @@ final class SuggestionDataApiImpl implements SuggestionDataApi {
     this.readerProvider = readerProvider;
     this.gson = gson;
   }
-  
+
   private int getPagesToSearch(InputStreamReader suggestionReader) {
     MetadataReader metadata = gson.fromJson(suggestionReader, MetadataReader.class);
-    return metadata.content().total() % 100 == 0 ? metadata.content().total()/100 : metadata.content().total()/100 + 1; 
+    return metadata.content().total() % 100 == 0
+        ? metadata.content().total() / 100
+        : metadata.content().total() / 100 + 1;
   }
 
   /** Takes REST API Json response and converts it to SuggestionData */
   private SuggestionResponse convertJsonToSuggestionResponse(InputStreamReader suggestionReader) {
     return gson.fromJson(suggestionReader, SuggestionResponse.class);
   }
-  
-  private SuggestionResponse getPageResults(String collegeName, int currentPage) throws IOException {
+
+  private SuggestionResponse getPageResults(String collegeName, int currentPage)
+      throws IOException {
     InputStreamReader suggestionReader =
         new InputStreamReader(
-            readerProvider.getStreamFromUrl(urlProvider.getSuggestionUrl(collegeName, Integer.toString(currentPage))));
+            readerProvider.getStreamFromUrl(
+                urlProvider.getSuggestionUrl(collegeName, Integer.toString(currentPage))));
     return convertJsonToSuggestionResponse(suggestionReader);
   }
 
@@ -42,7 +46,8 @@ final class SuggestionDataApiImpl implements SuggestionDataApi {
   public SuggestionResponse getCollegeSuggestions(String collegeName) throws IOException {
     InputStreamReader suggestionReader =
         new InputStreamReader(
-            readerProvider.getStreamFromUrl(urlProvider.getSuggestionUrl(collegeName, Integer.toString(defaultFirstPage))));
+            readerProvider.getStreamFromUrl(
+                urlProvider.getSuggestionUrl(collegeName, Integer.toString(defaultFirstPage))));
     int numberOfPages = getPagesToSearch(suggestionReader);
     System.out.println("NUMBER OF PAGES: ");
     System.out.println(numberOfPages);

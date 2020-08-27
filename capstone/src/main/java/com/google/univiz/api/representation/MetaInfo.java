@@ -3,7 +3,6 @@ package com.google.univiz.api.representation;
 import com.google.auto.value.AutoValue;
 import com.google.gson.annotations.SerializedName;
 import com.ryanharter.auto.value.gson.GenerateTypeAdapter;
-import javax.annotation.Nullable;
 
 /** SuggestionData represents the college data specific to the Search feature */
 @GenerateTypeAdapter
