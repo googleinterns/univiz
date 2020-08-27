@@ -9,8 +9,8 @@ const ACTIVE_CLASS = 'autocomplete-active';
 const LIST_ID = 'autocomplete-list';
 const UP_KEY = 'ArrowUp';
 const DOWN_KEY = 'ArrowDown';
-const ENTER = 'Enter';
-let selectedElmntPos = -1;
+const ENTER_KEY = 'Enter';
+let selectedSuggestionPosition = -1;
 
 /**
  * Gets suggestions to display to the users
@@ -47,12 +47,12 @@ function addActiveTag(autocompleteListElmt) {
     return;
   }
   removeActiveTag(autocompleteListElmt);
-  if (selectedElmntPos >= autocompleteListElmt.length) {
-    selectedElmntPos = 0;
-  } else if (selectedElmntPos < 0) {
-    selectedElmntPos = (autocompleteListElmt.length - 1);
+  if (selectedSuggestionPosition >= autocompleteListElmt.length) {
+    selectedSuggestionPosition = 0;
+  } else if (selectedSuggestionPosition < 0) {
+    selectedSuggestionPosition = (autocompleteListElmt.length - 1);
   }
-  autocompleteListElmt[selectedElmntPos].classList.add(ACTIVE_CLASS);
+  autocompleteListElmt[selectedSuggestionPosition].classList.add(ACTIVE_CLASS);
 }
 
 /**
@@ -97,8 +97,8 @@ function keepTrackOfSuggestions(validSuggestion) {
  * @param {HTMLDivElement} autocompleteList
  * @param {string} val
  */
-function displaySuggestions(trimArr, autocompleteList, val) {
-  for (arrElt of trimArr) {
+function displaySuggestions(relevantSuggestions, autocompleteList, val) {
+  for (arrElt of relevantSuggestions) {
     const listElmt = document.createElement('div');
     listElmt.innerHTML = '<strong>' +
                          arrElt.collegeName.substr(0, val.length) +
@@ -124,10 +124,7 @@ function giveSuggestions(suggestions) {
   if (!val) {
     return;
   }
-  if (SEARCH_INPUT.value !== val) {
-    return;
-  }
-  selectedElmntPos = -1;
+  selectedSuggestionPosition = -1;
   const autocompleteList = document.createElement('div');
   autocompleteList.setAttribute('id', LIST_ID);
   autocompleteList.setAttribute('class', ITEM_CLASS);
@@ -147,16 +144,16 @@ function keyDown(e) {
     return;
   }
   if (e.code === DOWN_KEY) {
-    selectedElmntPos++;
+    selectedSuggestionPosition++;
     addActiveTag(listElmt);
   } else if (e.code === UP_KEY) {
-    selectedElmntPos--;
+    selectedSuggestionPosition--;
     addActiveTag(listElmt);
   } else if (e.code === ENTER) {
     e.preventDefault();
-    if (selectedElmntPos > -1) {
+    if (selectedSuggestionPosition > -1) {
       if (listElmt) {
-        listElmt[selectedElmntPos].click();
+        listElmt[selectedSuggestionPosition].click();
       }
     }
   }
