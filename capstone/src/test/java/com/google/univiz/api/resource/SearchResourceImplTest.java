@@ -1,6 +1,7 @@
 package com.google.univiz.api.resource;
 
 import static com.google.common.truth.Truth.assertThat;
+import static org.junit.Assert.assertThrows;
 import static org.mockito.Mockito.when;
 
 import com.google.common.collect.Lists;
@@ -9,6 +10,7 @@ import com.google.univiz.api.representation.SearchData;
 import com.google.univiz.api.representation.SuggestionData;
 import com.google.univiz.api.representation.SuggestionResponse;
 import com.google.univiz.scorecard.SuggestionDataApi;
+import java.io.IOException;
 import java.util.List;
 import org.junit.Before;
 import org.junit.Rule;
@@ -74,5 +76,12 @@ public final class SearchResourceImplTest {
     CollegeId collegeId = CollegeId.create(STANFORD_SUGGESTION_DATA.id());
     SearchData expected = SearchData.create("Stanford University", collegeId);
     assertThat(ret).containsExactly(expected);
+  }
+
+  @Test
+  public void testIOException() throws IOException {
+    String collegeName = "";
+    when(mockSuggestionApi.getCollegeSuggestions(collegeName)).thenThrow(IOException.class);
+    assertThrows(IOException.class, () -> search.getSearchSuggestions(collegeName));
   }
 }
