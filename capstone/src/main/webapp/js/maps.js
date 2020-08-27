@@ -1,18 +1,16 @@
-/* eslint no-unused-vars: ["error", {"varsIgnorePattern": "createMap"}] */
+/* eslint no-unused-vars: ["error", {"varsIgnorePattern": "fetchData"}] */
 
 /**
- * Function that creates map markers and info windows.j
- * @param {JSON} json JSON response
+ * Function that creates map markers and info windows.
+ * @param {JSON} mapsDataFromFetch JSON response
  */
-function createMap(json) {
+function createMap(mapsDataFromFetch) {
   const map = new google.maps.Map(
       document.getElementById('map'),
       {center: {lat: 39.8097343, lng: -98.5556199}, zoom: 5});
 
-//   const mapsDataPr = fetchData();
-
   const infoWindow = new google.maps.InfoWindow();
-  for (const mapsData of json) {
+  for (const mapsData of mapsDataFromFetch) {
     const latitudeLongitude = new google.maps.LatLng(
         mapsData['latitude'],
         mapsData['longitude']);
@@ -37,7 +35,7 @@ function createMap(json) {
 }
 
 /**
- * Helper function to fetch data from servlet as JSON.
+ * Function to fetch data from servlet as JSON and calls createMap().
  *
  * @return {JSON} an array of dictionaries corresponding to relevant map data
  */
