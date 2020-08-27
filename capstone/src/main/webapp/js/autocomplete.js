@@ -17,9 +17,7 @@ let selectedSuggestionPosition = -1;
  */
 function getSuggestions() {
   const fetchStr = '/search?query=' + SEARCH_INPUT.value;
-  console.log('FetchStr: ', fetchStr);
   fetch(fetchStr).then((response) => response.json()).then((suggestions) => {
-    console.log('Here! ', suggestions);
     giveSuggestions(suggestions);
   });
 }
