@@ -1,5 +1,4 @@
-/* eslint no-unused-vars: ["error", {"varsIgnorePattern": "giveSuggestions"}, 
-                                    {"varsIgnorePattern": "keyDown"}] */
+/* eslint no-unused-vars: "error"*/ 
 
 /*
  * Largely inspired by JS code from W3Schools: https://www.w3schools.com/howto/howto_js_autocomplete.asp
