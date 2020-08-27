@@ -51,7 +51,7 @@ public final class SuggestionDataApiImplTest {
     String collegeName = "Stanf";
     String testUrl =
         Resources.getResource(SuggestionDataApiImplTest.class, "suggestion_single.json").toString();
-    when(mockUrlProvider.getSuggestionUrl(collegeName,"0")).thenReturn(testUrl);
+    when(mockUrlProvider.getSuggestionUrl(collegeName, "0")).thenReturn(testUrl);
     SuggestionResponse suggestionResponse =
         testSuggestionDataApiImpl.getCollegeSuggestions(collegeName);
     assertThat(suggestionResponse.suggestions()).hasSize(1);
@@ -65,7 +65,7 @@ public final class SuggestionDataApiImplTest {
     String testUrl =
         Resources.getResource(SuggestionDataApiImplTest.class, "suggestion_multiple.json")
             .toString();
-    when(mockUrlProvider.getSuggestionUrl(collegeName,"0")).thenReturn(testUrl);
+    when(mockUrlProvider.getSuggestionUrl(collegeName, "0")).thenReturn(testUrl);
     SuggestionResponse suggestionResponse =
         testSuggestionDataApiImpl.getCollegeSuggestions(collegeName);
     assertThat(suggestionResponse.suggestions()).hasSize(2);
@@ -81,7 +81,7 @@ public final class SuggestionDataApiImplTest {
     String testUrl =
         Resources.getResource(SuggestionDataApiImplTest.class, "suggestion_multiple.json")
             .toString();
-    when(mockUrlProvider.getSuggestionUrl(collegeName,"0")).thenReturn(testUrl);
+    when(mockUrlProvider.getSuggestionUrl(collegeName, "0")).thenReturn(testUrl);
     when(readerProvider.getStreamFromUrl(testUrl)).thenThrow(new IOException());
     assertThrows(
         IOException.class, () -> testSuggestionDataApiImpl.getCollegeSuggestions(collegeName));

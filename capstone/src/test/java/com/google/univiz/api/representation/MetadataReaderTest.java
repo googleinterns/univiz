@@ -21,8 +21,7 @@ public final class MetadataReaderTest {
         new InputStreamReader(
             Resources.getResource(MetadataReaderTest.class, "suggestion-response.json")
                 .openStream());
-    MetadataReader metadataReader =
-        gson.fromJson(metadataReaderStream, MetadataReader.class);
+    MetadataReader metadataReader = gson.fromJson(metadataReaderStream, MetadataReader.class);
 
     assertThat(metadataReader.content().total()).isEqualTo(1);
     assertThat(metadataReader.content().pgnum()).isEqualTo(0);
