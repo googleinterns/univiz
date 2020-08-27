@@ -11,22 +11,8 @@ body {
   display: inline-block;
 }
 
-input {
-  border: 1px solid transparent;
-  background-color: #f1f1f1;
-  padding: 10px;
-  font-size: 16px;
-}
-
-input[type=text] {
-  display: inline-block;
-  background-color: #f1f1f1;
-  width: 10%;
-}
-
-input[type=submit] {
-  display: inline-block;
-  background-color: dodgerblue;
+.autocomplete-active {
+  background-color: dodgerblue !important;
   color: #fff;
 }
 
@@ -41,7 +27,21 @@ input[type=submit] {
   background-color: #e9e9e9;
 }
 
-.autocomplete-active {
-  background-color: dodgerblue !important;
+input {
+  border: 1px solid transparent;
+  background-color: #f1f1f1;
+  padding: 10px;
+  font-size: 16px;
+}
+
+input[type=submit] {
+  display: inline-block;
+  background-color: dodgerblue;
   color: #fff;
+}
+
+input[type=text] {
+  display: inline-block;
+  background-color: #f1f1f1;
+  width: 10%;
 }
