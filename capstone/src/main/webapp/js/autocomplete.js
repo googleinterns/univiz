@@ -14,7 +14,6 @@ let selectedElmntPos = -1;
 
 /**
  * Gets suggestions to display to the users
- * @return{void}
  */
 function getSuggestions() {
   const fetchStr = '/search?query=' + SEARCH_INPUT.value;
