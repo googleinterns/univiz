@@ -12,12 +12,11 @@ let selectedElmntPos = -1;
 
 /**
  * Adds the 'active' tag to an autocomplete elmt
- * @param {Object} autocompleteListElmt
- * @return {bool}
+ * @param {HTMLDivElement} autocompleteListElmt
  */
 function addActiveTag(autocompleteListElmt) {
   if (!autocompleteListElmt) {
-    return false;
+    return;
   }
   removeActiveTag(autocompleteListElmt);
   if (selectedElmntPos >= autocompleteListElmt.length) {
@@ -42,7 +41,6 @@ function removeActiveTag(autocompleteListElmt) {
  * Closes dropdown autocomplete list
  * Does not close the element provided
  * @param {Object} elmnt
- * @return {void}
  */
 function closeAllElmntExcept(elmnt) {
   const autoItems = document.getElementsByClassName(ITEM_CLASS);
@@ -83,7 +81,7 @@ function getRelevantDataSuggestions(arr, val) {
   const trimArr = [];
   val = val.toUpperCase();
   for (const arrElt of arr) {
-    if (arrElt.substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+    if (arrElt.substr(0, val.length).toUpperCase() === val.toUpperCase()) {
       trimArr.push(arrElt);
     }
   }
@@ -95,11 +93,10 @@ function getRelevantDataSuggestions(arr, val) {
  * @param {Object} trimArr
  * @param {Object} autocompleteList
  * @param {string} val
- * @return {void}
  */
 function displaySuggestions(trimArr, autocompleteList, val) {
   for (arrElt of trimArr) {
-    const listElmt = document.createElement('DIV');
+    const listElmt = document.createElement('div');
     listElmt.innerHTML = '<strong>' +
                          arrElt.substr(0, val.length) +
                          '</strong>';
@@ -116,42 +113,44 @@ function displaySuggestions(trimArr, autocompleteList, val) {
 
 /**
  * Event occurrance when input is provided to autocomplete field
- * @return {bool}
  */
 function giveSuggestions() {
   closeAllElmntExcept();
   const val = SEARCH_INPUT.value;
   if (!val) {
-    return false;
+    return;
+  }
+  if (SEARCH_INPUT.value !== val) {
+    return;
   }
   const arr = getListOfSuggestions();
   selectedElmntPos = -1;
-  const autocompleteList = document.createElement('DIV');
+  const autocompleteList = document.createElement('div');
   autocompleteList.setAttribute('id', LIST_ID);
   autocompleteList.setAttribute('class', ITEM_CLASS);
   SEARCH_INPUT.parentNode.appendChild(autocompleteList);
   const trimArr = getRelevantDataSuggestions(arr, val);
   displaySuggestions(trimArr, autocompleteList, val);
-  return true;
 }
 
 /**
  * Event occurance when arrow keys are pressed
  * @param {keypress} e
- * @return {void}
  */
 function keyDown(e) {
   let listElmt = document.getElementById(LIST_ID);
   if (listElmt) {
     listElmt = listElmt.getElementsByTagName('div');
+  } else {
+    return;
   }
-  if (e.keyCode == UP_KEY) {
+  if (e.keyCode === UP_KEY) {
     selectedElmntPos++;
     addActiveTag(listElmt);
-  } else if (e.keyCode == DOWN_KEY) {
+  } else if (e.keyCode === DOWN_KEY) {
     selectedElmntPos--;
     addActiveTag(listElmt);
-  } else if (e.keyCode == ENTER) {
+  } else if (e.keyCode === ENTER) {
     e.preventDefault();
     if (selectedElmntPos > -1) {
       if (listElmt) {
@@ -164,4 +163,5 @@ function keyDown(e) {
 /* Event occurance when mouse is clicked */
 document.addEventListener('click', (e) => {
   closeAllElmntExcept(e.target, SEARCH_INPUT);
+  SEARCH_INPUT.value = "";
 });
