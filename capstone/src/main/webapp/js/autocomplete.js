@@ -1,4 +1,4 @@
-/* eslint no-unused-vars: "error"*/ 
+/* eslint-disable no-unused-vars */ 
 
 /*
  * Largely inspired by JS code from W3Schools: https://www.w3schools.com/howto/howto_js_autocomplete.asp
