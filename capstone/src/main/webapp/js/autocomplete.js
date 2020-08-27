@@ -26,7 +26,6 @@ function getSuggestions() {
 
 /**
  * Sends final college list to the dashboard
- * @return{void}
  */
 function sendCollegeInformation() {
   const listItems = document.querySelector('ul').children;
