@@ -1,6 +1,19 @@
 /* eslint no-unused-vars: ["error", {"varsIgnorePattern": "fetchData"}] */
 
 /**
+ * Function to fetch data from servlet as JSON and calls createMap().
+ */
+async function fetchData() {
+  await fetch('/maps')
+      .then((response) => response.json())
+      .then((mapsJsonData) => {
+        console.log('Fetching data...');
+        console.log(mapsJsonData);
+        createMap(mapsJsonData);
+      });
+}
+
+/**
  * Function that creates map markers and info windows.
  * @param {JSON} mapsDataFromFetch JSON response
  */
@@ -32,21 +45,6 @@ function createMap(mapsDataFromFetch) {
           });
     })(marker, mapsData);
   }
-}
-
-/**
- * Function to fetch data from servlet as JSON and calls createMap().
- *
- * @return {JSON} an array of dictionaries corresponding to relevant map data
- */
-async function fetchData() {
-  await fetch('/maps')
-      .then((response) => response.json())
-      .then((mapsJsonData) => {
-        console.log('Fetching data...');
-        console.log(mapsJsonData);
-        createMap(mapsJsonData);
-      });
 }
 
 /**
