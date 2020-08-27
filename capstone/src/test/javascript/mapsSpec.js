@@ -53,7 +53,6 @@ describe('Map Marker and InfoWindow Display', () => {
     spyOn(google.maps.prototype, 'LatLon');
     spyOn(google.maps.prototype, 'Marker');
     spyOn(google.maps.prototype, 'InfoWindow');
-    spyOn(window, 'setDescription');
   });
   it('will add map content using data from JSON',
       async () => {
@@ -74,16 +73,5 @@ describe('Map Marker and InfoWindow Display', () => {
         expect(google.maps.prototype.LatLon.calls.count()).toEqual(2);
         expect(google.maps.prototype.Marker.calls.count()).toEqual(2);
         expect(google.maps.prototype.InfoWindow.calls.count()).toEqual(1);
-        expect(setDescription).toHaveBeenCalledWith([
-          mapsJsonData[0]['name'],
-          mapsJsonData[0]['city'],
-          mapsJsonData[0]['isMainCampus'],
-        ]);
-        expect(setDescription).toHaveBeenCalledWith([
-          mapsJsonData[1]['name'],
-          mapsJsonData[1]['city'],
-          mapsJsonData[1]['isMainCampus'],
-        ]);
-        expect(setDescription.calls.count()).toEqual(2);
       });
 });
