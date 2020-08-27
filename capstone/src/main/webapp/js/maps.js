@@ -15,7 +15,7 @@ async function fetchData() {
 
 /**
  * Function that creates map markers and info windows.
- * @param {JSON} mapsDataFromFetch JSON response
+ * @param {JSON} mapsDataFromFetch JSON response from servlet
  */
 function createMap(mapsDataFromFetch) {
   const map = new google.maps.Map(
