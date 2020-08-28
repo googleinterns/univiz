@@ -6,7 +6,7 @@
 const SEARCH_INPUT = document.getElementById('search');
 const ITEM_CLASS = 'autocomplete-items';
 const ACTIVE_CLASS = 'autocomplete-active';
-const LIST_ID = 'autocomplete-list';
+const SUGGESTION_LIST_ID = 'autocomplete-list';
 const UP_KEY = 'ArrowUp';
 const DOWN_KEY = 'ArrowDown';
 const ENTER_KEY = 'Enter';
@@ -125,7 +125,7 @@ function giveSuggestions() {
   const arr = getListOfSuggestions();
   selectedSuggestionPosition = -1;
   const autocompleteList = document.createElement('div');
-  autocompleteList.setAttribute('id', LIST_ID);
+  autocompleteList.setAttribute('id', SUGGESTION_LIST_ID);
   autocompleteList.setAttribute('class', ITEM_CLASS);
   SEARCH_INPUT.parentNode.appendChild(autocompleteList);
   const relevantSuggestions = getRelevantDataSuggestions(arr, val);
@@ -137,7 +137,7 @@ function giveSuggestions() {
  * @param {keypress} e
  */
 function keyDown(e) {
-  let listElmt = document.getElementById(LIST_ID);
+  let listElmt = document.getElementById(SUGGESTION_LIST_ID);
   if (listElmt) {
     listElmt = listElmt.getElementsByTagName('div');
   } else {
