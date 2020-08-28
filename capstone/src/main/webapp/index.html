@@ -3,13 +3,15 @@
   <head>
     <title>UniViz Main Page</title>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <h2>Welcome to UniViz!</h2>
-    <form autocomplete="off">
-      <label for="search">Search for colleges:</label><br>
-      <input type="text" id="search" name="search"><br>
-      <input type="submit" value="See your colleges!">
-    </form>
+    <label for="search">Search for colleges:</label><br>
+    <input type="text" id="search" name="query" placeholder="College Name" oninput="getSuggestions()" onkeydown="keyDown(event)"><br>
+    <p>Current List of Suggested Colleges:</p>
+    <ul id="suggestions"></ul>
+    <button id="submit" onclick="sendCollegeInformation()">See your colleges' information!</button>
   </body>
+  <script src="js/autocomplete.js"></script>
 </html>
