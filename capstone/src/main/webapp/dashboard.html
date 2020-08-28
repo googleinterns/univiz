@@ -3,8 +3,9 @@
   <head>
     <meta charset="UTF-8">
     <title>Dashboard</title>
-    <!-- TODO(biancamacias): revist url to add api key -->
-    <!-- TODO(biancamacias): reference style.css and script.js -->
+    <link rel="stylesheet" href="/style.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDASlFIoCLcOLp3fp4DesSqcJpZed0QDFw"></script>
+    <script src="/js/maps.js/"></script>
     <script src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="/js/graphs.js"></script>
     <script src="/js/demographicalGraphs.js"></script>
@@ -12,7 +13,7 @@
     <script src="/js/calendarBootstrap.js"></script>
     <script src="/js/graphsBootstrap.js"></script>
   </head>
-  <body>
+  <body onload="fetchData()">
     <div id="header">
       <h1>UniViz</h1>
     </div>
