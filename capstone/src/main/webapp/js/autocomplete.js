@@ -31,7 +31,7 @@ function addActiveTag(autocompleteListElmt) {
 
 /**
  * Removes the 'active' tag from an autocomplete elmt
- * @param {Object} autocompleteListElmt
+ * @param {HTMLDivElement} autocompleteListElmt
  */
 function removeActiveTag(autocompleteListElmt) {
   for (elmt of autocompleteListElmt) {
@@ -42,7 +42,7 @@ function removeActiveTag(autocompleteListElmt) {
 /**
  * Closes dropdown autocomplete list
  * Does not close the element provided
- * @param {Object} elmnt
+ * @param {HTMLDivElement} elmnt
  */
 function closeAllElmntExcept(elmnt) {
   const autoItems = document.getElementsByClassName(ITEM_CLASS);
@@ -55,7 +55,7 @@ function closeAllElmntExcept(elmnt) {
 
 /**
  * Adds valid suggestions to list of stored suggestions
- * @param{string} validSuggestion
+ * @param {string} validSuggestion
  */
 function keepTrackOfSuggestions(validSuggestion) {
   const parent = document.getElementById('suggestions');
@@ -66,7 +66,7 @@ function keepTrackOfSuggestions(validSuggestion) {
 
 /**
  * Current placeholder until servlet is created
- * @return{Array<string>} arr
+ * @return {Array<string>} arr
  */
 function getListOfSuggestions() {
   const arr = ['Hallo', 'Hello', 'Hi', 'Hiya', 'Howdy', 'Wassup'];
@@ -92,8 +92,8 @@ function getRelevantDataSuggestions(arr, val) {
 
 /**
  * Takes relevant suggestions and displays them in DOM
- * @param {Object} relevantSuggestions
- * @param {Object} autocompleteList
+ * @param {Array<string, CollegeId>} relevantSuggestions
+ * @param {HTMLDivElement} autocompleteList
  * @param {string} val
  */
 function displaySuggestions(relevantSuggestions, autocompleteList, val) {
@@ -149,7 +149,7 @@ function keyDown(e) {
   } else if (e.code === UP_KEY) {
     selectedSuggestionPosition--;
     addActiveTag(listElmt);
-  } else if (e.code === ENTER) {
+  } else if (e.code === ENTER_KEY) {
     e.preventDefault();
     if (selectedSuggestionPosition > -1) {
       if (listElmt) {
