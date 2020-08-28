@@ -85,9 +85,21 @@ function closeAllElmntExcept(elmnt) {
 function keepTrackOfSuggestions(validSuggestion) {
   const parent = document.getElementById('suggestions');
   const listElt = document.createElement('li');
+  const buttonStr = '<button onclick=\'removeCollege(this)\'>X</button';
+  buttonStr.setAttribute('id', validSuggestion.collegeId.id);
   listElt.setAttribute('id', validSuggestion.collegeId.id);
   listElt.innerHTML = validSuggestion.collegeName;
+  listElt.innerHTML += " ";
+  listElt.innerHTML += buttonStr;
   parent.appendChild(listElt);
+}
+
+/**
+ *
+ */
+function removeCollege(this) {
+  const listUl = document.getElementById("suggestions");
+  document.getElementById(this.id).remove();
 }
 
 /**
