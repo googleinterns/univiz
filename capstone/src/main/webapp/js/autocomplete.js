@@ -33,6 +33,7 @@ function sendCollegeInformation() {
     urlHtml += elt.id;
     urlHtml += ',';
   }
+  urlHtml = urlHtml.slice(0, -1);
   window.location.href = urlHtml;
 }
 
