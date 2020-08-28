@@ -15,9 +15,9 @@ let selectedSuggestionPosition = -1;
 /**
  * Gets suggestions to display to the users
  */
-function getSuggestions() {
+async function getSuggestions() {
   const fetchStr = '/search?query=' + SEARCH_INPUT.value;
-  fetch(fetchStr).then((response) => response.json()).then((suggestions) => {
+  await fetch(fetchStr).then((response) => response.json()).then((suggestions) => {
     giveSuggestions(suggestions);
   });
 }
@@ -99,10 +99,12 @@ function keepTrackOfSuggestions(validSuggestion) {
 function displaySuggestions(relevantSuggestions, autocompleteList, val) {
   for (arrElt of relevantSuggestions) {
     const listElmt = document.createElement('div');
-    listElmt.innerHTML = '<strong>' +
-                         arrElt.collegeName.substr(0, val.length) +
+    const indexOf = arrElt.collegeName.indexOf(val);
+    listElmt.innerHTML = arrElt.collegeName.substr(0, indexOf);
+    listElmt.innerHTML += '<strong>' +
+                         arrElt.collegeName.substr(indexOf, val.length) +
                          '</strong>';
-    listElmt.innerHTML += arrElt.collegeName.substr(val.length);
+    listElmt.innerHTML += arrElt.collegeName.substr(val.length + indexOf);
     const cpyArrElt = arrElt;
     listElmt.addEventListener('click', () => {
       SEARCH_INPUT.value = cpyArrElt;
