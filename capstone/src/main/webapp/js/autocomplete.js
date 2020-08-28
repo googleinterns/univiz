@@ -16,7 +16,8 @@ let selectedSuggestionPosition = -1;
  * Gets suggestions to display to the users
  */
 async function getSuggestions() {
-  const fetchStr = '/search?query=' + SEARCH_INPUT.value;
+  const fetchStr = '/search?query=' + SEARCH_INPUT.value.trim();
+  console.log(fetchStr);
   await fetch(fetchStr).then((response) => response.json()).then((suggestions) => {
     giveSuggestions(suggestions);
   });
@@ -121,7 +122,7 @@ function displaySuggestions(relevantSuggestions, autocompleteList, val) {
  */
 function giveSuggestions(suggestions) {
   closeAllElmntExcept();
-  const val = SEARCH_INPUT.value;
+  const val = SEARCH_INPUT.value.trim();
   if (!val) {
     return;
   }
@@ -150,7 +151,7 @@ function keyDown(e) {
   } else if (e.code === UP_KEY) {
     selectedSuggestionPosition--;
     addActiveTag(listElmt);
-  } else if (e.code === ENTER) {
+  } else if (e.code === ENTER_KEY) {
     e.preventDefault();
     if (selectedSuggestionPosition > -1) {
       if (listElmt) {
