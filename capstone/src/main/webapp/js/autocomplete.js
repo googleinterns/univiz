@@ -47,7 +47,7 @@ function removeActiveTag(autocompleteListElmt) {
 function closeAllElmntExcept(elmnt) {
   const autoItems = document.getElementsByClassName(ITEM_CLASS);
   for (const item of autoItems) {
-    if (item != elmnt && item != SEARCH_INPUT) {
+    if (item != elmnt) {
       item.parentNode.removeChild(item);
     }
   }
