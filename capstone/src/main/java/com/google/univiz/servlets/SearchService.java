@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet that returns the list of matching college names based on a partial input query. This
  * service is best used for the auto-complete feature.
  */
-// @WebServlet("/search")
+
 @Singleton
 public final class SearchService extends HttpServlet {
 
