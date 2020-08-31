@@ -93,19 +93,19 @@ function keepTrackOfChosenColleges(validSuggestion) {
 
 /**
  * Creates List Element to display a college name suggestion
- * @param {HTMLDivElement} arrElt
+ * @param {string} arrElt
  * @param {string} val
  * @return {HTMLDivElement} listElmt
  */
-function createListElmt(arrElt, val) {
+function createListElmt(collegeName, val) {
   const listElmt = document.createElement('div');
-  const collegeNameUpper = arrElt.collegeName.toUpperCase();
+  const collegeNameUpper = collegeName.toUpperCase();
   const valIndex = collegeNameUpper.indexOf(val.toUpperCase());
-  listElmt.innerHTML = arrElt.collegeName.substr(0, valIndex);
+  listElmt.innerHTML = collegeName.substr(0, valIndex);
   listElmt.innerHTML += '<strong>' +
-                       arrElt.collegeName.substr(valIndex, val.length) +
+                       collegeName.substr(valIndex, val.length) +
                        '</strong>';
-  listElmt.innerHTML += arrElt.collegeName.substr(val.length + valIndex);
+  listElmt.innerHTML += collegeName.substr(val.length + valIndex);
   return listElmt;
 }
 
@@ -117,7 +117,7 @@ function createListElmt(arrElt, val) {
  */
 function displayCollegeSuggestions(relevantSuggestions, autocompleteList, val) {
   for (arrElt of relevantSuggestions) {
-    const listElmt = createListElmt(arrElt, val);
+    const listElmt = createListElmt(arrElt.collegeName, val);
     const cpyArrElt = arrElt;
     listElmt.addEventListener('click', () => {
       SEARCH_INPUT.value = cpyArrElt;
