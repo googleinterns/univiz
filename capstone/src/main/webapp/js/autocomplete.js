@@ -6,7 +6,7 @@
 const SEARCH_INPUT = document.getElementById('search');
 const ITEM_CLASS = 'autocomplete-items';
 const ACTIVE_CLASS = 'autocomplete-active';
-const LIST_ID = 'autocomplete-list';
+const SUGGESTION_LIST_ID = 'autocomplete-list';
 const UP_KEY = 'ArrowUp';
 const DOWN_KEY = 'ArrowDown';
 const ENTER_KEY = 'Enter';
@@ -15,26 +15,26 @@ let selectedSuggestionPosition = -1;
 /**
  * Gets suggestions to display to the users
  */
-function getSuggestions() {
-  const fetchStr = '/search?query=' + SEARCH_INPUT.value;
+function suggestionInput() {
+  const val = SEARCH_INPUT.value.trim();
+  if (!val) {
+    return;
+  }
+  const fetchStr = '/search?query=' + val;
   fetch(fetchStr).then((response) => response.json()).then((suggestions) => {
-    giveSuggestions(suggestions);
+    getsAllProposedSuggestions(suggestions, val);
   });
 }
 
 /**
  * Sends final college list to the dashboard
  */
-function sendCollegeInformation() {
-  const listItems = document.querySelector('ul').children;
+function sendCollegeInformationToDashboard() {
+  const listItems = document.getElementById('suggestions').children;
   const listArray = Array.from(listItems);
-  let urlHtml = 'dashboard.html?id=';
-  for (const elt of listArray) {
-    urlHtml += elt.id;
-    urlHtml += ',';
-  }
-  urlHtml = urlHtml.slice(0, -1);
-  window.location.href = urlHtml;
+  const idArray = Array.from(listItems).map((l) => l.id).join(',');
+  const dashboardUrl = 'dashboard.html?id=' + idArray;
+  window.location.href = dashboardUrl;
 }
 
 /**
@@ -72,7 +72,7 @@ function removeActiveTag(autocompleteListElmt) {
 function closeAllElmntExcept(elmnt) {
   const autoItems = document.getElementsByClassName(ITEM_CLASS);
   for (const item of autoItems) {
-    if (item != elmnt && item != SEARCH_INPUT) {
+    if (item != elmnt) {
       item.parentNode.removeChild(item);
     }
   }
@@ -80,9 +80,9 @@ function closeAllElmntExcept(elmnt) {
 
 /**
  * Adds valid suggestions to list of stored suggestions
- * @param{string} validSuggestion
+ * @param {string} validSuggestion
  */
-function keepTrackOfSuggestions(validSuggestion) {
+function keepTrackOfChosenColleges(validSuggestion) {
   const parent = document.getElementById('suggestions');
   const listElt = document.createElement('li');
   const buttonStr = '<button onclick=\'removeCollege(this)\'>X</button';
@@ -103,22 +103,36 @@ function removeCollege(this) {
 }
 
 /**
+ * Creates List Element to display a college name suggestion
+ * @param {string} collegeName
+ * @param {string} val
+ * @return {HTMLDivElement} listElmt
+ */
+function createListElmt(collegeName, val) {
+  const listElmt = document.createElement('div');
+  const collegeNameUpper = collegeName.toUpperCase();
+  const valIndex = collegeNameUpper.indexOf(val.toUpperCase());
+  listElmt.innerHTML = collegeName.substr(0, valIndex);
+  listElmt.innerHTML += '<strong>' +
+                       collegeName.substr(valIndex, val.length) +
+                       '</strong>';
+  listElmt.innerHTML += collegeName.substr(val.length + valIndex);
+  return listElmt;
+}
+
+/**
  * Takes relevant suggestions and displays them in DOM
  * @param {Array<string, int>} relevantSuggestions
  * @param {HTMLDivElement} autocompleteList
  * @param {string} val
  */
-function displaySuggestions(relevantSuggestions, autocompleteList, val) {
+function displayCollegeSuggestions(relevantSuggestions, autocompleteList, val) {
   for (arrElt of relevantSuggestions) {
-    const listElmt = document.createElement('div');
-    listElmt.innerHTML = '<strong>' +
-                         arrElt.collegeName.substr(0, val.length) +
-                         '</strong>';
-    listElmt.innerHTML += arrElt.collegeName.substr(val.length);
+    const listElmt = createListElmt(arrElt.collegeName, val);
     const cpyArrElt = arrElt;
     listElmt.addEventListener('click', () => {
       SEARCH_INPUT.value = cpyArrElt;
-      keepTrackOfSuggestions(cpyArrElt);
+      keepTrackOfChosenColleges(cpyArrElt);
       closeAllElmntExcept();
     });
     autocompleteList.appendChild(listElmt);
@@ -127,20 +141,17 @@ function displaySuggestions(relevantSuggestions, autocompleteList, val) {
 
 /**
  * Event occurrance when input is provided to autocomplete field
- * @param{Array<string, int>} suggestions
+ * @param {Array<string, int>} suggestions
+ * @param {string} val
  */
-function giveSuggestions(suggestions) {
+function getsAllProposedSuggestions(suggestions, val) {
   closeAllElmntExcept();
-  const val = SEARCH_INPUT.value;
-  if (!val) {
-    return;
-  }
   selectedSuggestionPosition = -1;
   const autocompleteList = document.createElement('div');
-  autocompleteList.setAttribute('id', LIST_ID);
+  autocompleteList.setAttribute('id', SUGGESTION_LIST_ID);
   autocompleteList.setAttribute('class', ITEM_CLASS);
   SEARCH_INPUT.parentNode.appendChild(autocompleteList);
-  displaySuggestions(suggestions, autocompleteList, val);
+  displayCollegeSuggestions(suggestions, autocompleteList, val);
 }
 
 /**
@@ -148,7 +159,7 @@ function giveSuggestions(suggestions) {
  * @param {keypress} e
  */
 function keyDown(e) {
-  let listElmt = document.getElementById(LIST_ID);
+  let listElmt = document.getElementById(SUGGESTION_LIST_ID);
   if (listElmt) {
     listElmt = listElmt.getElementsByTagName('div');
   } else {
@@ -160,7 +171,7 @@ function keyDown(e) {
   } else if (e.code === UP_KEY) {
     selectedSuggestionPosition--;
     addActiveTag(listElmt);
-  } else if (e.code === ENTER) {
+  } else if (e.code === ENTER_KEY) {
     e.preventDefault();
     if (selectedSuggestionPosition > -1) {
       if (listElmt) {
