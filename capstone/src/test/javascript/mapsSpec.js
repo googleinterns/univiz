@@ -25,10 +25,36 @@ google.maps.Marker = class {
 };
 
 google.maps.InfoWindow = class {
-  /**
-  * Creates an info window
-  */
+  /** Creates an info window */
   constructor() {};
+
+  /**
+    * @param {string} description Description text displayed
+    *                             when marker is clicked
+    */
+  setContent(description) {}
+
+  /**
+   * @param {google.maps.Map} map Map reference to display window
+   * @param {google.maps.Marker} marker Marker reference to
+   *                                    window
+   */
+  open(map, marker) {}
+};
+
+google.maps.event = class {
+  /** Creates an event */
+  constructor() {}
+
+  /**
+   * @param {google.maps.Marker} marker Marker reference to
+   *                                    info window
+   * @param {string} event Event that google.maps.event
+                           will listen for
+   * @param {function} callback Function that will create
+                                description for info window
+   */
+  addListener(marker, event, callback) {}
 };
 
 describe('Map Marker and InfoWindow Display', () => {
@@ -53,6 +79,9 @@ describe('Map Marker and InfoWindow Display', () => {
     spyOn(google.maps.LatLng.prototype, 'constructor');
     spyOn(google.maps.Marker.prototype, 'constructor');
     spyOn(google.maps.InfoWindow.prototype, 'constructor');
+    spyOn(google.maps.event.prototype, 'addListener');
+    spyOn(google.maps.InfoWindow.prototype, 'setContent');
+    spyOn(google.maps.InfoWindow.prototype, 'open');
   });
   it('will add map content using data from JSON',
       async () => {
@@ -76,5 +105,7 @@ describe('Map Marker and InfoWindow Display', () => {
             .count()).toEqual(2);
         expect(google.maps.InfoWindow.prototype.constructor.calls
             .count()).toEqual(1);
+        expect(google.maps.event.prototype.addListener.calls
+            .count()).toEqual(2);
       });
 });
