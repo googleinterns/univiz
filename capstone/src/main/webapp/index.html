@@ -3,13 +3,34 @@
   <head>
     <title>UniViz Main Page</title>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css"></noscript>
   </head>
-  <body>
-    <h2>Welcome to UniViz!</h2>
-    <form autocomplete="off">
-      <label for="search">Search for colleges:</label><br>
-      <input type="text" id="search" name="search"><br>
-      <input type="submit" value="See your colleges!">
-    </form>
+  <body class="is-preload">
+    <div id="wrapper">
+      <header id="header">
+        <h1><b>Welcome to UniViz!</b></h1>
+      </header>
+      <div id="main">
+        <section id="content" class="main">
+          <form autocomplete="off">
+            <label for="search">Search for colleges:</label><br>
+            <input type="text" id="search" name="search"><br>
+            <input type="submit" value="See your colleges!">
+          </form>
+        </section>
+      </div>
+      <footer id="footer">
+        <p class="copyright"><a href="reference.html" target="_blank" rel="noopener">References</a></p>
+      </footer>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
   </body>
 </html>
