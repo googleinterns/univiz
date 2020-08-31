@@ -7,3 +7,4 @@ extends:
 parserOptions:
   ecmaVersion: 11
 rules: {}
+ignorePatterns: ["**/assets/js/*.js"]
