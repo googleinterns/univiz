@@ -42,20 +42,16 @@ google.maps.InfoWindow = class {
   open(map, marker) {}
 };
 
-google.maps.event = class {
-  /** Creates an event */
-  constructor() {}
-
-  /**
+google.maps.event = {};
+/**
    * @param {google.maps.Marker} marker Marker reference to
    *                                    info window
    * @param {string} event Event that google.maps.event
                            will listen for
-   * @param {function} callback Function that will create
-                                description for info window
+   * @param {Function} handler Function that will create 
+                               description for info window
    */
-  addListener(marker, event, callback) {}
-};
+google.maps.event.addListener = (marker, event, handler) => {};
 
 describe('Map Marker and InfoWindow Display', () => {
   const mapsJsonData = [
@@ -79,8 +75,6 @@ describe('Map Marker and InfoWindow Display', () => {
     spyOn(google.maps.LatLng.prototype, 'constructor');
     spyOn(google.maps.Marker.prototype, 'constructor');
     spyOn(google.maps.InfoWindow.prototype, 'constructor');
-    spyOn(google.maps.event.prototype, 'constructor');
-    spyOn(google.maps.event.prototype, 'addListener');
     spyOn(google.maps.InfoWindow.prototype, 'setContent');
     spyOn(google.maps.InfoWindow.prototype, 'open');
   });
@@ -106,7 +100,5 @@ describe('Map Marker and InfoWindow Display', () => {
             .count()).toEqual(2);
         expect(google.maps.InfoWindow.prototype.constructor.calls
             .count()).toEqual(1);
-        expect(google.maps.event.prototype.addListener.calls
-            .count()).toEqual(2);
       });
 });
