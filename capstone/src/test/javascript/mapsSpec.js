@@ -30,26 +30,26 @@ google.maps.InfoWindow = class {
 
   /**
     * @param {string} description Description text displayed
-    *                             when marker is clicked
+    * when marker is clicked
     */
   setContent(description) {}
 
   /**
    * @param {google.maps.Map} map Map reference to display window
    * @param {google.maps.Marker} marker Marker reference to
-   *                                    window
+   * window
    */
   open(map, marker) {}
 };
 
 google.maps.event = {};
-/**
+  /**
    * @param {google.maps.Marker} marker Marker reference to
    *                                    info window
    * @param {string} event Event that google.maps.event
-                           will listen for
+   * will listen for
    * @param {Function} handler Function that will create
-                               description for info window
+   * description for info window
    */
 google.maps.event.addListener = (marker, event, handler) => {};
 
@@ -67,10 +67,10 @@ describe('Map Marker and InfoWindow Display', () => {
       'longitude': -122.167359},
   ];
   // TODO(biancamacias): use these variables in test
-  //   const nyuLat = mapsJsonData[0]['latitude'];
-  //   const nyuLon = mapsJsonData[0]['longitude'];
-  //   const stanLat = mapsJsonData[1]['latitude'];
-  //   const stanLon = mapsJsonData[1]['longitude'];
+    const nyuLat = mapsJsonData[0]['latitude'];
+    const nyuLon = mapsJsonData[0]['longitude'];
+    const stanLat = mapsJsonData[1]['latitude'];
+    const stanLon = mapsJsonData[1]['longitude'];
   beforeEach(() => {
     spyOn(google.maps.Map.prototype, 'constructor');
     spyOn(google.maps.LatLng.prototype, 'constructor');
@@ -85,5 +85,13 @@ describe('Map Marker and InfoWindow Display', () => {
             .and.returnValue(Promise.resolve({json: () => mapsJsonData}));
         await fetchData();
         createMap(mapsJsonData);
+        expect(google.maps.LatLng.prototype).toHaveBeenCalledWith([
+            nyuLat,
+            nyuLon
+        ]);
+        expect(google.maps.LatLng.prototype).toHaveBeenCalledWith([
+            stanLat,
+            stanLon
+        ]);
       });
 });
