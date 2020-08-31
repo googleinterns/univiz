@@ -66,10 +66,11 @@ describe('Map Marker and InfoWindow Display', () => {
       'latitude': 37.429434,
       'longitude': -122.167359},
   ];
-  const nyuLat = mapsJsonData[0]['latitude'];
-  const nyuLon = mapsJsonData[0]['longitude'];
-  const stanLat = mapsJsonData[1]['latitude'];
-  const stanLon = mapsJsonData[1]['longitude'];
+  // TODO(biancamacias): use these variables in test
+  //   const nyuLat = mapsJsonData[0]['latitude'];
+  //   const nyuLon = mapsJsonData[0]['longitude'];
+  //   const stanLat = mapsJsonData[1]['latitude'];
+  //   const stanLon = mapsJsonData[1]['longitude'];
   beforeEach(() => {
     spyOn(google.maps.Map.prototype, 'constructor');
     spyOn(google.maps.LatLng.prototype, 'constructor');
