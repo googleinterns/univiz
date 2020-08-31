@@ -1,7 +1,6 @@
 google.maps = {};
 google.maps.Map = class {
   /**
-    *
     * @param {HTMLElement} div Div from HTML that map will be displayed in
     * @param {Object} options Options for centering and viewing maps in HTML
     */
@@ -25,6 +24,13 @@ google.maps.Marker = class {
   constructor(latLon, map, title) {};
 };
 
+google.maps.InfoWindow = class {
+  /**
+  * Creates an info window
+  */
+  constructor() {};
+};
+
 describe('Map Marker and InfoWindow Display', () => {
   const mapsJsonData = [
     {'name': 'New York University',
@@ -46,6 +52,7 @@ describe('Map Marker and InfoWindow Display', () => {
     spyOn(google.maps.Map.prototype, 'constructor');
     spyOn(google.maps.LatLon.prototype, 'constructor');
     spyOn(google.maps.Marker.prototype, 'constructor');
+    spyOn(google.maps.InfoWindow.prototype, 'constructor');
   });
   it('will add map content using data from JSON',
       async () => {
@@ -67,5 +74,7 @@ describe('Map Marker and InfoWindow Display', () => {
             .count()).toEqual(2);
         expect(google.maps.Marker.prototype.constructor.calls
             .count()).toEqual(2);
+        expect(google.maps.InfoWindow.prototype.constructor.calls
+            .count()).toEqual(1);
       });
 });
