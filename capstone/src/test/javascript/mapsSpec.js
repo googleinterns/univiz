@@ -88,13 +88,13 @@ describe('Map Marker and InfoWindow Display', () => {
             .and.returnValue(Promise.resolve({json: () => mapsJsonData}));
         await fetchData();
         createMap(mapsJsonData);
-        expect(google.maps.LatLng.prototype.emptyMethod).toHaveBeenCalledWith([
+        expect(google.maps.LatLng.prototype.emptyMethod).toHaveBeenCalledWith(
           nyuLat,
           nyuLon,
-        ]);
-        expect(google.maps.LatLng.prototype.emptyMethod).toHaveBeenCalledWith([
+        );
+        expect(google.maps.LatLng.prototype.emptyMethod).toHaveBeenCalledWith(
           stanLat,
           stanLon,
-        ]);
+        );
       });
 });
