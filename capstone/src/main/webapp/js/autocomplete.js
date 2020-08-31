@@ -33,7 +33,7 @@ function getSuggestionsForUserToChooseFrom() {
 function sendCollegeInformationToDashboard() {
   const listItems = document.querySelector('ul').children;
   const listArray = Array.from(listItems);
-  const idArray = Array.from(listArray, (l) => l.id);
+  const idArray = Array.from(listItems).map((l) => l.id).join();
   const urlHtml = 'dashboard.html?id=' + idArray.join();
   window.location.href = urlHtml;
 }
