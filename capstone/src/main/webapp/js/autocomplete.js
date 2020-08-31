@@ -34,8 +34,8 @@ function sendCollegeInformationToDashboard() {
   const listItems = document.querySelector('ul').children;
   const listArray = Array.from(listItems);
   const idArray = Array.from(listArray, (l) => l.id);
-  const urlHtml = 'dashboard.html?id=' + idArray.join();
-  window.location.href = urlHtml;
+  const dashboardUrl = 'dashboard.html?id=' + idArray.join();
+  window.location.href = dashboardUrl;
 }
 
 /**
