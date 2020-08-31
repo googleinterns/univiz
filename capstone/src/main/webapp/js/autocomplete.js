@@ -85,19 +85,20 @@ function closeAllElmntExcept(elmnt) {
 function keepTrackOfChosenColleges(validSuggestion) {
   const parent = document.getElementById('suggestions');
   const listElt = document.createElement('li');
-  const buttonStr = '<button onclick=\'removeCollege(this)\'>X</button';
-  buttonStr.setAttribute('id', validSuggestion.collegeId.id);
   listElt.setAttribute('id', validSuggestion.collegeId.id);
   listElt.innerHTML = validSuggestion.collegeName;
   listElt.innerHTML += " ";
+  const buttonStr = '<button onclick=\'removeCollege()\'>X</button';
+  buttonStr.setAttribute('id', validSuggestion.collegeId.id);
   listElt.innerHTML += buttonStr;
   parent.appendChild(listElt);
 }
 
 /**
  *
+ * @param {string} id
  */
-function removeCollege(this) {
+function removeCollege() {
   const listUl = document.getElementById("suggestions");
   document.getElementById(this.id).remove();
 }
