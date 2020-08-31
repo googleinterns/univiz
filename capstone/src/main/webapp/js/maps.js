@@ -4,7 +4,9 @@
  * Function to fetch data from servlet as JSON and calls createMap().
  */
 async function fetchData() {
-  await fetch('/maps')
+  const queryUrl = new URL(window.location.href);
+  const ids = queryUrl.searchParams.get('id');
+  await fetch('/maps?id=' + ids)
       .then((response) => response.json())
       .then((mapsJsonData) => {
         console.log('Fetching data...');

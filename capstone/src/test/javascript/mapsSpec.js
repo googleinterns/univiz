@@ -1,33 +1,28 @@
-google.maps = class {
-  /**
-    * Constructing google.maps for testing purposes
-    */
-  constructor() {}
-
+google.maps = {};
+google.maps.Map = class {
   /**
     *
     * @param {HTMLElement} div Div from HTML that map will be displayed in
     * @param {Object} options Options for centering and viewing maps in HTML
     */
-  Map(div, options) {}
+  constructor(div, options) {};
+};
 
+google.maps.LatLon = class {
   /**
     * @param {float} lat Location measured in latitude
     * @param {float} lon Location measured in longitude
     */
-  LatLon(lat, lon) {}
+  constructor(lat, lon) {};
+};
 
+google.maps.Marker = class {
   /**
     * @param {google.maps.LatLon} latLon google.maps.LatLon object
     * @param {google.maps.Map} map google.maps.Map object
     * @param {string} title Name of college/university/institution
     */
-  Marker(latLon, map, title) {}
-
-  /**
-    * Creates InfoWindow on map
-    */
-  InfoWindow() {}
+  constructor(latLon, map, title) {};
 };
 
 describe('Map Marker and InfoWindow Display', () => {
@@ -48,31 +43,29 @@ describe('Map Marker and InfoWindow Display', () => {
   const stanLat = mapsJsonData[1]['latitude'];
   const stanLon = mapsJsonData[1]['longitude'];
   beforeEach(() => {
-    spyOn(google.maps.prototype, 'constructor');
-    spyOn(google.maps.prototype, 'Map');
-    spyOn(google.maps.prototype, 'LatLon');
-    spyOn(google.maps.prototype, 'Marker');
-    spyOn(google.maps.prototype, 'InfoWindow');
-    
+    spyOn(google.maps.Map.prototype, 'constructor');
+    spyOn(google.maps.LatLon.prototype, 'constructor');
+    spyOn(google.maps.Marker.prototype, 'constructor');
   });
   it('will add map content using data from JSON',
       async () => {
         spyOn(window, 'fetch')
             .and.returnValue(Promise.resolve({json: () => mapsJsonData}));
         await fetchData();
+        expect(fetchData.calls.count()).toEqual(1);
         createMap(mapsJsonData);
-        expect(createMap).toHaveBeenCalledWith(mapsJsonData);
-        expect(google.maps.prototype.Map.calls.count()).toEqual(1);
-        expect(google.maps.prototype.LatLon).toHaveBeenCalledWith([
+        expect(google.maps.Map.prototype.constructor.calls.count()).toEqual(1);
+        expect(google.maps.LatLon.prototype.constructor).toHaveBeenCalledWith([
           nyuLat,
           nyuLon,
         ]);
-        expect(google.maps.prototype.LatLon).toHaveBeenCalledWith([
+        expect(google.maps.LatLon.prototype.constructor).toHaveBeenCalledWith([
           stanLat,
           stanLon,
         ]);
-        expect(google.maps.prototype.LatLon.calls.count()).toEqual(2);
-        expect(google.maps.prototype.Marker.calls.count()).toEqual(2);
-        expect(google.maps.prototype.InfoWindow.calls.count()).toEqual(1);
+        expect(google.maps.LatLon.prototype.constructor.calls
+            .count()).toEqual(2);
+        expect(google.maps.Marker.prototype.constructor.calls
+            .count()).toEqual(2);
       });
 });
