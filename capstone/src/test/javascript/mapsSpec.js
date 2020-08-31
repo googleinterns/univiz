@@ -8,6 +8,10 @@ google.maps.Map = class {
 };
 
 google.maps.LatLng = class {
+  /**
+    * @param {float} lat Location measured in latitude
+    * @param {float} lng Location measured in longitude
+    */
   emptyMethod(lat, lng) {};
   /**
     * @param {float} lat Location measured in latitude
@@ -89,12 +93,12 @@ describe('Map Marker and InfoWindow Display', () => {
         await fetchData();
         createMap(mapsJsonData);
         expect(google.maps.LatLng.prototype.emptyMethod).toHaveBeenCalledWith(
-          nyuLat,
-          nyuLon,
+            nyuLat,
+            nyuLon,
         );
         expect(google.maps.LatLng.prototype.emptyMethod).toHaveBeenCalledWith(
-          stanLat,
-          stanLon,
+            stanLat,
+            stanLon,
         );
       });
 });
