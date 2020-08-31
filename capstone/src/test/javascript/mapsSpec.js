@@ -79,6 +79,7 @@ describe('Map Marker and InfoWindow Display', () => {
     spyOn(google.maps.LatLng.prototype, 'constructor');
     spyOn(google.maps.Marker.prototype, 'constructor');
     spyOn(google.maps.InfoWindow.prototype, 'constructor');
+    spyOn(google.maps.event.prototype, 'constructor');
     spyOn(google.maps.event.prototype, 'addListener');
     spyOn(google.maps.InfoWindow.prototype, 'setContent');
     spyOn(google.maps.InfoWindow.prototype, 'open');
