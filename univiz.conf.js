@@ -18,6 +18,7 @@ module.exports = function(config) {
       'capstone/src/main/webapp/js/graphs.js',
       'capstone/src/main/webapp/js/demographicalGraphs.js',
       'capstone/src/main/webapp/js/calendar.js',
+      'capstone/src/main/webapp/js/maps.js',
       'capstone/src/test/javascript/**/*[Ss]pec.js',
     ],
 
