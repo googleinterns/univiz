@@ -93,7 +93,7 @@ function keepTrackOfChosenColleges(validSuggestion) {
 
 /**
  * Creates List Element to display a college name suggestion
- * @param {string} arrElt
+ * @param {string} collegeName
  * @param {string} val
  * @return {HTMLDivElement} listElmt
  */

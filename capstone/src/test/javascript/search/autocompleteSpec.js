@@ -7,7 +7,6 @@ describe('Autocomplete Suggests correct array', () => {
     listElmtExpected.innerHTML = '<strong>He</strong>llo';
     expect(listElmtExpected).toEqual(listElmtActual);
   });
-  
   it('Tests Proper List Element Creation Complex', () => {
     const arrElt = 'Hallo Hello';
     const val = 'He';
