@@ -43,7 +43,7 @@ google.maps.InfoWindow = class {
 };
 
 google.maps.event = {};
-  /**
+/**
    * @param {google.maps.Marker} marker Marker reference to
    *                                    info window
    * @param {string} event Event that google.maps.event
@@ -67,10 +67,10 @@ describe('Map Marker and InfoWindow Display', () => {
       'longitude': -122.167359},
   ];
   // TODO(biancamacias): use these variables in test
-    const nyuLat = mapsJsonData[0]['latitude'];
-    const nyuLon = mapsJsonData[0]['longitude'];
-    const stanLat = mapsJsonData[1]['latitude'];
-    const stanLon = mapsJsonData[1]['longitude'];
+  const nyuLat = mapsJsonData[0]['latitude'];
+  const nyuLon = mapsJsonData[0]['longitude'];
+  const stanLat = mapsJsonData[1]['latitude'];
+  const stanLon = mapsJsonData[1]['longitude'];
   beforeEach(() => {
     spyOn(google.maps.Map.prototype, 'constructor');
     spyOn(google.maps.LatLng.prototype, 'constructor');
@@ -86,12 +86,12 @@ describe('Map Marker and InfoWindow Display', () => {
         await fetchData();
         createMap(mapsJsonData);
         expect(google.maps.LatLng.prototype).toHaveBeenCalledWith([
-            nyuLat,
-            nyuLon
+          nyuLat,
+          nyuLon,
         ]);
         expect(google.maps.LatLng.prototype).toHaveBeenCalledWith([
-            stanLat,
-            stanLon
+          stanLat,
+          stanLon,
         ]);
       });
 });
