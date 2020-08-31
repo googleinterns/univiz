@@ -7,12 +7,12 @@ google.maps.Map = class {
   constructor(div, options) {};
 };
 
-google.maps.LatLon = class {
+google.maps.LatLng = class {
   /**
     * @param {float} lat Location measured in latitude
-    * @param {float} lon Location measured in longitude
+    * @param {float} lng Location measured in longitude
     */
-  constructor(lat, lon) {};
+  constructor(lat, lng) {};
 };
 
 google.maps.Marker = class {
@@ -50,7 +50,7 @@ describe('Map Marker and InfoWindow Display', () => {
   const stanLon = mapsJsonData[1]['longitude'];
   beforeEach(() => {
     spyOn(google.maps.Map.prototype, 'constructor');
-    spyOn(google.maps.LatLon.prototype, 'constructor');
+    spyOn(google.maps.LatLng.prototype, 'constructor');
     spyOn(google.maps.Marker.prototype, 'constructor');
     spyOn(google.maps.InfoWindow.prototype, 'constructor');
   });
@@ -62,15 +62,15 @@ describe('Map Marker and InfoWindow Display', () => {
         expect(fetchData.calls.count()).toEqual(1);
         createMap(mapsJsonData);
         expect(google.maps.Map.prototype.constructor.calls.count()).toEqual(1);
-        expect(google.maps.LatLon.prototype.constructor).toHaveBeenCalledWith([
+        expect(google.maps.LatLng.prototype.constructor).toHaveBeenCalledWith([
           nyuLat,
           nyuLon,
         ]);
-        expect(google.maps.LatLon.prototype.constructor).toHaveBeenCalledWith([
+        expect(google.maps.LatLng.prototype.constructor).toHaveBeenCalledWith([
           stanLat,
           stanLon,
         ]);
-        expect(google.maps.LatLon.prototype.constructor.calls
+        expect(google.maps.LatLng.prototype.constructor.calls
             .count()).toEqual(2);
         expect(google.maps.Marker.prototype.constructor.calls
             .count()).toEqual(2);
