@@ -85,11 +85,11 @@ describe('Map Marker and InfoWindow Display', () => {
             .and.returnValue(Promise.resolve({json: () => mapsJsonData}));
         await fetchData();
         createMap(mapsJsonData);
-        expect(google.maps.LatLng.prototype).toHaveBeenCalledWith([
+        expect(google.maps.LatLng.prototype.constructor).toHaveBeenCalledWith([
           nyuLat,
           nyuLon,
         ]);
-        expect(google.maps.LatLng.prototype).toHaveBeenCalledWith([
+        expect(google.maps.LatLng.prototype.constructor).toHaveBeenCalledWith([
           stanLat,
           stanLon,
         ]);
