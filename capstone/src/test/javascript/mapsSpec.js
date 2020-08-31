@@ -12,7 +12,9 @@ google.maps.LatLng = class {
     * @param {float} lat Location measured in latitude
     * @param {float} lng Location measured in longitude
     */
-  constructor(lat, lng) {};
+  constructor(lat, lng) {
+    this.emptyMethod(lat, lng);
+  };
 };
 
 google.maps.Marker = class {
@@ -73,7 +75,7 @@ describe('Map Marker and InfoWindow Display', () => {
   const stanLon = mapsJsonData[1]['longitude'];
   beforeEach(() => {
     spyOn(google.maps.Map.prototype, 'constructor');
-    spyOn(google.maps.LatLng.prototype, 'constructor');
+    spyOn(google.maps.LatLng.prototype, 'emptyMethod');
     spyOn(google.maps.Marker.prototype, 'constructor');
     spyOn(google.maps.InfoWindow.prototype, 'constructor');
     spyOn(google.maps.InfoWindow.prototype, 'setContent');
@@ -85,11 +87,11 @@ describe('Map Marker and InfoWindow Display', () => {
             .and.returnValue(Promise.resolve({json: () => mapsJsonData}));
         await fetchData();
         createMap(mapsJsonData);
-        expect(google.maps.LatLng.prototype.constructor).toHaveBeenCalledWith([
+        expect(google.maps.LatLng.prototype.emptyMethod).toHaveBeenCalledWith([
           nyuLat,
           nyuLon,
         ]);
-        expect(google.maps.LatLng.prototype.constructor).toHaveBeenCalledWith([
+        expect(google.maps.LatLng.prototype.emptyMethod).toHaveBeenCalledWith([
           stanLat,
           stanLon,
         ]);
