@@ -48,7 +48,7 @@ google.maps.event = {};
    *                                    info window
    * @param {string} event Event that google.maps.event
                            will listen for
-   * @param {Function} handler Function that will create 
+   * @param {Function} handler Function that will create
                                description for info window
    */
 google.maps.event.addListener = (marker, event, handler) => {};
