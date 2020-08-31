@@ -84,20 +84,20 @@ describe('Map Marker and InfoWindow Display', () => {
             .and.returnValue(Promise.resolve({json: () => mapsJsonData}));
         await fetchData();
         createMap(mapsJsonData);
-        expect(google.maps.Map.prototype.constructor.calls.count()).toEqual(1);
-        expect(google.maps.LatLng.prototype.constructor).toHaveBeenCalledWith([
+        expect(google.maps.Map.prototype.calls.count()).toEqual(1);
+        expect(google.maps.LatLng.prototype).toHaveBeenCalledWith([
           nyuLat,
           nyuLon,
         ]);
-        expect(google.maps.LatLng.prototype.constructor).toHaveBeenCalledWith([
+        expect(google.maps.LatLng.prototype).toHaveBeenCalledWith([
           stanLat,
           stanLon,
         ]);
-        expect(google.maps.LatLng.prototype.constructor.calls
+        expect(google.maps.LatLng.prototype.calls
             .count()).toEqual(2);
-        expect(google.maps.Marker.prototype.constructor.calls
+        expect(google.maps.Marker.prototype.calls
             .count()).toEqual(2);
-        expect(google.maps.InfoWindow.prototype.constructor.calls
+        expect(google.maps.InfoWindow.prototype.calls
             .count()).toEqual(1);
       });
 });
