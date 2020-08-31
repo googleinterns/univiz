@@ -3,7 +3,8 @@ describe('Autocomplete Suggests correct array', () => {
     const arrElt = 'Hello';
     const val = 'He';
     const listElmtActual = createListElmt(arrElt, val).toString();
-    const listElmtExpected = '<div><strong>He</strong>llo</div>';
+    const listElmtExpected = document.createElement('div');
+    listElmtExpected.innerHTML = '<strong>He</strong>llo';
     expect(listElmtExpected).toEqual(listElmtActual);
   });
   
@@ -11,7 +12,8 @@ describe('Autocomplete Suggests correct array', () => {
     const arrElt = 'Hallo Hello';
     const val = 'He';
     const listElmtActual = createListElmt(arrElt, val).toString();
-    const listElmtExpected = '<div>Hallo <strong>He</strong>llo</div>';
+    const listElmtExpected = document.createElement('div');
+    listElmtExpected.innerHTML = 'Hallo <strong>He</strong>llo';
     expect(listElmtExpected).toEqual(listElmtActual);
   });
 });
