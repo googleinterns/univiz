@@ -116,7 +116,7 @@ function displaySuggestions(relevantSuggestions, autocompleteList, val) {
 /**
  * Event occurrance when input is provided to autocomplete field
  */
-function giveSuggestions() {
+function getsAllProposedSuggestions() {
   closeAllElmntExcept();
   const val = SEARCH_INPUT.value;
   if (!val) {
