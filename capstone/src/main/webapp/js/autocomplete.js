@@ -15,13 +15,12 @@ let selectedSuggestionPosition = -1;
 /**
  * Gets suggestions to display to the users
  */
-function getSuggestionsForUserToChooseFrom() {
+function suggestionInput() {
   const val = SEARCH_INPUT.value.trim();
   if (!val) {
     return;
   }
   const fetchStr = '/search?query=' + val;
-  console.log('Fetch String: ', fetchStr);
   fetch(fetchStr).then((response) => response.json()).then((suggestions) => {
     getsAllProposedSuggestions(suggestions, val);
   });
@@ -31,10 +30,10 @@ function getSuggestionsForUserToChooseFrom() {
  * Sends final college list to the dashboard
  */
 function sendCollegeInformationToDashboard() {
-  const listItems = document.querySelector('ul').children;
+  const listItems = document.getElementById('suggestions').children;
   const listArray = Array.from(listItems);
-  const idArray = Array.from(listItems).map((l) => l.id).join();
-  const dashboardUrl = 'dashboard.html?id=' + idArray.join();
+  const idArray = Array.from(listItems).map((l) => l.id).join(',');
+  const dashboardUrl = 'dashboard.html?id=' + idArray;
   window.location.href = dashboardUrl;
 }
 
