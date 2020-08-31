@@ -33,9 +33,15 @@ function getSuggestionsForUserToChooseFrom() {
 function sendCollegeInformationToDashboard() {
   const listItems = document.querySelector('ul').children;
   const listArray = Array.from(listItems);
+<<<<<<< HEAD
   const idArray = Array.from(listArray, (l) => l.id);
   const dashboardUrl = 'dashboard.html?id=' + idArray.join();
   window.location.href = dashboardUrl;
+=======
+  const idArray = Array.from(listItems).map((l) => l.id).join();
+  const urlHtml = 'dashboard.html?id=' + idArray.join();
+  window.location.href = urlHtml;
+>>>>>>> 72d741e14a6f5d5927e328ff9450e9f65ef982bc
 }
 
 /**
@@ -92,7 +98,7 @@ function keepTrackOfChosenColleges(validSuggestion) {
 }
 
 /**
- * Creaters List Element to display a college name suggestion
+ * Creates List Element to display a college name suggestion
  * @param {HTMLDivElement} arrElt
  * @param {string} val
  * @return {HTMLDivElement} listElmt
