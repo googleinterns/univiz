@@ -8,6 +8,7 @@ google.maps.Map = class {
 };
 
 google.maps.LatLng = class {
+  emptyMethod(lat, lng) {};
   /**
     * @param {float} lat Location measured in latitude
     * @param {float} lng Location measured in longitude
