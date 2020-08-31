@@ -3,9 +3,9 @@
   <head>
     <title>UniViz Main Page</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylehseet" href="style.css">
     <noscript><link rel="stylesheet" href="assets/css/noscript.css"></noscript>
   </head>
   <body class="is-preload">
@@ -15,11 +15,11 @@
       </header>
       <div id="main">
         <section id="content" class="main">
-	  <label for="search">Search for colleges:</label><br>
-	  <input type="text" id="search" name="query" placeholder="College Name" oninput="getSuggestions()" onkeydown="keyDown(event)"><br>
-	  <p>Current List of Suggested Colleges:</p>
-	  <ul id="suggestions"></ul>
-	  <button id="submit" onclick="sendCollegeInformation()">See your colleges' information!</button>
+          <label for="search">Search for colleges:</label><br>
+          <input type="text" id="search" name="query" placeholder="College Name" oninput="suggestionInput()" onkeydown="keyDown(event)"><br>
+          <p>Current List of Suggested Colleges:</p>
+          <ul id="suggestions"></ul>
+          <button id="submit" onclick="sendCollegeInformationToDashboard()">See your colleges' information!</button>
         </section>
       </div>
       <footer id="footer">
