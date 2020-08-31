@@ -33,8 +33,8 @@ function getSuggestionsForUserToChooseFrom() {
 function sendCollegeInformationToDashboard() {
   const listItems = document.querySelector('ul').children;
   const listArray = Array.from(listItems);
-  let idArray = Array.from(listArray, l => l.id)
-  let urlHtml = 'dashboard.html?id=' + idArray.join();
+  const idArray = Array.from(listArray, (l) => l.id);
+  const urlHtml = 'dashboard.html?id=' + idArray.join();
   window.location.href = urlHtml;
 }
 
@@ -93,7 +93,7 @@ function keepTrackOfChosenColleges(validSuggestion) {
 
 /**
  * Creaters List Element to display a college name suggestion
- * @param {HTMLDivElement} listElmt
+ * @param {HTMLDivElement} arrElt
  * @param {string} val
  * @return {HTMLDivElement} listElmt
  */
@@ -130,7 +130,8 @@ function displayCollegeSuggestions(relevantSuggestions, autocompleteList, val) {
 
 /**
  * Event occurrance when input is provided to autocomplete field
- * @param{Array<string, int>} suggestions
+ * @param {Array<string, int>} suggestions
+ * @param {string} val
  */
 function getsAllProposedSuggestions(suggestions, val) {
   closeAllElmntExcept();
