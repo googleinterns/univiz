@@ -83,7 +83,6 @@ describe('Map Marker and InfoWindow Display', () => {
         spyOn(window, 'fetch')
             .and.returnValue(Promise.resolve({json: () => mapsJsonData}));
         await fetchData();
-        expect(fetchData.calls.count()).toEqual(1);
         createMap(mapsJsonData);
         expect(google.maps.Map.prototype.constructor.calls.count()).toEqual(1);
         expect(google.maps.LatLng.prototype.constructor).toHaveBeenCalledWith([
