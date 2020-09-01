@@ -89,6 +89,16 @@ function closeAllElements() {
 }
 
 /**
+ * Removes college from list
+ * @param {string} id
+ */
+function removeCollege(id) {
+  const listElementToRemove = document.getElementById(id);
+  listElementToRemove.remove();
+}
+
+
+/**
  * Keeps track of chosen colleges
  * @param {Array<string, collegeId>} validSuggestion
  */
@@ -103,15 +113,6 @@ function keepTrackOfChosenColleges(validSuggestion) {
   removeButton.innerText = 'Remove';
   listElement.append(removeButton);
   parent.appendChild(listElement);
-}
-
-/**
- * Removes college from list
- * @param {string} id
- */
-function removeCollege(id) {
-  const listElementToRemove = document.getElementById(id);
-  listElementToRemove.remove();
 }
 
 /**
