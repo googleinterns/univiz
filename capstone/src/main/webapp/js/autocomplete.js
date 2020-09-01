@@ -113,26 +113,9 @@ function createAutocompleteListElement(collegeName, val) {
 function keepTrackOfChosenColleges(validSuggestion) {
   const parent = document.getElementById('suggestions');
   const listElement = document.createElement('li');
-  listElement.innerHTML = validSuggestion;
+  listElement.setAttribute('id', validSuggestion.collegeId.id);
+  listElement.innerHTML = validSuggestion.collegeName;
   parent.appendChild(listElement);
-}
-
-/**
- * Creates List Element to display a college name suggestion
- * @param {string} collegeName
- * @param {string} val
- * @return {HTMLDivElement} listElmt
- */
-function createListElmt(collegeName, val) {
-  const listElmt = document.createElement('div');
-  const collegeNameUpper = collegeName.toUpperCase();
-  const valIndex = collegeNameUpper.indexOf(val.toUpperCase());
-  listElmt.innerHTML = collegeName.substr(0, valIndex);
-  listElmt.innerHTML += '<strong>' +
-                       collegeName.substr(valIndex, val.length) +
-                       '</strong>';
-  listElmt.innerHTML += collegeName.substr(val.length + valIndex);
-  return listElmt;
 }
 
 /**
