@@ -31,7 +31,6 @@ function suggestionInput() {
  */
 function sendCollegeInformationToDashboard() {
   const listItems = document.getElementById('suggestions').children;
-  const listArray = Array.from(listItems);
   const idArray = Array.from(listItems).map((l) => l.id).join(',');
   const dashboardUrl = 'dashboard.html?id=' + idArray;
   window.location.href = dashboardUrl;
