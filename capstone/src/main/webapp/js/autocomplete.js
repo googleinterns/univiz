@@ -111,6 +111,9 @@ function createAutocompleteListElement(collegeName, val) {
  * @param {string} validSuggestion
  */
 function keepTrackOfChosenColleges(validSuggestion) {
+  if (document.getElementById(validSuggestion.collegeId.id)) {
+    return;
+  }
   const parent = document.getElementById('suggestions');
   const listElement = document.createElement('li');
   listElement.setAttribute('id', validSuggestion.collegeId.id);
