@@ -100,7 +100,7 @@ describe('Map Marker and InfoWindow Display', () => {
     spyOn(google.maps.Map.prototype, 'emptyMethod');
     spyOn(google.maps.LatLng.prototype, 'emptyMethod');
     spyOn(google.maps.Marker.prototype, 'emptyMethod');
-    spyOn(google.maps.event.prototype, 'addListener');
+    spyOn(google.maps.event, 'addListener');
     spyOn(google.maps.InfoWindow.prototype, 'emptyMethod');
     spyOn(google.maps.InfoWindow.prototype, 'setContent');
     spyOn(google.maps.InfoWindow.prototype, 'open');
