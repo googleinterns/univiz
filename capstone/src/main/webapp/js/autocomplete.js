@@ -31,8 +31,8 @@ function suggestionInput() {
  */
 function sendCollegeInformationToDashboard() {
   const listItems = document.getElementById('suggestions').children;
-  const idArray = Array.from(listItems).map((l) => l.id).join(',');
-  const dashboardUrl = 'dashboard.html?id=' + idArray;
+  const stringOfIds = Array.from(listItems).map((l) => l.id).join(',');
+  const dashboardUrl = 'dashboard.html?id=' + stringOfIds;
   window.location.href = dashboardUrl;
 }
 
@@ -95,7 +95,7 @@ function keepTrackOfChosenColleges(validSuggestion) {
  * @param {string} val
  * @return {HTMLDivElement} listElmt
  */
-function createListElmt(collegeName, val) {
+function createAutocompleteListElement(collegeName, val) {
   const listElmt = document.createElement('div');
   const collegeNameUpper = collegeName.toUpperCase();
   const valIndex = collegeNameUpper.indexOf(val.toUpperCase());
@@ -115,7 +115,7 @@ function createListElmt(collegeName, val) {
  */
 function displayCollegeSuggestions(relevantSuggestions, autocompleteList, val) {
   for (arrElt of relevantSuggestions) {
-    const listElmt = createListElmt(arrElt.collegeName, val);
+    const listElmt = createAutocompleteListElement(arrElt.collegeName, val);
     const cpyArrElt = arrElt;
     listElmt.addEventListener('click', () => {
       SEARCH_INPUT.value = cpyArrElt;
