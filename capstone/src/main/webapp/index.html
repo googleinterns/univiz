@@ -4,6 +4,7 @@
     <title>UniViz Main Page</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="assets/css/main.css">
     <noscript><link rel="stylesheet" href="assets/css/noscript.css"></noscript>
   </head>
@@ -16,9 +17,11 @@
         <section id="content" class="main">
           <form autocomplete="off">
             <label for="search">Search for colleges:</label><br>
-            <input type="text" id="search" name="search"><br>
+            <input type="text" id="search" name="search" placeholder="College Name" oninput="getAllProposedSuggestions()" onkeydown="keyDown(event)"><br>
             <input type="submit" value="See your colleges!">
           </form>
+          <p>Current List of Selected Colleges:</p>
+          <ul id="suggestions"></ul>
         </section>
       </div>
       <footer id="footer">
@@ -33,4 +36,5 @@
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
   </body>
+  <script src="js/autocomplete.js"></script>
 </html>
