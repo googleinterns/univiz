@@ -91,7 +91,7 @@ function closeAllElements() {
 /**
  * Creates List Element to display a college name suggestion
  * @param {string} collegeName
- * @param {string} val
+ * @param {string} value
  * @return {HTMLDivElement} listElmt
  */
 function createAutocompleteListElement(collegeName, value) {
