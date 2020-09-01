@@ -17,6 +17,10 @@ async function fetchData() {
 
 /**
  * Function that creates map markers and info windows.
+ * The map object that is created is centered on the geographic
+ * center of the United States in Lebanon, Kansas. Since this
+ * function does not utilize a bound setting method, this is to ensure
+ * the map is rendered on the United States.
  * @param {JSON} mapsDataFromFetch JSON response from servlet
  */
 function createMap(mapsDataFromFetch) {
