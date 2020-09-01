@@ -14,28 +14,28 @@ let selectedSuggestionPosition = -1;
 
 /**
  * Adds the 'active' tag to an autocomplete elmt
- * @param {HTMLDivElement} autocompleteListElmt
+ * @param {HTMLDivElement} autocompleteListElement
  */
-function addActiveTag(autocompleteListElmt) {
-  if (!autocompleteListElmt) {
+function addActiveTag(autocompleteListElement) {
+  if (!autocompleteListElement) {
     return;
   }
-  removeActiveTag(autocompleteListElmt);
-  if (selectedSuggestionPosition >= autocompleteListElmt.length) {
+  removeActiveTag(autocompleteListElement);
+  if (selectedSuggestionPosition >= autocompleteListElement.length) {
     selectedSuggestionPosition = 0;
   } else if (selectedSuggestionPosition < 0) {
-    selectedSuggestionPosition = (autocompleteListElmt.length - 1);
+    selectedSuggestionPosition = (autocompleteListElement.length - 1);
   }
-  autocompleteListElmt[selectedSuggestionPosition].classList.add(ACTIVE_CLASS);
+  autocompleteListElement[selectedSuggestionPosition].classList.add(ACTIVE_CLASS);
 }
 
 /**
  * Removes the 'active' tag from an autocomplete elmt
  * @param {HTMLDivElement} autocompleteListElmt
  */
-function removeActiveTag(autocompleteListElmt) {
-  for (elmt of autocompleteListElmt) {
-    elmt.classList.remove(ACTIVE_CLASS);
+function removeActiveTag(autocompleteListElement) {
+  for (element of autocompleteListElement) {
+    element.classList.remove(ACTIVE_CLASS);
   }
 }
 
@@ -44,12 +44,22 @@ function removeActiveTag(autocompleteListElmt) {
  * Does not close the element provided
  * @param {HTMLDivElement} elmnt
  */
-function closeAllElmntExcept(elmnt) {
+function closeAllElementExcept(element) {
   const autoItems = document.getElementsByClassName(ITEM_CLASS);
   for (const item of autoItems) {
-    if (item != elmnt) {
+    if (item != element) {
       item.parentNode.removeChild(item);
     }
+  }
+}
+
+/**
+ * Closes entire dropdown autocomplete list
+ */
+function closeAllElements() {
+  const autoItems = document.getElementsByClassName(ITEM_CLASS);
+  for (const item of autoItems) {
+    item.parentNode.removeChild(item);
   }
 }
 
@@ -59,9 +69,9 @@ function closeAllElmntExcept(elmnt) {
  */
 function keepTrackOfSuggestions(validSuggestion) {
   const parent = document.getElementById('suggestions');
-  const listElt = document.createElement('li');
-  listElt.innerHTML = validSuggestion;
-  parent.appendChild(listElt);
+  const listElement = document.createElement('li');
+  listElement.innerHTML = validSuggestion;
+  parent.appendChild(listElement);
 }
 
 /**
@@ -69,22 +79,22 @@ function keepTrackOfSuggestions(validSuggestion) {
  * @return {Array<string>} arr
  */
 function getListOfSuggestions() {
-  const arr = ['Hallo', 'Hello', 'Hi', 'Hiya', 'Howdy', 'Wassup'];
-  return arr;
+  const array= ['Hallo', 'Hello', 'Hi', 'Hiya', 'Howdy', 'Wassup'];
+  return array;
 }
 
 /**
  * Identifies and returns relevant suggestions in the arr
- * @param {string[]} arr
+ * @param {Array<string>} arr
  * @param {string} val
- * @return {string[]} relevantSuggestions
+ * @return {Array<string>} relevantSuggestions
  */
-function getRelevantDataSuggestions(arr, val) {
+function getRelevantDataSuggestions(array, value) {
   const relevantSuggestions = [];
-  val = val.toUpperCase();
-  for (const arrElt of arr) {
-    if (arrElt.substr(0, val.length).toUpperCase() === val.toUpperCase()) {
-      relevantSuggestions.push(arrElt);
+  value = value.toUpperCase();
+  for (const arrayElement of array) {
+    if (arrayElement.toUpperCase().startsWith(value.toUpperCase())) {
+      relevantSuggestions.push(arrayElement);
     }
   }
   return relevantSuggestions;
@@ -92,44 +102,44 @@ function getRelevantDataSuggestions(arr, val) {
 
 /**
  * Takes relevant suggestions and displays them in DOM
- * @param {Array<string, CollegeId>} relevantSuggestions
+ * @param {Array<string>} relevantSuggestions
  * @param {HTMLDivElement} autocompleteList
  * @param {string} val
  */
-function displaySuggestions(relevantSuggestions, autocompleteList, val) {
-  for (arrElt of relevantSuggestions) {
-    const listElmt = document.createElement('div');
-    listElmt.innerHTML = '<strong>' +
-                         arrElt.substr(0, val.length) +
+function displaySuggestions(relevantSuggestions, autocompleteList, value) {
+  for (arrayElement of relevantSuggestions) {
+    const listElement = document.createElement('div');
+    listElement.innerHTML = '<strong>' +
+                         arrayElement.substr(0, value.length) +
                          '</strong>';
-    listElmt.innerHTML += arrElt.substr(val.length);
-    const cpyArrElt = arrElt;
-    listElmt.addEventListener('click', () => {
-      SEARCH_INPUT.value = cpyArrElt;
-      keepTrackOfSuggestions(cpyArrElt);
-      closeAllElmntExcept();
+    listElement.innerHTML += arrayElement.substr(value.length);
+    const copyArrayElement = arrayElement;
+    listElement.addEventListener('click', () => {
+      SEARCH_INPUT.value = copyArrayElement;
+      keepTrackOfSuggestions(copyArrayElement);
+      closeAllElements();
     });
-    autocompleteList.appendChild(listElmt);
+    autocompleteList.appendChild(listElement);
   }
 }
 
 /**
  * Event occurrance when input is provided to autocomplete field
  */
-function getsAllProposedSuggestions() {
-  closeAllElmntExcept();
-  const val = SEARCH_INPUT.value;
-  if (!val) {
+function getAllProposedSuggestions() {
+  closeAllElements();
+  const value = SEARCH_INPUT.value;
+  if (!value) {
     return;
   }
-  const arr = getListOfSuggestions();
+  const array = getListOfSuggestions();
   selectedSuggestionPosition = -1;
   const autocompleteList = document.createElement('div');
   autocompleteList.setAttribute('id', SUGGESTION_LIST_ID);
   autocompleteList.setAttribute('class', ITEM_CLASS);
   SEARCH_INPUT.parentNode.appendChild(autocompleteList);
-  const relevantSuggestions = getRelevantDataSuggestions(arr, val);
-  displaySuggestions(relevantSuggestions, autocompleteList, val);
+  const relevantSuggestions = getRelevantDataSuggestions(array, value);
+  displaySuggestions(relevantSuggestions, autocompleteList, value);
 }
 
 /**
@@ -137,23 +147,23 @@ function getsAllProposedSuggestions() {
  * @param {keypress} e
  */
 function keyDown(e) {
-  let listElmt = document.getElementById(SUGGESTION_LIST_ID);
-  if (listElmt) {
-    listElmt = listElmt.getElementsByTagName('div');
+  let listElement = document.getElementById(SUGGESTION_LIST_ID);
+  if (listElement) {
+    listElement = listElement.getElementsByTagName('div');
   } else {
     return;
   }
   if (e.code === DOWN_KEY) {
     selectedSuggestionPosition++;
-    addActiveTag(listElmt);
+    addActiveTag(listElement);
   } else if (e.code === UP_KEY) {
     selectedSuggestionPosition--;
-    addActiveTag(listElmt);
+    addActiveTag(listElement);
   } else if (e.code === ENTER_KEY) {
     e.preventDefault();
     if (selectedSuggestionPosition > -1) {
-      if (listElmt) {
-        listElmt[selectedSuggestionPosition].click();
+      if (listElement) {
+        listElement[selectedSuggestionPosition].click();
       }
     }
   }
@@ -161,6 +171,6 @@ function keyDown(e) {
 
 /* Event occurance when mouse is clicked */
 document.addEventListener('click', (e) => {
-  closeAllElmntExcept(e.target, SEARCH_INPUT);
+  closeAllElementExcept(e.target, SEARCH_INPUT);
   SEARCH_INPUT.value = '';
 });
