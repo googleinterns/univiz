@@ -13,4 +13,11 @@ describe('Autocomplete provides correct list element', () => {
     const listElementExpected = 'Hallo <strong>He</strong>llo';
     expect(listElementExpected).toEqual(listElementActual.innerHTML);
   });
+  it('Tests List Element Creation with Substring at the end', () => {
+    const sampleSuggestion = 'Hallo Hello';
+    const sampleUserProvidedSubstring = 'ello';
+    const listElementActual = createAutocompleteListElement(sampleSuggestion, sampleUserProvidedSubstring);
+    const listElementExpected = 'Hallo H<strong>ello</strong>';
+    expect(listElementExpected).toEqual(listElementActual.innerHTML);
+  });
 });
