@@ -36,6 +36,7 @@ function createMap(mapsDataFromFetch) {
 
     const marker = new google.maps.Marker({
       position: latitudeLongitude,
+      icon: '/images/icons8-region-48.png',
       map: map,
       title: mapsData['name'],
     });
