@@ -100,6 +100,7 @@ describe('Map Marker and InfoWindow Display', () => {
     spyOn(google.maps.Map.prototype, 'emptyMethod');
     spyOn(google.maps.LatLng.prototype, 'emptyMethod');
     spyOn(google.maps.Marker.prototype, 'emptyMethod');
+    spyOn(google.maps.event.prototype, 'addListener');
     spyOn(google.maps.InfoWindow.prototype, 'emptyMethod');
     spyOn(google.maps.InfoWindow.prototype, 'setContent');
     spyOn(google.maps.InfoWindow.prototype, 'open');
@@ -110,6 +111,7 @@ describe('Map Marker and InfoWindow Display', () => {
             .and.returnValue(Promise.resolve({json: () => mapsJsonData}));
         await fetchData();
         createMap(mapsJsonData);
+        expect(google.maps.Map.prototype.emptyMethod).toHaveBeenCalled();
         expect(google.maps.LatLng.prototype.emptyMethod).toHaveBeenCalledWith(
             nyuLat,
             nyuLon,
@@ -118,6 +120,8 @@ describe('Map Marker and InfoWindow Display', () => {
             stanLat,
             stanLon,
         );
+        expect(google.maps.InfoWindow.prototype.emptyMethod).toHaveBeenCalled();
+        expect(google.maps.event.addListener).toHaveBeenCalled();
         expect(google.maps.InfoWindow.prototype.setContent)
             .toHaveBeenCalledWith(nyuDescription);
         expect(google.maps.InfoWindow.prototype.setContent)
