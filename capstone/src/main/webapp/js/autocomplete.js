@@ -124,7 +124,7 @@ function keepTrackOfChosenColleges(validSuggestion) {
  * @param {string} value
  */
 function displayCollegeSuggestions(suggestions, autocompleteList, value) {
-  for (arrayElement of relevantSuggestions) {
+  for (arrayElement of suggestions) {
     const listElement =
       createAutocompleteListElement(arrayElement.collegeName, value);
     const copyArrayElement = arrayElement;
