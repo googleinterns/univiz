@@ -4,7 +4,7 @@ describe('Autocomplete provides correct list element', () => {
     const sampleUserProvidedSubstring = 'He';
     const listElementActual =
       createAutocompleteListElement(
-        sampleSuggestion, sampleUserProvidedSubstring);
+          sampleSuggestion, sampleUserProvidedSubstring);
     const listElementExpected = '<strong>He</strong>llo';
     expect(listElementExpected).toEqual(listElementActual.innerHTML);
   });
@@ -13,7 +13,7 @@ describe('Autocomplete provides correct list element', () => {
     const sampleUserProvidedSubstring = 'He';
     const listElementActual =
       createAutocompleteListElement(
-        sampleSuggestion, sampleUserProvidedSubstring);
+          sampleSuggestion, sampleUserProvidedSubstring);
     const listElementExpected = 'Hallo <strong>He</strong>llo';
     expect(listElementExpected).toEqual(listElementActual.innerHTML);
   });
@@ -22,7 +22,7 @@ describe('Autocomplete provides correct list element', () => {
     const sampleUserProvidedSubstring = 'ello';
     const listElementActual =
       createAutocompleteListElement(
-        sampleSuggestion, sampleUserProvidedSubstring);
+          sampleSuggestion, sampleUserProvidedSubstring);
     const listElementExpected = 'Hallo H<strong>ello</strong>';
     expect(listElementExpected).toEqual(listElementActual.innerHTML);
   });
