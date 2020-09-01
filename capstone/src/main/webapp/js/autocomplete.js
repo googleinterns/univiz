@@ -88,8 +88,7 @@ function keepTrackOfChosenColleges(validSuggestion) {
   listElt.setAttribute('id', validSuggestion.collegeId.id);
   listElt.innerHTML = validSuggestion.collegeName;
   listElt.innerHTML += " ";
-  const buttonStr = '<button onclick=\'removeCollege()\'>X</button';
-  buttonStr.setAttribute('id', validSuggestion.collegeId.id);
+  const buttonStr = '<button onclick=\'removeCollege('+validSuggestion.collegeId.id+')\'>X</button';
   listElt.innerHTML += buttonStr;
   parent.appendChild(listElt);
 }
@@ -98,9 +97,9 @@ function keepTrackOfChosenColleges(validSuggestion) {
  *
  * @param {string} id
  */
-function removeCollege() {
-  const listUl = document.getElementById("suggestions");
-  document.getElementById(this.id).remove();
+function removeCollege(id) {
+  const listElementToRemove = document.getElementById(id);
+  listElementToRemove.remove();
 }
 
 /**
