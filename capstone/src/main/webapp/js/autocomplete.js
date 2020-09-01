@@ -16,13 +16,13 @@ let selectedSuggestionPosition = -1;
  * Gets suggestions to display to the users
  */
 function suggestionInput() {
-  const val = SEARCH_INPUT.value.trim();
-  if (!val) {
+  const value = SEARCH_INPUT.value.trim();
+  if (!value) {
     return;
   }
-  const fetchStr = '/search?query=' + val;
+  const fetchStr = '/search?query=' + value;
   fetch(fetchStr).then((response) => response.json()).then((suggestions) => {
-    getsAllProposedSuggestions(suggestions, val);
+    getAllProposedSuggestions(suggestions, value);
   });
 }
 
@@ -38,55 +38,54 @@ function sendCollegeInformationToDashboard() {
 
 /**
  * Adds the 'active' tag to an autocomplete elmt
- * @param {HTMLDivElement} autocompleteListElmt
+ * @param {HTMLDivElement} autocompleteListElement
  */
-function addActiveTag(autocompleteListElmt) {
-  if (!autocompleteListElmt) {
+function addActiveTag(autocompleteListElement) {
+  if (!autocompleteListElement) {
     return;
   }
-  removeActiveTag(autocompleteListElmt);
-  if (selectedSuggestionPosition >= autocompleteListElmt.length) {
+  removeActiveTag(autocompleteListElement);
+  if (selectedSuggestionPosition >= autocompleteListElement.length) {
     selectedSuggestionPosition = 0;
   } else if (selectedSuggestionPosition < 0) {
-    selectedSuggestionPosition = (autocompleteListElmt.length - 1);
+    selectedSuggestionPosition = (autocompleteListElement.length - 1);
   }
-  autocompleteListElmt[selectedSuggestionPosition].classList.add(ACTIVE_CLASS);
+  autocompleteListElement[selectedSuggestionPosition]
+      .classList.add(ACTIVE_CLASS);
 }
 
 /**
  * Removes the 'active' tag from an autocomplete elmt
- * @param {HTMLDivElement} autocompleteListElmt
+ * @param {HTMLDivElement} autocompleteListElement
  */
-function removeActiveTag(autocompleteListElmt) {
-  for (elmt of autocompleteListElmt) {
-    elmt.classList.remove(ACTIVE_CLASS);
+function removeActiveTag(autocompleteListElement) {
+  for (element of autocompleteListElement) {
+    element.classList.remove(ACTIVE_CLASS);
   }
 }
 
 /**
  * Closes dropdown autocomplete list
  * Does not close the element provided
- * @param {HTMLDivElement} elmnt
+ * @param {HTMLDivElement} element
  */
-function closeAllElmntExcept(elmnt) {
+function closeAllElementExcept(element) {
   const autoItems = document.getElementsByClassName(ITEM_CLASS);
   for (const item of autoItems) {
-    if (item != elmnt) {
+    if (item != element) {
       item.parentNode.removeChild(item);
     }
   }
 }
 
 /**
- * Adds valid suggestions to list of stored suggestions
- * @param {string} validSuggestion
+ * Closes entire dropdown autocomplete list
  */
-function keepTrackOfChosenColleges(validSuggestion) {
-  const parent = document.getElementById('suggestions');
-  const listElt = document.createElement('li');
-  listElt.setAttribute('id', validSuggestion.collegeId.id);
-  listElt.innerHTML = validSuggestion.collegeName;
-  parent.appendChild(listElt);
+function closeAllElements() {
+  const autoItems = document.getElementsByClassName(ITEM_CLASS);
+  for (const item of autoItems) {
+    item.parentNode.removeChild(item);
+  }
 }
 
 /**
@@ -108,21 +107,32 @@ function createAutocompleteListElement(collegeName, val) {
 }
 
 /**
- * Takes relevant suggestions and displays them in DOM
- * @param {Array<string, int>} relevantSuggestions
- * @param {HTMLDivElement} autocompleteList
- * @param {string} val
+ * Adds valid suggestions to list of stored suggestions
+ * @param {string} validSuggestion
  */
-function displayCollegeSuggestions(relevantSuggestions, autocompleteList, val) {
-  for (arrElt of relevantSuggestions) {
-    const listElmt = createAutocompleteListElement(arrElt.collegeName, val);
-    const cpyArrElt = arrElt;
-    listElmt.addEventListener('click', () => {
-      SEARCH_INPUT.value = cpyArrElt;
-      keepTrackOfChosenColleges(cpyArrElt);
-      closeAllElmntExcept();
+function keepTrackOfChosenColleges(validSuggestion) {
+  const parent = document.getElementById('suggestions');
+  const listElement = document.createElement('li');
+  listElement.innerHTML = validSuggestion;
+  parent.appendChild(listElement);
+}
+
+/**
+ * Takes relevant suggestions and displays them in DOM
+ * @param {Array<string>} relevantSuggestions
+ * @param {HTMLDivElement} autocompleteList
+ * @param {string} value
+ */
+function displaySuggestions(relevantSuggestions, autocompleteList, value) {
+  for (arrayElement of relevantSuggestions) {
+    const listElement = createAutocompleteListElement(arrayElement.collegeName, val);
+    const copyArrayElement = arrayElement;
+    listElement.addEventListener('click', () => {
+      SEARCH_INPUT.value = copyArrayElement;
+      keepTrackOfChosenColleges(copyArrayElement);
+      closeAllElements();
     });
-    autocompleteList.appendChild(listElmt);
+    autocompleteList.appendChild(listElement);
   }
 }
 
@@ -131,8 +141,8 @@ function displayCollegeSuggestions(relevantSuggestions, autocompleteList, val) {
  * @param {Array<string, int>} suggestions
  * @param {string} val
  */
-function getsAllProposedSuggestions(suggestions, val) {
-  closeAllElmntExcept();
+function getAllProposedSuggestions(suggestions, val) {
+  closeAllElements();
   selectedSuggestionPosition = -1;
   const autocompleteList = document.createElement('div');
   autocompleteList.setAttribute('id', SUGGESTION_LIST_ID);
@@ -146,23 +156,23 @@ function getsAllProposedSuggestions(suggestions, val) {
  * @param {keypress} e
  */
 function keyDown(e) {
-  let listElmt = document.getElementById(SUGGESTION_LIST_ID);
-  if (listElmt) {
-    listElmt = listElmt.getElementsByTagName('div');
+  let listElement = document.getElementById(SUGGESTION_LIST_ID);
+  if (listElement) {
+    listElement = listElement.getElementsByTagName('div');
   } else {
     return;
   }
   if (e.code === DOWN_KEY) {
     selectedSuggestionPosition++;
-    addActiveTag(listElmt);
+    addActiveTag(listElement);
   } else if (e.code === UP_KEY) {
     selectedSuggestionPosition--;
-    addActiveTag(listElmt);
+    addActiveTag(listElement);
   } else if (e.code === ENTER_KEY) {
     e.preventDefault();
     if (selectedSuggestionPosition > -1) {
-      if (listElmt) {
-        listElmt[selectedSuggestionPosition].click();
+      if (listElement) {
+        listElement[selectedSuggestionPosition].click();
       }
     }
   }
@@ -170,6 +180,6 @@ function keyDown(e) {
 
 /* Event occurance when mouse is clicked */
 document.addEventListener('click', (e) => {
-  closeAllElmntExcept(e.target, SEARCH_INPUT);
+  closeAllElementExcept(e.target, SEARCH_INPUT);
   SEARCH_INPUT.value = '';
 });
