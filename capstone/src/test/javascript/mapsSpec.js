@@ -118,9 +118,9 @@ describe('Map Marker and InfoWindow Display', () => {
             stanLat,
             stanLon,
         );
-        expect(google.maps.InfoWindow.prototype.emptyMethod.setContent)
+        expect(google.maps.InfoWindow.prototype.setContent)
             .toHaveBeenCalledWith(nyuDescription);
-        expect(google.maps.InfoWindow.prototype.emptyMethod.setContent)
+        expect(google.maps.InfoWindow.prototype.setContent)
             .toHaveBeenCalledWith(stanDescription);
       });
   it('will create descriptions for info windows', () => {
