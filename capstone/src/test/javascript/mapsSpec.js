@@ -111,7 +111,6 @@ describe('Map Marker and InfoWindow Display', () => {
             .and.returnValue(Promise.resolve({json: () => mapsJsonData}));
         await fetchData();
         createMap(mapsJsonData);
-        expect(google.maps.Map.prototype.emptyMethod).toHaveBeenCalled();
         expect(google.maps.LatLng.prototype.emptyMethod).toHaveBeenCalledWith(
             nyuLat,
             nyuLon,
@@ -120,7 +119,6 @@ describe('Map Marker and InfoWindow Display', () => {
             stanLat,
             stanLon,
         );
-        expect(google.maps.InfoWindow.prototype.emptyMethod).toHaveBeenCalled();
         expect(google.maps.event.addListener).toHaveBeenCalled();
         expect(google.maps.InfoWindow.prototype.setContent)
             .toHaveBeenCalledWith(nyuDescription);
