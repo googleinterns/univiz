@@ -98,10 +98,10 @@ function keepTrackOfChosenColleges(validSuggestion) {
   listElement.setAttribute('id', validSuggestion.collegeId.id);
   listElement.innerHTML = validSuggestion.collegeName;
   listElement.innerHTML += ' ';
-  const removeButton =
-    '<button onclick=\'removeCollege('+
-    validSuggestion.collegeId.id + ')\'>X</button';
-  listElement.innerHTML += removeButton;
+  const removeButton = document.createElement('button');
+  removeButton.onclick = () => removeCollege(validSuggestion.collegeId.id);
+  removeButton.innerText = 'Remove';
+  listElement.append(removeButton);
   parent.appendChild(listElement);
 }
 
