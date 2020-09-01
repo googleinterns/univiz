@@ -123,10 +123,10 @@ function keepTrackOfChosenColleges(validSuggestion) {
  * @param {HTMLDivElement} autocompleteList
  * @param {string} value
  */
-function displaySuggestions(relevantSuggestions, autocompleteList, value) {
+function displayCollegeSuggestions(relevantSuggestions, autocompleteList, value) {
   for (arrayElement of relevantSuggestions) {
     const listElement =
-      createAutocompleteListElement(arrayElement.collegeName, val);
+      createAutocompleteListElement(arrayElement.collegeName, value);
     const copyArrayElement = arrayElement;
     listElement.addEventListener('click', () => {
       SEARCH_INPUT.value = copyArrayElement;
