@@ -120,10 +120,6 @@ describe('Map Marker and InfoWindow Display', () => {
             stanLon,
         );
         expect(google.maps.event.addListener).toHaveBeenCalled();
-        expect(google.maps.InfoWindow.prototype.setContent)
-            .toHaveBeenCalledWith(nyuDescription);
-        expect(google.maps.InfoWindow.prototype.setContent)
-            .toHaveBeenCalledWith(stanDescription);
       });
   it('will create descriptions for info windows', () => {
     expect(setDescription(
