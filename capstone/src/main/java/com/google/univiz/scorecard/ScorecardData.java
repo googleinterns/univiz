@@ -83,7 +83,15 @@ abstract class ScorecardData {
   abstract double ratioOfWomen();
 
   static Builder builder() {
-    return new AutoValue_ScorecardData.Builder();
+    return new AutoValue_ScorecardData.Builder()
+        .setFlagMainCampus(0)
+        .setCarnegieSizeDegree(0)
+        .setAdmissionRate(0.0)
+        .setAvgSat(0.0)
+        .setNumOfUndergrads(0)
+        .setAvgCost(0)
+        .setRatioOfMen(0.0)
+        .setRatioOfWomen(0.0);
   }
 
   @AutoValue.Builder
