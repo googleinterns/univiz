@@ -125,7 +125,8 @@ function keepTrackOfChosenColleges(validSuggestion) {
  */
 function displaySuggestions(relevantSuggestions, autocompleteList, value) {
   for (arrayElement of relevantSuggestions) {
-    const listElement = createAutocompleteListElement(arrayElement.collegeName, val);
+    const listElement = 
+      createAutocompleteListElement(arrayElement.collegeName, val);
     const copyArrayElement = arrayElement;
     listElement.addEventListener('click', () => {
       SEARCH_INPUT.value = copyArrayElement;
