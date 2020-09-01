@@ -1,16 +1,16 @@
 describe('Autocomplete provides correct list element', () => {
-  it('Tests Proper List Element Creation Simple', () => {
-    const arrElt = 'Hello';
-    const val = 'He';
-    const listElmtActual = createListElmt(arrElt, val);
-    const listElmtExpected = '<strong>He</strong>llo';
-    expect(listElmtExpected).toEqual(listElmtActual.innerHTML);
+  it('Tests List Element Creation with Substring at the beginning', () => {
+    const sampleSuggestion = 'Hello';
+    const sampleUserProvidedSubstring = 'He';
+    const listElementActual = createAutocompleteListElement(sampleSuggestion, sampleUserProvidedSubstring);
+    const listElementExpected = '<strong>He</strong>llo';
+    expect(listElementExpected).toEqual(listElementActual.innerHTML);
   });
-  it('Tests Proper List Element Creation Complex', () => {
-    const arrElt = 'Hallo Hello';
-    const val = 'He';
-    const listElmtActual = createListElmt(arrElt, val);
-    const listElmtExpected = 'Hallo <strong>He</strong>llo';
-    expect(listElmtExpected).toEqual(listElmtActual.innerHTML);
+  it('Tests List Element Creation with Substring in the middle', () => {
+    const sampleSuggestion = 'Hallo Hello';
+    const sampleUserProvidedSubstring = 'He';
+    const listElementActual = createAutocompleteListElement(sampleSuggestion, sampleUserProvidedSubstring);
+    const listElementExpected = 'Hallo <strong>He</strong>llo';
+    expect(listElementExpected).toEqual(listElementActual.innerHTML);
   });
 });
