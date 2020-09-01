@@ -99,12 +99,17 @@ function keepTrackOfChosenColleges(validSuggestion) {
 function createListElmt(collegeName, val) {
   const listElmt = document.createElement('div');
   const collegeNameUpper = collegeName.toUpperCase();
+  let finalCollegeName = collegeName;
+  for (var name of collegeNameUpper.split(" ")) {
+   finalCollegeName.replaceAll(name, '<strong>' + name + '</strong>'); 
+  }
   const valIndex = collegeNameUpper.indexOf(val.toUpperCase());
-  listElmt.innerHTML = collegeName.substr(0, valIndex);
+  /*listElmt.innerHTML = collegeName.substr(0, valIndex);
   listElmt.innerHTML += '<strong>' +
                        collegeName.substr(valIndex, val.length) +
                        '</strong>';
-  listElmt.innerHTML += collegeName.substr(val.length + valIndex);
+  listElmt.innerHTML += collegeName.substr(val.length + valIndex);*/
+  listElmt.innerHTML = finalCollegeName;
   return listElmt;
 }
 
