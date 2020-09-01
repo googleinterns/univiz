@@ -118,13 +118,9 @@ describe('Map Marker and InfoWindow Display', () => {
             stanLat,
             stanLon,
         );
-        expect(google.maps.Marker.prototype.emptyMethod.calls
-            .count()).toEqual(2);
-        expect(google.maps.InfoWindow.prototype.emptyMethod.calls
-            .count()).toEqual(1);
-        expect(google.maps.InfoWindow.prototype.setContent)
+        expect(google.maps.InfoWindow.prototype.emptyMethod.setContent)
             .toHaveBeenCalledWith(nyuDescription);
-        expect(google.maps.InfoWindow.prototype.setContent)
+        expect(google.maps.InfoWindow.prototype.emptyMethod.setContent)
             .toHaveBeenCalledWith(stanDescription);
       });
   it('will create descriptions for info windows', () => {
