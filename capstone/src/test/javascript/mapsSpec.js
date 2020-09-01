@@ -1,12 +1,12 @@
 google.maps = {};
 google.maps.Map = class {
   /**
-    * @param {HTMLElement} div Div from HTML that map will be displayed in
+    * @param {HTMLDivElement} div Div from HTML that map will be displayed in
     * @param {Object} options Options for centering and viewing maps in HTML
     */
   emptyMethod(div, options) {};
   /**
-    * @param {HTMLElement} div Div from HTML that map will be displayed in
+    * @param {HTMLDivElement} div Div from HTML that map will be displayed in
     * @param {Object} options Options for centering and viewing maps in HTML
     */
   constructor(div, options) {};
