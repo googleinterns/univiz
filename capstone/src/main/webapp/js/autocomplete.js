@@ -27,7 +27,7 @@ function addActiveTag(autocompleteListElement) {
     selectedSuggestionPosition = (autocompleteListElement.length - 1);
   }
   autocompleteListElement[selectedSuggestionPosition]
-		         .classList.add(ACTIVE_CLASS);
+                         .classList.add(ACTIVE_CLASS);
 }
 
 /**
