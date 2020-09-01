@@ -94,16 +94,16 @@ function closeAllElements() {
  * @param {string} val
  * @return {HTMLDivElement} listElmt
  */
-function createAutocompleteListElement(collegeName, val) {
-  const listElmt = document.createElement('div');
+function createAutocompleteListElement(collegeName, value) {
+  const listElement = document.createElement('div');
   const collegeNameUpper = collegeName.toUpperCase();
-  const valIndex = collegeNameUpper.indexOf(val.toUpperCase());
-  listElmt.innerHTML = collegeName.substr(0, valIndex);
-  listElmt.innerHTML += '<strong>' +
-                       collegeName.substr(valIndex, val.length) +
+  const valueIndex = collegeNameUpper.indexOf(value.toUpperCase());
+  listElement.innerHTML = collegeName.substr(0, valueIndex);
+  listElement.innerHTML += '<strong>' +
+                       collegeName.substr(valueIndex, value.length) +
                        '</strong>';
-  listElmt.innerHTML += collegeName.substr(val.length + valIndex);
-  return listElmt;
+  listElement.innerHTML += collegeName.substr(value.length + valueIndex);
+  return listElement;
 }
 
 /**
