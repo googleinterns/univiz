@@ -119,7 +119,7 @@ function keepTrackOfChosenColleges(validSuggestion) {
 
 /**
  * Takes relevant suggestions and displays them in DOM
- * @param {Array<string>} relevantSuggestions
+ * @param {Array<string>} suggestions
  * @param {HTMLDivElement} autocompleteList
  * @param {string} value
  */
