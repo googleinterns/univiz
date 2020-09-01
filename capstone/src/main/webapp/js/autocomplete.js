@@ -123,7 +123,7 @@ function keepTrackOfChosenColleges(validSuggestion) {
  * @param {HTMLDivElement} autocompleteList
  * @param {string} value
  */
-function displayCollegeSuggestions(relevantSuggestions, autocompleteList, value) {
+function displayCollegeSuggestions(suggestions, autocompleteList, value) {
   for (arrayElement of relevantSuggestions) {
     const listElement =
       createAutocompleteListElement(arrayElement.collegeName, value);
