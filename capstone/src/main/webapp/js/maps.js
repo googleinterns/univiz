@@ -6,7 +6,7 @@
 async function fetchData() {
   const queryUrl = new URL(window.location.href);
   const ids = queryUrl.searchParams.get('id');
-  await fetch('/maps?id='+ids)
+  await fetch('/maps?id=' + ids)
       .then((response) => response.json())
       .then((mapsJsonData) => {
         console.log('Fetching data...');
@@ -32,6 +32,7 @@ function createMap(mapsDataFromFetch) {
 
     const marker = new google.maps.Marker({
       position: latitudeLongitude,
+      icon: '/images/icons8-region-48.png',
       map: map,
       title: mapsData['name'],
     });
