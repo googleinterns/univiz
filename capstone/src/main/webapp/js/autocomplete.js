@@ -26,12 +26,13 @@ function addActiveTag(autocompleteListElement) {
   } else if (selectedSuggestionPosition < 0) {
     selectedSuggestionPosition = (autocompleteListElement.length - 1);
   }
-  autocompleteListElement[selectedSuggestionPosition].classList.add(ACTIVE_CLASS);
+  autocompleteListElement[selectedSuggestionPosition]
+		         .classList.add(ACTIVE_CLASS);
 }
 
 /**
  * Removes the 'active' tag from an autocomplete elmt
- * @param {HTMLDivElement} autocompleteListElmt
+ * @param {HTMLDivElement} autocompleteListElement
  */
 function removeActiveTag(autocompleteListElement) {
   for (element of autocompleteListElement) {
@@ -42,7 +43,7 @@ function removeActiveTag(autocompleteListElement) {
 /**
  * Closes dropdown autocomplete list
  * Does not close the element provided
- * @param {HTMLDivElement} elmnt
+ * @param {HTMLDivElement} element
  */
 function closeAllElementExcept(element) {
   const autoItems = document.getElementsByClassName(ITEM_CLASS);
@@ -85,8 +86,8 @@ function getListOfSuggestions() {
 
 /**
  * Identifies and returns relevant suggestions in the arr
- * @param {Array<string>} arr
- * @param {string} val
+ * @param {Array<string>} array
+ * @param {string} value
  * @return {Array<string>} relevantSuggestions
  */
 function getRelevantDataSuggestions(array, value) {
@@ -104,7 +105,7 @@ function getRelevantDataSuggestions(array, value) {
  * Takes relevant suggestions and displays them in DOM
  * @param {Array<string>} relevantSuggestions
  * @param {HTMLDivElement} autocompleteList
- * @param {string} val
+ * @param {string} value
  */
 function displaySuggestions(relevantSuggestions, autocompleteList, value) {
   for (arrayElement of relevantSuggestions) {
