@@ -89,12 +89,12 @@ describe('Map Marker and InfoWindow Display', () => {
   const nyuLat = mapsJsonData[0]['latitude'];
   const nyuLon = mapsJsonData[0]['longitude'];
   const nyuDescription = mapsJsonData[0]['name'] +
-  'is located in ' + mapsJsonData[0]['city'] +
+  ' is located in ' + mapsJsonData[0]['city'] +
    '. This is the main campus.';
   const stanLat = mapsJsonData[1]['latitude'];
   const stanLon = mapsJsonData[1]['longitude'];
   const stanDescription = mapsJsonData[1]['name'] +
-  'is located in ' + mapsJsonData[1]['city'] +
+  ' is located in ' + mapsJsonData[1]['city'] +
    '. This is the main campus.';
   beforeEach(() => {
     spyOn(google.maps.Map.prototype, 'emptyMethod');
@@ -110,8 +110,6 @@ describe('Map Marker and InfoWindow Display', () => {
             .and.returnValue(Promise.resolve({json: () => mapsJsonData}));
         await fetchData();
         createMap(mapsJsonData);
-        expect(google.maps.Map.prototype.emptyMethod.calls
-            .count()).toEqual(1);
         expect(google.maps.LatLng.prototype.emptyMethod).toHaveBeenCalledWith(
             nyuLat,
             nyuLon,
@@ -124,9 +122,9 @@ describe('Map Marker and InfoWindow Display', () => {
             .count()).toEqual(2);
         expect(google.maps.InfoWindow.prototype.emptyMethod.calls
             .count()).toEqual(1);
-        expect(google.maps.InfoWindow.prototype.emptyMethod.setContent)
+        expect(google.maps.InfoWindow.prototype.setContent)
             .toHaveBeenCalledWith(nyuDescription);
-        expect(google.maps.InfoWindow.prototype.emptyMethod.setContent)
+        expect(google.maps.InfoWindow.prototype.setContent)
             .toHaveBeenCalledWith(stanDescription);
       });
   it('will create descriptions for info windows', () => {
