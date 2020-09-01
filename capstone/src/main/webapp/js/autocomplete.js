@@ -79,6 +79,16 @@ function closeAllElementExcept(element) {
 }
 
 /**
+ * Closes entire dropdown autocomplete list
+ */
+function closeAllElements() {
+  const autoItems = document.getElementsByClassName(ITEM_CLASS);
+  for (const item of autoItems) {
+    item.parentNode.removeChild(item);
+  }
+}
+
+/**
  * Keeps track of chosen colleges
  * @param {Array<string, collegeId>} validSuggestion
  */
@@ -91,16 +101,6 @@ function keepTrackOfChosenColleges(validSuggestion) {
   const buttonStr = '<button onclick=\'removeCollege('+validSuggestion.collegeId.id+')\'>X</button';
   listElt.innerHTML += buttonStr;
   parent.appendChild(listElt);
-}
-
-/**
- * Closes entire dropdown autocomplete list
- */
-function closeAllElements() {
-  const autoItems = document.getElementsByClassName(ITEM_CLASS);
-  for (const item of autoItems) {
-    item.parentNode.removeChild(item);
-  }
 }
 
 /**
@@ -128,18 +128,6 @@ function createAutocompleteListElement(collegeName, val) {
                        '</strong>';
   listElmt.innerHTML += collegeName.substr(val.length + valIndex);
   return listElmt;
-}
-
-/**
- * Adds valid suggestions to list of stored suggestions
- * @param {string} validSuggestion
- */
-function keepTrackOfChosenColleges(validSuggestion) {
-  const parent = document.getElementById('suggestions');
-  const listElement = document.createElement('li');
-  listElement.setAttribute('id', validSuggestion.collegeId.id);
-  listElement.innerHTML = validSuggestion.collegeName;
-  parent.appendChild(listElement);
 }
 
 /**
