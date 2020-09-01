@@ -89,6 +89,32 @@ function closeAllElements() {
 }
 
 /**
+ * Keeps track of chosen colleges
+ * @param {Array<string, collegeId>} validSuggestion
+ */
+function keepTrackOfChosenColleges(validSuggestion) {
+  const parent = document.getElementById('suggestions');
+  const listElement = document.createElement('li');
+  listElement.setAttribute('id', validSuggestion.collegeId.id);
+  listElement.innerHTML = validSuggestion.collegeName;
+  listElement.innerHTML += ' ';
+  const removeButton =
+    '<button onclick=\'removeCollege('+
+    validSuggestion.collegeId.id + ')\'>X</button';
+  listElement.innerHTML += removeButton;
+  parent.appendChild(listElement);
+}
+
+/**
+ * Removes college from list
+ * @param {string} id
+ */
+function removeCollege(id) {
+  const listElementToRemove = document.getElementById(id);
+  listElementToRemove.remove();
+}
+
+/**
  * Creates List Element to display a college name suggestion
  * @param {string} collegeName
  * @param {string} val
@@ -104,18 +130,6 @@ function createAutocompleteListElement(collegeName, val) {
                        '</strong>';
   listElmt.innerHTML += collegeName.substr(val.length + valIndex);
   return listElmt;
-}
-
-/**
- * Adds valid suggestions to list of stored suggestions
- * @param {string} validSuggestion
- */
-function keepTrackOfChosenColleges(validSuggestion) {
-  const parent = document.getElementById('suggestions');
-  const listElement = document.createElement('li');
-  listElement.setAttribute('id', validSuggestion.collegeId.id);
-  listElement.innerHTML = validSuggestion.collegeName;
-  parent.appendChild(listElement);
 }
 
 /**
