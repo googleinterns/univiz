@@ -97,24 +97,6 @@ function removeCollege(id) {
   listElementToRemove.remove();
 }
 
-
-/**
- * Keeps track of chosen colleges
- * @param {Array<string, collegeId>} validSuggestion
- */
-function keepTrackOfChosenColleges(validSuggestion) {
-  const parent = document.getElementById('suggestions');
-  const listElement = document.createElement('li');
-  listElement.setAttribute('id', validSuggestion.collegeId.id);
-  listElement.innerHTML = validSuggestion.collegeName;
-  listElement.innerHTML += ' ';
-  const removeButton = document.createElement('button');
-  removeButton.onclick = () => removeCollege(validSuggestion.collegeId.id);
-  removeButton.innerText = 'Remove';
-  listElement.append(removeButton);
-  parent.appendChild(listElement);
-}
-
 /**
  * Creates List Element to display a college name suggestion
  * @param {string} collegeName
@@ -131,6 +113,23 @@ function createAutocompleteListElement(collegeName, value) {
                        '</strong>';
   listElement.innerHTML += collegeName.substr(value.length + valueIndex);
   return listElement;
+}
+
+/**
+ * Keeps track of chosen colleges
+ * @param {Array<string, collegeId>} validSuggestion
+ */
+function keepTrackOfChosenColleges(validSuggestion) {
+  const parent = document.getElementById('suggestions');
+  const listElement = document.createElement('li');
+  listElement.setAttribute('id', validSuggestion.collegeId.id);
+  listElement.innerHTML = validSuggestion.collegeName;
+  listElement.innerHTML += ' ';
+  const removeButton = document.createElement('button');
+  removeButton.onclick = () => removeCollege(validSuggestion.collegeId.id);
+  removeButton.innerText = 'Remove';
+  listElement.append(removeButton);
+  parent.appendChild(listElement);
 }
 
 /**
