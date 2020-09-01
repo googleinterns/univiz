@@ -94,15 +94,15 @@ function closeAllElements() {
  */
 function keepTrackOfChosenColleges(validSuggestion) {
   const parent = document.getElementById('suggestions');
-  const listElt = document.createElement('li');
-  listElt.setAttribute('id', validSuggestion.collegeId.id);
-  listElt.innerHTML = validSuggestion.collegeName;
-  listElt.innerHTML += ' ';
-  const buttonStr =
+  const listElement = document.createElement('li');
+  listElement.setAttribute('id', validSuggestion.collegeId.id);
+  listElement.innerHTML = validSuggestion.collegeName;
+  listElement.innerHTML += ' ';
+  const removeButton =
     '<button onclick=\'removeCollege('+
     validSuggestion.collegeId.id + ')\'>X</button';
-  listElt.innerHTML += buttonStr;
-  parent.appendChild(listElt);
+  listElement.innerHTML += removeButton;
+  parent.appendChild(listElement);
 }
 
 /**
