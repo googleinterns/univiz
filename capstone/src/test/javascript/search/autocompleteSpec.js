@@ -30,9 +30,8 @@ describe('Different autocomplete functions work as expected', () => {
     const fakeValidSuggestions = {"collegeId": {"id": 0}, 
 		                "collegeName": "Stanford University"
                                };
-    //let fakeValidSuggestions = JSON.parse(textJSON);
     const expectedInnerHtml = '"Stanford University"<br><button>Remove</button>';
-    const actualInnerHtml = keepTrackOfChosenColleges(fakeValidSuggestions);
-    expect(actualInnerHtml).toExist(expectedInnerHtml);
+    const actualListElement = keepTrackOfChosenColleges(fakeValidSuggestions);
+    expect(actualListElement.innerHTML).toExist(expectedInnerHtml);
   });
 });

@@ -109,13 +109,9 @@ function createAutocompleteListElement(collegeName, value) {
 /**
  * Keeps track of chosen colleges and the return value is for testing
  * @param {Array<string, collegeId>} validSuggestion
- * @return {string} listElement.innerHTML
+ * @return {HTMLDivElement} listElement
  */
 function keepTrackOfChosenColleges(validSuggestion) {
-  if (document.getElementById(validSuggestion.collegeId.id)) {
-    return;
-  }
-  const parent = document.getElementById('suggestions');
   const listElement = document.createElement('li');
   listElement.setAttribute('id', validSuggestion.collegeId.id);
   listElement.innerHTML = validSuggestion.collegeName;
@@ -124,8 +120,7 @@ function keepTrackOfChosenColleges(validSuggestion) {
   removeButton.onclick = () => listElement.remove();
   removeButton.innerText = 'Remove';
   listElement.append(removeButton);
-  parent.appendChild(listElement);
-  return listElement.innerHTML;
+  return listElement;
 }
 
 /**
@@ -141,7 +136,13 @@ function displayCollegeSuggestions(suggestions, autocompleteList, value) {
     const copyArrayElement = arrayElement;
     listElement.addEventListener('click', () => {
       SEARCH_INPUT.value = copyArrayElement;
-      keepTrackOfChosenColleges(copyArrayElement);
+      if (document.getElementById(copyArrayElement.collegeId.id)) {
+        closeAllElements();
+        return;
+      }
+      const parent = document.getElementById('suggestions');
+      const listElement = keepTrackOfChosenColleges(copyArrayElement);
+      parent.appendChild(listElement);
       closeAllElements();
     });
     autocompleteList.appendChild(listElement);
