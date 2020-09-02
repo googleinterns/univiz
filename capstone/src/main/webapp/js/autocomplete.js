@@ -100,19 +100,19 @@ function createAutocompleteListElement(collegeName, value) {
   const partsOfTheCollegeName = value.split(' ');
   for (partialName of partsOfTheCollegeName) {
     const listElementInnerHTMLUpper = listElementInnerHTML.toUpperCase();
-    const valueIndex = 
+    const valueIndex =
       listElementInnerHTMLUpper.indexOf(partialName.toUpperCase());
     if (valueIndex < 0) {
       continue;
     }
     let updatedCollegeName = '';
-    updatedCollegeName  = listElementInnerHTML.substr(0, valueIndex);
+    updatedCollegeName = listElementInnerHTML.substr(0, valueIndex);
     updatedCollegeName += '<strong>' +
                           listElementInnerHTML.substr(
-                                               valueIndex, partialName.length) +
+                              valueIndex, partialName.length) +
                           '</strong>';
     updatedCollegeName += listElementInnerHTML.substr(
-                          partialName.length + valueIndex);
+        partialName.length + valueIndex);
     listElementInnerHTML = updatedCollegeName;
   }
   listElement.innerHTML = listElementInnerHTML;
