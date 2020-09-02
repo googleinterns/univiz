@@ -32,6 +32,6 @@ describe('Different autocomplete functions work as expected', () => {
                                };
     const expectedInnerHtml = '"Stanford University"<br><button>Remove</button>';
     const actualListElement = keepTrackOfChosenColleges(fakeValidSuggestions);
-    expect(actualListElement.innerHTML).toExist(expectedInnerHtml);
+    expect(actualListElement.innerHTML).toEqual(expectedInnerHtml);
   });
 });
