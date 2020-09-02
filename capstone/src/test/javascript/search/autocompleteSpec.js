@@ -31,7 +31,7 @@ describe('Different autocomplete functions work as expected', () => {
       'collegeName': 'Stanford University',
     };
     const expectedInnerHtml = 'Stanford University<br><button>Remove</button>';
-    const actualListElement = 
+    const actualListElement =
       createSelectedCollegeListElement(fakeValidSuggestions);
     expect(actualListElement.innerHTML).toEqual(expectedInnerHtml);
   });
