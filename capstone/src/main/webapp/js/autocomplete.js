@@ -89,15 +89,6 @@ function closeAllElements() {
 }
 
 /**
- * Removes college from list
- * @param {string} id
- */
-function removeCollege(id) {
-  const listElementToRemove = document.getElementById(id);
-  listElementToRemove.remove();
-}
-
-/**
  * Creates List Element to display a college name suggestion
  * @param {string} collegeName
  * @param {string} value
