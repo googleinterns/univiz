@@ -96,28 +96,26 @@ function closeAllElements() {
  */
 function createAutocompleteListElement(collegeName, value) {
   const listElement = document.createElement('div');
-  let collegeNameDisplayed = collegeName;
-  const arrOfNames = value.split(' ');
-  for (part of arrOfNames) {
-    console.log('Part: ', part);
-    const partUpper = collegeNameDisplayed.toUpperCase();
-    console.log('Part Upper: ', partUpper);
-    const valueIndex = partUpper.indexOf(part.toUpperCase());
+  let listElementInnerHTML = collegeName;
+  const partsOfTheCollegeName = value.split(' ');
+  for (partialName of partsOfTheCollegeName) {
+    const listElementInnerHTMLUpper = listElementInnerHTML.toUpperCase();
+    const valueIndex = 
+      listElementInnerHTMLUpper.indexOf(partialName.toUpperCase());
     if (valueIndex < 0) {
       continue;
     }
-    console.log('Value Index: ', part, valueIndex);
     let updatedCollegeName = '';
-    updatedCollegeName  = collegeNameDisplayed.substr(0, valueIndex);
-    console.log(updatedCollegeName);
+    updatedCollegeName  = listElementInnerHTML.substr(0, valueIndex);
     updatedCollegeName += '<strong>' +
-                          collegeNameDisplayed.substr(valueIndex, part.length) +
+                          listElementInnerHTML.substr(
+                                               valueIndex, partialName.length) +
                           '</strong>';
-    console.log(updatedCollegeName);
-    updatedCollegeName += collegeNameDisplayed.substr(part.length + valueIndex);
-    collegeNameDisplayed = updatedCollegeName;
+    updatedCollegeName += listElementInnerHTML.substr(
+                          partialName.length + valueIndex);
+    listElementInnerHTML = updatedCollegeName;
   }
-  listElement.innerHTML = collegeNameDisplayed;
+  listElement.innerHTML = listElementInnerHTML;
   return listElement;
 }
 
