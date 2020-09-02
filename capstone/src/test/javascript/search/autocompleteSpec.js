@@ -27,9 +27,9 @@ describe('Different autocomplete functions work as expected', () => {
     expect(listElementExpected).toEqual(listElementActual.innerHTML);
   });
   it('Tests Autocomplete can actually keep track of colleges', () => {
-    const fakeValidSuggestions = {"collegeId": {"id": 0}, 
-		                "collegeName": "Stanford University"
-                               };
+    const fakeValidSuggestions = {'collegeId': {'id': 0},
+                                  'collegeName': 'Stanford University',
+    };
     const expectedInnerHtml = 'Stanford University<br><button>Remove</button>';
     const actualListElement = keepTrackOfChosenColleges(fakeValidSuggestions);
     expect(actualListElement.innerHTML).toEqual(expectedInnerHtml);
