@@ -1,4 +1,4 @@
-describe('Autocomplete provides correct list element', () => {
+describe('Different autocomplete functions work as expected', () => {
   it('Tests List Element Creation with Substring at the beginning', () => {
     const sampleSuggestion = 'Hello';
     const sampleUserProvidedSubstring = 'He';
@@ -25,5 +25,19 @@ describe('Autocomplete provides correct list element', () => {
           sampleSuggestion, sampleUserProvidedSubstring);
     const listElementExpected = 'Hallo H<strong>ello</strong>';
     expect(listElementExpected).toEqual(listElementActual.innerHTML);
+  });
+  it('Tests Autocomplete can actually keep track of colleges', () => {
+    let textJSON = '{\'collegeId\': {\'id\': 0}, \'collegeName\': \'Stanford University\'}';
+    let fakeValidSuggestions = JSON.parse(textJSON);
+    var HTMLElements = {};
+    document.getElementById = jasmine.createSpy('HTML Element').andCallFake(function(ID) {
+      if(!HTMLElements[ID]) {
+        var newElement = document.createElement('div');
+        HTMLElements[ID] = newElement;
+      }
+      return HTMLElements[ID];
+    });
+    keepTrackOfChosenColleges(fakeValidSuggestions);
+    expect(HTMLElements[0]).toExist();
   });
 });
