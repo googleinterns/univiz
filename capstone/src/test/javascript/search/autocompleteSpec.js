@@ -1,4 +1,4 @@
-describe('Autocomplete provides correct list element', () => {
+describe('Different autocomplete functions work as expected', () => {
   it('Tests List Element Creation with Substring at the beginning', () => {
     const sampleSuggestion = 'Hello';
     const sampleUserProvidedSubstring = 'He';
@@ -25,5 +25,14 @@ describe('Autocomplete provides correct list element', () => {
           sampleSuggestion, sampleUserProvidedSubstring);
     const listElementExpected = 'Hallo H<strong>ello</strong>';
     expect(listElementExpected).toEqual(listElementActual.innerHTML);
+  });
+  it('Tests Autocomplete can actually keep track of colleges', () => {
+    const fakeValidSuggestions = {'collegeId': {'id': 0},
+      'collegeName': 'Stanford University',
+    };
+    const expectedInnerHtml = 'Stanford University<br><button>Remove</button>';
+    const actualListElement =
+      createSelectedCollegeListElement(fakeValidSuggestions);
+    expect(actualListElement.innerHTML).toEqual(expectedInnerHtml);
   });
 });

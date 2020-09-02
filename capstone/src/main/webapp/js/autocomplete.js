@@ -120,18 +120,20 @@ function createAutocompleteListElement(collegeName, value) {
 }
 
 /**
- * Adds valid suggestions to list of stored suggestions
- * @param {string} validSuggestion
+ * Creates a list element which will be added to a store college list
+ * @param {Array<string, collegeId>} validSuggestion
+ * @return {HTMLDivElement} listElement
  */
-function keepTrackOfChosenColleges(validSuggestion) {
-  if (document.getElementById(validSuggestion.collegeId.id)) {
-    return;
-  }
-  const parent = document.getElementById('suggestions');
+function createSelectedCollegeListElement(validSuggestion) {
   const listElement = document.createElement('li');
   listElement.setAttribute('id', validSuggestion.collegeId.id);
   listElement.innerHTML = validSuggestion.collegeName;
-  parent.appendChild(listElement);
+  listElement.innerHTML += '<br>';
+  const removeButton = document.createElement('button');
+  removeButton.onclick = () => listElement.remove();
+  removeButton.innerText = 'Remove';
+  listElement.append(removeButton);
+  return listElement;
 }
 
 /**
@@ -147,7 +149,13 @@ function displayCollegeSuggestions(suggestions, autocompleteList, value) {
     const copyArrayElement = arrayElement;
     listElement.addEventListener('click', () => {
       SEARCH_INPUT.value = copyArrayElement;
-      keepTrackOfChosenColleges(copyArrayElement);
+      if (document.getElementById(copyArrayElement.collegeId.id)) {
+        closeAllElements();
+        return;
+      }
+      const parent = document.getElementById('suggestions');
+      const listElement = createSelectedCollegeListElement(copyArrayElement);
+      parent.appendChild(listElement);
       closeAllElements();
     });
     autocompleteList.appendChild(listElement);
