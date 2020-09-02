@@ -96,13 +96,26 @@ function closeAllElements() {
  */
 function createAutocompleteListElement(collegeName, value) {
   const listElement = document.createElement('div');
-  const collegeNameUpper = collegeName.toUpperCase();
-  const valueIndex = collegeNameUpper.indexOf(value.toUpperCase());
-  listElement.innerHTML = collegeName.substr(0, valueIndex);
-  listElement.innerHTML += '<strong>' +
-                       collegeName.substr(valueIndex, value.length) +
-                       '</strong>';
-  listElement.innerHTML += collegeName.substr(value.length + valueIndex);
+  let listElementInnerHTML = collegeName;
+  const partsOfTheCollegeName = value.split(' ');
+  for (partialName of partsOfTheCollegeName) {
+    const listElementInnerHTMLUpper = listElementInnerHTML.toUpperCase();
+    const valueIndex =
+      listElementInnerHTMLUpper.indexOf(partialName.toUpperCase());
+    if (valueIndex < 0) {
+      continue;
+    }
+    let updatedCollegeName = '';
+    updatedCollegeName = listElementInnerHTML.substr(0, valueIndex);
+    updatedCollegeName += '<strong>' +
+                          listElementInnerHTML.substr(
+                              valueIndex, partialName.length) +
+                          '</strong>';
+    updatedCollegeName += listElementInnerHTML.substr(
+        partialName.length + valueIndex);
+    listElementInnerHTML = updatedCollegeName;
+  }
+  listElement.innerHTML = listElementInnerHTML;
   return listElement;
 }
 
