@@ -28,7 +28,7 @@ describe('Different autocomplete functions work as expected', () => {
   });
   it('Tests Autocomplete can actually keep track of colleges', () => {
     const fakeValidSuggestions = {'collegeId': {'id': 0},
-                                  'collegeName': 'Stanford University',
+      'collegeName': 'Stanford University',
     };
     const expectedInnerHtml = 'Stanford University<br><button>Remove</button>';
     const actualListElement = keepTrackOfChosenColleges(fakeValidSuggestions);
