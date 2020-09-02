@@ -27,7 +27,7 @@ describe('Different autocomplete functions work as expected', () => {
     expect(listElementExpected).toEqual(listElementActual.innerHTML);
   });
   it('Tests Autocomplete can actually keep track of colleges', () => {
-    let textJSON = '{\'collegeId\': {\'id\': 0}, \'collegeName\': \'Stanford University\'}';
+    let textJSON = '{"collegeId": {"id": 0}, "collegeName": "Stanford University"}';
     let fakeValidSuggestions = JSON.parse(textJSON);
     var HTMLElements = {};
     document.getElementById = jasmine.createSpy('HTML Element').andCallFake(function(ID) {
