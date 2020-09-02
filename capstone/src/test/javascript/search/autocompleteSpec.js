@@ -27,17 +27,12 @@ describe('Different autocomplete functions work as expected', () => {
     expect(listElementExpected).toEqual(listElementActual.innerHTML);
   });
   it('Tests Autocomplete can actually keep track of colleges', () => {
-    let textJSON = '{"collegeId": {"id": 0}, "collegeName": "Stanford University"}';
-    let fakeValidSuggestions = JSON.parse(textJSON);
-    var HTMLElements = {};
-    document.getElementById = jasmine.createSpy('HTML Element').andCallFake(function(ID) {
-      if(!HTMLElements[ID]) {
-        var newElement = document.createElement('div');
-        HTMLElements[ID] = newElement;
-      }
-      return HTMLElements[ID];
-    });
-    keepTrackOfChosenColleges(fakeValidSuggestions);
-    expect(HTMLElements[0]).toExist();
+    const fakeValidSuggestions = {"collegeId": {"id": 0}, 
+		                "collegeName": "Stanford University"
+                               };
+    //let fakeValidSuggestions = JSON.parse(textJSON);
+    const expectedInnerHtml = '"Stanford University"<br><button>Remove</button>';
+    const actualInnerHtml = keepTrackOfChosenColleges(fakeValidSuggestions);
+    expect(actualInnerHtml).toExist(expectedInnerHtml);
   });
 });

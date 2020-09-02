@@ -107,8 +107,9 @@ function createAutocompleteListElement(collegeName, value) {
 }
 
 /**
- * Keeps track of chosen colleges
+ * Keeps track of chosen colleges and the return value is for testing
  * @param {Array<string, collegeId>} validSuggestion
+ * @return {string} listElement.innerHTML
  */
 function keepTrackOfChosenColleges(validSuggestion) {
   if (document.getElementById(validSuggestion.collegeId.id)) {
@@ -124,6 +125,7 @@ function keepTrackOfChosenColleges(validSuggestion) {
   removeButton.innerText = 'Remove';
   listElement.append(removeButton);
   parent.appendChild(listElement);
+  return listElement.innerHTML;
 }
 
 /**
