@@ -8,7 +8,7 @@ import com.google.univiz.common.ServletHelper;
 import java.io.IOException;
 import java.util.List;
 import javax.inject.Inject;
-import javax.servlet.annotation.WebServlet;
+import javax.inject.Singleton;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet that returns the list of matching college names based on a partial input query. This
  * service is best used for the auto-complete feature.
  */
-@WebServlet("/search")
+@Singleton
 public final class SearchService extends HttpServlet {
 
   private final Gson gson;

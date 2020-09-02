@@ -13,6 +13,30 @@ const ENTER_KEY = 'Enter';
 let selectedSuggestionPosition = -1;
 
 /**
+ * Gets suggestions to display to the users
+ */
+function suggestionInput() {
+  const value = SEARCH_INPUT.value.trim();
+  if (!value) {
+    return;
+  }
+  const fetchStr = '/search?query=' + value;
+  fetch(fetchStr).then((response) => response.json()).then((suggestions) => {
+    getAllProposedSuggestions(suggestions, value);
+  });
+}
+
+/**
+ * Sends final college list to the dashboard
+ */
+function sendCollegeInformationToDashboard() {
+  const listItems = document.getElementById('suggestions').children;
+  const stringOfIds = Array.from(listItems).map((l) => l.id).join(',');
+  const dashboardUrl = 'dashboard.html?id=' + stringOfIds;
+  window.location.href = dashboardUrl;
+}
+
+/**
  * Adds the 'active' tag to an autocomplete elmt
  * @param {HTMLDivElement} autocompleteListElement
  */
@@ -65,59 +89,65 @@ function closeAllElements() {
 }
 
 /**
+ * Creates List Element to display a college name suggestion
+ * @param {string} collegeName
+ * @param {string} value
+ * @return {HTMLDivElement} listElmt
+ */
+function createAutocompleteListElement(collegeName, value) {
+  const listElement = document.createElement('div');
+  let listElementInnerHTML = collegeName;
+  const partsOfTheCollegeName = value.split(' ');
+  for (partialName of partsOfTheCollegeName) {
+    const listElementInnerHTMLUpper = listElementInnerHTML.toUpperCase();
+    const valueIndex =
+      listElementInnerHTMLUpper.indexOf(partialName.toUpperCase());
+    if (valueIndex < 0) {
+      continue;
+    }
+    let updatedCollegeName = '';
+    updatedCollegeName = listElementInnerHTML.substr(0, valueIndex);
+    updatedCollegeName += '<strong>' +
+                          listElementInnerHTML.substr(
+                              valueIndex, partialName.length) +
+                          '</strong>';
+    updatedCollegeName += listElementInnerHTML.substr(
+        partialName.length + valueIndex);
+    listElementInnerHTML = updatedCollegeName;
+  }
+  listElement.innerHTML = listElementInnerHTML;
+  return listElement;
+}
+
+/**
  * Adds valid suggestions to list of stored suggestions
  * @param {string} validSuggestion
  */
-function keepTrackOfSuggestions(validSuggestion) {
+function keepTrackOfChosenColleges(validSuggestion) {
+  if (document.getElementById(validSuggestion.collegeId.id)) {
+    return;
+  }
   const parent = document.getElementById('suggestions');
   const listElement = document.createElement('li');
-  listElement.innerHTML = validSuggestion;
+  listElement.setAttribute('id', validSuggestion.collegeId.id);
+  listElement.innerHTML = validSuggestion.collegeName;
   parent.appendChild(listElement);
 }
 
 /**
- * Current placeholder until servlet is created
- * @return {Array<string>} arr
- */
-function getListOfSuggestions() {
-  const array= ['Hallo', 'Hello', 'Hi', 'Hiya', 'Howdy', 'Wassup'];
-  return array;
-}
-
-/**
- * Identifies and returns relevant suggestions in the arr
- * @param {Array<string>} array
- * @param {string} value
- * @return {Array<string>} relevantSuggestions
- */
-function getRelevantDataSuggestions(array, value) {
-  const relevantSuggestions = [];
-  value = value.toUpperCase();
-  for (const arrayElement of array) {
-    if (arrayElement.toUpperCase().startsWith(value.toUpperCase())) {
-      relevantSuggestions.push(arrayElement);
-    }
-  }
-  return relevantSuggestions;
-}
-
-/**
  * Takes relevant suggestions and displays them in DOM
- * @param {Array<string>} relevantSuggestions
+ * @param {Array<string>} suggestions
  * @param {HTMLDivElement} autocompleteList
  * @param {string} value
  */
-function displaySuggestions(relevantSuggestions, autocompleteList, value) {
-  for (arrayElement of relevantSuggestions) {
-    const listElement = document.createElement('div');
-    listElement.innerHTML = '<strong>' +
-                         arrayElement.substr(0, value.length) +
-                         '</strong>';
-    listElement.innerHTML += arrayElement.substr(value.length);
+function displayCollegeSuggestions(suggestions, autocompleteList, value) {
+  for (arrayElement of suggestions) {
+    const listElement =
+      createAutocompleteListElement(arrayElement.collegeName, value);
     const copyArrayElement = arrayElement;
     listElement.addEventListener('click', () => {
       SEARCH_INPUT.value = copyArrayElement;
-      keepTrackOfSuggestions(copyArrayElement);
+      keepTrackOfChosenColleges(copyArrayElement);
       closeAllElements();
     });
     autocompleteList.appendChild(listElement);
@@ -126,21 +156,17 @@ function displaySuggestions(relevantSuggestions, autocompleteList, value) {
 
 /**
  * Event occurrance when input is provided to autocomplete field
+ * @param {Array<string, int>} suggestions
+ * @param {string} val
  */
-function getAllProposedSuggestions() {
+function getAllProposedSuggestions(suggestions, val) {
   closeAllElements();
-  const value = SEARCH_INPUT.value;
-  if (!value) {
-    return;
-  }
-  const array = getListOfSuggestions();
   selectedSuggestionPosition = -1;
   const autocompleteList = document.createElement('div');
   autocompleteList.setAttribute('id', SUGGESTION_LIST_ID);
   autocompleteList.setAttribute('class', ITEM_CLASS);
   SEARCH_INPUT.parentNode.appendChild(autocompleteList);
-  const relevantSuggestions = getRelevantDataSuggestions(array, value);
-  displaySuggestions(relevantSuggestions, autocompleteList, value);
+  displayCollegeSuggestions(suggestions, autocompleteList, val);
 }
 
 /**

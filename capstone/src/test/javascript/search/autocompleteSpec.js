@@ -1,15 +1,29 @@
-describe('Autocomplete Suggests correct array', () => {
-  it('Autocomplete selects correct item', () => {
-    const fullData = ['Ahoy', 'Hello', 'Wattup'];
-    const relevantData = ['Hello'];
-    const retData = getRelevantDataSuggestions(fullData, 'H');
-    expect(retData).toEqual(relevantData);
+describe('Autocomplete provides correct list element', () => {
+  it('Tests List Element Creation with Substring at the beginning', () => {
+    const sampleSuggestion = 'Hello';
+    const sampleUserProvidedSubstring = 'He';
+    const listElementActual =
+      createAutocompleteListElement(
+          sampleSuggestion, sampleUserProvidedSubstring);
+    const listElementExpected = '<strong>He</strong>llo';
+    expect(listElementExpected).toEqual(listElementActual.innerHTML);
   });
-
-  it('Autocomplete selects multiple correct items', () => {
-    const fullData = ['Ahoy', 'Hello', 'Hi', 'Wattup'];
-    const relevantData = ['Hello', 'Hi'];
-    const retData = getRelevantDataSuggestions(fullData, 'H');
-    expect(retData).toEqual(relevantData);
+  it('Tests List Element Creation with Substring in the middle', () => {
+    const sampleSuggestion = 'Hallo Hello';
+    const sampleUserProvidedSubstring = 'He';
+    const listElementActual =
+      createAutocompleteListElement(
+          sampleSuggestion, sampleUserProvidedSubstring);
+    const listElementExpected = 'Hallo <strong>He</strong>llo';
+    expect(listElementExpected).toEqual(listElementActual.innerHTML);
+  });
+  it('Tests List Element Creation with Substring at the end', () => {
+    const sampleSuggestion = 'Hallo Hello';
+    const sampleUserProvidedSubstring = 'ello';
+    const listElementActual =
+      createAutocompleteListElement(
+          sampleSuggestion, sampleUserProvidedSubstring);
+    const listElementExpected = 'Hallo H<strong>ello</strong>';
+    expect(listElementExpected).toEqual(listElementActual.innerHTML);
   });
 });
