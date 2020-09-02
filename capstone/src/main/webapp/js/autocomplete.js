@@ -120,11 +120,11 @@ function createAutocompleteListElement(collegeName, value) {
 }
 
 /**
- * Keeps track of chosen colleges and the return value is for testing
+ * Creates a list element which will be added to a store college list
  * @param {Array<string, collegeId>} validSuggestion
  * @return {HTMLDivElement} listElement
  */
-function keepTrackOfChosenColleges(validSuggestion) {
+function createSelectedCollegeListElement(validSuggestion) {
   const listElement = document.createElement('li');
   listElement.setAttribute('id', validSuggestion.collegeId.id);
   listElement.innerHTML = validSuggestion.collegeName;
@@ -154,7 +154,7 @@ function displayCollegeSuggestions(suggestions, autocompleteList, value) {
         return;
       }
       const parent = document.getElementById('suggestions');
-      const listElement = keepTrackOfChosenColleges(copyArrayElement);
+      const listElement = createSelectedCollegeListElement(copyArrayElement);
       parent.appendChild(listElement);
       closeAllElements();
     });
