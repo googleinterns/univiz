@@ -15,7 +15,7 @@
     "karma-jasmine": "^3.3.1",
     "karma-phantomjs-launcher": "^1.0.4",
     "markdownlint": "^0.26.2",
-    "stylelint": "^13.6.1",
+    "stylelint": "^15.6.0",
     "stylelint-config-standard": "^20.0.0"
   },
   "scripts": {
