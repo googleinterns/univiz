@@ -5,7 +5,7 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
-    "eslint": "^7.5.0",
+    "eslint": "^10.6.0",
     "eslint-config-google": "^0.14.0",
     "htmllint-cli": "0.0.7",
     "jasmine": "^3.99.0",
